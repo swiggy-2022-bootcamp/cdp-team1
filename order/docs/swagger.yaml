@@ -1,0 +1,13 @@
+basePath: /order/api
+host: localhost:8000
+info:
+  contact:
+    email: aryann.dhir73@nmims.edu.in
+    name: Aryann Dhir
+  description: This microservice is for order services
+  license:
+    name: Apache 2.0
+  title: Swiggy Qwik - Order Service
+  version: "1.0"
+paths: {}
+swagger: "2.0"

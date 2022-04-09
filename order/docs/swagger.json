@@ -1,0 +1,18 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This microservice is for order services",
+        "title": "Swiggy Qwik - Order Service",
+        "contact": {
+            "name": "Aryann Dhir",
+            "email": "aryann.dhir73@nmims.edu.in"
+        },
+        "license": {
+            "name": "Apache 2.0"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/order/api",
+    "paths": {}
+}
