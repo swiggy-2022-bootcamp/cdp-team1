@@ -11,7 +11,7 @@
         "Products":{
             "type":"array(products)",
             "description":"The products added by the customer"
-        },
+        }
     }
 }
 
