@@ -1,0 +1,13 @@
+basePath: /cart/api
+host: localhost:7000
+info:
+  contact:
+    email: aryann.dhir73@nmims.edu.in
+    name: Aryann Dhir
+  description: This microservice is for cart services
+  license:
+    name: Apache 2.0
+  title: Swiggy Qwik - Cart Service
+  version: "1.0"
+paths: {}
+swagger: "2.0"

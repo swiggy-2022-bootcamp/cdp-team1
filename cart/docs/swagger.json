@@ -1,0 +1,18 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This microservice is for cart services",
+        "title": "Swiggy Qwik - Cart Service",
+        "contact": {
+            "name": "Aryann Dhir",
+            "email": "aryann.dhir73@nmims.edu.in"
+        },
+        "license": {
+            "name": "Apache 2.0"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:7000",
+    "basePath": "/cart/api",
+    "paths": {}
+}
