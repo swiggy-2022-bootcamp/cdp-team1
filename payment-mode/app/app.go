@@ -19,5 +19,5 @@ func Start() {
 
 	routes.InitRoutes(router)
 
-	router.Run("localhost:9000")
+	router.Run(":9000")
 }
