@@ -2,19 +2,43 @@
 {
     "$id": "id",
     "title": "cart",
-    "type": "object",
+    "type": "array(cart)",
     "properties":{
         "CustomerID":{
             "type":"id",
             "description":"The id of the customer the transction points need to be added"
         },
         "Products":{
-            "type":"array(CART)",
+            "type":"array(products)",
             "description":"The products added by the customer"
-        }
+        },
     }
 }
 
 "Example":
-[{"id":1,"Customer ID":1,"Products":[{"Name":"Greenlam","Quantity":5}]},
-{"id":2,"Customer ID":2,"Products":[{"Name":"Bamity","Quantity":8},{"Name":"Fix San","Quantity":3}]}]
+[
+    {
+       "id":1,
+       "Customer ID":1,
+       "Products":[
+          {
+             "Name":"Greenlam",
+             "Quantity":5
+          }
+       ]
+    },
+    {
+       "id":2,
+       "Customer ID":2,
+       "Products":[
+          {
+             "Name":"Bamity",
+             "Quantity":8
+          },
+          {
+             "Name":"Fix San",
+             "Quantity":3
+          }
+       ]
+    }
+]
