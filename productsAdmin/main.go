@@ -1,9 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"qwik.in/productsAdmin/api/handler"
+)
 
 func init() {
 	fmt.Println("ProductAdmin service started")
 }
 
-func main() {}
+func main() {
+
+	handler.Start()
+}

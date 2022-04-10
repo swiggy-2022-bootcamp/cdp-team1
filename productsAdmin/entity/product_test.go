@@ -3,6 +3,7 @@ package entity_test
 import (
 	"github.com/stretchr/testify/assert"
 	"qwik.in/productsAdmin/entity"
+	"reflect"
 	"testing"
 )
 
@@ -70,6 +71,8 @@ func TestNewProduct(t *testing.T) {
 	assert.Equal(t, p.ManufacturerId, "20")
 	assert.Equal(t, p.Sku, "demo sku")
 	assert.NotNil(t, p.ProductSeoUrl)
+	assert.Equal(t, len(p.ProductSeoUrl), 1)
+	assert.Equal(t, reflect.DeepEqual(p.ProductSeoUrl[0], entity.NewProductSeoUrl("demo-keyword", "1", "0")), true)
 	assert.Equal(t, p.Points, 0)
 	assert.Equal(t, p.Reward, 0)
 	assert.Equal(t, p.Image, "")
@@ -80,7 +83,53 @@ func TestNewProduct(t *testing.T) {
 	assert.Equal(t, p.Height, 0)
 	assert.Equal(t, p.Minimum, 0)
 	assert.NotNil(t, p.ProductRelated)
+	assert.Equal(t, len(p.ProductRelated), 1)
+	assert.Equal(t, p.ProductRelated[0], "34")
 	assert.NotNil(t, p.ProductDescription)
+	assert.Equal(t, len(p.ProductDescription), 1)
+	assert.Equal(t, reflect.DeepEqual(p.ProductDescription[0], entity.NewProductDescription(
+		"1",
+		"demo name",
+		"Description of the product",
+		"Meta title of the product",
+		"Meta description of the product",
+		"demo, keyword, demo2",
+		"Product's tag, comma separated",
+	)), true)
 	assert.NotNil(t, p.ProductCategory)
+	assert.Equal(t, len(p.ProductCategory), 1)
+	assert.Equal(t, p.ProductCategory[0], "25")
+}
 
+func TestProductValidate(t *testing.T) {
+	_, err := entity.NewProduct(
+		"",
+		"",
+		"",
+		"20",
+		"demo sku",
+		[]entity.ProductSeoUrl{entity.NewProductSeoUrl("demo-keyword", "1", "0")},
+		0,
+		0,
+		"",
+		"1",
+		0,
+		0,
+		0,
+		0,
+		0,
+		[]string{"34"},
+		[]entity.ProductDescription{entity.NewProductDescription(
+			"1",
+			"demo name",
+			"Description of the product",
+			"Meta title of the product",
+			"Meta description of the product",
+			"demo, keyword, demo2",
+			"Product's tag, comma separated",
+		)},
+		[]string{"25"},
+	)
+
+	assert.Equal(t, err.Error(), "Invalid entity")
 }
