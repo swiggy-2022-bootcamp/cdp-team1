@@ -3,8 +3,8 @@ package app
 import (
 	"io"
 	"os"
-	"qwik.in/customers-admin/app/log"
 	"qwik.in/customers-admin/app/routes"
+	"qwik.in/customers-admin/log"
 
 	"github.com/gin-gonic/gin"
 )
