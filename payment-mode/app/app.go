@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 	"qwik.in/payment-mode/app/routes"
-	"qwik.in/payment-mode/services"
+	"qwik.in/payment-mode/log"
 )
 
 func Start() {
@@ -15,7 +15,7 @@ func Start() {
 	}
 
 	router := gin.New()
-	router.Use(services.UseLogger(services.DefaultLoggerFormatter), gin.Recovery())
+	router.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
 
 	routes.InitRoutes(router)
 

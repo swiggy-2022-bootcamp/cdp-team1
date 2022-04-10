@@ -16,5 +16,6 @@ import (
 // @Router / [GET]
 func HealthCheck(c *gin.Context) {
 	//Check to be added for database.
-	c.JSON(http.StatusOK, gin.H{"message": "Service is Up"})
+
+	c.JSON(http.StatusOK, gin.H{"message": "server is up."})
 }
