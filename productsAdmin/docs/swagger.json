@@ -1,0 +1,42 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This microservice is for product_admin service.",
+        "title": "Swiggy Qwik - Product_Admin module",
+        "contact": {
+            "name": "Akash Yadav",
+            "email": "akash283y@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:9000",
+    "basePath": "/products/api",
+    "paths": {
+        "/": {
+            "get": {
+                "description": "This request will return 200 OK if server is up..",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "To check if the service is running or not.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

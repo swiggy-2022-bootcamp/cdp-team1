@@ -23,3 +23,5 @@ main
 # GoLand created files
 *.idea
 
+# Log files
+*.log
