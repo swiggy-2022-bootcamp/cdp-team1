@@ -4,8 +4,6 @@ import (
 	"context"
 	"time"
 
-	"orderService/utils/logger"
-
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -17,10 +15,10 @@ func NewDbClient() *mongo.Client {
 	defer cancel()
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
-		logger.Fatal("Error while connecting to DB : " + err.Error())
+		// logger.Fatal("Error while connecting to DB : " + err.Error())
 		panic(err)
 	} else {
-		logger.Info("Database Connected Successfully......")
+		// logger.Info("Database Connected Successfully......")
 
 	}
 	return client
