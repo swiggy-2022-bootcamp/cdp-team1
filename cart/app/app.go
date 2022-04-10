@@ -1,8 +1,6 @@
 package app
 
 import (
-	"cartService/utils/logger"
-	"fmt"
 	"io"
 	"os"
 
@@ -36,6 +34,6 @@ func Start() {
 	// cartRoutesGroup.DELETE("/:cartId", cartHandlers.Deletecart)
 
 	cartRouter.Run(":8081")
-	logger.Info(fmt.Sprintf("Starting server on %s:%s ...", "127.0.0.1", "8081"))
+	// logger.Info(fmt.Sprintf("Starting server on %s:%s ...", "127.0.0.1", "8081"))
 
 }
