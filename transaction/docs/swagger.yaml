@@ -1,0 +1,28 @@
+basePath: /transaction/api
+host: localhost:9001
+info:
+  contact:
+    email: aadityakhetan123@gmail.com
+    name: Aaditya Khetan
+  description: This microservice is for transaction service.
+  license:
+    name: Apache 2.0
+  title: Swiggy Qwik - Transaction module
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: This request will return 200 OK if server is up..
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: To check if the service is running or not.
+      tags:
+      - ""
+swagger: "2.0"
