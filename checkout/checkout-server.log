@@ -1,0 +1,43 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /transaction/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /transaction/api/         --> qwik.in/checkout/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :9002
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 / 2022-04-10T18:40:42+05:30 0s 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api 2022-04-10T18:40:48+05:30 0s 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 / 2022-04-10T18:41:03+05:30 0s 
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /transaction/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /transaction/api/         --> qwik.in/checkout/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :9002
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 / 2022-04-10T18:41:15+05:30 0s 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/ 2022-04-10T18:41:22+05:30 0s 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api 2022-04-10T18:41:25+05:30 0s 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/ 2022-04-10T18:41:26+05:30 0s 
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /checkout/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /checkout/api/            --> qwik.in/checkout/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :9002
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/ 2022-04-10T18:43:09+05:30 861.1µs 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/swagger. 2022-04-10T18:43:20+05:30 0s 
+[GIN-debug] redirecting request 301: /checkout/api/swagger/ --> /checkout/api/swagger/
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/swagger/ 2022-04-10T18:43:22+05:30 334.9µs 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/swagger/ 2022-04-10T18:43:23+05:30 545.6µs 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/ 2022-04-10T18:43:25+05:30 0s 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/swagger/*any 2022-04-10T18:43:31+05:30 0s 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/swagger/ 2022-04-10T18:43:33+05:30 0s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/ 2022-04-10T18:43:35+05:30 0s 
