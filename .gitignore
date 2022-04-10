@@ -14,5 +14,12 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-#Mac OS created file
+# Executable main files
+main
+
+# Mac OS created file
 .DS_Store
+
+# GoLand created files
+*.idea
+
