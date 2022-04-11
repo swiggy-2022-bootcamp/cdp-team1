@@ -1,0 +1,15 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /account-frontstore/api/  --> qwik.in/account-frontstore/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /account-frontstore/api/register --> qwik.in/account-frontstore/app/handlers.RegisterAccount (3 handlers)
+[GIN-debug] GET    /account-frontstore/api/account --> qwik.in/account-frontstore/app/handlers.GetAccountById (3 handlers)
+[GIN-debug] PUT    /account-frontstore/api/account --> qwik.in/account-frontstore/app/handlers.UpdateAccount (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7001
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 / 2022-04-11T22:40:29+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 /favicon.ico 2022-04-11T22:40:30+05:30 0s 
+[GIN-debug] redirecting request 301: /account-frontstore/api/ --> /account-frontstore/api/
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 /account-frontstore/api/ 2022-04-11T22:40:44+05:30 771.1µs 
