@@ -1,0 +1,41 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /payment-mode/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /payment-mode/api/        --> orderService/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8000
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8000
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 / 2022-04-11T10:43:05+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /favicon.ico 2022-04-11T10:43:05+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /swagger/index.html 2022-04-11T10:43:19+05:30 0s 
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8000
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /swagger/index.html 2022-04-11T10:44:08+05:30 0s 
+[GIN-debug] redirecting request 301: /order/api/ --> /order/api/
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/ 2022-04-11T10:44:42+05:30 492µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/index.html 2022-04-11T10:45:05+05:30 585.4µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/swagger-ui.css 2022-04-11T10:45:05+05:30 1.0136ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/swagger-ui-standalone-preset.js 2022-04-11T10:45:05+05:30 2.2834ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/swagger-ui-bundle.js 2022-04-11T10:45:05+05:30 2.1622ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/doc.json 2022-04-11T10:45:05+05:30 1.0291ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/favicon-32x32.png 2022-04-11T10:45:05+05:30 996.6µs 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/favicon-32x32.png 2022-04-11T10:46:57+05:30 0s 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/favicon-32x32.png 2022-04-11T10:47:16+05:30 0s 

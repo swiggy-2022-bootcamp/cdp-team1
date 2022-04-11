@@ -24,7 +24,10 @@ func Start() {
 	orderRouter := gin.New()
 	orderRouter.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
 	routes.InitRoutes(orderRouter)
-	orderRouter.Run(":8000")
+	err = orderRouter.Run(":8000")
+	if err != nil {
+		return
+	}
 
 	// apiRouter := orderRouter.Group("/api")
 	// apiRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
