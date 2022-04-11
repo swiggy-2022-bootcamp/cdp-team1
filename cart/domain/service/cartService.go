@@ -1,16 +1,16 @@
 package domain
 
 import (
-	"cartService/domain/db"
+	"cartService/domain/model"
 	"cartService/domain/repository"
-	error "cartService/internal"
+	"cartService/internal/error"
 )
 
 type CartService interface {
-	AddToCart(db.Cart) (*db.Cart, *error.AppError)
-	GetAllCart() (*[]db.Cart, *error.AppError)
-	UpdateCart(db.Cart) (*db.Cart, *error.AppError)
-	DeleteCartById(string) (*db.Cart, *error.AppError)
+	AddToCart(model.Cart) (*model.Cart, *error.AppError)
+	GetAllCart() (*[]model.Cart, *error.AppError)
+	UpdateCart(model.Cart) (*model.Cart, *error.AppError)
+	DeleteCartById(string) (*model.Cart, *error.AppError)
 	DeleteAllCart() *error.AppError
 }
 
@@ -18,7 +18,7 @@ type DefaultCartService struct {
 	CartDB repository.CartRepositoryDB
 }
 
-func (csvc DefaultCartService) AddToCart(cart db.Cart) (*db.Cart, *error.AppError) {
+func (csvc DefaultCartService) AddToCart(cart model.Cart) (*model.Cart, *error.AppError) {
 
 	u, err := csvc.CartDB.Create(cart)
 
@@ -28,7 +28,7 @@ func (csvc DefaultCartService) AddToCart(cart db.Cart) (*db.Cart, *error.AppErro
 	return u, err
 }
 
-func (csvc DefaultCartService) GetAllCart() (*[]db.Cart, *error.AppError) {
+func (csvc DefaultCartService) GetAllCart() (*[]model.Cart, *error.AppError) {
 
 	u, err := csvc.CartDB.ReadAll()
 
@@ -39,9 +39,9 @@ func (csvc DefaultCartService) GetAllCart() (*[]db.Cart, *error.AppError) {
 	return u, err
 }
 
-func (csvc DefaultCartService) UpdateCart(id string, Cart db.Cart) (*db.Cart, *error.AppError) {
+func (csvc DefaultCartService) UpdateCart(id string, Cart model.Cart) (*model.Cart, *error.AppError) {
 
-	u, err := csvc.CartDB.Update(db.Cart{})
+	u, err := csvc.CartDB.Update(model.Cart{})
 
 	if err != nil {
 		return nil, err
@@ -50,9 +50,9 @@ func (csvc DefaultCartService) UpdateCart(id string, Cart db.Cart) (*db.Cart, *e
 	return u, err
 }
 
-func (csvc DefaultCartService) DeleteCartById(id string) (*db.Cart, *error.AppError) {
+func (csvc DefaultCartService) DeleteCartById(id string) (*model.Cart, *error.AppError) {
 
-	u, err := csvc.CartDB.Delete(db.Cart{})
+	u, err := csvc.CartDB.Delete(model.Cart{})
 
 	if err != nil {
 		return nil, err

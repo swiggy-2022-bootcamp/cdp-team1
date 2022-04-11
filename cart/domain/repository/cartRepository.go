@@ -1,18 +1,18 @@
 package repository
 
 import (
-	"cartService/domain/db"
-	error "cartService/internal"
+	"cartService/domain/model"
+	"cartService/internal/error"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type CartRepositoryDB interface {
-	Create(db.Cart) (*db.Cart, *error.AppError)
-	Read(id string) (*db.Cart, *error.AppError)
-	ReadAll() (*[]db.Cart, *error.AppError)
-	Update(db.Cart) (*db.Cart, *error.AppError)
-	Delete(db.Cart) (*db.Cart, *error.AppError)
+	Create(model.Cart) (*model.Cart, *error.AppError)
+	Read(id string) (*model.Cart, *error.AppError)
+	ReadAll() (*[]model.Cart, *error.AppError)
+	Update(model.Cart) (*model.Cart, *error.AppError)
+	Delete(model.Cart) (*model.Cart, *error.AppError)
 	DeleteAll() *error.AppError
 }
 
@@ -20,9 +20,9 @@ type CartRepository struct {
 	// dbClient *mongo.Client
 }
 
-func (cdb CartRepository) Create(cart db.Cart) (*db.Cart, *error.AppError) {
+func (cdb CartRepository) Create(cart model.Cart) (*model.Cart, *error.AppError) {
 
-	newCart := db.Cart{
+	newCart := model.Cart{
 		CustomerId: cart.CustomerId,
 		Products:   cart.Products,
 	}
@@ -44,39 +44,39 @@ func (cdb CartRepository) Create(cart db.Cart) (*db.Cart, *error.AppError) {
 	return &cart, nil
 }
 
-func (cdb CartRepository) Read(id string) (*db.Cart, *error.AppError) {
+func (cdb CartRepository) Read(id string) (*model.Cart, *error.AppError) {
 
 	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
 	// defer cxl()
 
 	// orderCollection := Collection(cdb.dbClient, "cart")
-	// order := db.Cart{}
+	// order := model.Cart{}
 	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
 
 	// if err != nil {
 	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
 	// }
 
-	return &db.Cart{}, nil
+	return &model.Cart{}, nil
 }
 
-func (cdb CartRepository) ReadAll() (*[]db.Cart, *error.AppError) {
+func (cdb CartRepository) ReadAll() (*[]model.Cart, *error.AppError) {
 
 	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
 	// defer cxl()
 
 	// orderCollection := Collection(cdb.dbClient, "cart")
-	// order := db.Cart{}
+	// order := model.Cart{}
 	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
 
 	// if err != nil {
 	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
 	// }
 
-	return &[]db.Cart{}, nil
+	return &[]model.Cart{}, nil
 }
 
-func (cdb CartRepository) Update(cart db.Cart) (*db.Cart, *error.AppError) {
+func (cdb CartRepository) Update(cart model.Cart) (*model.Cart, *error.AppError) {
 
 	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
 	// defer cxl()
@@ -88,10 +88,10 @@ func (cdb CartRepository) Update(cart db.Cart) (*db.Cart, *error.AppError) {
 	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
 	// }
 
-	return &db.Cart{}, nil
+	return &model.Cart{}, nil
 }
 
-func (cdb CartRepository) Delete(cart db.Cart) (*db.Cart, *error.AppError) {
+func (cdb CartRepository) Delete(cart model.Cart) (*model.Cart, *error.AppError) {
 
 	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
 	// defer cxl()
@@ -103,7 +103,7 @@ func (cdb CartRepository) Delete(cart db.Cart) (*db.Cart, *error.AppError) {
 	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
 	// }
 
-	return &db.Cart{}, nil
+	return &model.Cart{}, nil
 }
 
 func (cdb CartRepository) DeleteAll() *error.AppError {
