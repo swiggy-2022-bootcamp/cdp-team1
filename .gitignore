@@ -16,3 +16,6 @@
 
 # Server log files
 *.log
+
+# .Env files
+.env
