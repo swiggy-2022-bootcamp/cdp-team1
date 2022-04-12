@@ -1,6 +1,8 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 import (
 	swaggerFiles "github.com/swaggo/files"
@@ -9,9 +11,14 @@ import (
 	_ "qwik.in/productsAdmin/docs"
 )
 
-func InitRoutes(router *gin.Engine) {
+func InitRoutes(router *gin.Engine, controller handlers.ProductController) {
 	newRouter := router.Group("products/api")
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	newRouter.GET("/", handlers.HealthCheck)
-	newRouter.POST("/", handlers.AddProduct)
+	newRouter.GET("/health", handlers.HealthCheck)
+
+	newRouter.POST("/", controller.AddProduct)
+	newRouter.GET("/", controller.GetProduct)
+	newRouter.PUT("/:id", controller.UpdateProduct)
+	newRouter.DELETE("/:id", controller.DeleteProduct)
+	newRouter.GET("/search/:query", controller.SearchProduct)
 }

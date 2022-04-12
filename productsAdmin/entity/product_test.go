@@ -2,6 +2,7 @@ package entity_test
 
 import (
 	"encoding/json"
+	"github.com/google/go-cmp/cmp"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"os"
@@ -107,7 +108,7 @@ func TestNewProduct(t *testing.T) {
 
 func TestSetId(t *testing.T) {
 
-	productData, _ := os.ReadFile("sampleProducts.json")
+	productData, _ := os.ReadFile("sampleProductSingle.json")
 	var p entity.Product
 	if err := json.Unmarshal(productData, &p); err != nil {
 		log.Error(err)
@@ -149,4 +150,23 @@ func TestProductValidate(t *testing.T) {
 	)
 
 	assert.Equal(t, err.Error(), "Invalid entity")
+}
+
+func TestReadFromFile(t *testing.T) {
+
+	productData, _ := os.ReadFile("sampleProducts.json")
+	var products []entity.Product
+	if err := json.Unmarshal(productData, &products); err != nil {
+		log.Error(err)
+	}
+
+	assert.Equal(t, 2, len(products))
+
+	productData1, _ := os.ReadFile("sampleProductSingle.json")
+	var product1 entity.Product
+	if err := json.Unmarshal(productData1, &product1); err != nil {
+		log.Error(err)
+	}
+
+	assert.True(t, cmp.Equal(products[0], product1))
 }

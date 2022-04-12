@@ -1,0 +1,33 @@
+
+    {
+      "model": "demo model",
+      "quantity": "300",
+      "price": "44.00",
+      "manufacturer_id": "20",
+      "sku": "demo sku",
+      "product_seo_url": [
+        {
+          "keyword": "demo-keyword", "language_id": "1", "store_id": "0"
+        }
+      ],
+      "points": 0,
+      "reward": 0,
+      "image": "",
+      "shipping": "1",
+      "weight": 0,
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "minimum": 0,
+      "product_related": [ "34" ],
+      "product_description": [ {
+        "language_id": "1",
+        "name": "demo name",
+        "description": "Description of the product",
+        "meta_title": "Meta title of the product",
+        "meta_description": "Meta description of the product",
+        "meta_keyword": "demo, keyword, demo2",
+        "tag": "Product's tag, comma separated"
+      } ],
+      "product_category": [ "25" ]
+    }
