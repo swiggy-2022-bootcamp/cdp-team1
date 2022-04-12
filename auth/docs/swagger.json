@@ -1,0 +1,51 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Swagger API for Golang Project.",
+        "title": "Auth Service APIs",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Ayan Dutta",
+            "email": "ayan59dutta@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/api",
+    "paths": {
+        "/auth": {
+            "get": {
+                "description": "Heath Check",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Service is healthy",
+                        "schema": {
+                            "$ref": "#/definitions/dto.HealthResponseDTO"
+                        }
+                    },
+                    "404": {
+                        "description": "Service is unavailable",
+                        "schema": {
+                            "$ref": "#/definitions/dto.HealthResponseDTO"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.HealthResponseDTO": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

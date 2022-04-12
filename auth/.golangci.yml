@@ -1,0 +1,21 @@
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+
+linters:
+  enable:
+    - deadcode
+    - errcheck
+#    - goimports
+    - golint
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - varcheck
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0

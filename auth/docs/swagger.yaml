@@ -1,0 +1,33 @@
+basePath: /api
+definitions:
+  dto.HealthResponseDTO:
+    properties:
+      status:
+        type: string
+    type: object
+info:
+  contact:
+    email: ayan59dutta@gmail.com
+    name: Ayan Dutta
+  description: Swagger API for Golang Project.
+  termsOfService: http://swagger.io/terms/
+  title: Auth Service APIs
+  version: "1.0"
+paths:
+  /auth:
+    get:
+      description: Heath Check
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Service is healthy
+          schema:
+            $ref: '#/definitions/dto.HealthResponseDTO'
+        "404":
+          description: Service is unavailable
+          schema:
+            $ref: '#/definitions/dto.HealthResponseDTO'
+      tags:
+      - auth
+swagger: "2.0"
