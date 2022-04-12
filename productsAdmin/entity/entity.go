@@ -1,13 +1,15 @@
 package entity
 
-import "github.com/google/uuid"
+import (
+	uuid "github.com/google/uuid"
+)
 
 //ID entity ID
 type ID = uuid.UUID
 
 //NewID create a new entity ID
 func NewID() ID {
-	return ID(uuid.New())
+	return uuid.New()
 }
 
 //StringToID convert a string to an entity ID

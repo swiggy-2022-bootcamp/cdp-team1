@@ -77,6 +77,10 @@ func NewProduct(model, quantity, price, manufacturerId, sku string,
 	return product, nil
 }
 
+func (p *Product) SetId() {
+	p.ID = NewID()
+}
+
 func (p *Product) Validate() error {
 	if p.Model == "" || p.ManufacturerId == "" || p.Sku == "" || p.ProductSeoUrl == nil || p.Points < 0 ||
 		p.Reward < 0 || p.Weight < 0 || p.Height < 0 || p.Length < 0 || p.Minimum < 0 || p.ProductDescription == nil ||

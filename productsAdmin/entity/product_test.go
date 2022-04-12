@@ -1,8 +1,12 @@
 package entity_test
 
 import (
+	"encoding/json"
+	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
+	"os"
 	"qwik.in/productsAdmin/entity"
+	"qwik.in/productsAdmin/log"
 	"reflect"
 	"testing"
 )
@@ -99,6 +103,19 @@ func TestNewProduct(t *testing.T) {
 	assert.NotNil(t, p.ProductCategory)
 	assert.Equal(t, len(p.ProductCategory), 1)
 	assert.Equal(t, p.ProductCategory[0], "25")
+}
+
+func TestSetId(t *testing.T) {
+
+	productData, _ := os.ReadFile("sampleProducts.json")
+	var p entity.Product
+	if err := json.Unmarshal(productData, &p); err != nil {
+		log.Error(err)
+	}
+
+	assert.Equal(t, p.ID, uuid.Nil)
+	p.SetId()
+	assert.NotEqual(t, p.ID, uuid.Nil)
 }
 
 func TestProductValidate(t *testing.T) {

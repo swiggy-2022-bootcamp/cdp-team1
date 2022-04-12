@@ -1,5 +1,4 @@
-{
-  "products" : [
+
     {
       "model": "demo model",
       "quantity": "300",
@@ -32,5 +31,3 @@
       } ],
       "product_category": [ "25" ]
     }
-  ]
-}

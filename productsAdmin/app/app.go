@@ -23,11 +23,11 @@ func Start() {
 
 	routes.InitRoutes(router)
 
-	log.Info("Service starting on port ", config.SERVER_PORT)
+	log.Info(config.SERVICE_NAME, " starting on port ", config.SERVER_PORT)
 	err = router.Run(":" + config.SERVER_PORT)
 
 	if err != nil {
-		log.Error("Service startup failed")
+		log.Error(config.SERVICE_NAME, " startup failed")
 		return
 	}
 }
