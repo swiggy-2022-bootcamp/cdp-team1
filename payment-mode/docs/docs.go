@@ -32,16 +32,35 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    ""
+                    "HealthCheckResponse"
                 ],
                 "summary": "To check if the service is running or not.",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "handlers.HealthCheckResponse": {
+            "type": "object",
+            "properties": {
+                "database": {
+                    "type": "string"
+                },
+                "server": {
+                    "type": "string"
                 }
             }
         }

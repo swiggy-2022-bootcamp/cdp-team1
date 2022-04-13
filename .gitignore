@@ -19,3 +19,6 @@
 
 # .Env files
 .env
+
+# .Idea files
+.idea

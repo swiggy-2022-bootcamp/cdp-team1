@@ -1,4 +1,12 @@
 basePath: /payment-mode/api
+definitions:
+  handlers.HealthCheckResponse:
+    properties:
+      database:
+        type: string
+      server:
+        type: string
+    type: object
 host: localhost:9000
 info:
   contact:
@@ -21,8 +29,12 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.HealthCheckResponse'
       summary: To check if the service is running or not.
       tags:
-      - ""
+      - HealthCheckResponse
 swagger: "2.0"

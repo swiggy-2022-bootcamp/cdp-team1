@@ -2,8 +2,8 @@ package app
 
 import (
 	"context"
+	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/mongo"
 	"io"
 	"os"
 	"qwik.in/payment-mode/app/handlers"
@@ -15,29 +15,29 @@ import (
 )
 
 var (
-	server            *gin.Engine
-	paymentRepository repository.PaymentRepository
-	paymentService    services.PaymentService
-	paymentHandler    handlers.PaymentHandler
-	paymentRoutes     routes.PaymentRoutes
-	ctx               context.Context
-	mongoCollection   *mongo.Collection
-	mongoClient       *mongo.Client
-	err               error
+	server             *gin.Engine
+	paymentRepository  repository.PaymentRepository
+	paymentService     services.PaymentService
+	paymentHandler     handlers.PaymentHandler
+	paymentRoutes      routes.PaymentRoutes
+	ctx                context.Context
+	paymentDB          *dynamodb.DynamoDB
+	healthCheckHandler handlers.HealthCheckHandler
 )
 
 func Start() {
 	ctx = context.TODO()
 
-	//Variable initializations for DB
-	mongoClient = config.ConnectDB()
-	mongoCollection = config.GetCollection(mongoClient, "paymentMode")
+	//Variable initializations for DynamoDB
+	paymentDB = config.ConnectDB()
+	config.CreateTable(paymentDB)
 
 	//Variable initializations to be used as dependency injectors
-	paymentRepository = repository.NewPaymentRepositoryImpl(mongoCollection, ctx)
+	paymentRepository = repository.NewPaymentRepositoryImpl(paymentDB, ctx)
 	paymentService = services.NewPaymentServiceImpl(paymentRepository)
 	paymentHandler = handlers.NewPaymentHandler(paymentService)
-	paymentRoutes = routes.NewPaymentRoutes(paymentHandler)
+	healthCheckHandler = handlers.NewHealthCheckHandler(paymentRepository)
+	paymentRoutes = routes.NewPaymentRoutes(paymentHandler, healthCheckHandler)
 
 	//Opening file for log collection
 	file, err := os.OpenFile("server.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)

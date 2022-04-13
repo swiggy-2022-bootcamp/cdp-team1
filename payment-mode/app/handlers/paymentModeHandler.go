@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"net/http"
 	apperrors "qwik.in/payment-mode/app-errors"
 	"qwik.in/payment-mode/domain/models"
@@ -17,6 +18,13 @@ func NewPaymentHandler(paymentService services.PaymentService) PaymentHandler {
 }
 
 func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
+	//TODO
+	//1. Take paymentMode object
+	//2. Fetch userId from JWT token
+	//3. Fetch userPaymentMode record from DB.
+	//4. Check if passed paymentMode object is there or not in userPaymentMode, if there return Conflict
+	//5. If not there add the payment mode object in userPaymentMode's paymentMethods field.
+
 	var userPaymentMode models.UserPaymentMode
 	if err := c.ShouldBindJSON(&userPaymentMode); err != nil {
 		c.Error(err)
@@ -24,13 +32,20 @@ func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 		c.JSON(err_.Code, err_.Message)
 		return
 	}
-	err := ph.paymentService.AddPaymentMode(&userPaymentMode)
+
+	newUserPaymentMode := models.UserPaymentMode{
+		UserId:       uuid.New().String(),
+		PaymentModes: userPaymentMode.PaymentModes,
+	}
+
+	err := ph.paymentService.AddPaymentMode(&newUserPaymentMode)
 	if err != nil {
 		c.Error(err)
 		err_ := apperrors.NewUnexpectedError(err.Error())
 		c.JSON(err_.Code, err_.Message)
 		return
 	}
+
 	c.JSON(http.StatusOK, gin.H{"message": "Payment mode added successfully"})
 }
 
