@@ -1,8 +1,12 @@
 package services
 
-import "qwik.in/payment-mode/domain/models"
+import (
+	app_errors "qwik.in/payment-mode/app-errors"
+	"qwik.in/payment-mode/domain/models"
+)
 
 type PaymentService interface {
-	AddPaymentMode(userPaymentMode *models.UserPaymentMode) error
-	GetPaymentMode(userId string) (*models.UserPaymentMode, error)
+	AddPaymentMode(paymentMode *models.PaymentMode, userId string) *app_errors.AppError
+	GetPaymentMode(userId string) (*models.UserPaymentMode, *app_errors.AppError)
+	GetUserId(token string) string
 }

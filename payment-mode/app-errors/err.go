@@ -61,3 +61,10 @@ func NewBadRequestError(message string) *AppError {
 		Code:    http.StatusBadRequest,
 	}
 }
+
+func NewConflictRequestError(message string) *AppError {
+	return &AppError{
+		Message: message,
+		Code:    http.StatusConflict,
+	}
+}

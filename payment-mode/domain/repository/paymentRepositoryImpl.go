@@ -5,7 +5,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
-	app_errors "qwik.in/payment-mode/app-errors"
+	apperrors "qwik.in/payment-mode/app-errors"
 	"qwik.in/payment-mode/domain/models"
 	"qwik.in/payment-mode/log"
 )
@@ -34,12 +34,12 @@ func (p PaymentRepositoryImpl) DBHealthCheck() bool {
 	return true
 }
 
-func (p PaymentRepositoryImpl) AddPaymentModeToDB(userPaymentMode *models.UserPaymentMode) error {
+func (p PaymentRepositoryImpl) AddPaymentModeToDB(userPaymentMode *models.UserPaymentMode) *apperrors.AppError {
 
 	data, err := dynamodbattribute.MarshalMap(userPaymentMode)
 	if err != nil {
 		log.Error("Marshalling of userPaymentMode failed - " + err.Error())
-		return err
+		return apperrors.NewUnexpectedError(err.Error())
 	}
 
 	query := &dynamodb.PutItemInput{
@@ -50,12 +50,12 @@ func (p PaymentRepositoryImpl) AddPaymentModeToDB(userPaymentMode *models.UserPa
 	_, err = p.paymentDB.PutItem(query)
 	if err != nil {
 		log.Error("Failed to insert item into database - " + err.Error())
-		return err
+		return apperrors.NewUnexpectedError(err.Error())
 	}
 	return nil
 }
 
-func (p PaymentRepositoryImpl) GetPaymentModeFromDB(userId string) (*models.UserPaymentMode, error) {
+func (p PaymentRepositoryImpl) GetPaymentModeFromDB(userId string) (*models.UserPaymentMode, *apperrors.AppError) {
 	userPaymentMode := &models.UserPaymentMode{}
 
 	query := &dynamodb.GetItemInput{
@@ -71,20 +71,53 @@ func (p PaymentRepositoryImpl) GetPaymentModeFromDB(userId string) (*models.User
 	if err != nil {
 		log.Info(result)
 		log.Error("Failed to get item from database - " + err.Error())
-		return nil, err
+		return nil, apperrors.NewUnexpectedError(err.Error())
 	}
 
 	if result.Item == nil {
 		log.Error("Payment mode for user doesn't exists. - ")
-		err_ := app_errors.NewBadRequestError("Payment mode for user doesn't exists")
-		return nil, err_.Error()
+		err_ := apperrors.NewNotFoundError("Payment mode for user doesn't exists")
+		return nil, err_
 	}
 
 	err = dynamodbattribute.UnmarshalMap(result.Item, userPaymentMode)
 	if err != nil {
-		log.Info(result.Item)
 		log.Error("Failed to unmarshal document fetched from DB - " + err.Error())
-		return nil, err
+		return nil, apperrors.NewUnexpectedError(err.Error())
 	}
 	return userPaymentMode, nil
+}
+
+func (p PaymentRepositoryImpl) UpdatePaymentModeToDB(userPaymentMode *models.UserPaymentMode) *apperrors.AppError {
+	type updateQuery struct {
+		PaymentMode []models.PaymentMode `json:":payment_mode"`
+	}
+
+	update, err := dynamodbattribute.MarshalMap(updateQuery{
+		PaymentMode: userPaymentMode.PaymentModes,
+	})
+	if err != nil {
+		log.Error(err)
+		return apperrors.NewUnexpectedError(err.Error())
+	}
+
+	input := &dynamodb.UpdateItemInput{
+		Key: map[string]*dynamodb.AttributeValue{
+			"user_id": {
+				S: aws.String(userPaymentMode.UserId),
+			},
+		},
+		TableName:                 aws.String(paymentCollection),
+		UpdateExpression:          aws.String("set payment_modes = :payment_mode"),
+		ExpressionAttributeValues: update,
+		ReturnValues:              aws.String("UPDATED_NEW"),
+	}
+
+	_, err = p.paymentDB.UpdateItem(input)
+	if err != nil {
+		log.Error(err)
+		return apperrors.NewUnexpectedError(err.Error())
+	}
+
+	return nil
 }
