@@ -10,7 +10,6 @@ import (
 
 func TestMain(m *testing.M) {
 	gin.SetMode(gin.TestMode)
-
 	os.Exit(m.Run())
 }
 
@@ -25,6 +24,6 @@ func NewServer(paymentRepository *mocks.MockPaymentRepository) *gin.Engine {
 	router.GET("/", healthCheckHandler.HealthCheck)
 	router.POST("/paymentmethods/:userId", paymentHandler.AddPaymentMode)
 	router.GET("/paymentmethods/:userId", paymentHandler.GetPaymentMode)
-	
+
 	return server
 }

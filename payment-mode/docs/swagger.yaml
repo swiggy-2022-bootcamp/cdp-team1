@@ -7,6 +7,28 @@ definitions:
       server:
         type: string
     type: object
+  models.PaymentMode:
+    properties:
+      balance:
+        type: integer
+      cardNumber:
+        type: integer
+      mode:
+        type: string
+    required:
+    - mode
+    type: object
+  models.UserPaymentMode:
+    properties:
+      payment_modes:
+        items:
+          $ref: '#/definitions/models.PaymentMode'
+        type: array
+      user_id:
+        type: string
+    required:
+    - payment_modes
+    type: object
 host: localhost:9000
 info:
   contact:
@@ -37,4 +59,71 @@ paths:
       summary: To check if the service is running or not.
       tags:
       - HealthCheckResponse
+  /paymentmethods/{userId}:
+    get:
+      consumes:
+      - application/json
+      description: To get available payment modes of a user.
+      parameters:
+      - description: User id
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserPaymentMode'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To get available payment modes of a user.
+      tags:
+      - PaymentMode
+    post:
+      consumes:
+      - application/json
+      description: To add a new payment method for a user(COD,Debit card, Credit Card).
+      parameters:
+      - description: Payment mode details
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/models.PaymentMode'
+      - description: User id
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "409":
+          description: Conflict
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To add a new payment method for a user.
+      tags:
+      - PaymentMode
 swagger: "2.0"

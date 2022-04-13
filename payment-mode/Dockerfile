@@ -19,7 +19,7 @@ RUN go build ./main.go
 # must be supplied to the docker command.
 EXPOSE 9000
 
-WORKDIR /
+COPY .env .
 
 # Run
-ENTRYPOINT ["/app/main"]
+ENTRYPOINT ["./main"]

@@ -43,6 +43,107 @@
                     }
                 }
             }
+        },
+        "/paymentmethods/{userId}": {
+            "get": {
+                "description": "To get available payment modes of a user.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "PaymentMode"
+                ],
+                "summary": "To get available payment modes of a user.",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User id",
+                        "name": "userId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.UserPaymentMode"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "To add a new payment method for a user(COD,Debit card, Credit Card).",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "PaymentMode"
+                ],
+                "summary": "To add a new payment method for a user.",
+                "parameters": [
+                    {
+                        "description": "Payment mode details",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.PaymentMode"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "User id",
+                        "name": "userId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -53,6 +154,40 @@
                     "type": "string"
                 },
                 "server": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.PaymentMode": {
+            "type": "object",
+            "required": [
+                "mode"
+            ],
+            "properties": {
+                "balance": {
+                    "type": "integer"
+                },
+                "cardNumber": {
+                    "type": "integer"
+                },
+                "mode": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UserPaymentMode": {
+            "type": "object",
+            "required": [
+                "payment_modes"
+            ],
+            "properties": {
+                "payment_modes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.PaymentMode"
+                    }
+                },
+                "user_id": {
                     "type": "string"
                 }
             }

@@ -34,27 +34,6 @@ func NewUnexpectedError(message string) *AppError {
 	}
 }
 
-func NewValidationError(message string) *AppError {
-	return &AppError{
-		Message: message,
-		Code:    http.StatusUnprocessableEntity,
-	}
-}
-
-func NewAuthenticationError(message string) *AppError {
-	return &AppError{
-		Message: message,
-		Code:    http.StatusUnauthorized,
-	}
-}
-
-func NewAuthorizationError(message string) *AppError {
-	return &AppError{
-		Message: message,
-		Code:    http.StatusForbidden,
-	}
-}
-
 func NewBadRequestError(message string) *AppError {
 	return &AppError{
 		Message: message,

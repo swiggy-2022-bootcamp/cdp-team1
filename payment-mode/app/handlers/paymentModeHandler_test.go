@@ -5,12 +5,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	app_errors "qwik.in/payment-mode/app-errors"
 	"qwik.in/payment-mode/domain/models"
+	"qwik.in/payment-mode/domain/services"
 	"qwik.in/payment-mode/mocks"
 	"testing"
 )
@@ -37,6 +39,18 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 		buildStubs    func(paymentRepository *mocks.MockPaymentRepository)
 		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
 	}{
+		{
+			name: "BadRequestFailure",
+			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
+				paymentRepository.EXPECT().
+					GetPaymentModeFromDB(userId).
+					Times(0).
+					Return(nil, nil)
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
+			},
+		},
 		{
 			name: "ConflictPaymentMode",
 			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
@@ -163,7 +177,12 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 
 			recorder := httptest.NewRecorder()
 			url := fmt.Sprintf("/payment-mode/api/paymentmethods/%s", userId)
-			request := httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
+			var request *http.Request
+			if tc.name == "BadRequestFailure" {
+				request = httptest.NewRequest(http.MethodPost, url, nil)
+			} else {
+				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
+			}
 
 			server.ServeHTTP(recorder, request)
 
@@ -251,6 +270,18 @@ func TestPaymentHandler_GetPaymentMode(t *testing.T) {
 			tc.checkResponse(t, recorder)
 		})
 	}
+}
+
+func TestNewPaymentHandler(t *testing.T) {
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	paymentRepository := mocks.NewMockPaymentRepository(ctrl)
+
+	paymentService := services.NewPaymentServiceImpl(paymentRepository)
+	paymentHandler := NewPaymentHandler(paymentService)
+
+	assert.Equal(t, paymentHandler.paymentService, paymentService)
 }
 
 func requireBodyMatchPaymentMode(t *testing.T, body *bytes.Buffer, requiredResponse models.UserPaymentMode) {
