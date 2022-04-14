@@ -8,16 +8,16 @@ import (
 	"qwik.in/productsAdmin/service"
 )
 
-type ProductController struct {
+type ProductHandler struct {
 	productService service.ProductService
 }
 
-func NewProductController(productService service.ProductService) ProductController {
-	return ProductController{productService: productService}
+func NewProductHandler(productService service.ProductService) ProductHandler {
+	return ProductHandler{productService: productService}
 }
 
 // AddProduct godoc
-// @Summary Add new product to store
+// @Summary AddProduct
 // @Description Create a new product object, generate id and save in DB
 // @Tags
 // @Schemes
@@ -25,14 +25,13 @@ func NewProductController(productService service.ProductService) ProductControll
 // @Produce json
 // @Success	200  {string} 	Product Created
 // @Router / [POST]
-func (p ProductController) AddProduct(c *gin.Context) {
+func (p ProductHandler) AddProduct(c *gin.Context) {
 
 	var product entity.Product
 	if err := c.BindJSON(&product); err != nil {
 		log.Error(err)
 	}
 	product.SetId()
-	log.Info("Parsed product: ", product)
 	err := p.productService.CreateProduct(product)
 	if err != nil {
 		log.Error(err)
@@ -51,7 +50,7 @@ func (p ProductController) AddProduct(c *gin.Context) {
 // @Produce json
 // @Success	200
 // @Router / [GET]
-func (p ProductController) GetProduct(c *gin.Context) {
+func (p ProductHandler) GetProduct(c *gin.Context) {
 	products, err := p.productService.GetAll()
 	if err == nil {
 		c.JSON(http.StatusOK, products)
@@ -69,19 +68,16 @@ func (p ProductController) GetProduct(c *gin.Context) {
 // @Produce json
 // @Success	200
 // @Router / [PUT]
-func (p ProductController) UpdateProduct(c *gin.Context) {
+func (p ProductHandler) UpdateProduct(c *gin.Context) {
 
 	productId := c.Param("id")
-	log.Info("Update product with id : ", productId)
-
-	// TODO check if exist
 
 	var product entity.Product
 	if err := c.BindJSON(&product); err != nil {
 		log.Error(err)
 	}
-	log.Info("Parsed product: ", product)
-	err := p.productService.UpdateProduct(product)
+
+	err := p.productService.UpdateProduct(productId, product)
 	if err == nil {
 		c.JSON(http.StatusOK, gin.H{"message": "Product Updated Successfully"})
 	} else {
@@ -98,14 +94,14 @@ func (p ProductController) UpdateProduct(c *gin.Context) {
 // @Produce json
 // @Success	200
 // @Router / [DELETE]
-func (p ProductController) DeleteProduct(c *gin.Context) {
+func (p ProductHandler) DeleteProduct(c *gin.Context) {
 
 	productId := c.Param("id")
 	log.Info("Delete product with id : ", productId)
 
 	// TODO check if exist
 
-	err := p.productService.DeleteProduct("")
+	err := p.productService.DeleteProduct(productId)
 	if err == nil {
 		c.JSON(http.StatusOK, gin.H{"message": "Product Deleted Successfully"})
 	} else {
@@ -122,7 +118,7 @@ func (p ProductController) DeleteProduct(c *gin.Context) {
 // @Produce json
 // @Success	200
 // @Router / [GET]
-func (p ProductController) SearchProduct(c *gin.Context) {
+func (p ProductHandler) SearchProduct(c *gin.Context) {
 
 	query := c.Param("query")
 	log.Info("Find products with query : ", query)

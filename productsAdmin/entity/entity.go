@@ -8,12 +8,6 @@ import (
 type ID = uuid.UUID
 
 //NewID create a new entity ID
-func NewID() ID {
-	return uuid.New()
+func NewID() string {
+	return uuid.New().String()
 }
-
-//StringToID convert a string to an entity ID
-//func StringToID(s string) (ID, error) {
-//	id, err := uuid.Parse(s)
-//	return ID(id), err
-//}

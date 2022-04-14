@@ -11,10 +11,34 @@ info:
   version: "1.0"
 paths:
   /:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Product with given id
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Delete Products
+      tags:
+      - ""
     get:
       consumes:
       - application/json
-      description: This request will return 200 OK if server is up..
+      description: Search Product with given query
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Search Products
+      tags:
+      - ""
+    post:
+      consumes:
+      - application/json
+      description: Create a new product object, generate id and save in DB
       produces:
       - application/json
       responses:
@@ -22,7 +46,19 @@ paths:
           description: OK
           schema:
             type: string
-      summary: To check if the service is running or not.
+      summary: AddProduct
+      tags:
+      - ""
+    put:
+      consumes:
+      - application/json
+      description: Update Product with given id
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Update Products
       tags:
       - ""
 swagger: "2.0"

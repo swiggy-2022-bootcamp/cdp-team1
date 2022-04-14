@@ -3,7 +3,6 @@ package entity_test
 import (
 	"encoding/json"
 	"github.com/google/go-cmp/cmp"
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"os"
 	"qwik.in/productsAdmin/entity"
@@ -114,9 +113,9 @@ func TestSetId(t *testing.T) {
 		log.Error(err)
 	}
 
-	assert.Equal(t, p.ID, uuid.Nil)
+	assert.Equal(t, "", p.ID)
 	p.SetId()
-	assert.NotEqual(t, p.ID, uuid.Nil)
+	assert.NotEqual(t, "", p.ID)
 }
 
 func TestProductValidate(t *testing.T) {

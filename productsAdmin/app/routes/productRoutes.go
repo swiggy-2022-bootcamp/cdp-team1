@@ -11,14 +11,14 @@ import (
 	_ "qwik.in/productsAdmin/docs"
 )
 
-func InitRoutes(router *gin.Engine, controller handlers.ProductController) {
+func InitRoutes(router *gin.Engine, handler handlers.ProductHandler) {
 	newRouter := router.Group("products/api")
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	newRouter.GET("/health", handlers.HealthCheck)
 
-	newRouter.POST("/", controller.AddProduct)
-	newRouter.GET("/", controller.GetProduct)
-	newRouter.PUT("/:id", controller.UpdateProduct)
-	newRouter.DELETE("/:id", controller.DeleteProduct)
-	newRouter.GET("/search/:query", controller.SearchProduct)
+	newRouter.POST("/", handler.AddProduct)
+	newRouter.GET("/", handler.GetProduct)
+	newRouter.PUT("/:id", handler.UpdateProduct)
+	newRouter.DELETE("/:id", handler.DeleteProduct)
+	newRouter.GET("/search/:query", handler.SearchProduct)
 }

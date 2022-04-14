@@ -1,8 +1,6 @@
 package main
 
-import (
-	"qwik.in/productsAdmin/app"
-)
+import "qwik.in/productsAdmin/app"
 
 // @title          Swiggy Qwik - Product_Admin module
 // @version        1.0
@@ -14,4 +12,14 @@ import (
 // @BasePath /products/api
 func main() {
 	app.Start()
+	//
+	//// create an aws session
+	//sess := session.Must(session.NewSession(&aws.Config{
+	//	Region:   aws.String("us-east-1"),
+	//	Endpoint: aws.String("https://dynamodb.us-east-1.amazonaws.com"),
+	//}))
+	//
+	//// create a dynamodb instance
+	//db := dynamodb.New(sess)
+
 }

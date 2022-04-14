@@ -28,3 +28,4 @@ main
 
 # Temp files
 *.tmp
+/productsAdmin/repository/awsCredentials.txt

@@ -24,7 +24,7 @@ const docTemplate = `{
     "paths": {
         "/": {
             "get": {
-                "description": "This request will return 200 OK if server is up..",
+                "description": "Search Product with given query",
                 "consumes": [
                     "application/json"
                 ],
@@ -34,13 +34,67 @@ const docTemplate = `{
                 "tags": [
                     ""
                 ],
-                "summary": "To check if the service is running or not.",
+                "summary": "Search Products",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "put": {
+                "description": "Update Product with given id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "Update Products",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new product object, generate id and save in DB",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "AddProduct",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
                             "type": "string"
                         }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete Product with given id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "Delete Products",
+                "responses": {
+                    "200": {
+                        "description": ""
                     }
                 }
             }

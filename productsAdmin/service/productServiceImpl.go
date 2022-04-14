@@ -28,7 +28,7 @@ func (p ProductServiceImpl) GetAll() ([]entity.Product, error) {
 	return all, nil
 }
 
-func (p ProductServiceImpl) UpdateProduct(product entity.Product) error {
+func (p ProductServiceImpl) UpdateProduct(productId string, product entity.Product) error {
 	err := p.productRepository.FindAndUpdate(product)
 	if err != nil {
 		return err
