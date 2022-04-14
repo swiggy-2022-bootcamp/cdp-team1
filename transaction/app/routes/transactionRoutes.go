@@ -8,8 +8,19 @@ import (
 	_ "qwik.in/transaction/docs"
 )
 
-func InitRoutes(router *gin.Engine) {
-	newRouter := router.Group("transaction/api")
+type TransactionRoutes struct {
+	transactionHandler handlers.TransactionHandler
+	healthCheckhandler handlers.HealthCheckHandler
+}
+
+func NewTransactionRoutes(transactionHandler handlers.TransactionHandler, healthCheckhandler handlers.HealthCheckHandler) TransactionRoutes {
+	return TransactionRoutes{transactionHandler: transactionHandler, healthCheckhandler: healthCheckhandler}
+}
+
+func (tr TransactionRoutes) InitRoutes(newRouter *gin.RouterGroup) {
+
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	newRouter.GET("/", handlers.HealthCheck)
+	newRouter.GET("/", tr.healthCheckhandler.HealthCheck)
+
+	newRouter.POST("/transaction/:userId", tr.transactionHandler.AddTransactionPoints)
 }

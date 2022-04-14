@@ -16,3 +16,9 @@
 
 # Server log files
 *.log
+
+# .Idea folder
+.idea
+
+# .Env files
+.env
