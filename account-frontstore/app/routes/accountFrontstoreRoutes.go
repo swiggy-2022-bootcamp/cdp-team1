@@ -11,6 +11,6 @@ func Router(router *gin.Engine) {
 	//newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	newRouter.GET("/", handlers.HealthCheck)
 	newRouter.POST("/register", handlers.RegisterAccount)
-	newRouter.GET("/account", handlers.GetAccountById)
-	newRouter.PUT("/account", handlers.UpdateAccount)
+	newRouter.GET("/account/:accessorId", handlers.GetAccountById)
+	newRouter.PUT("/account/:accessorId", handlers.UpdateAccount)
 }

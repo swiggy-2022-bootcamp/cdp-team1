@@ -1,10 +1,9 @@
 package service
 
 import (
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"qwik.in/account-frontstore/domain/model"
 	"qwik.in/account-frontstore/domain/repository"
-	"qwik.in/account-frontstore/internal/errors"
+	"time"
 )
 
 type AccountServiceInterface interface {
@@ -18,6 +17,7 @@ type AccountService struct {
 }
 
 func (accountService *AccountService) CreateAccount(account model.Account) (*model.Account, error) {
+	account.DateAdded = time.Now()
 	createdAccount, err := accountService.accountRepository.Create(account)
 	if err != nil {
 		return nil, err
@@ -26,12 +26,7 @@ func (accountService *AccountService) CreateAccount(account model.Account) (*mod
 }
 
 func (accountService *AccountService) GetAccountById(customerId string) (*model.Account, error) {
-	objectId, err := primitive.ObjectIDFromHex(customerId)
-	if err != nil {
-		return nil, errors.NewMalformedIdError()
-	}
-
-	fetchedAccount, err := accountService.accountRepository.GetById(objectId)
+	fetchedAccount, err := accountService.accountRepository.GetById(customerId)
 	if err != nil {
 		return nil, err
 	}
@@ -39,12 +34,7 @@ func (accountService *AccountService) GetAccountById(customerId string) (*model.
 }
 
 func (accountService *AccountService) UpdateAccount(customerId string, account model.Account) (*model.Account, error) {
-	objectId, err := primitive.ObjectIDFromHex(customerId)
-	if err != nil {
-		return nil, errors.NewMalformedIdError()
-	}
-
-	account.CustomerId = objectId
+	account.CustomerId = customerId
 	updatedAccount, err := accountService.accountRepository.Update(account)
 	if err != nil {
 		return nil, err

@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"qwik.in/account-frontstore/domain/model"
 	"qwik.in/account-frontstore/domain/service"
@@ -10,9 +11,14 @@ import (
 
 var accountService service.AccountServiceInterface
 
+func init() {
+	accountService = &service.AccountService{}
+}
+
 func RegisterAccount(c *gin.Context) {
 	newAccount := model.Account{}
 	json.NewDecoder(c.Request.Body).Decode(&newAccount)
+	fmt.Println(newAccount)
 	createdAccount, err := accountService.CreateAccount(newAccount)
 
 	if err != nil {
