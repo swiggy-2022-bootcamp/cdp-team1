@@ -1,0 +1,6 @@
+projectKey=PaymentSerivce
+serverUrl=http://localhost:9001
+serverVersion=9.4.0.54424
+dashboardUrl=http://localhost:9001/dashboard?id=PaymentSerivce
+ceTaskId=AYAm975Ftc-GURfIZ89u
+ceTaskUrl=http://localhost:9001/api/ce/task?id=AYAm975Ftc-GURfIZ89u
