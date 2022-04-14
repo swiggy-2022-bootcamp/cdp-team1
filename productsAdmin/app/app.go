@@ -15,7 +15,11 @@ import (
 func Start() {
 
 	productRepository := repository.NewDynamoRepository()
-	productRepository.Connect()
+	err := productRepository.Connect()
+	if err != nil {
+		log.Error("Error while Connecting to DB: ", err)
+		return
+	}
 	productService := service.NewProductService(productRepository)
 	productController := handlers.NewProductHandler(productService)
 

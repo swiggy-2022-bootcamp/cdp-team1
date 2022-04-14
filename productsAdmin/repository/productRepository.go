@@ -8,5 +8,5 @@ type ProductRepository interface {
 	FindAll() ([]entity.Product, error)
 	SaveProduct(product entity.Product) error
 	DeleteProduct(productId string) error
-	FindAndUpdate(product entity.Product) error
+	FindAndUpdate(productId string, product entity.Product) error
 }
