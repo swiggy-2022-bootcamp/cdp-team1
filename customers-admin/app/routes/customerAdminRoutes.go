@@ -16,4 +16,6 @@ func Router(router *gin.Engine) {
 	newRouter.PUT("/customer/:customerId", handlers.UpdateCustomer)
 	newRouter.DELETE("/customer/:customerId", handlers.DeleteCustomer)
 	newRouter.GET("/user", handlers.GetAdminUsers)
+	newRouter.POST("/user", handlers.AddAdminUser)
+
 }

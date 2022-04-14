@@ -10,6 +10,10 @@ import (
 
 var customerService service.CustomerServiceInterface
 
+func init() {
+	customerService = &service.CustomerService{}
+}
+
 func CreateCustomer(c *gin.Context) {
 	newCustomer := model.Customer{}
 	json.NewDecoder(c.Request.Body).Decode(&newCustomer)

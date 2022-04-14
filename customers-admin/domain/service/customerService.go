@@ -1,10 +1,9 @@
 package service
 
 import (
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"fmt"
 	"qwik.in/customers-admin/domain/model"
 	"qwik.in/customers-admin/domain/repository"
-	"qwik.in/customers-admin/internal/errors"
 )
 
 type CustomerServiceInterface interface {
@@ -28,12 +27,7 @@ func (customerService *CustomerService) CreateCustomer(customer model.Customer) 
 }
 
 func (customerService *CustomerService) GetCustomerById(customerId string) (*model.Customer, error) {
-	objectId, err := primitive.ObjectIDFromHex(customerId)
-	if err != nil {
-		return nil, errors.NewMalformedIdError()
-	}
-
-	fetchedCustomer, err := customerService.customerRepository.GetById(objectId)
+	fetchedCustomer, err := customerService.customerRepository.GetById(customerId)
 	if err != nil {
 		return nil, err
 	}
@@ -42,6 +36,7 @@ func (customerService *CustomerService) GetCustomerById(customerId string) (*mod
 
 func (customerService *CustomerService) GetCustomerByEmail(customerEmail string) (*model.Customer, error) {
 	fetchedCustomer, err := customerService.customerRepository.GetByEmail(customerEmail)
+	fmt.Println(err)
 	if err != nil {
 		return nil, err
 	}
@@ -49,12 +44,7 @@ func (customerService *CustomerService) GetCustomerByEmail(customerEmail string)
 }
 
 func (customerService *CustomerService) UpdateCustomer(customerId string, customer model.Customer) (*model.Customer, error) {
-	objectId, err := primitive.ObjectIDFromHex(customerId)
-	if err != nil {
-		return nil, errors.NewMalformedIdError()
-	}
-
-	customer.CustomerId = objectId
+	customer.CustomerId = customerId
 	updatedCustomer, err := customerService.customerRepository.Update(customer)
 	if err != nil {
 		return nil, err
@@ -63,16 +53,9 @@ func (customerService *CustomerService) UpdateCustomer(customerId string, custom
 }
 
 func (customerService *CustomerService) DeleteCustomer(customerId string) (*string, error) {
-	objectId, err := primitive.ObjectIDFromHex(customerId)
-	if err != nil {
-		return nil, errors.NewMalformedIdError()
-	}
-
-	successMessage, err := customerService.customerRepository.Delete(objectId)
+	successMessage, err := customerService.customerRepository.Delete(customerId)
 	if err != nil {
 		return nil, err
 	}
 	return successMessage, nil
 }
-
-

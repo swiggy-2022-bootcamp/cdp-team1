@@ -14,3 +14,11 @@ func (customerError *CustomerError) Error() string {
 func NewMalformedIdError() *CustomerError {
 	return &CustomerError{http.StatusBadRequest, "Malformed customer id"}
 }
+
+func NewMarshallError() *CustomerError {
+	return &CustomerError{http.StatusBadRequest, "Failed to marshal the customer"}
+}
+
+func NewUserNotFoundError() *CustomerError {
+	return &CustomerError{http.StatusNotFound, "User not found"}
+}

@@ -1,18 +1,17 @@
 package model
 
 import (
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"time"
 )
 
 type Customer struct {
-	CustomerId      primitive.ObjectID `json:"customerId"`
-	Firstname       string             `json:"firstname"`
-	Lastname        string             `json:"lastname"`
-	Email           string             `json:"email"`
-	Password        string             `json:"password"`
-	Telephone       string             `json:"telephone"`
-	CustomerGroupId int                `json:"customer_group_id"`
+	CustomerId      string `json:"customerId"`
+	Firstname       string `json:"firstname"`
+	Lastname        string `json:"lastname"`
+	Email           string `json:"email"`
+	Password        string `json:"password"`
+	Telephone       string `json:"telephone"`
+	CustomerGroupId int    `json:"customer_group_id"`
 	Address         []struct {
 		HouseNumber string `json:"houseNumber"`
 		Street      string `json:"street"`
