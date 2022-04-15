@@ -23,4 +23,6 @@ func (tr TransactionRoutes) InitRoutes(newRouter *gin.RouterGroup) {
 	newRouter.GET("/", tr.healthCheckhandler.HealthCheck)
 
 	newRouter.POST("/transaction/:userId", tr.transactionHandler.AddTransactionPoints)
+	newRouter.GET("/transaction/:userId", tr.transactionHandler.GetTransactionPointsByUserID)
+	newRouter.POST("/transaction/use-transaction-points/:userId", tr.transactionHandler.UseTransactionPoints)
 }

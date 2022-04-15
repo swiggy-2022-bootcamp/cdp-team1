@@ -65,15 +65,17 @@ func (t TransactionServiceImpl) CalculateTransactionPoints(transactionAmount *mo
 	return points
 }
 
-func (t TransactionServiceImpl) UseTransactionPoints(transactionAmount models.TransactionAmount) (bool, *models.TransactionAmount) {
+func (t TransactionServiceImpl) UseTransactionPoints(transactionAmount *models.TransactionAmount) (bool, *models.TransactionAmount, *apperros.AppError) {
 	//Fetch user transaction details from DB
 	userTransactionPoints, err := t.transactionRepository.GetTransactionPointsByUserIdFromDB(transactionAmount.UserId)
 
 	if err != nil {
-		return false, &transactionAmount
+		return false, transactionAmount, err
 	} else {
 		// For every 1 transaction point, user will get a discount of 1 Rupee
-		if userTransactionPoints < transactionAmount.Amount {
+		if userTransactionPoints == 0 {
+			return false, transactionAmount, apperros.NewExpectationFailed("You have 0 transaction points")
+		} else if userTransactionPoints < transactionAmount.Amount {
 			//user using all his transaction points (Will only apply if order amount is greater than points)
 			transactionAmount.Amount -= userTransactionPoints
 			userTransactionPoints = 0
@@ -81,13 +83,13 @@ func (t TransactionServiceImpl) UseTransactionPoints(transactionAmount models.Tr
 			err_ := t.UpdateTransactionPoints(userTransactionPoints, transactionAmount.UserId)
 			if err_ != nil {
 				log.Error("Failed to update transaction points")
-				return false, &transactionAmount
+				return false, transactionAmount, err_
 			}
 
-			return true, &transactionAmount
+			return true, transactionAmount, nil
 		} else {
 			log.Info("Cannot use transaction points as order amount is lesser than available points")
-			return false, &transactionAmount
+			return false, transactionAmount, apperros.NewExpectationFailed("Cannot use transaction points as order amount is lesser than available points")
 		}
 	}
 }
