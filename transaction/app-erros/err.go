@@ -41,13 +41,6 @@ func NewBadRequestError(message string) *AppError {
 	}
 }
 
-func NewConflictRequestError(message string) *AppError {
-	return &AppError{
-		Message: message,
-		Code:    http.StatusConflict,
-	}
-}
-
 func NewExpectationFailed(message string) *AppError {
 	return &AppError{
 		Message: message,
