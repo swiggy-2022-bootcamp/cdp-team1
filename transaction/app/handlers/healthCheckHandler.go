@@ -22,11 +22,12 @@ type HealthCheckResponse struct {
 // HealthCheck godoc
 // @Summary To check if the service is running or not.
 // @Description This request will return 200 OK if server is up..
-// @Tags
+// @Tags HealthCheckResponse
 // @Schemes
 // @Accept json
 // @Produce json
-// @Success	200  {string} 	Service is up
+// @Success	200  {object} 	HealthCheckResponse
+// @Failure 500  {object}   HealthCheckResponse
 // @Router / [GET]
 func (hc HealthCheckHandler) HealthCheck(c *gin.Context) {
 
