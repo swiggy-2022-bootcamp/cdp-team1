@@ -22,3 +22,7 @@ func NewMarshallError() *CustomerError {
 func NewUserNotFoundError() *CustomerError {
 	return &CustomerError{http.StatusNotFound, "User not found"}
 }
+
+func NewEmailAlreadyRegisteredError() *CustomerError {
+	return &CustomerError{http.StatusBadRequest, "User with given email already exists"}
+}
