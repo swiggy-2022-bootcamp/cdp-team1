@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -32,10 +31,6 @@ func (p RewardHandler) Searchreward(c *gin.Context) {
 	log.Info("Find rewards with id : ", id)
 
 	rewards, err := p.rewardService.SearchReward(id)
-	fmt.Println("Reward Id", rewards.ID)
-	fmt.Println("Reward Name", rewards.Name)
-	fmt.Println("Reward Description", rewards.Description)
-	fmt.Println("Reward Points", rewards.Points)
 	if err == nil {
 		c.JSON(http.StatusOK, rewards)
 	} else {
