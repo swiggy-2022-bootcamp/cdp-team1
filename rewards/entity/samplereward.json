@@ -1,0 +1,12 @@
+[{
+    "id": "1",
+    "name": "demo1",
+    "description": "reward for demo1",
+    "points": 10
+}
+{
+    "id": "2",
+    "name": "demo2",
+    "description": "reward for demo2",
+    "points": 20
+}]

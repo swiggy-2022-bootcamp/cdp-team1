@@ -1,0 +1,17 @@
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all Rewards
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Get Rewards
+      tags:
+      - ""
+swagger: "2.0"

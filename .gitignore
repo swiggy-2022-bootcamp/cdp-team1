@@ -13,3 +13,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Log files
+*.log
+
+# Temp files
+*.tmp
+/rewards/repository/awsCredentials.txt
