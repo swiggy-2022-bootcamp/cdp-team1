@@ -22,3 +22,7 @@ func NewMalformedIdError() *AccountError {
 func NewMarshallError() *AccountError {
 	return &AccountError{http.StatusBadRequest, "Failed to marshal the account"}
 }
+
+func NewEmailAlreadyRegisteredError() *AccountError {
+	return &AccountError{http.StatusBadRequest, "User with given email already exists"}
+}
