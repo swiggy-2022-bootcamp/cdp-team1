@@ -9,6 +9,6 @@ type TransactionService interface {
 	AddTransactionPoints(transactionAmount *models.TransactionAmount) *apperros.AppError
 	GetTransactionPointsByUserId(userId string) (int, *apperros.AppError)
 	CalculateTransactionPoints(transactionAmount *models.TransactionAmount) int
-	UseTransactionPoints(transactionAmount models.TransactionAmount) (bool, *models.TransactionAmount)
+	UseTransactionPoints(transactionAmount *models.TransactionAmount) (bool, *models.TransactionAmount, *apperros.AppError)
 	UpdateTransactionPoints(transactionPoint int, userId string) *apperros.AppError
 }

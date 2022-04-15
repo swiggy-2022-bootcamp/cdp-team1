@@ -45,3 +45,41 @@ func (th TransactionHandler) AddTransactionPoints(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "Transaction points added successfully"})
 }
+
+func (th TransactionHandler) GetTransactionPointsByUserID(c *gin.Context) {
+	userId := c.Param("userId")
+	points, err := th.transactionService.GetTransactionPointsByUserId(userId)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"transaction_points": points})
+}
+
+func (th TransactionHandler) UseTransactionPoints(c *gin.Context) {
+	userId := c.Param("userId")
+	var transactionAmount models.TransactionAmount
+
+	if err := c.BindJSON(&transactionAmount); err != nil {
+		c.Error(err)
+		err_ := apperros.NewBadRequestError(err.Error())
+		c.JSON(err_.Code, gin.H{"message": err_.Message})
+		return
+	}
+
+	//validate request body
+	if validationErr := validate.Struct(&transactionAmount); validationErr != nil {
+		c.Error(validationErr)
+		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+		return
+	}
+	transactionAmount.UserId = userId
+	_, newTransactionAmount, err := th.transactionService.UseTransactionPoints(&transactionAmount)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": newTransactionAmount})
+}
