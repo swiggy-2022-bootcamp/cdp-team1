@@ -19,4 +19,4 @@
 
 # Temp files
 *.tmp
-/rewards/repository/awsCredentials.txt
+rewards/config/awsCredentials.txt
