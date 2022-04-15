@@ -3,7 +3,6 @@ package app
 import (
 	"fmt"
 	"io"
-	"net/http/httptest"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -25,14 +24,8 @@ func Start() {
 	fmt.Println("Connection successful")
 	rewardService := service.NewRewardService(RewardRepository)
 	fmt.Println("Service created")
-	rewardService.GetAll()
 	rewardController := handlers.NewRewardHandler(rewardService)
 	fmt.Println("Controller created")
-	gin.SetMode(gin.TestMode)
-
-	w := httptest.NewRecorder()
-	c, _ := gin.CreateTestContext(w)
-	rewardController.Getall(c)
 	file, err := os.OpenFile(config.LOG_FILE, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err == nil && config.LOG_FILE_MODE {
 		log.Info("Opened log file successfully")

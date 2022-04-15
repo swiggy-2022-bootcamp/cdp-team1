@@ -33,8 +33,6 @@ func (r dynamoRepository) Connect() error {
 }
 
 func (r dynamoRepository) FindOne(rewardId string) (entity.Reward, error) {
-	fmt.Println("This is FindOne in Dyanmo.db")
-	fmt.Println(rewardId)
 	params := &dynamodb.GetItemInput{
 		TableName: aws.String("Rewards"),
 		Key: map[string]*dynamodb.AttributeValue{
