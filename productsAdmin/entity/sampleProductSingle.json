@@ -1,33 +1,41 @@
-
+{
+  "id": "90f97384-0117-4234-bbe2-5f306bbef0b3",
+  "model": "Daily Planet",
+  "quantity": "1",
+  "price": "20.00",
+  "manufacturer_id": "34",
+  "sku": "news sku",
+  "product_seo_url": [
     {
-      "model": "demo model",
-      "quantity": "300",
-      "price": "44.00",
-      "manufacturer_id": "20",
-      "sku": "demo sku",
-      "product_seo_url": [
-        {
-          "keyword": "demo-keyword", "language_id": "1", "store_id": "0"
-        }
-      ],
-      "points": 0,
-      "reward": 0,
-      "image": "",
-      "shipping": "1",
-      "weight": 0,
-      "length": 0,
-      "width": 0,
-      "height": 0,
-      "minimum": 0,
-      "product_related": [ "34" ],
-      "product_description": [ {
-        "language_id": "1",
-        "name": "demo name",
-        "description": "Description of the product",
-        "meta_title": "Meta title of the product",
-        "meta_description": "Meta description of the product",
-        "meta_keyword": "demo, keyword, demo2",
-        "tag": "Product's tag, comma separated"
-      } ],
-      "product_category": [ "25" ]
+      "keyword": "newspaper",
+      "language_id": "1",
+      "store_id": "0"
     }
+  ],
+  "points": 0,
+  "reward": 0,
+  "image": "",
+  "shipping": "1",
+  "weight": 40,
+  "length": 100,
+  "width": 50,
+  "height": 1,
+  "minimum": 1,
+  "product_related": [
+    "39"
+  ],
+  "product_description": [
+    {
+      "language_id": "1",
+      "name": "daily planet newspaper",
+      "description": "today's daily planet newspaper",
+      "meta_title": "daily planet newspaper",
+      "meta_description": "today's daily planet newspaper",
+      "meta_keyword": "daily planet, newspaper, metropolis",
+      "tag": "daily planet, newspaper, metropolis"
+    }
+  ],
+  "product_category": [
+    "45"
+  ]
+}

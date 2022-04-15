@@ -28,4 +28,9 @@ main
 
 # Temp files
 *.tmp
-/productsAdmin/repository/awsCredentials.txt
+
+# Properties file
+*.properties
+
+# Coverage Files
+*.cov

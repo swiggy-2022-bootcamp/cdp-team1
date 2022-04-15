@@ -113,7 +113,7 @@ func TestSetId(t *testing.T) {
 		log.Error(err)
 	}
 
-	assert.Equal(t, "", p.ID)
+	assert.Equal(t, "90f97384-0117-4234-bbe2-5f306bbef0b3", p.ID)
 	p.SetId()
 	assert.NotEqual(t, "", p.ID)
 }
@@ -159,7 +159,7 @@ func TestReadFromFile(t *testing.T) {
 		log.Error(err)
 	}
 
-	assert.Equal(t, 2, len(products))
+	assert.Equal(t, 3, len(products))
 
 	productData1, _ := os.ReadFile("sampleProductSingle.json")
 	var product1 entity.Product

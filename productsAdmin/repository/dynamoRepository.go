@@ -144,8 +144,7 @@ func (r dynamoRepository) FindWithLimit(limit int64) ([]entity.Product, error) {
 
 	// create the api params
 	params := &dynamodb.ScanInput{
-		TableName:        aws.String("Products"),
-		FilterExpression: aws.String(""),
+		TableName: aws.String("Products"),
 	}
 
 	var productList []entity.Product

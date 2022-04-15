@@ -14,7 +14,6 @@ const (
 
 // AWS DynamoDB
 const (
-	AWS_CREDENTIALS_FILE = "./awsCredentials.txt"
-	DYNAMO_DB_REGION     = "us-east-1"
-	DYNAMO_DB_URL        = "https://dynamodb.us-east-1.amazonaws.com"
+	DYNAMO_DB_REGION = "us-east-1"
+	DYNAMO_DB_URL    = "https://dynamodb.us-east-1.amazonaws.com"
 )
