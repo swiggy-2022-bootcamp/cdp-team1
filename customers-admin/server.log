@@ -277,3 +277,22 @@ GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/user 2022-04-
 POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/user 2022-04-15T01:32:35+05:30 311.0247ms 
 GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/user 2022-04-15T01:32:39+05:30 275.3404ms 
 POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer 2022-04-15T01:33:45+05:30 1.5371807s 
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7000
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/894425b4-9141-41d0-9590-177336c0ca76 2022-04-15T13:09:43+05:30 1.4661962s 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/894425b4-9141-41d0-9590-177336c0ca76 2022-04-15T13:10:30+05:30 750.6075ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/894425b4-9141-41d0-9590-177336c0ca76 2022-04-15T13:10:37+05:30 283.8874ms 
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer 2022-04-15T13:12:01+05:30 1.133625s 
