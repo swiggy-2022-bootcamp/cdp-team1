@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"qwik.in/checkout/app/routes"
+	route "qwik.in/checkout/app/routes"
 	"qwik.in/checkout/log"
 )
 
@@ -17,6 +17,6 @@ func Start() {
 	}
 	router := gin.New()
 	router.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
-	routes.Router(router)
+	route.Router(router)
 	router.Run(":9002")
 }
