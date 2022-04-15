@@ -1,4 +1,24 @@
 basePath: /transaction/api
+definitions:
+  handlers.HealthCheckResponse:
+    properties:
+      database:
+        type: string
+      server:
+        type: string
+    type: object
+  models.TransactionAmount:
+    properties:
+      amount:
+        type: integer
+      order_id:
+        type: string
+      user_id:
+        type: string
+    required:
+    - amount
+    - order_id
+    type: object
 host: localhost:9001
 info:
   contact:
@@ -21,8 +41,115 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.HealthCheckResponse'
       summary: To check if the service is running or not.
       tags:
-      - ""
+      - HealthCheckResponse
+  /transaction/{userId}:
+    get:
+      consumes:
+      - application/json
+      description: This request will get transaction points from a user account.
+      parameters:
+      - description: User id
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: int
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To get transaction points of a user.
+      tags:
+      - Transaction
+    post:
+      consumes:
+      - application/json
+      description: This request will add transaction points to a user account.
+      parameters:
+      - description: Transaction details
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/models.TransactionAmount'
+      - description: User id
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To add transaction points for a user.
+      tags:
+      - Transaction
+  /transaction/use-transaction-points/{userId}:
+    post:
+      consumes:
+      - application/json
+      description: This request will use transaction points present in user account
+        for passed order ID.
+      parameters:
+      - description: Transaction details
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/models.TransactionAmount'
+      - description: User id
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.TransactionAmount'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "417":
+          description: Expectation Failed
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To use transaction points for an order.
+      tags:
+      - Transaction
 swagger: "2.0"

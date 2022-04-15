@@ -17,9 +17,9 @@ RUN go build ./main.go
 # This is for documentation purposes only.
 # To actually open the port, runtime parameters
 # must be supplied to the docker command.
-EXPOSE 9000
+EXPOSE 9001
 
-WORKDIR /
+COPY .env .
 
 # Run
-ENTRYPOINT ["/app/main"]
+ENTRYPOINT ["./main"]
