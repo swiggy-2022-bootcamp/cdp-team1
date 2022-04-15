@@ -20,5 +20,5 @@ func InitRoutes(router *gin.Engine, handler handlers.ProductHandler) {
 	newRouter.GET("/", handler.GetProduct)
 	newRouter.PUT("/:id", handler.UpdateProduct)
 	newRouter.DELETE("/:id", handler.DeleteProduct)
-	newRouter.GET("/search/:query", handler.SearchProduct)
+	newRouter.GET("/search", handler.SearchProduct)
 }

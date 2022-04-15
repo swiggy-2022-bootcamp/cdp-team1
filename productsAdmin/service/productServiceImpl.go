@@ -29,8 +29,8 @@ func (p ProductServiceImpl) GetAll() ([]entity.Product, error) {
 }
 
 func (p ProductServiceImpl) UpdateProduct(productId string, product entity.Product) error {
-	err := p.productRepository.FindAndUpdate(productId, product)
-	if err != nil {
+	product.ID = productId
+	if err := p.productRepository.SaveProduct(product); err != nil {
 		return err
 	}
 	return nil
@@ -44,8 +44,8 @@ func (p ProductServiceImpl) DeleteProduct(productId string) error {
 	return nil
 }
 
-func (p ProductServiceImpl) SearchProduct(query string) ([]entity.Product, error) {
-	all, err := p.productRepository.FindAll()
+func (p ProductServiceImpl) SearchProduct(limit int64) ([]entity.Product, error) {
+	all, err := p.productRepository.FindWithLimit(limit)
 	if err != nil {
 		return nil, err
 	}

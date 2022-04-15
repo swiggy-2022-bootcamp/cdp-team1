@@ -46,9 +46,9 @@ func (r dummyRepository) DeleteProduct(productId string) error {
 	return nil
 }
 
-func (r dummyRepository) FindAndUpdate(product entity.Product) error {
-	log.Info("Product Updated: ", product)
-	return nil
+func (r dummyRepository) FindWithLimit(limit int64) ([]entity.Product, error) {
+	log.Info("Product found with limit: ", limit)
+	return nil, nil
 }
 
 func NewDummyRepository() ProductRepository {

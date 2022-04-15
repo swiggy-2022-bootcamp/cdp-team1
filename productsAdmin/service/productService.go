@@ -7,5 +7,5 @@ type ProductService interface {
 	GetAll() ([]entity.Product, error)
 	UpdateProduct(productId string, product entity.Product) error
 	DeleteProduct(productId string) error
-	SearchProduct(query string) ([]entity.Product, error)
+	SearchProduct(limit int64) ([]entity.Product, error)
 }

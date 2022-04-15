@@ -135,7 +135,47 @@ func (r dynamoRepository) DeleteProduct(productId string) error {
 	}
 }
 
-func (r dynamoRepository) FindAndUpdate(product entity.Product) error {
-	//TODO implement me
-	panic("implement me")
+func (r dynamoRepository) FindAndUpdate(productId string, product entity.Product) error {
+	// TODO implement me
+	panic("Implement me")
+}
+
+func (r dynamoRepository) FindWithLimit(limit int64) ([]entity.Product, error) {
+
+	// create the api params
+	params := &dynamodb.ScanInput{
+		TableName:        aws.String("Products"),
+		FilterExpression: aws.String(""),
+	}
+
+	var productList []entity.Product
+
+	// scan and filter for the items
+	err := db.ScanPages(params, func(page *dynamodb.ScanOutput, lastPage bool) bool {
+		// Unmarshal the slice of dynamodb attribute values into a slice of custom structs
+		var products []entity.Product
+		err := dynamodbattribute.UnmarshalListOfMaps(page.Items, &products)
+		if err != nil {
+			fmt.Printf("\nCould not unmarshal AWS data: err = %v\n", err)
+			return true
+		}
+
+		if limit-int64(len(products)) >= 0 {
+			productList = append(productList, products...)
+			limit -= int64(len(products))
+		} else {
+			productList = append(productList, products[0:limit]...)
+			limit -= limit
+		}
+
+		return true
+	})
+
+	if err != nil {
+		fmt.Printf("ERROR: %v\n", err.Error())
+		log.Error(err.Error())
+		return nil, err
+	}
+
+	return productList, nil
 }

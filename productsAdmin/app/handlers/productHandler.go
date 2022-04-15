@@ -6,6 +6,7 @@ import (
 	"qwik.in/productsAdmin/entity"
 	"qwik.in/productsAdmin/log"
 	"qwik.in/productsAdmin/service"
+	"strconv"
 )
 
 type ProductHandler struct {
@@ -26,12 +27,14 @@ func NewProductHandler(productService service.ProductService) ProductHandler {
 // @Success	200  {string} 	Product Created
 // @Router / [POST]
 func (p ProductHandler) AddProduct(c *gin.Context) {
-
 	var product entity.Product
 	if err := c.BindJSON(&product); err != nil {
 		log.Error(err)
 	}
 	product.SetId()
+
+	log.Info("Add product with values ", product)
+
 	err := p.productService.CreateProduct(product)
 	if err != nil {
 		log.Error(err)
@@ -77,6 +80,8 @@ func (p ProductHandler) UpdateProduct(c *gin.Context) {
 		log.Error(err)
 	}
 
+	log.Info("Update product having id : ", productId, " with values: ", product)
+
 	err := p.productService.UpdateProduct(productId, product)
 	if err == nil {
 		c.JSON(http.StatusOK, gin.H{"message": "Product Updated Successfully"})
@@ -99,8 +104,6 @@ func (p ProductHandler) DeleteProduct(c *gin.Context) {
 	productId := c.Param("id")
 	log.Info("Delete product with id : ", productId)
 
-	// TODO check if exist
-
 	err := p.productService.DeleteProduct(productId)
 	if err == nil {
 		c.JSON(http.StatusOK, gin.H{"message": "Product Deleted Successfully"})
@@ -120,10 +123,10 @@ func (p ProductHandler) DeleteProduct(c *gin.Context) {
 // @Router / [GET]
 func (p ProductHandler) SearchProduct(c *gin.Context) {
 
-	query := c.Param("query")
-	log.Info("Find products with query : ", query)
+	limit, _ := strconv.ParseInt(c.Query("limit"), 10, 64)
+	log.Info("Find products with limit : ", limit)
 
-	products, err := p.productService.SearchProduct(query)
+	products, err := p.productService.SearchProduct(limit)
 	if err == nil {
 		c.JSON(http.StatusOK, products)
 	} else {
