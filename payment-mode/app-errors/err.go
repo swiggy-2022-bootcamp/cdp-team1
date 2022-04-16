@@ -47,3 +47,10 @@ func NewConflictRequestError(message string) *AppError {
 		Code:    http.StatusConflict,
 	}
 }
+
+func NewRequestNotAcceptedError(message string) *AppError {
+	return &AppError{
+		Message: message,
+		Code:    http.StatusNotAcceptable,
+	}
+}

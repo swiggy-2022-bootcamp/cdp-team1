@@ -24,4 +24,6 @@ func (pr PaymentRoutes) InitRoutes(newRouter *gin.RouterGroup) {
 
 	newRouter.POST("/paymentmethods/:userId", pr.paymentHandler.AddPaymentMode)
 	newRouter.GET("/paymentmethods/:userId", pr.paymentHandler.GetPaymentMode)
+	newRouter.POST("/setpaymentmethods/:userId", pr.paymentHandler.SetPaymentMode)
+	newRouter.POST("/pay", pr.paymentHandler.CompletePayment)
 }

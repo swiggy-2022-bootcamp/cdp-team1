@@ -83,3 +83,47 @@ func (p PaymentServiceImpl) GetPaymentMode(userId string) (*models.UserPaymentMo
 	}
 	return userPaymentModes, nil
 }
+
+func (p PaymentServiceImpl) SetPaymentMode(userId string, paymentMode models.PaymentMode) (bool, *app_errors.AppError) {
+	userPaymentModes, err := p.paymentRepository.GetPaymentModeFromDB(userId)
+
+	if err != nil {
+		return false, err
+	}
+
+	for _, addedPaymentModes := range userPaymentModes.PaymentModes {
+		if addedPaymentModes.Mode == paymentMode.Mode && addedPaymentModes.CardNumber == paymentMode.CardNumber {
+			return true, nil
+		}
+	}
+
+	return false, app_errors.NewNotFoundError("The given payment mode doesn't exist for the current user.")
+
+}
+
+func (p PaymentServiceImpl) CheckBalanceAndCompletePayment(paymentRequest *models.PaymentRequest) (bool, *app_errors.AppError) {
+	userPaymentModes, err := p.paymentRepository.GetPaymentModeFromDB(paymentRequest.UserId)
+
+	if err != nil {
+		return false, err
+	}
+
+	for i, addedPaymentModes := range userPaymentModes.PaymentModes {
+		if addedPaymentModes.Mode == paymentRequest.SelectedPaymentMode.Mode && addedPaymentModes.CardNumber == paymentRequest.SelectedPaymentMode.CardNumber {
+			if addedPaymentModes.Balance >= paymentRequest.OrderAmount {
+				addedPaymentModes.Balance -= paymentRequest.OrderAmount
+				userPaymentModes.PaymentModes[i] = addedPaymentModes
+				updateErr := p.paymentRepository.UpdatePaymentModeToDB(userPaymentModes)
+				if updateErr != nil {
+					return true, nil
+				} else {
+					return false, updateErr
+				}
+			} else {
+				return false, app_errors.NewRequestNotAcceptedError("Insufficient funds, payment failed.")
+			}
+		}
+	}
+
+	return false, app_errors.NewNotFoundError("Payment method is not added for the current user.")
+}

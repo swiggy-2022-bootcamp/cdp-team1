@@ -82,3 +82,53 @@ func (ph PaymentHandler) GetPaymentMode(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, userPaymentModes)
 }
+
+func (ph PaymentHandler) SetPaymentMode(c *gin.Context) {
+	userId := c.Param("userId")
+
+	var paymentMode models.PaymentMode
+	if err := c.BindJSON(&paymentMode); err != nil {
+		c.Error(err)
+		err_ := apperrors.NewBadRequestError(err.Error())
+		c.JSON(err_.Code, gin.H{"message": err_.Message})
+		return
+	}
+
+	//use the validator library to validate required fields
+	if validationErr := validate.Struct(&paymentMode); validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+		return
+	}
+
+	_, err := ph.paymentService.SetPaymentMode(userId, paymentMode)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Payment mode verified successfully"})
+}
+
+func (ph PaymentHandler) CompletePayment(c *gin.Context) {
+	var paymentRequest models.PaymentRequest
+	if err := c.BindJSON(&paymentRequest); err != nil {
+		c.Error(err)
+		err_ := apperrors.NewBadRequestError(err.Error())
+		c.JSON(err_.Code, gin.H{"message": err_.Message})
+		return
+	}
+
+	//use the validator library to validate required fields
+	if validationErr := validate.Struct(&paymentRequest); validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+		return
+	}
+
+	_, err := ph.paymentService.CheckBalanceAndCompletePayment(&paymentRequest)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+	c.JSON(http.StatusAccepted, gin.H{"message": "Payment successfull"})
+}
