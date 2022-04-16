@@ -1,0 +1,14 @@
+[{
+    "category_id": "1",
+    "category_descriptions": [
+        {
+            "name":"fashion",
+            "description":"Fashion",
+            "meta_description":"meta decription ofDemo Fashion",
+            "meta_keyword":"meta keyword Demo Fashion",
+            "meta_title":"meta title Demo Fashion"
+        }
+       
+    ]
+}
+]
