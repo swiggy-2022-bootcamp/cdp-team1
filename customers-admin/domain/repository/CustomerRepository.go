@@ -27,11 +27,6 @@ func init() {
 }
 
 func (customerRepository *CustomerRepository) Create(customer model.Customer) (*model.Customer, error) {
-	fetchedCustomer, _ := customerRepository.GetByEmail(customer.Email)
-	if fetchedCustomer != nil {
-		return nil, errors.NewEmailAlreadyRegisteredError()
-	}
-
 	customer.CustomerId = uuid.New().String()
 	info, err := dynamodbattribute.MarshalMap(customer)
 	if err != nil {
@@ -106,12 +101,12 @@ func (customerRepository *CustomerRepository) GetByEmail(customerEmail string) (
 }
 
 func (customerRepository *CustomerRepository) Update(customer model.Customer) (*model.Customer, error) {
-	fetchedAccount, err := customerRepository.GetById(customer.CustomerId)
+	fetchedCustomer, err := customerRepository.GetById(customer.CustomerId)
 	if err != nil {
 		return nil, err
 	}
 
-	customer.DateAdded = fetchedAccount.DateAdded
+	customer.DateAdded = fetchedCustomer.DateAdded
 
 	info, err := dynamodbattribute.MarshalMap(customer)
 	if err != nil {

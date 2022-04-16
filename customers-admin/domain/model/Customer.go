@@ -12,7 +12,8 @@ type Customer struct {
 	Password        string `json:"password"`
 	Telephone       string `json:"telephone"`
 	CustomerGroupId int    `json:"customer_group_id"`
-	Address         []struct {
+	//TBC
+	Address []struct {
 		HouseNumber string `json:"houseNumber"`
 		Street      string `json:"street"`
 		Area        string `json:"area"`

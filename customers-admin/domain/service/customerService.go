@@ -1,9 +1,10 @@
 package service
 
 import (
-	"fmt"
 	"qwik.in/customers-admin/domain/model"
 	"qwik.in/customers-admin/domain/repository"
+	"qwik.in/customers-admin/internal/errors"
+	"time"
 )
 
 type CustomerServiceInterface interface {
@@ -15,10 +16,23 @@ type CustomerServiceInterface interface {
 }
 
 type CustomerService struct {
-	customerRepository repository.CustomerRepository
+	customerRepository repository.CustomerRepositoryInterface
+}
+
+func InitCustomerService(repositoryToInject repository.CustomerRepositoryInterface) CustomerServiceInterface {
+	customerService := new(CustomerService)
+	customerService.customerRepository = repositoryToInject
+	return customerService
 }
 
 func (customerService *CustomerService) CreateCustomer(customer model.Customer) (*model.Customer, error) {
+	//customer with email id already exists
+	fetchedCustomer, _ := customerService.GetCustomerByEmail(customer.Email)
+	if fetchedCustomer != nil {
+		return nil, errors.NewEmailAlreadyRegisteredError()
+	}
+
+	customer.DateAdded = time.Now()
 	createdCustomer, err := customerService.customerRepository.Create(customer)
 	if err != nil {
 		return nil, err
@@ -36,7 +50,6 @@ func (customerService *CustomerService) GetCustomerById(customerId string) (*mod
 
 func (customerService *CustomerService) GetCustomerByEmail(customerEmail string) (*model.Customer, error) {
 	fetchedCustomer, err := customerService.customerRepository.GetByEmail(customerEmail)
-	fmt.Println(err)
 	if err != nil {
 		return nil, err
 	}

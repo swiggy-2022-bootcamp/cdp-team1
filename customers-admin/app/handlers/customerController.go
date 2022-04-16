@@ -4,14 +4,16 @@ import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"qwik.in/customers-admin/domain/model"
+	"qwik.in/customers-admin/domain/repository"
 	"qwik.in/customers-admin/domain/service"
 	"qwik.in/customers-admin/internal/errors"
 )
 
 var customerService service.CustomerServiceInterface
 
+//inject customerService with normal repo (non-mock repo)
 func init() {
-	customerService = &service.CustomerService{}
+	customerService = service.InitCustomerService(&repository.CustomerRepository{})
 }
 
 func CreateCustomer(c *gin.Context) {
