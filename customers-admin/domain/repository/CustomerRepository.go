@@ -27,6 +27,11 @@ func init() {
 }
 
 func (customerRepository *CustomerRepository) Create(customer model.Customer) (*model.Customer, error) {
+	fetchedCustomer, _ := customerRepository.GetByEmail(customer.Email)
+	if fetchedCustomer != nil {
+		return nil, errors.NewEmailAlreadyRegisteredError()
+	}
+
 	customer.CustomerId = uuid.New().String()
 	info, err := dynamodbattribute.MarshalMap(customer)
 	if err != nil {
@@ -43,7 +48,6 @@ func (customerRepository *CustomerRepository) Create(customer model.Customer) (*
 		return nil, err
 	}
 	return &customer, nil
-	return nil, nil
 }
 
 func (customerRepository *CustomerRepository) GetById(customerId string) (*model.Customer, error) {
