@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compiling and building'
-                sh 'go build'
+                sh 'cd payment-mode && go build'
             }
         }
 
@@ -29,9 +29,9 @@ pipeline {
             steps {
                 withEnv(["PATH+GO=${GOPATH}/bin"]){
                     echo 'Running vetting'
-                    sh 'go vet .'
+                    sh 'cd payment-mode && go vet .'
                     echo 'Running test'
-                    sh 'go test ./...'
+                    sh 'cd payment-mode && go test ./...'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
         stage('Run') {
              steps {
                  echo 'Running the application'
-                 sh './payment-mode'
+                 sh 'cd payment-mode && ./payment-mode'
              }
         }
     }
