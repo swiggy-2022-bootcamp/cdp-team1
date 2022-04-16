@@ -3,6 +3,7 @@ package service
 import (
 	"qwik.in/account-frontstore/domain/model"
 	"qwik.in/account-frontstore/domain/repository"
+	"qwik.in/account-frontstore/internal/errors"
 	"time"
 )
 
@@ -13,10 +14,21 @@ type AccountServiceInterface interface {
 }
 
 type AccountService struct {
-	accountRepository repository.AccountRepository
+	accountRepository repository.AccountRepositoryInterface
+}
+
+func InitAccountService(repositoryToInject repository.AccountRepositoryInterface) AccountServiceInterface {
+	accountService := new(AccountService)
+	accountService.accountRepository = repositoryToInject
+	return accountService
 }
 
 func (accountService *AccountService) CreateAccount(account model.Account) (*model.Account, error) {
+	fetchedAccount, _ := accountService.accountRepository.GetByEmail(account.Email)
+	if fetchedAccount != nil {
+		return nil, errors.NewEmailAlreadyRegisteredError()
+	}
+
 	account.DateAdded = time.Now()
 	createdAccount, err := accountService.accountRepository.Create(account)
 	if err != nil {

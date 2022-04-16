@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"qwik.in/account-frontstore/domain/model"
+	"qwik.in/account-frontstore/domain/repository"
 	"qwik.in/account-frontstore/domain/service"
 	"qwik.in/account-frontstore/internal/errors"
 )
@@ -11,7 +12,7 @@ import (
 var accountService service.AccountServiceInterface
 
 func init() {
-	accountService = &service.AccountService{}
+	accountService = service.InitAccountService(&repository.AccountRepository{})
 }
 
 func RegisterAccount(c *gin.Context) {

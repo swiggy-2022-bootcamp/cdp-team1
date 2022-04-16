@@ -447,3 +447,15 @@ GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/
 GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/894425b4-9141-41d0-9590-177336c0ca76 2022-04-15T12:52:43+05:30 289.7332ms 
 PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/894425b4-9141-41d0-9590-177336c0ca76 2022-04-15T12:53:07+05:30 671.6139ms 
 GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/894425b4-9141-41d0-9590-177336c0ca76 2022-04-15T12:53:11+05:30 282.3852ms 
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /account-frontstore/api/  --> qwik.in/account-frontstore/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /account-frontstore/api/register --> qwik.in/account-frontstore/app/handlers.RegisterAccount (3 handlers)
+[GIN-debug] GET    /account-frontstore/api/account/:accessorId --> qwik.in/account-frontstore/app/handlers.GetAccountById (3 handlers)
+[GIN-debug] PUT    /account-frontstore/api/account/:accessorId --> qwik.in/account-frontstore/app/handlers.UpdateAccount (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7001
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/894425b4-9141-41d0-9590-177336c0ca76 2022-04-15T13:11:32+05:30 1.3592146s 

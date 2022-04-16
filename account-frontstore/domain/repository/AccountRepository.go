@@ -12,6 +12,7 @@ import (
 type AccountRepositoryInterface interface {
 	Create(account model.Account) (*model.Account, error)
 	GetById(customerId string) (*model.Account, error)
+	GetByEmail(customerEmail string) (*model.Account, error)
 	Update(account model.Account) (*model.Account, error)
 }
 
@@ -25,11 +26,6 @@ func init() {
 }
 
 func (accountRepository *AccountRepository) Create(account model.Account) (*model.Account, error) {
-	fetchedAccount, _ := accountRepository.GetByEmail(account.Email)
-	if fetchedAccount != nil {
-		return nil, errors.NewEmailAlreadyRegisteredError()
-	}
-
 	account.CustomerId = uuid.New().String()
 	info, err := dynamodbattribute.MarshalMap(account)
 	if err != nil {
