@@ -1,15 +1,18 @@
 package main
 
-import "qwik.in/shipping/app"
+import (
+	"qwik.in/shipping/app"
+)
 
-// @title          Swiggy Qwik - Shipping module
-// @version        1.0
-// @description    This microservice is for shipping-address service.
-// @contact.name   Ashwin Gopalsamy
-// @contact.email  ashwinyaal@gmail.com
+// @swagger       2.0
+// @openapi       3.0.1
+// @title         Swiggy Qwik - ShippingAddress Module
+// @version       1.0.0
+// @description   Shipping Address Microservice
+// @contact.name  Ashwin Gopalsamy
 // @license.name  Apache 2.0
-// @host      localhost:9003
-// @BasePath /shipping/api
+// @host          localhost:9003
+// @BasePath      /shipping/api
 func main() {
 	app.Start()
 }

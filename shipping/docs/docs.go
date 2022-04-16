@@ -11,8 +11,7 @@ const docTemplate = `{
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
         "contact": {
-            "name": "Ashwin Gopalsamy",
-            "email": "ashwingopalsamy@gmail.com"
+            "name": "Ashwin Gopalsamy"
         },
         "license": {
             "name": "Apache 2.0"
@@ -24,7 +23,7 @@ const docTemplate = `{
     "paths": {
         "/": {
             "get": {
-                "description": "This request will return 200 OK if Shipping Server is up.",
+                "description": "This request will return 200 OK, if server is up and running.",
                 "consumes": [
                     "application/json"
                 ],
@@ -32,16 +31,35 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    ""
+                    "HealthCheckResponse"
                 ],
-                "summary": "To check if the Shipping Service is running or not.",
+                "summary": "To check if the service is running or not.",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "handlers.HealthCheckResponse": {
+            "type": "object",
+            "properties": {
+                "database": {
+                    "type": "string"
+                },
+                "server": {
+                    "type": "string"
                 }
             }
         }
@@ -50,12 +68,12 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "1.0",
+	Version:          "1.0.0",
 	Host:             "localhost:9003",
 	BasePath:         "/shipping/api",
 	Schemes:          []string{},
-	Title:            "Swiggy Qwik - Shipping module",
-	Description:      "This microservice is for shipping-address service.",
+	Title:            "Swiggy Qwik - ShippingAddress Module",
+	Description:      "Shipping Address Microservice",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }

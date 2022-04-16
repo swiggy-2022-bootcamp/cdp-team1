@@ -1,28 +1,39 @@
 basePath: /shipping/api
+definitions:
+  handlers.HealthCheckResponse:
+    properties:
+      database:
+        type: string
+      server:
+        type: string
+    type: object
 host: localhost:9003
 info:
   contact:
-    email: ashwinyaal@gmail.com
     name: Ashwin Gopalsamy
-  description: This microservice is for shipping service.
+  description: Shipping Address Microservice
   license:
     name: Apache 2.0
-  title: Swiggy Qwik - Shipping module
-  version: "1.0"
+  title: Swiggy Qwik - ShippingAddress Module
+  version: 1.0.0
 paths:
   /:
     get:
       consumes:
       - application/json
-      description: This request will return 200 OK if Shipping Server is up.
+      description: This request will return 200 OK, if server is up and running.
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            type: string
-      summary: To check if the Shipping Service is running or not.
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+      summary: To check if the service is running or not.
       tags:
-      - ""
+      - HealthCheckResponse
 swagger: "2.0"

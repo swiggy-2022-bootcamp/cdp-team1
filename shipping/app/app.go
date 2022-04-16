@@ -2,25 +2,24 @@ package app
 
 import (
 	"context"
-	"io"
-	"os"
-
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/gin-gonic/gin"
+	"io"
+	"os"
 	"qwik.in/shipping/app/handlers"
 	"qwik.in/shipping/app/routes"
-	db "qwik.in/shipping/config/db"
-	"qwik.in/shipping/domain/repository"
-	"qwik.in/shipping/internal/log"
+	"qwik.in/shipping/internal/db"
+	repository2 "qwik.in/shipping/internal/repository"
+	"qwik.in/shipping/internal/tools/log"
 )
 
 var (
-	shippingAddressServer     *gin.Engine
-	shippingAddressRepository repository.ShippingAddressRepository
-	shippingAddressRoutes     routes.ShippingAddressRoutes
-	ctx                       context.Context
-	shippingAddressDB         *dynamodb.DynamoDB
-	healthCheckHandler        handlers.HealthCheckHandler
+	server             *gin.Engine
+	shippingAddrRepo   repository2.ShippingAddrRepo
+	shippingAddrRoutes routes.ShippingAddrRoutes
+	ctx                context.Context
+	shippingAddressDB  *dynamodb.DynamoDB
+	healthCheckHandler handlers.HealthCheckHandler
 )
 
 //Start ..
@@ -30,30 +29,33 @@ func Start() {
 
 	//DynamoDB
 	shippingAddressDB = db.ConnectDB()
-	db.CreateTable(shippingAddressDB)
+	err := db.CreateTable(shippingAddressDB)
 
 	//Dependency Injectors
-	shippingAddressRepository = repository.NewShippingAddressRepositoryImplementation(shippingAddressDB, ctx)
-	healthCheckHandler = handlers.NewHealthCheckHandler(shippingAddressRepository)
-	shippingAddressRoutes = routes.NewShippingAddressRoutes(healthCheckHandler)
+	shippingAddrRepo = repository2.ShippingAddrRepoImplFunc(ctx, shippingAddressDB)
+	healthCheckHandler = handlers.HealthCheckHandlerFunc(shippingAddrRepo)
+	shippingAddrRoutes = routes.ShippingAddrRoutesFunc(healthCheckHandler)
 
 	//Custom Logger - Logs actions to 'shippingAddressService.log' file
-	file, err := os.OpenFile("shippingAddressService.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile("./pkg/logs/shippingAddressServiceLogs.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err == nil {
 		gin.DefaultWriter = io.MultiWriter(file)
 	}
 
 	//Configure - ShippingAddress Server and Router
-	shippingAddressServer := gin.New()
-	shippingAddressServer.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
-	shippingAddressRouter := shippingAddressServer.Group("/shipping/api")
-	shippingAddressRoutes.InitRoutes(shippingAddressRouter)
+	gin.SetMode(gin.ReleaseMode)
+	server := gin.New()
+	server.SetTrustedProxies(nil)
+
+	server.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
+	router := server.Group("/shipping/api")
+	shippingAddrRoutes.InitRoutes(router)
 
 	//Kickstart - ShippingAddress Server on PORT 9003
-	err = shippingAddressServer.Run(":9003")
+	err = server.Run(":9003")
 	if err != nil {
-		log.Error(err.Error() + " - Server Failed to Start Up ! 🛏️💤")
+		log.Error(err.Error() + " - Server Failed to Start Up ! 🛌💤💤")
 	} else {
-		log.Info("Server Up and Running Successfully ! 🏃🏼💨")
+		log.Info("Server Up and Running Successfully ! 🏃💨💨")
 	}
 }

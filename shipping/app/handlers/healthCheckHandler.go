@@ -3,20 +3,14 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
-	"qwik.in/shipping/domain/repository"
-)
+	"qwik.in/shipping/internal/repository"
 
-//HealthCheck ..
-// func HealthCheck(c *gin.Context) {
-// 	c.JSON(http.StatusOK, gin.H{
-// 		"message": "Shipping Server - Up and Running !",
-// 	})
-// }
+	"github.com/gin-gonic/gin"
+)
 
 //HealthCheckHandler ..
 type HealthCheckHandler struct {
-	shippingAddressRepository repository.ShippingAddressRepository
+	shippingAddrRepoObj repository.ShippingAddrRepo
 }
 
 //HealthCheckResponse ..
@@ -25,23 +19,32 @@ type HealthCheckResponse struct {
 	Database string `json:"database"`
 }
 
-//NewHealthCheckHandler ..
-func NewHealthCheckHandler(shippingAddressRepo repository.ShippingAddressRepository) HealthCheckHandler {
-	return HealthCheckHandler{shippingAddressRepository: shippingAddressRepo}
+//HealthCheckHandlerFunc ..
+func HealthCheckHandlerFunc(shippingAddrRepoObj repository.ShippingAddrRepo) HealthCheckHandler {
+	return HealthCheckHandler{shippingAddrRepoObj: shippingAddrRepoObj}
 }
 
-//HealthCheck ..
+// HealthCheck godoc
+// @Summary      To check if the service is running or not.
+// @Description  This request will return 200 OK, if server is up and running.
+// @Tags         HealthCheckResponse
+// @Schemes
+// @Accept   json
+// @Produce  json
+// @Success  200  {object}  HealthCheckResponse
+// @Failure  500  {object}  HealthCheckResponse
+// @Router   / [GET]
 func (hc HealthCheckHandler) HealthCheck(c *gin.Context) {
-	if hc.shippingAddressRepository.DBHealthCheck() {
+	if hc.shippingAddrRepoObj.DBHealthCheck() {
 		response := &HealthCheckResponse{
-			Server:   "Server is Up and running ! 🏃🏼💨",
-			Database: "Database is Up and running ! 🏃🏼💨",
+			Server:   "Server is Up and running ! 🏃💨💨",
+			Database: "Database is Up and running ! 🏃💨💨",
 		}
 		c.JSON(http.StatusOK, response)
 	} else {
 		response := &HealthCheckResponse{
-			Server:   "Server is Up and running ! 🏃🏼💨",
-			Database: "Database is down ! 🛏️💤",
+			Server:   "Server is Up and running ! 🏃💨💨",
+			Database: "Database is down ! 🛌💤💤",
 		}
 		c.JSON(http.StatusBadRequest, response)
 	}

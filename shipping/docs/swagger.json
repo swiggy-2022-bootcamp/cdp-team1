@@ -1,23 +1,22 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This microservice is for shipping-address service.",
-        "title": "Swiggy Qwik - Shipping module",
+        "description": "Shipping Address Microservice",
+        "title": "Swiggy Qwik - ShippingAddress Module",
         "contact": {
-            "name": "Ashwin Gopalsamy",
-            "email": "ashwinyaal@gmail.com"
+            "name": "Ashwin Gopalsamy"
         },
         "license": {
             "name": "Apache 2.0"
         },
-        "version": "1.0"
+        "version": "1.0.0"
     },
     "host": "localhost:9003",
     "basePath": "/shipping/api",
     "paths": {
         "/": {
             "get": {
-                "description": "This request will return 200 OK if Shipping Server is up.",
+                "description": "This request will return 200 OK, if server is up and running.",
                 "consumes": [
                     "application/json"
                 ],
@@ -25,16 +24,35 @@
                     "application/json"
                 ],
                 "tags": [
-                    ""
+                    "HealthCheckResponse"
                 ],
-                "summary": "To check if the Shipping Service is running or not.",
+                "summary": "To check if the service is running or not.",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "handlers.HealthCheckResponse": {
+            "type": "object",
+            "properties": {
+                "database": {
+                    "type": "string"
+                },
+                "server": {
+                    "type": "string"
                 }
             }
         }

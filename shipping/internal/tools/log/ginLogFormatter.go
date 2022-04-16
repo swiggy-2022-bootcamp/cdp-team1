@@ -9,12 +9,12 @@ import (
 
 //UseLogger ..
 func UseLogger(formatter func(params gin.LogFormatterParams) string) gin.HandlerFunc {
-	loggerConfig := NewLoggerConfig(formatter)
+	loggerConfig := LoggerConfigFunc(formatter)
 	return gin.LoggerWithConfig(loggerConfig)
 }
 
-//NewLoggerConfig ..
-func NewLoggerConfig(formatter func(gin.LogFormatterParams) string) gin.LoggerConfig {
+//LoggerConfigFunc ..
+func LoggerConfigFunc(formatter func(gin.LogFormatterParams) string) gin.LoggerConfig {
 	return gin.LoggerConfig{
 		Formatter: formatter,
 	}
