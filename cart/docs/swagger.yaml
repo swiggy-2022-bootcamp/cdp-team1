@@ -1,5 +1,5 @@
 basePath: /cart/api
-host: localhost:7000
+host: localhost:5000
 info:
   contact:
     email: aryann.dhir73@nmims.edu.in
@@ -9,5 +9,20 @@ info:
     name: Apache 2.0
   title: Swiggy Qwik - Cart Service
   version: "1.0"
-paths: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: This request will return 200 OK if server is up
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: To check if the service is running or not.
+      tags:
+      - ""
 swagger: "2.0"

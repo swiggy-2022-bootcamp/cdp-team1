@@ -3,7 +3,10 @@ package repository
 import (
 	"cartService/domain/model"
 	"cartService/internal/error"
+	"cartService/log"
+	"context"
 
+	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -14,10 +17,29 @@ type CartRepositoryDB interface {
 	Update(model.Cart) (*model.Cart, *error.AppError)
 	Delete(model.Cart) (*model.Cart, *error.AppError)
 	DeleteAll() *error.AppError
+	DBHealthCheck() bool
 }
 
 type CartRepository struct {
-	// dbClient *mongo.Client
+	cartDB *dynamodb.DynamoDB
+	ctx    context.Context
+}
+
+func NewCartRepository(cartDB *dynamodb.DynamoDB, ctx context.Context) CartRepositoryDB {
+	return &CartRepository{
+		cartDB: cartDB,
+		ctx:    ctx,
+	}
+}
+
+func (cr CartRepository) DBHealthCheck() bool {
+
+	_, err := cr.cartDB.ListTables(&dynamodb.ListTablesInput{})
+	if err != nil {
+		log.Error("Database connection is down.")
+		return false
+	}
+	return true
 }
 
 func (cdb CartRepository) Create(cart model.Cart) (*model.Cart, *error.AppError) {

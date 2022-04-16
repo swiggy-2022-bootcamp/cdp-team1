@@ -9,8 +9,24 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-func InitRoutes(router *gin.Engine) {
-	newRouter := router.Group("cart/api")
+type CartRoutes struct {
+	cartHandler        handlers.CartHandler
+	healthCheckHandler handlers.HealthCheckHandler
+}
+
+func NewCartRoutes(cartHandler handlers.CartHandler, healthCheck handlers.HealthCheckHandler) CartRoutes {
+	return CartRoutes{cartHandler: cartHandler, healthCheckHandler: healthCheck}
+}
+
+func (cr CartRoutes) InitRoutes(newRouter *gin.RouterGroup) {
+
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	newRouter.GET("/", handlers.HealthCheck)
+	newRouter.GET("/", cr.healthCheckHandler.HealthCheck)
+
+	newRouter.POST("/cart", cr.cartHandler.CreateCart)
+	newRouter.PUT("/cart", cr.cartHandler.UpdateCart)
+	newRouter.GET("/cart", cr.cartHandler.GetCart)
+	newRouter.DELETE("/cart/:id", cr.cartHandler.DeleteCart)
+	newRouter.DELETE("/cart", cr.cartHandler.DeleteCartAll)
+
 }

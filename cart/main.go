@@ -10,7 +10,7 @@ import (
 // @contact.name   Aryann Dhir
 // @contact.email  aryann.dhir73@nmims.edu.in
 // @license.name  Apache 2.0
-// @host      localhost:7000
+// @host      localhost:5000
 // @BasePath /cart/api
 func main() {
 
