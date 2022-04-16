@@ -14,6 +14,7 @@ func NewProductService(productRepository repository.ProductRepository) ProductSe
 }
 
 func (p ProductServiceImpl) CreateProduct(product entity.Product) error {
+	product.SetId()
 	if err := p.productRepository.SaveProduct(product); err != nil {
 		return err
 	}

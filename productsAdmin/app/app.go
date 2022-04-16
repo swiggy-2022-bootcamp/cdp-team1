@@ -21,7 +21,7 @@ func Start() {
 		return
 	}
 	productService := service.NewProductService(productRepository)
-	productController := handlers.NewProductHandler(productService)
+	productHandler := handlers.NewProductHandler(productService)
 
 	file, err := os.OpenFile(config.LOG_FILE, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err == nil && config.LOG_FILE_MODE {
@@ -34,7 +34,7 @@ func Start() {
 	router := gin.New()
 	router.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
 
-	routes.InitRoutes(router, productController)
+	routes.InitRoutes(router, productHandler)
 
 	log.Info(config.SERVICE_NAME, " starting on port ", config.SERVER_PORT)
 	err = router.Run(":" + config.SERVER_PORT)

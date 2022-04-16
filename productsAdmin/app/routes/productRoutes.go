@@ -2,12 +2,12 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
+	"qwik.in/productsAdmin/app/handlers"
 )
 
 import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"qwik.in/productsAdmin/app/handlers"
 	_ "qwik.in/productsAdmin/docs"
 )
 

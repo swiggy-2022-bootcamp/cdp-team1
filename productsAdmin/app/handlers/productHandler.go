@@ -31,7 +31,6 @@ func (p ProductHandler) AddProduct(c *gin.Context) {
 	if err := c.BindJSON(&product); err != nil {
 		log.Error(err)
 	}
-	product.SetId()
 
 	log.Info("Add product with values ", product)
 
