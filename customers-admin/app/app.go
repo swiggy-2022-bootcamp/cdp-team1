@@ -17,5 +17,5 @@ func Start() {
 	router := gin.New()
 	router.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
 	routes.Router(router)
-	router.Run(":7000")
+	router.Run(":7002")
 }
