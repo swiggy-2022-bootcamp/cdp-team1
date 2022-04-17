@@ -9,7 +9,6 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
-	"github.com/google/uuid"
 	"time"
 )
 
@@ -32,6 +31,7 @@ type ShippingAddress struct {
 //ShippingAddrRepo ..
 type ShippingAddrRepo interface {
 	CreateNewShippingAddrImpl(ShippingAddress) (string, *errs.AppError)
+	FindShippingAddressByIdImpl(string) (*ShippingAddress, *errs.AppError)
 }
 
 //ShippingAddressRepoImpl ..
@@ -41,20 +41,45 @@ type ShippingAddressRepoImpl struct {
 }
 
 //ShippingAddrFunc ..
-func ShippingAddrFunc(userID int, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool) *ShippingAddress {
+func ShippingAddrFunc(userID int, shippingAddressId, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool) *ShippingAddress {
 	return &ShippingAddress{
-		UserID:         userID,
-		FirstName:      firstName,
-		LastName:       lastName,
-		AddressLine1:   addressLine1,
-		AddressLine2:   addressLine2,
-		City:           city,
-		State:          state,
-		Phone:          phone,
-		Pincode:        pincode,
-		AddressType:    addressType,
-		DefaultAddress: defaultAddress,
+		UserID:            userID,
+		ShippingAddressID: shippingAddressId,
+		FirstName:         firstName,
+		LastName:          lastName,
+		AddressLine1:      addressLine1,
+		AddressLine2:      addressLine2,
+		City:              city,
+		State:             state,
+		Phone:             phone,
+		Pincode:           pincode,
+		AddressType:       addressType,
+		DefaultAddress:    defaultAddress,
 	}
+}
+
+func toPersistedDynamodbEntitySA(o ShippingAddress) *models.ShippingAddrModel {
+	return &models.ShippingAddrModel{
+		UserID: o.UserID,
+		//ShippingAddressID: uuid.New().String(),
+		ShippingAddressID: o.ShippingAddressID,
+		FirstName:         o.FirstName,
+		LastName:          o.LastName,
+		AddressLine1:      o.AddressLine1,
+		AddressLine2:      o.AddressLine2,
+		City:              o.City,
+		State:             o.State,
+		Phone:             o.Phone,
+		Pincode:           o.Pincode,
+		AddressType:       o.AddressType,
+		DefaultAddress:    o.DefaultAddress,
+	}
+}
+
+//ShippingAddrRepoFunc ..
+func ShippingAddrRepoFunc() ShippingAddressRepoImpl {
+	svc := database.ConnectDB()
+	return ShippingAddressRepoImpl{Session: svc, Tablename: "team-1-shipping"}
 }
 
 //CreateNewShippingAddrImpl ..
@@ -81,25 +106,35 @@ func (sdr ShippingAddressRepoImpl) CreateNewShippingAddrImpl(p ShippingAddress) 
 	return ShippingAddressRecord.ShippingAddressID, nil
 }
 
-func toPersistedDynamodbEntitySA(o ShippingAddress) *models.ShippingAddrModel {
-	return &models.ShippingAddrModel{
-		UserID:            o.UserID,
-		ShippingAddressID: uuid.New().String(),
-		FirstName:         o.FirstName,
-		LastName:          o.LastName,
-		AddressLine1:      o.AddressLine1,
-		AddressLine2:      o.AddressLine2,
-		City:              o.City,
-		State:             o.State,
-		Phone:             o.Phone,
-		Pincode:           o.Pincode,
-		AddressType:       o.AddressType,
-		DefaultAddress:    o.DefaultAddress,
-	}
-}
+//FindShippingAddressByIdImpl ..
+func (sdr ShippingAddressRepoImpl) FindShippingAddressByIdImpl(shippingAddressId string) (*ShippingAddress, *errs.AppError) {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 
-//ShippingAddrRepoFunc ..
-func ShippingAddrRepoFunc() ShippingAddressRepoImpl {
-	svc := database.ConnectDB()
-	return ShippingAddressRepoImpl{Session: svc, Tablename: "team-1-shipping"}
+	input := &dynamodb.GetItemInput{
+		TableName: aws.String("team-1-shipping"),
+		Key: map[string]*dynamodb.AttributeValue{
+			"shipping_address_id": {
+				S: aws.String(shippingAddressId),
+			},
+		},
+	}
+
+	result, err := sdr.Session.GetItemWithContext(ctx, input)
+	if err != nil {
+		return nil, &errs.AppError{Message: fmt.Sprintf("Unable to Get the Item in DB - %s", err.Error())}
+	}
+
+	if result.Item == nil {
+		return nil, &errs.AppError{Message: fmt.Sprintf("Unable to Get the Item - %s", err.Error())}
+	}
+
+	ShippingAddressModel := models.ShippingAddrModel{}
+	err = dynamodbattribute.UnmarshalMap(result.Item, &ShippingAddressModel)
+
+	if err != nil {
+		return nil, &errs.AppError{Message: fmt.Sprintf("Unable to Unmarshal map !  - %s", err.Error())}
+	}
+
+	return (*ShippingAddress)(&ShippingAddressModel), nil
 }

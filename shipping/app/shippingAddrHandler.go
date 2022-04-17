@@ -14,29 +14,29 @@ type ShippingHandler struct {
 
 //ShippingAddrDTO ..
 type ShippingAddrDTO struct {
-	UserID         int    `json:"user_id" dynamodb:"user_id"`
-	FirstName      string `json:"first_name" dynamodbav:"first_name"`
-	LastName       string `json:"last_name" dynamodbav:"last_name"`
-	AddressLine1   string `json:"address_line_1" dynamodbav:"address_line_1" `
-	AddressLine2   string `json:"address_line_2" dynamodbav:"address_line_2"`
-	City           string `json:"city" dynamodbav:"city"`
-	State          string `json:"state" dynamodbav:"state"`
-	Phone          string `json:"phone" dynamodbav:"phone"`
-	Pincode        int    `json:"pincode" dynamodbav:"pincode"`
-	AddressType    string `json:"address_type" dynamodbav:"address_type"`
-	DefaultAddress bool   `json:"default_address" dynamodbav:"default_address"`
+	UserID            int    `json:"user_id" dynamodb:"user_id"`
+	ShippingAddressId string `json:"shipping_address_id" dynamodb:"shipping_address_id"`
+	FirstName         string `json:"first_name" dynamodbav:"first_name"`
+	LastName          string `json:"last_name" dynamodbav:"last_name"`
+	AddressLine1      string `json:"address_line_1" dynamodbav:"address_line_1" `
+	AddressLine2      string `json:"address_line_2" dynamodbav:"address_line_2"`
+	City              string `json:"city" dynamodbav:"city"`
+	State             string `json:"state" dynamodbav:"state"`
+	Phone             string `json:"phone" dynamodbav:"phone"`
+	Pincode           int    `json:"pincode" dynamodbav:"pincode"`
+	AddressType       string `json:"address_type" dynamodbav:"address_type"`
+	DefaultAddress    bool   `json:"default_address" dynamodbav:"default_address"`
 }
 
-// ShippingAddrHandlerFunc
-// Creates New Shipping Address
+// CreateShippingAddrHandlerFunc ..
 // @Summary      Creates New Shipping Address
 // @Description  Creates a shipping address for the user.
-// @Tags         Shipping Address
+// @Tags         ShippingAddress Service
 // @Produce      json
 // @Success      200  {object}  map[string]interface{}
 // @Failure      400  {number} 	http.StatusBadRequest
 // @Router       /newAddress    [post]
-func (sh ShippingHandler) ShippingAddrHandlerFunc() gin.HandlerFunc {
+func (sh ShippingHandler) CreateShippingAddrHandlerFunc() gin.HandlerFunc {
 
 	return func(ctx *gin.Context) {
 		var saDto ShippingAddrDTO
@@ -47,6 +47,7 @@ func (sh ShippingHandler) ShippingAddrHandlerFunc() gin.HandlerFunc {
 
 		res, err := sh.ShippingAddrService.CreateNewShippingAddress(
 			saDto.UserID,
+			saDto.ShippingAddressId,
 			saDto.FirstName,
 			saDto.LastName,
 			saDto.AddressLine1,
@@ -61,10 +62,31 @@ func (sh ShippingHandler) ShippingAddrHandlerFunc() gin.HandlerFunc {
 
 		if err != nil {
 			ctx.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
-			fmt.Println("Sucks here!")
 			fmt.Println(err)
 			return
 		}
 		ctx.JSON(http.StatusAccepted, gin.H{"message": "New Shipping Address Created ✅", "Shipping Address ID": res})
+	}
+}
+
+// GetShippingAddrHandlerFunc ..
+// @Summary      Get Shipping Address By ShippingAddressId
+// @Description  Returns shippingAddress from ShippingAddressId
+// @Tags         ShippingAddress Service
+// @Produce      json
+// @Success      200  {object}  map[string]interface{}
+// @Failure      400  {number} 	http.StatusBadRequest
+// @Router       /shippingaddress/:id    [get]
+func (sh ShippingHandler) GetShippingAddrHandlerFunc() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		id := ctx.Param("id")
+		fmt.Println(id)
+		res, err := sh.ShippingAddrService.GetShippingAddressById(id)
+
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Record not found"})
+			return
+		}
+		ctx.JSON(http.StatusAccepted, gin.H{"record": res})
 	}
 }

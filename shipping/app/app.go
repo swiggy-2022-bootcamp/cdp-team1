@@ -16,7 +16,10 @@ var shippingHandler ShippingHandler
 func setupRouter() *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
-	router.SetTrustedProxies(nil)
+	err := router.SetTrustedProxies(nil)
+	if err != nil {
+		return nil
+	}
 	router.Use(logger.UseLogger(logger.DefaultLoggerFormatter), gin.Recovery())
 	// health check route
 	HealthCheckRouter(router)
@@ -47,5 +50,8 @@ func Start() {
 	router := setupRouter()
 
 	configureSwaggerDoc()
-	router.Run(":" + PORT)
+	err = router.Run(":" + PORT)
+	if err != nil {
+		return
+	}
 }

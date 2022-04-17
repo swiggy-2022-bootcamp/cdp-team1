@@ -18,3 +18,165 @@ POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04
 [GIN] 2022/04/17 - 18:18:19 | 202 |    302.7863ms |             ::1 | POST     "/shipping/api/newAddress"
 POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T18:18:20+05:30 337.1705ms 
 [GIN] 2022/04/17 - 18:18:20 | 202 |    337.1705ms |             ::1 | POST     "/shipping/api/newAddress"
+❕INFO: 2022/04/17 21:22:43 [Created the table{
+  TableDescription: {
+    AttributeDefinitions: [{
+        AttributeName: "shipping_address_id",
+        AttributeType: "S"
+      }],
+    CreationDateTime: 2022-04-17 15:52:38.529 +0000 UTC,
+    ItemCount: 0,
+    KeySchema: [{
+        AttributeName: "shipping_address_id",
+        KeyType: "HASH"
+      }],
+    ProvisionedThroughput: {
+      NumberOfDecreasesToday: 0,
+      ReadCapacityUnits: 5,
+      WriteCapacityUnits: 5
+    },
+    TableArn: "arn:aws:dynamodb:us-west-2:800300569671:table/team-1-shipping",
+    TableId: "ca26e731-c27a-42da-a4f4-894325843235",
+    TableName: "team-1-shipping",
+    TableSizeBytes: 0,
+    TableStatus: "CREATING"
+  }
+}]
+📛ERROR: 2022/04/17 21:27:31 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:27:31 [Created the table{
+
+}]
+📛ERROR: 2022/04/17 21:28:22 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:28:22 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:28:54+05:30 301.2508ms 
+[GIN] 2022/04/17 - 21:28:54 | 202 |    301.2508ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing/one 2022-04-17T21:29:51+05:30 0s 
+[GIN] 2022/04/17 - 21:29:51 | 404 |            0s |             ::1 | GET      "/shipping/api/existing/one"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingone 2022-04-17T21:30:06+05:30 1.3944933s 
+[GIN] 2022/04/17 - 21:30:06 | 400 |    1.3944933s |             ::1 | GET      "/shipping/api/existingone"
+📛ERROR: 2022/04/17 21:31:56 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:31:56 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:32:03+05:30 343.1687ms 
+[GIN] 2022/04/17 - 21:32:03 | 400 |    343.1687ms |             ::1 | GET      "/shipping/api/one"
+❕INFO: 2022/04/17 21:34:01 [Created the table{
+  TableDescription: {
+    AttributeDefinitions: [{
+        AttributeName: "shipping_address_id",
+        AttributeType: "S"
+      }],
+    CreationDateTime: 2022-04-17 16:03:56.788 +0000 UTC,
+    ItemCount: 0,
+    KeySchema: [{
+        AttributeName: "shipping_address_id",
+        KeyType: "HASH"
+      }],
+    ProvisionedThroughput: {
+      NumberOfDecreasesToday: 0,
+      ReadCapacityUnits: 5,
+      WriteCapacityUnits: 5
+    },
+    TableArn: "arn:aws:dynamodb:us-west-2:800300569671:table/team-1-shipping",
+    TableId: "823dfe36-d43e-4511-9f9d-5cd90e496e1a",
+    TableName: "team-1-shipping",
+    TableSizeBytes: 0,
+    TableStatus: "CREATING"
+  }
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:34:08+05:30 333.0237ms 
+[GIN] 2022/04/17 - 21:34:08 | 400 |    333.0237ms |             ::1 | GET      "/shipping/api/one"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:34:12+05:30 369.3931ms 
+[GIN] 2022/04/17 - 21:34:12 | 202 |    369.3931ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:34:15+05:30 313.0771ms 
+[GIN] 2022/04/17 - 21:34:15 | 400 |    313.0771ms |             ::1 | GET      "/shipping/api/one"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/1 2022-04-17T21:34:26+05:30 307.305ms 
+[GIN] 2022/04/17 - 21:34:26 | 400 |     307.305ms |             ::1 | GET      "/shipping/api/1"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:34:29+05:30 326.7797ms 
+[GIN] 2022/04/17 - 21:34:29 | 400 |    326.7797ms |             ::1 | GET      "/shipping/api/one"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-17T21:34:41+05:30 0s 
+[GIN] 2022/04/17 - 21:34:41 | 200 |            0s |             ::1 | GET      "/shipping/api/"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-17T21:34:42+05:30 0s 
+[GIN] 2022/04/17 - 21:34:42 | 200 |       329.5µs |             ::1 | GET      "/shipping/api/"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ome 2022-04-17T21:34:51+05:30 323.7796ms 
+[GIN] 2022/04/17 - 21:34:51 | 400 |    323.7796ms |             ::1 | GET      "/shipping/api/ome"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ome 2022-04-17T21:34:54+05:30 336.6569ms 
+[GIN] 2022/04/17 - 21:34:54 | 400 |    336.6569ms |             ::1 | GET      "/shipping/api/ome"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:34:55+05:30 338.8123ms 
+[GIN] 2022/04/17 - 21:34:55 | 400 |    338.8123ms |             ::1 | GET      "/shipping/api/one"
+📛ERROR: 2022/04/17 21:36:33 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:36:33 [Created the table{
+
+}]
+📛ERROR: 2022/04/17 21:36:48 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:36:48 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:36:49+05:30 323.9756ms 
+[GIN] 2022/04/17 - 21:36:49 | 202 |    323.9756ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:36:59+05:30 335.7525ms 
+[GIN] 2022/04/17 - 21:36:59 | 202 |    335.7525ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:37:08+05:30 361.7332ms 
+[GIN] 2022/04/17 - 21:37:08 | 400 |    361.7332ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:38:51 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:38:51 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:38:57+05:30 320.3142ms 
+[GIN] 2022/04/17 - 21:38:57 | 400 |    320.3142ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:40:01 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:40:01 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:40:06+05:30 323.4863ms 
+[GIN] 2022/04/17 - 21:40:06 | 400 |    323.4863ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:45:41 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:45:41 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:45:50+05:30 330.4569ms 
+[GIN] 2022/04/17 - 21:45:50 | 202 |    330.4569ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:45:54+05:30 335.5539ms 
+[GIN] 2022/04/17 - 21:45:54 | 400 |    335.5539ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:47:57 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:47:57 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:48:01+05:30 336.9569ms 
+[GIN] 2022/04/17 - 21:48:01 | 400 |    337.0338ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:48:38 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:48:38 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:48:50+05:30 337.758ms 
+[GIN] 2022/04/17 - 21:48:50 | 400 |     337.758ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:49:29 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:49:29 [Created the table{
+
+}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:49:30+05:30 368.226ms 
+[GIN] 2022/04/17 - 21:49:30 | 202 |     368.226ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:49:43 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:49:43 [Created the table{
+
+}]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/three 2022-04-17T21:49:49+05:30 329.6205ms 
+[GIN] 2022/04/17 - 21:49:49 | 500 |    329.6205ms |             ::1 | GET      "/shipping/api/three"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:49:56+05:30 358.8477ms 
+[GIN] 2022/04/17 - 21:49:56 | 202 |    358.8477ms |             ::1 | GET      "/shipping/api/two"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:50:00+05:30 345.753ms 
+[GIN] 2022/04/17 - 21:50:00 | 202 |     345.753ms |             ::1 | GET      "/shipping/api/one"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/thre 2022-04-17T21:50:04+05:30 324.3002ms 
+[GIN] 2022/04/17 - 21:50:04 | 500 |    324.3002ms |             ::1 | GET      "/shipping/api/thre"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/thre 2022-04-17T21:50:06+05:30 370.6734ms 
+[GIN] 2022/04/17 - 21:50:06 | 500 |    370.6734ms |             ::1 | GET      "/shipping/api/thre"
+📛ERROR: 2022/04/17 21:54:34 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:54:34 [Created the table{
+
+}]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/three 2022-04-17T21:54:41+05:30 347.0337ms 
+[GIN] 2022/04/17 - 21:54:41 | 500 |    347.0337ms |             ::1 | GET      "/shipping/api/three"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:54:46+05:30 320.9436ms 
+[GIN] 2022/04/17 - 21:54:46 | 202 |    320.9436ms |             ::1 | GET      "/shipping/api/one"

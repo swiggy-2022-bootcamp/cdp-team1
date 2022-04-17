@@ -1,0 +1,68 @@
+basePath: /
+host: localhost:9003
+info:
+  contact:
+    email: ashwinyaal@gmail.com
+    name: Ashwin Gopalsamy
+  description: ShippingAddress Service
+  termsOfService: http://swagger.io/terms/
+  title: Gin Swagger Example API
+  version: "2.0"
+paths:
+  /:
+    get:
+      description: used to check whether shipping service is up and running or not
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Health of shipping service
+      tags:
+      - Health
+  /newAddress:
+    post:
+      description: Creates a shipping address for the user.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Creates New Shipping Address
+      tags:
+      - ShippingAddress Service
+  /shippingaddress/:id:
+    get:
+      description: Returns shippingAddress from ShippingAddressId
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Get Shipping Address By ShippingAddressId
+      tags:
+      - ShippingAddress Service
+schemes:
+- http
+swagger: "2.0"
