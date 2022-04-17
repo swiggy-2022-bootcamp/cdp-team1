@@ -49,7 +49,7 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 }
 
 func (ch CartHandler) UpdateCart(c *gin.Context) {
-	// todo
+	// todo check
 }
 
 func (ch CartHandler) GetCart(c *gin.Context) {
