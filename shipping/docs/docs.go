@@ -10,11 +10,15 @@ const docTemplate = `{
     "info": {
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
+        "termsOfService": "http://swagger.io/terms/",
         "contact": {
-            "name": "Ashwin Gopalsamy"
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
         },
         "license": {
-            "name": "Apache 2.0"
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         },
         "version": "{{.Version}}"
     },
@@ -23,43 +27,55 @@ const docTemplate = `{
     "paths": {
         "/": {
             "get": {
-                "description": "This request will return 200 OK, if server is up and running.",
-                "consumes": [
-                    "application/json"
-                ],
+                "description": "used to check whether shipping service is up and running or not",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "HealthCheckResponse"
+                    "Health"
                 ],
-                "summary": "To check if the service is running or not.",
+                "summary": "Health of shipping service",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handlers.HealthCheckResponse"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/handlers.HealthCheckResponse"
+                            "type": "number"
                         }
                     }
                 }
             }
-        }
-    },
-    "definitions": {
-        "handlers.HealthCheckResponse": {
-            "type": "object",
-            "properties": {
-                "database": {
-                    "type": "string"
-                },
-                "server": {
-                    "type": "string"
+        },
+        "/shippingaddress": {
+            "post": {
+                "description": "This Handler allow user to create new Shipping Address",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Shipping Address"
+                ],
+                "summary": "Create Shipping Address",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
                 }
             }
         }
@@ -68,12 +84,12 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "1.0.0",
-	Host:             "localhost:9003",
-	BasePath:         "/shipping/api",
-	Schemes:          []string{},
-	Title:            "Swiggy Qwik - ShippingAddress Module",
-	Description:      "Shipping Address Microservice",
+	Version:          "2.0",
+	Host:             "localhost:7001",
+	BasePath:         "/",
+	Schemes:          []string{"http"},
+	Title:            "Gin Swagger Example API",
+	Description:      "Shipping Service.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }

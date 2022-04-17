@@ -1,39 +1,54 @@
-basePath: /shipping/api
-definitions:
-  handlers.HealthCheckResponse:
-    properties:
-      database:
-        type: string
-      server:
-        type: string
-    type: object
-host: localhost:9003
+basePath: /
+host: localhost:7001
 info:
   contact:
-    name: Ashwin Gopalsamy
-  description: Shipping Address Microservice
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: Shipping Service.
   license:
     name: Apache 2.0
-  title: Swiggy Qwik - ShippingAddress Module
-  version: 1.0.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Gin Swagger Example API
+  version: "2.0"
 paths:
   /:
     get:
-      consumes:
-      - application/json
-      description: This request will return 200 OK, if server is up and running.
+      description: used to check whether shipping service is up and running or not
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/handlers.HealthCheckResponse'
-        "500":
-          description: Internal Server Error
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
           schema:
-            $ref: '#/definitions/handlers.HealthCheckResponse'
-      summary: To check if the service is running or not.
+            type: number
+      summary: Health of shipping service
       tags:
-      - HealthCheckResponse
+      - Health
+  /shippingaddress:
+    post:
+      description: This Handler allow user to create new Shipping Address
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Create Shipping Address
+      tags:
+      - Shipping Address
+schemes:
+- http
 swagger: "2.0"

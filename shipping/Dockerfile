@@ -1,25 +1,17 @@
 FROM golang:1.18-alpine
 
-# Set destination for COPY
-WORKDIR /app
+RUN apk update && apk add --no-cache git build-base
 
-# Download Go modules
-COPY go.mod .
-COPY go.sum .
-RUN go mod download
+WORKDIR /go/github.com/swiggy-2022-bootcamp/cdp-team4/shipping
 
-# Copy the source code.
-COPY  . .
+COPY . /go/github.com/swiggy-2022-bootcamp/cdp-team4/shipping
 
-# Build
-RUN go build ./main.go
+# get all the dependencies
+RUN go get ./...
 
-# This is for documentation purposes only.
-# To actually open the port, runtime parameters
-# must be supplied to the docker command.
-EXPOSE 9003
+# build
+RUN go build -o /shippingService
 
-WORKDIR /
+EXPOSE 7001
 
-# Run
-ENTRYPOINT ["/app/main"]
+CMD [ "/shippingService" ] 

@@ -1,0 +1,10 @@
+📛ERROR: 2022/04/17 16:06:37 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 16:06:37 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T16:06:43+05:30 331.4787ms 
+[GIN] 2022/04/17 - 16:06:43 | 202 |    331.4787ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T16:30:03+05:30 1.4700423s 
+[GIN] 2022/04/17 - 16:30:03 | 202 |    1.4700423s |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T16:30:09+05:30 352.8885ms 
+[GIN] 2022/04/17 - 16:30:09 | 202 |    352.8885ms |             ::1 | POST     "/shipping/api/newAddress"
