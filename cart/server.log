@@ -43,3 +43,18 @@ GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 /cart/api/swagger/doc.json 2022-04-17T21:29:31+05:30 281.3µs 
 GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 /cart/api/swagger/favicon-32x32.png 2022-04-17T21:29:31+05:30 0s 
 GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 /cart/api/swagger/favicon-32x32.png 2022-04-17T21:29:33+05:30 999.5µs 
+ERROR: 2022/04/17 16:11:22 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart            --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
