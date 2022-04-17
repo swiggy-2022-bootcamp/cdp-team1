@@ -28,8 +28,8 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 	var cartModel model.Cart
 	if err := c.BindJSON(&cartModel); err != nil {
 		c.Error(err)
-		err_ := apperrors.NewBadRequestError(err.Error())
-		c.JSON(err_.Code, gin.H{"message": err_.Message})
+		err2 := apperrors.NewBadRequestError(err.Error())
+		c.JSON(err2.Code, gin.H{"message": err2.Message})
 		return
 	}
 
@@ -49,15 +49,19 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 }
 
 func (ch CartHandler) UpdateCart(c *gin.Context) {
+	// todo
 }
 
 func (ch CartHandler) GetCart(c *gin.Context) {
+	// todo
 }
 
 func (ch CartHandler) DeleteCart(c *gin.Context) {
+	// todo
 }
 
 func (ch CartHandler) DeleteCartAll(c *gin.Context) {
+	// todo
 }
 
 // set SECRET=sUpErCaLiFrAgIlIsTiCeXpIaLiDoCiOuS in .env file
