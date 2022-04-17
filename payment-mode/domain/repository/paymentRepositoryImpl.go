@@ -76,8 +76,8 @@ func (p PaymentRepositoryImpl) GetPaymentModeFromDB(userId string) (*models.User
 
 	if result.Item == nil {
 		log.Error("Payment mode for user doesn't exists. - ")
-		err_ := apperrors.NewNotFoundError("Payment mode for user doesn't exists")
-		return nil, err_
+		notFoundError := apperrors.NewNotFoundError("Payment mode for user doesn't exists")
+		return nil, notFoundError
 	}
 
 	err = dynamodbattribute.UnmarshalMap(result.Item, userPaymentMode)

@@ -40,8 +40,8 @@ func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 	var paymentMode models.PaymentMode
 	if err := c.BindJSON(&paymentMode); err != nil {
 		c.Error(err)
-		err_ := apperrors.NewBadRequestError(err.Error())
-		c.JSON(err_.Code, gin.H{"message": err_.Message})
+		requestError := apperrors.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
 		return
 	}
 
@@ -102,8 +102,8 @@ func (ph PaymentHandler) SetPaymentMode(c *gin.Context) {
 	var paymentMode models.PaymentMode
 	if err := c.BindJSON(&paymentMode); err != nil {
 		c.Error(err)
-		err_ := apperrors.NewBadRequestError(err.Error())
-		c.JSON(err_.Code, gin.H{"message": err_.Message})
+		requestError := apperrors.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
 		return
 	}
 
@@ -123,8 +123,8 @@ func (ph PaymentHandler) SetPaymentMode(c *gin.Context) {
 }
 
 // CompletePayment godoc
-// @Summary To set payment modes for an order.
-// @Description To set payment modes for an order.
+// @Summary To complete payment for an order.
+// @Description To complete payment for an order.
 // @Tags PaymentRequest
 // @Schemes
 // @Accept json
@@ -139,8 +139,8 @@ func (ph PaymentHandler) CompletePayment(c *gin.Context) {
 	var paymentRequest models.PaymentRequest
 	if err := c.BindJSON(&paymentRequest); err != nil {
 		c.Error(err)
-		err_ := apperrors.NewBadRequestError(err.Error())
-		c.JSON(err_.Code, gin.H{"message": err_.Message})
+		requestError := apperrors.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
 		return
 	}
 

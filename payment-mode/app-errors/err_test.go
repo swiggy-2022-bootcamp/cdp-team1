@@ -29,3 +29,9 @@ func TestNewUnexpectedError(t *testing.T) {
 	assert.Equal(t, err.Code, http.StatusInternalServerError)
 	assert.Equal(t, err.Message, "Internal server error")
 }
+
+func TestNewRequestNotAcceptedError(t *testing.T) {
+	err := NewRequestNotAcceptedError("Request not accepted")
+	assert.Equal(t, err.Code, http.StatusNotAcceptable)
+	assert.Equal(t, err.Message, "Request not accepted")
+}

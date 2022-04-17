@@ -38,9 +38,9 @@ func (p PaymentServiceImpl) AddPaymentMode(paymentMode *models.PaymentMode, user
 				UserId:       userId,
 				PaymentModes: append(newPaymentModes, *paymentMode),
 			}
-			err_ := p.paymentRepository.AddPaymentModeToDB(&newUserPaymentMode)
-			if err_ != nil {
-				return err_
+			addPaymentErr := p.paymentRepository.AddPaymentModeToDB(&newUserPaymentMode)
+			if addPaymentErr != nil {
+				return addPaymentErr
 			} else {
 				return nil
 			}
