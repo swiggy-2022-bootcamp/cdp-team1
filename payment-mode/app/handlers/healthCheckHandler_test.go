@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -60,7 +61,10 @@ func TestHealthCheck(t *testing.T) {
 			paymentRepository := mocks.NewMockPaymentRepository(ctrl)
 			tc.buildStubs(paymentRepository)
 
-			server := NewServer(paymentRepository)
+			healthCheckHandler := NewHealthCheckHandler(paymentRepository)
+			server := gin.Default()
+			router := server.Group("payment-mode/api")
+			router.GET("/", healthCheckHandler.HealthCheck)
 
 			recorder := httptest.NewRecorder()
 			url := fmt.Sprintf("/payment-mode/api/")

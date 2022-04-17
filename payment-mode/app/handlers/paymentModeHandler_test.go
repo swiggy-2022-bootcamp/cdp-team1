@@ -36,7 +36,7 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 
 	testCases := []struct {
 		name          string
-		buildStubs    func(paymentRepository *mocks.MockPaymentRepository)
+		buildStubs    func(paymentService *mocks.MockPaymentRepository)
 		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
 	}{
 		{

@@ -108,17 +108,22 @@ func (p PaymentServiceImpl) CheckBalanceAndCompletePayment(paymentRequest *model
 		return false, err
 	}
 
-	for i, addedPaymentModes := range userPaymentModes.PaymentModes {
-		if addedPaymentModes.Mode == paymentRequest.SelectedPaymentMode.Mode && addedPaymentModes.CardNumber == paymentRequest.SelectedPaymentMode.CardNumber {
-			if addedPaymentModes.Balance >= paymentRequest.OrderAmount {
-				addedPaymentModes.Balance -= paymentRequest.OrderAmount
-				userPaymentModes.PaymentModes[i] = addedPaymentModes
+	for i, availablePaymentMode := range userPaymentModes.PaymentModes {
+
+		if availablePaymentMode.Mode == paymentRequest.SelectedPaymentMode.Mode && availablePaymentMode.CardNumber == paymentRequest.SelectedPaymentMode.CardNumber {
+
+			if availablePaymentMode.Balance >= paymentRequest.OrderAmount {
+
+				availablePaymentMode.Balance -= paymentRequest.OrderAmount
+				userPaymentModes.PaymentModes[i] = availablePaymentMode
 				updateErr := p.paymentRepository.UpdatePaymentModeToDB(userPaymentModes)
+
 				if updateErr != nil {
-					return true, nil
-				} else {
 					return false, updateErr
+				} else {
+					return true, nil
 				}
+
 			} else {
 				return false, app_errors.NewRequestNotAcceptedError("Insufficient funds, payment failed.")
 			}
