@@ -10,15 +10,18 @@ import (
 )
 
 type OrderRoutes struct {
-	orderHandler handlers.OrderHandler
+	orderHandler       handlers.OrderHandler
+	healthCheckHandler handlers.HealthCheckHandler
 }
 
-func (or OrderRoutes) InitRoutes(router *gin.Engine) {
+func NewOrderRoutes(orderHandler handlers.OrderHandler, healthCheck handlers.HealthCheckHandler) OrderRoutes {
+	return OrderRoutes{orderHandler: orderHandler, healthCheckHandler: healthCheck}
+}
 
-	newRouter := router.Group("order/api")
+func (or OrderRoutes) InitRoutes(newRouter *gin.RouterGroup) {
 
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	newRouter.GET("/", handlers.HealthCheck)
+	newRouter.GET("/", or.healthCheckHandler.HealthCheck)
 
 	newRouter.GET("/orders", or.orderHandler.GetAllOrder)
 	newRouter.GET("/orders/status/:status", or.orderHandler.GetOrderByStatus)

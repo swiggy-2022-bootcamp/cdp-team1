@@ -14,13 +14,19 @@ type OrderService interface {
 	DeleteAllOrder() *error.AppError
 }
 
-type DefaultOrderService struct {
-	OrderDB repository.OrderRepositoryDB
+type OrderServiceImpl struct {
+	orderRepository repository.OrderRepositoryDB
 }
 
-func (odb DefaultOrderService) GetAllOrder() (*[]model.Order, *error.AppError) {
+func NewOrderService(orderRepository repository.OrderRepositoryDB) OrderService {
+	return &OrderServiceImpl{
+		orderRepository: orderRepository,
+	}
+}
 
-	u, err := odb.OrderDB.ReadAll()
+func (odb OrderServiceImpl) GetAllOrder() (*[]model.Order, *error.AppError) {
+
+	u, err := odb.orderRepository.ReadAll()
 
 	if err != nil {
 		return nil, err
@@ -29,20 +35,9 @@ func (odb DefaultOrderService) GetAllOrder() (*[]model.Order, *error.AppError) {
 	return u, nil
 }
 
-func (odb DefaultOrderService) GetOrderByStatus(status string) (*[]model.Order, *error.AppError) {
+func (odb OrderServiceImpl) GetOrderByStatus(status string) (*[]model.Order, *error.AppError) {
 
-	u, err := odb.OrderDB.ReadStatus(status)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return u, nil
-}
-
-func (odb DefaultOrderService) UpdateOrder(order model.Order) (*model.Order, *error.AppError) {
-
-	u, err := odb.OrderDB.Update(order)
+	u, err := odb.orderRepository.ReadStatus(status)
 
 	if err != nil {
 		return nil, err
@@ -51,9 +46,9 @@ func (odb DefaultOrderService) UpdateOrder(order model.Order) (*model.Order, *er
 	return u, nil
 }
 
-func (odb DefaultOrderService) DeleteOrderById(id string) (*model.Order, *error.AppError) {
+func (odb OrderServiceImpl) UpdateOrder(order model.Order) (*model.Order, *error.AppError) {
 
-	u, err := odb.OrderDB.Delete(model.Order{Id: id})
+	u, err := odb.orderRepository.Update(order)
 
 	if err != nil {
 		return nil, err
@@ -62,9 +57,20 @@ func (odb DefaultOrderService) DeleteOrderById(id string) (*model.Order, *error.
 	return u, nil
 }
 
-func (odb DefaultOrderService) DeleteAllOrder() *error.AppError {
+func (odb OrderServiceImpl) DeleteOrderById(id string) (*model.Order, *error.AppError) {
 
-	err := odb.OrderDB.DeleteAll()
+	u, err := odb.orderRepository.Delete(model.Order{Id: id})
+
+	if err != nil {
+		return nil, err
+	}
+
+	return u, nil
+}
+
+func (odb OrderServiceImpl) DeleteAllOrder() *error.AppError {
+
+	err := odb.orderRepository.DeleteAll()
 
 	if err != nil {
 		return err

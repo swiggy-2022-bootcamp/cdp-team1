@@ -1,43 +1,63 @@
 package app
 
 import (
+	"context"
 	"io"
+	"orderService/app/handlers"
 	"orderService/app/routes"
+	"orderService/db"
+	"orderService/domain/repository"
+	"orderService/domain/service"
 	"orderService/log"
 	"os"
 
+	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/gin-gonic/gin"
 )
 
+var (
+	server             *gin.Engine
+	orderRepository    repository.OrderRepositoryDB
+	orderService       service.OrderService
+	orderHandler       handlers.OrderHandler
+	orderRoutes        routes.OrderRoutes
+	ctx                context.Context
+	orderDB            *dynamodb.DynamoDB
+	healthCheckHandler handlers.HealthCheckHandler
+)
+
 func Start() {
+
+	ctx = context.TODO()
+
+	//Variable initializations for DynamoDB
+	orderDB = db.ConnectDB()
+	db.CreateTable(orderDB)
+
+	//Variable initializations to be used as dependency injectors
+	orderRepository = repository.NewOrderRepository(orderDB, ctx)
+	orderService = service.NewOrderService(orderRepository)
+	orderHandler = handlers.NewOrderHandler(orderService)
+	healthCheckHandler = handlers.NewHealthCheckHandler(orderRepository)
+	orderRoutes = routes.NewOrderRoutes(orderHandler, healthCheckHandler)
 
 	file, err := os.OpenFile("server.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err == nil {
 		gin.DefaultWriter = io.MultiWriter(file)
 	}
 
-	// dbClient := db.NewDbClient()
-	// orderRepo := db.NewOrderRepositoryDB(dbClient)
-	// orderService := domain.NeworderService(orderRepo)
-	// orderHandlers := orderHandlers{service: orderService}
+	//Configuring gin server and router
+	server = gin.New()
+	server.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
+	router := server.Group("order/api")
+	orderRoutes.InitRoutes(router)
 
-	orderRouter := gin.New()
-	orderRouter.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
-	routes.InitRoutes(orderRouter)
-	err = orderRouter.Run(":8000")
+	//Starting server on port 7000
+	err = server.Run(":7000")
 	if err != nil {
-		return
+		log.Error(err.Error() + " - Failed to start server")
+	} else {
+		log.Info("Server started successfully.")
 	}
-
-	// apiRouter := orderRouter.Group("/api")
-	// apiRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	// orderRoutesGroup := apiRouter.Group("/orders")
-	// orderRoutesGroup.GET("/", orderHandlers.HelloWorldHandler)
-	// orderRoutesGroup.POST("/", orderHandlers.Register)
-	// orderRoutesGroup.GET("/:orderId", orderHandlers.GetorderById)
-	// orderRoutesGroup.PUT("/:orderId", orderHandlers.Updateorder)
-	// orderRoutesGroup.DELETE("/:orderId", orderHandlers.Deleteorder)
-	// orderRouter.Run(":8000")
-	// logger.Info(fmt.Sprintf("Starting server on %s:%s ...", "127.0.0.1", "8081"))
 
 }
