@@ -9,11 +9,11 @@ import (
 
 //ShippingHandler ..
 type ShippingHandler struct {
-	ShippingAddressService services.ShippingAddressService
+	ShippingAddrService services.ShippingAddrService
 }
 
-//ShippingAddressRecordDTO ..
-type ShippingAddressRecordDTO struct {
+//ShippingAddrDTO ..
+type ShippingAddrDTO struct {
 	UserID         int    `json:"user_id" dynamodb:"user_id"`
 	FirstName      string `json:"first_name" dynamodbav:"first_name"`
 	LastName       string `json:"last_name" dynamodbav:"last_name"`
@@ -27,25 +27,25 @@ type ShippingAddressRecordDTO struct {
 	DefaultAddress bool   `json:"default_address" dynamodbav:"default_address"`
 }
 
-// HandleShippingAddress
-// Create Shipping Address
-// @Summary      Create Shipping Address
-// @Description  Creates New Shipping Address
+// ShippingAddrHandlerFunc
+// Creates New Shipping Address
+// @Summary      Creates New Shipping Address
+// @Description  Creates a shipping address for the user.
 // @Tags         Shipping Address
 // @Produce      json
 // @Success      200  {object}  map[string]interface{}
 // @Failure      400  {number} 	http.StatusBadRequest
-// @Router       /shippingaddress    [post]
-func (sh ShippingHandler) HandleShippingAddress() gin.HandlerFunc {
+// @Router       /newAddress    [post]
+func (sh ShippingHandler) ShippingAddrHandlerFunc() gin.HandlerFunc {
 
 	return func(ctx *gin.Context) {
-		var saDto ShippingAddressRecordDTO
+		var saDto ShippingAddrDTO
 		if err := ctx.BindJSON(&saDto); err != nil {
 			ctx.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
 			return
 		}
 
-		res, err := sh.ShippingAddressService.CreateShippingAddress(
+		res, err := sh.ShippingAddrService.CreateNewShippingAddress(
 			saDto.UserID,
 			saDto.FirstName,
 			saDto.LastName,
@@ -65,6 +65,6 @@ func (sh ShippingHandler) HandleShippingAddress() gin.HandlerFunc {
 			fmt.Println(err)
 			return
 		}
-		ctx.JSON(http.StatusAccepted, gin.H{"message": "Shipping Address Record Added", "Shipping Address ID": res})
+		ctx.JSON(http.StatusAccepted, gin.H{"message": "New Shipping Address Created ✅", "Shipping Address ID": res})
 	}
 }

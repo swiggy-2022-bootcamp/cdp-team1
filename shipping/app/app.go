@@ -30,9 +30,9 @@ func configureSwaggerDoc() {
 
 //Start ..
 func Start() {
-	shippingRepo := repository.ShippingAddressRepositoryFunc()
+	shippingRepo := repository.ShippingAddrRepoFunc()
 	shippingHandler = ShippingHandler{
-		ShippingAddressService: services.ShippingAddressServiceFunc(shippingRepo),
+		ShippingAddrService: services.ShippingAddressServiceFunc(shippingRepo),
 	}
 
 	//Custom Logger - Logs actions to 'shippingAddressService.logger' file

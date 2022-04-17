@@ -10,8 +10,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 )
 
-//Connect DynamoDB
-func Connect() *dynamodb.DynamoDB {
+//ConnectDB DynamoDB
+func ConnectDB() *dynamodb.DynamoDB {
 	sess, _ := session.NewSession(&aws.Config{
 		Region:      aws.String(env.GetRegion()),
 		Credentials: credentials.NewStaticCredentials(env.GetAccessKey(), env.GetSecretKey(), ""),
@@ -19,6 +19,7 @@ func Connect() *dynamodb.DynamoDB {
 	client := dynamodb.New(sess)
 
 	//*******************************
+	//Creates DynamoDB Table.
 	response, err1 := client.CreateTable(&dynamodb.CreateTableInput{
 		AttributeDefinitions: []*dynamodb.AttributeDefinition{
 			{
@@ -44,6 +45,7 @@ func Connect() *dynamodb.DynamoDB {
 	logger.Info("Created the table" + response.String())
 	//*******************************
 
+	//Checks if Tables are present.
 	_, err := client.ListTables(&dynamodb.ListTablesInput{})
 	if err != nil {
 		logger.Error("Connection to DynamoDB failed. 🛌💤💤")

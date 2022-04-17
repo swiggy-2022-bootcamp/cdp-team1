@@ -14,5 +14,5 @@ func HealthCheckRouter(gin *gin.Engine) {
 //ShippingRouter ..
 func ShippingRouter(router *gin.Engine) {
 	router.GET("/shipping/api/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	router.POST("/shipping/api/newAddress", shippingHandler.HandleShippingAddress())
+	router.POST("/shipping/api/newAddress", shippingHandler.ShippingAddrHandlerFunc())
 }

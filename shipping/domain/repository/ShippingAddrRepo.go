@@ -29,8 +29,19 @@ type ShippingAddress struct {
 	DefaultAddress    bool   `json:"default_address" dynamodbav:"default_address"`
 }
 
-//ShippingAddressFunc ..
-func ShippingAddressFunc(userID int, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool) *ShippingAddress {
+//ShippingAddrRepo ..
+type ShippingAddrRepo interface {
+	CreateNewShippingAddrImpl(ShippingAddress) (string, *errs.AppError)
+}
+
+//ShippingAddressRepoImpl ..
+type ShippingAddressRepoImpl struct {
+	Session   *dynamodb.DynamoDB
+	Tablename string
+}
+
+//ShippingAddrFunc ..
+func ShippingAddrFunc(userID int, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool) *ShippingAddress {
 	return &ShippingAddress{
 		UserID:         userID,
 		FirstName:      firstName,
@@ -46,25 +57,14 @@ func ShippingAddressFunc(userID int, firstName, lastName, addressLine1, addressL
 	}
 }
 
-//ShippingAddrRepo ..
-type ShippingAddrRepo interface {
-	InsertShippingAddress(ShippingAddress) (string, *errs.AppError)
-}
-
-//ShippingAddressRepoImpl ..
-type ShippingAddressRepoImpl struct {
-	Session   *dynamodb.DynamoDB
-	Tablename string
-}
-
-//InsertShippingAddress ..
-func (sdr ShippingAddressRepoImpl) InsertShippingAddress(p ShippingAddress) (string, *errs.AppError) {
+//CreateNewShippingAddrImpl ..
+func (sdr ShippingAddressRepoImpl) CreateNewShippingAddrImpl(p ShippingAddress) (string, *errs.AppError) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	ShippingAddressRecord := toPersistedDynamodbEntitySA(p)
 	av, err := dynamodbattribute.MarshalMap(ShippingAddressRecord)
 	if err != nil {
-		return "", &errs.AppError{Message: fmt.Sprintf("unable to marshal - %s", err.Error())}
+		return "", &errs.AppError{Message: fmt.Sprintf("Unable to Marshal ! - %s", err.Error())}
 	}
 
 	input := &dynamodb.PutItemInput{
@@ -75,14 +75,14 @@ func (sdr ShippingAddressRepoImpl) InsertShippingAddress(p ShippingAddress) (str
 	_, err = sdr.Session.PutItemWithContext(ctx, input)
 
 	if err != nil {
-		return "", &errs.AppError{Message: fmt.Sprintf("unable to put the item - %s", err.Error())}
+		return "", &errs.AppError{Message: fmt.Sprintf("Unable to Put the Item in DB - %s", err.Error())}
 	}
 
 	return ShippingAddressRecord.ShippingAddressID, nil
 }
 
-func toPersistedDynamodbEntitySA(o ShippingAddress) *models.ShippingAddressModel {
-	return &models.ShippingAddressModel{
+func toPersistedDynamodbEntitySA(o ShippingAddress) *models.ShippingAddrModel {
+	return &models.ShippingAddrModel{
 		UserID:            o.UserID,
 		ShippingAddressID: uuid.New().String(),
 		FirstName:         o.FirstName,
@@ -98,8 +98,8 @@ func toPersistedDynamodbEntitySA(o ShippingAddress) *models.ShippingAddressModel
 	}
 }
 
-//ShippingAddressRepositoryFunc ..
-func ShippingAddressRepositoryFunc() ShippingAddressRepoImpl {
-	svc := database.Connect()
+//ShippingAddrRepoFunc ..
+func ShippingAddrRepoFunc() ShippingAddressRepoImpl {
+	svc := database.ConnectDB()
 	return ShippingAddressRepoImpl{Session: svc, Tablename: "team-1-shipping"}
 }

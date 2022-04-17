@@ -1,7 +1,7 @@
 package models
 
-//ShippingAddressModel ..
-type ShippingAddressModel struct {
+//ShippingAddrModel ..
+type ShippingAddrModel struct {
 	UserID            int    `json:"user_id" dynamodbav:"user_id"`
 	ShippingAddressID string `json:"shipping_address_id" dynamodbav:"shipping_address_id"`
 	FirstName         string `json:"first_name" dynamodbav:"first_name"`
