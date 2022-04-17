@@ -32,13 +32,13 @@ func CreateTable(DB *dynamodb.DynamoDB) error {
 	input := &dynamodb.CreateTableInput{
 		AttributeDefinitions: []*dynamodb.AttributeDefinition{
 			{
-				AttributeName: aws.String("user_id"),
+				AttributeName: aws.String("Id"),
 				AttributeType: aws.String("S"),
 			},
 		},
 		KeySchema: []*dynamodb.KeySchemaElement{
 			{
-				AttributeName: aws.String("user_id"),
+				AttributeName: aws.String("Id"),
 				KeyType:       aws.String("HASH"),
 			},
 		},
