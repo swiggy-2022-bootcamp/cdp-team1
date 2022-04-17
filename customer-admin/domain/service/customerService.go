@@ -1,6 +1,7 @@
 package service
 
 import (
+	"golang.org/x/crypto/bcrypt"
 	"qwik.in/customers-admin/domain/model"
 	"qwik.in/customers-admin/domain/repository"
 	"qwik.in/customers-admin/internal/errors"
@@ -32,7 +33,14 @@ func (customerService *CustomerService) CreateCustomer(customer model.Customer) 
 		return nil, errors.NewEmailAlreadyRegisteredError()
 	}
 
+	//encrypt password
+	customerPassword, err := bcrypt.GenerateFromPassword([]byte(customer.Password), bcrypt.DefaultCost)
+	if err != nil {
+		panic(err)
+	}
+	customer.Password = string(customerPassword)
 	customer.DateAdded = time.Now()
+
 	createdCustomer, err := customerService.customerRepository.Create(customer)
 	if err != nil {
 		return nil, err
@@ -58,6 +66,14 @@ func (customerService *CustomerService) GetCustomerByEmail(customerEmail string)
 
 func (customerService *CustomerService) UpdateCustomer(customerId string, customer model.Customer) (*model.Customer, error) {
 	customer.CustomerId = customerId
+	
+	//encrypt password
+	customerPassword, err := bcrypt.GenerateFromPassword([]byte(customer.Password), bcrypt.DefaultCost)
+	if err != nil {
+		panic(err)
+	}
+	customer.Password = string(customerPassword)
+
 	updatedCustomer, err := customerService.customerRepository.Update(customer)
 	if err != nil {
 		return nil, err

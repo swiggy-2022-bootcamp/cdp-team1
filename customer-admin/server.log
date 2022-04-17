@@ -505,3 +505,80 @@ GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/8944
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :7000
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer 2022-04-17T13:59:32+05:30 1.9866719s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/f04e68b6-f71a-4e3d-8551-8426a55c3c7e 2022-04-17T13:59:58+05:30 288.3945ms 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/f04e68b6-f71a-4e3d-8551-8426a55c3c7ee 2022-04-17T14:00:04+05:30 275.4282ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/f04e68b6-f71a-4e3d-8551-8426a55c3c7e 2022-04-17T14:00:08+05:30 285.7571ms 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/email/ravi@gmail.comm 2022-04-17T14:00:12+05:30 299.7648ms 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/email/ravikumar@gmail.comm 2022-04-17T14:00:22+05:30 286.1659ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/email/ravikumar@gmail.com 2022-04-17T14:00:30+05:30 277.311ms 
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer 2022-04-17T14:01:16+05:30 1.0511776s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/60c50853-ccb4-400e-8eb8-11560324da93 2022-04-17T14:01:26+05:30 287.5405ms 
+PUT - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/60c50853-ccb4-400e-8eb8-11560324da93 2022-04-17T14:01:57+05:30 669.6473ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/60c50853-ccb4-400e-8eb8-11560324da93 2022-04-17T14:02:07+05:30 1.0323419s 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/60c50853-ccb4-400e-8eb8-11560324da93 2022-04-17T14:02:11+05:30 719.6431ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/60c50853-ccb4-400e-8eb8-11560324da93 2022-04-17T14:02:16+05:30 729.3811ms 
+INFO: 2022/04/17 14:04:17 [Connected to dynamoDB]
+INFO: 2022/04/17 14:04:17 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+INFO: 2022/04/17 14:44:58 [Connected to dynamoDB]
+INFO: 2022/04/17 14:44:58 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/60c50853-ccb4-400e-8eb8-11560324da93 2022-04-17T14:45:15+05:30 270.1203ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/19f56849-2464-4a82-b44b-8827a5566dcc 2022-04-17T14:45:20+05:30 268.0055ms 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/email/ravikumar@gmail.com 2022-04-17T14:45:36+05:30 266.3733ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/email/ydk111@gmail.com 2022-04-17T14:45:42+05:30 267.9891ms 
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer 2022-04-17T14:45:53+05:30 1.0448312s 
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer 2022-04-17T14:46:23+05:30 274.6031ms 
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer 2022-04-17T14:46:50+05:30 1.0636689s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/19f56849-2464-4a82-b44b-8827a5566dcc 2022-04-17T14:47:01+05:30 270.3441ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/email/ydk111@gmail.com 2022-04-17T14:47:06+05:30 266.8666ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-17T14:47:32+05:30 307.2401ms 
+PUT - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/60c50853-ccb4-400e-8eb8-11560324da93 2022-04-17T14:48:49+05:30 1.3679204s 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-17T14:49:07+05:30 1.0113817s 
+PUT - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-17T14:49:19+05:30 804.8871ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-17T14:49:25+05:30 1.0749577s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-17T14:49:33+05:30 310.7307ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/user 2022-04-17T14:49:42+05:30 290.5443ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/email/ydk111@gmail.com 2022-04-17T14:50:05+05:30 275.5933ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/customer/email/ashwin@gmail.com 2022-04-17T14:50:17+05:30 351.2877ms 

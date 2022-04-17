@@ -33,6 +33,7 @@ func (customerRepository *CustomerRepository) Create(customer model.Customer) (*
 	}
 
 	customer.CustomerId = uuid.New().String()
+
 	info, err := dynamodbattribute.MarshalMap(customer)
 	if err != nil {
 		return nil, errors.NewMarshallError()
@@ -40,21 +41,21 @@ func (customerRepository *CustomerRepository) Create(customer model.Customer) (*
 
 	input := &dynamodb.PutItemInput{
 		Item:      info,
-		TableName: aws.String("Customers"),
+		TableName: aws.String("team-1-customers"),
 	}
 
 	_, err = db.PutItem(input)
 	if err != nil {
-		return nil, err
+		return nil, &errors.CustomerError{Status: 400, ErrorMessage: err.Error()}
 	}
 	return &customer, nil
 }
 
 func (customerRepository *CustomerRepository) GetById(customerId string) (*model.Customer, error) {
 	params := &dynamodb.GetItemInput{
-		TableName: aws.String("Customers"),
+		TableName: aws.String("team-1-customers"),
 		Key: map[string]*dynamodb.AttributeValue{
-			"customerId": {
+			"customer_id": {
 				S: aws.String(customerId),
 			},
 		},
@@ -62,7 +63,7 @@ func (customerRepository *CustomerRepository) GetById(customerId string) (*model
 
 	resp, err := db.GetItem(params)
 	if err != nil {
-		return nil, err
+		return nil, &errors.CustomerError{Status: 400, ErrorMessage: err.Error()}
 	}
 
 	if len(resp.Item) == 0 {
@@ -77,7 +78,7 @@ func (customerRepository *CustomerRepository) GetById(customerId string) (*model
 func (customerRepository *CustomerRepository) GetByEmail(customerEmail string) (*model.Customer, error) {
 	emailIndex := "email-index"
 	params := &dynamodb.QueryInput{
-		TableName:              aws.String("Customers"),
+		TableName:              aws.String("team-1-customers"),
 		IndexName:              &emailIndex,
 		KeyConditionExpression: aws.String("#email = :customersEmail"),
 		ExpressionAttributeNames: map[string]*string{
@@ -92,7 +93,7 @@ func (customerRepository *CustomerRepository) GetByEmail(customerEmail string) (
 
 	resp, err := db.Query(params)
 	if err != nil {
-		return nil, err
+		return nil, &errors.CustomerError{Status: 400, ErrorMessage: err.Error()}
 	}
 
 	if len(resp.Items) == 0 {
@@ -110,6 +111,14 @@ func (customerRepository *CustomerRepository) Update(customer model.Customer) (*
 		return nil, err
 	}
 
+	//if email is updated, check if the changed email is not already being used my other users
+	if fetchedCustomer.Email != customer.Email {
+		fetchedCustomerWithEmail, _ := customerRepository.GetByEmail(customer.Email)
+		if fetchedCustomerWithEmail != nil {
+			return nil, errors.NewEmailAlreadyRegisteredError()
+		}
+	}
+
 	customer.DateAdded = fetchedCustomer.DateAdded
 
 	info, err := dynamodbattribute.MarshalMap(customer)
@@ -119,12 +128,12 @@ func (customerRepository *CustomerRepository) Update(customer model.Customer) (*
 
 	input := &dynamodb.PutItemInput{
 		Item:      info,
-		TableName: aws.String("Customers"),
+		TableName: aws.String("team-1-customers"),
 	}
 
 	_, err = db.PutItem(input)
 	if err != nil {
-		return nil, err
+		return nil, &errors.CustomerError{Status: 400, ErrorMessage: err.Error()}
 	}
 	return &customer, nil
 }
@@ -132,9 +141,9 @@ func (customerRepository *CustomerRepository) Update(customer model.Customer) (*
 func (customerRepository *CustomerRepository) Delete(customerId string) (*string, error) {
 	allOld := "ALL_OLD"
 	params := &dynamodb.DeleteItemInput{
-		TableName: aws.String("Customers"),
+		TableName: aws.String("team-1-customers"),
 		Key: map[string]*dynamodb.AttributeValue{
-			"customerId": {
+			"customer_id": {
 				S: aws.String(customerId),
 			},
 		},
@@ -143,7 +152,7 @@ func (customerRepository *CustomerRepository) Delete(customerId string) (*string
 
 	deletedItem, err := db.DeleteItem(params)
 	if err != nil {
-		return nil, err
+		return nil, &errors.CustomerError{Status: 400, ErrorMessage: err.Error()}
 	}
 
 	if len(deletedItem.Attributes) == 0 {

@@ -20,7 +20,7 @@ func init() {
 
 func (adminUser *AdminUserRepository) GetAll() []model.AdminUser {
 	input := &dynamodb.ScanInput{
-		TableName: aws.String("AdminUsers"),
+		TableName: aws.String("team-1-admins"),
 	}
 
 	scanOutput, _ := db.Scan(input)
