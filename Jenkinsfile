@@ -9,6 +9,9 @@ pipeline {
         CGO_ENABLED = 0
         GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
         APP_NAME = "payment-mode"
+        REGION = "${REGION}"
+        ACCESS_KEY = "${AWS_SECRET_ACCESS_KEY}"
+        KEY_ID = "${AWS_ACCESS_KEY_ID}"
     }
     stages {
         stage('Pre Test') {
@@ -36,10 +39,19 @@ pipeline {
             }
         }
 
+        stage('Create .env file') {
+            steps {
+                sh 'cd payment-mode && touch .env'
+                sh 'cd payment-mode && echo "REGION=${REGION}" >> .env'
+                sh 'cd payment-mode && echo "AWS_ACCESS_KEY_ID=${KEY_ID}" >> .env'
+                sh 'cd payment-mode && echo "AWS_SECRET_ACCESS_KEY=${ACCESS_KEY}" >> .env'
+            }
+        }
+
         stage('Run') {
              steps {
                  echo 'Running the application'
-                 sh 'cd payment-mode && ./payment-mode'
+                 sh 'cd payment-mode && chmod +x startup.sh && ./startup.sh'
              }
         }
     }

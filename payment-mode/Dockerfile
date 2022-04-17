@@ -12,7 +12,7 @@ RUN go mod download
 COPY  . .
 
 # Build
-RUN go build ./main.go
+RUN go build -o /paymentService
 
 # This is for documentation purposes only.
 # To actually open the port, runtime parameters
@@ -22,4 +22,4 @@ EXPOSE 9000
 COPY .env .
 
 # Run
-ENTRYPOINT ["./main"]
+ENTRYPOINT ["/paymentService"]
