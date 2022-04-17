@@ -52,8 +52,8 @@ func Start() {
 	router := server.Group("cart/api")
 	cartRoutes.InitRoutes(router)
 
-	//Starting server on port 9000
-	err = server.Run(":9000")
+	//Starting server on port 5000
+	err = server.Run(":5000")
 	if err != nil {
 		log.Error(err.Error() + " - Failed to start server")
 	} else {

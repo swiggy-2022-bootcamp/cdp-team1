@@ -16,6 +16,6 @@ RUN go mod download
 
 RUN go build -o main .
 
-EXPOSE 7000
+EXPOSE 5000
 
 CMD ["/app/main"]

@@ -2,17 +2,12 @@ package db
 
 import (
 	"cartService/log"
-	"context"
 	"fmt"
-	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func ConnectDB() *dynamodb.DynamoDB {
@@ -51,7 +46,7 @@ func CreateTable(DB *dynamodb.DynamoDB) error {
 			ReadCapacityUnits:  aws.Int64(10),
 			WriteCapacityUnits: aws.Int64(10),
 		},
-		TableName: aws.String("paymentCollection"),
+		TableName: aws.String("cartCollection"),
 	}
 	response, err := DB.CreateTable(input)
 	if err != nil {
@@ -61,20 +56,4 @@ func CreateTable(DB *dynamodb.DynamoDB) error {
 
 	log.Info("Created the table" + response.String())
 	return nil
-}
-
-func NewDbClient() *mongo.Client {
-
-	clientOptions := options.Client().ApplyURI("")
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-	client, err := mongo.Connect(ctx, clientOptions)
-	if err != nil {
-		// logger.Fatal("Error while connecting to DB : " + err.Error())
-		panic(err)
-	} else {
-		// logger.Info("Database Connected Successfully......")
-
-	}
-	return client
 }
