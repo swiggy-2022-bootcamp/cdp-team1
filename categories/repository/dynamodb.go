@@ -111,3 +111,23 @@ func (r dynamoRepository) SaveCategory(category entity.Category) error {
 		return nil
 	}
 }
+func (r dynamoRepository) DeleteCategory(categoryId string) error {
+	params := &dynamodb.DeleteItemInput{
+		TableName: aws.String("Categories"),
+		Key: map[string]*dynamodb.AttributeValue{
+			"category_id": {
+				S: aws.String(categoryId),
+			},
+		},
+	}
+
+	resp, err := db.DeleteItem(params)
+	if err != nil {
+		log.Error(err.Error())
+		return err
+	} else {
+		log.Info("Success")
+		log.Info(resp)
+		return nil
+	}
+}

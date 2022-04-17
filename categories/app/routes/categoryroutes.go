@@ -16,6 +16,8 @@ func InitRoutes(router *gin.Engine, handler handlers.CategoryHandler) {
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	newRouter.GET("/health", handlers.HealthCheck)
 	newRouter.GET("/", handler.Getall)
-	newRouter.PUT("/:id", handler.UpdateProduct)
+	newRouter.PUT("/:id", handler.UpdateCategory)
 	newRouter.GET("/search/:id", handler.Searchcategory)
+	newRouter.DELETE("/:id", handler.Deletecategory)
+	newRouter.POST("/categories",handler.AddCategory)
 }

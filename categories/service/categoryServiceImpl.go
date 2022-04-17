@@ -35,3 +35,17 @@ func (c CategoryServiceImpl) UpdateCategory(categoryId string, category entity.C
 	}
 	return nil
 }
+
+func (c CategoryServiceImpl) DeleteCategory(categoryid string) error {
+	err := c.categoryRepository.DeleteCategory(categoryid)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+func (c CategoryServiceImpl) CreateCategory(category entity.Category) error {
+	if err := c.categoryRepository.SaveCategory(category); err != nil {
+		return err
+	}
+	return nil
+}

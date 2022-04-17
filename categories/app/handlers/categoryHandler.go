@@ -57,30 +57,79 @@ func (ct CategoryHandler) Searchcategory(c *gin.Context) {
 	}
 }
 
-// UpdateProduct godoc
-// @Summary Update Products
-// @Description Update Product with given id
+// UpdateCategory godoc
+// @Summary Update Categorys
+// @Description Update Category with given id
 // @Tags
 // @Schemes
 // @Accept json
 // @Produce json
 // @Success	200
 // @Router / [PUT]
-func (ct CategoryHandler) UpdateProduct(c *gin.Context) {
+func (ct CategoryHandler) UpdateCategory(c *gin.Context) {
 
 	categoryId := c.Param("id")
 
 	var category entity.Category
+	category.Category_id = categoryId
 	if err := c.BindJSON(&category); err != nil {
 		log.Error(err)
 	}
 
-	log.Info("Update product having id : ", categoryId, " with values: ", category)
+	log.Info("Update Category having id : ", categoryId, " with values: ", category)
 
 	err := ct.categoryService.UpdateCategory(categoryId, category)
 	if err == nil {
-		c.JSON(http.StatusOK, gin.H{"message": "Product Updated Successfully"})
+		c.JSON(http.StatusOK, gin.H{"message": "Category Updated Successfully"})
 	} else {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "Something went wrong"})
+	}
+}
+
+// DeleteCategory godoc
+// @Summary Delete Categorys
+// @Description Delete Category with given id
+// @Tags
+// @Schemes
+// @Accept json
+// @Produce json
+// @Success	200
+// @Router / [DELETE]
+func (ct CategoryHandler) Deletecategory(c *gin.Context) {
+
+	categoryId := c.Param("id")
+	log.Info("Delete Category with id : ", categoryId)
+
+	err := ct.categoryService.DeleteCategory(categoryId)
+	if err == nil {
+		c.JSON(http.StatusOK, gin.H{"message": "Category Deleted Successfully"})
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Something went wrong"})
+	}
+}
+// AddCategory godoc
+// @Summary AddCategory
+// @Description Create a new Category object, generate id and save in DB
+// @Tags
+// @Schemes
+// @Accept json
+// @Produce json
+// @Success	200  {string} 	Category Created
+// @Router / [POST]
+func (ct CategoryHandler) AddCategory(c *gin.Context) {
+	var category entity.Category
+	if err := c.BindJSON(&category); err != nil {
+		log.Error(err)
+	}
+	category.SetId()
+
+	log.Info("Add Category with values ", category)
+
+	err := ct.categoryService.CreateCategory(category)
+	if err != nil {
+		log.Error(err)
+		c.JSON(http.StatusBadRequest, gin.H{"messaege": "Something went wrong"})
+	} else {
+		c.JSON(http.StatusOK, gin.H{"message": "Product Created"})
 	}
 }

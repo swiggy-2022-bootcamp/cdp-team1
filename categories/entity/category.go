@@ -31,3 +31,6 @@ func NewCategory(category_id string, categoryDescription []CategoryDescriptions)
 	return category, nil
 
 }
+func (ct *Category) SetId() {
+	ct.Category_id = NewID()
+}
