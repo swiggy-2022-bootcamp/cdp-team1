@@ -4,11 +4,14 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
+	"github.com/google/uuid"
 	"qwik.in/customers-admin/domain/model"
+	"qwik.in/customers-admin/internal/errors"
 )
 
 type AdminUserRepositoryInterface interface {
 	GetAll() []model.AdminUser
+	Create(admin model.AdminUser) (*model.AdminUser, error)
 }
 
 type AdminUserRepository struct {
@@ -29,7 +32,6 @@ func (adminUser *AdminUserRepository) GetAll() []model.AdminUser {
 	return adminUsers
 }
 
-/*
 func (adminUser *AdminUserRepository) Create(admin model.AdminUser) (*model.AdminUser, error) {
 	admin.UserId = uuid.New().String()
 	info, err := dynamodbattribute.MarshalMap(admin)
@@ -39,13 +41,12 @@ func (adminUser *AdminUserRepository) Create(admin model.AdminUser) (*model.Admi
 
 	input := &dynamodb.PutItemInput{
 		Item:      info,
-		TableName: aws.String("AdminUsers"),
+		TableName: aws.String("team-1-admins"),
 	}
 
 	_, err = db.PutItem(input)
 	if err != nil {
-		return nil, err
+		return nil, &errors.CustomerError{Status: 400, ErrorMessage: err.Error()}
 	}
 	return &admin, nil
 }
-*/
