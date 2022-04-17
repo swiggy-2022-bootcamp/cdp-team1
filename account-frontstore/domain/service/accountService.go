@@ -1,6 +1,7 @@
 package service
 
 import (
+	"golang.org/x/crypto/bcrypt"
 	"qwik.in/account-frontstore/domain/model"
 	"qwik.in/account-frontstore/domain/repository"
 	"qwik.in/account-frontstore/internal/errors"
@@ -29,7 +30,14 @@ func (accountService *AccountService) CreateAccount(account model.Account) (*mod
 		return nil, errors.NewEmailAlreadyRegisteredError()
 	}
 
+	//encrypt password
+	accountPassword, err := bcrypt.GenerateFromPassword([]byte(account.Password), bcrypt.DefaultCost)
+	if err != nil {
+		panic(err)
+	}
+	account.Password = string(accountPassword)
 	account.DateAdded = time.Now()
+
 	createdAccount, err := accountService.accountRepository.Create(account)
 	if err != nil {
 		return nil, err
@@ -47,6 +55,14 @@ func (accountService *AccountService) GetAccountById(customerId string) (*model.
 
 func (accountService *AccountService) UpdateAccount(customerId string, account model.Account) (*model.Account, error) {
 	account.CustomerId = customerId
+
+	//encrypt password
+	accountPassword, err := bcrypt.GenerateFromPassword([]byte(account.Password), bcrypt.DefaultCost)
+	if err != nil {
+		panic(err)
+	}
+	account.Password = string(accountPassword)
+
 	updatedAccount, err := accountService.accountRepository.Update(account)
 	if err != nil {
 		return nil, err

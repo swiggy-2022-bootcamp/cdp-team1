@@ -482,3 +482,22 @@ GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/8
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :7001
+INFO: 2022/04/17 14:09:52 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /account-frontstore/api/  --> qwik.in/account-frontstore/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /account-frontstore/api/register --> qwik.in/account-frontstore/app/handlers.RegisterAccount (3 handlers)
+[GIN-debug] GET    /account-frontstore/api/account/:accessorId --> qwik.in/account-frontstore/app/handlers.GetAccountById (3 handlers)
+[GIN-debug] PUT    /account-frontstore/api/account/:accessorId --> qwik.in/account-frontstore/app/handlers.UpdateAccount (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7001
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/60c50853-ccb4-400e-8eb8-11560324da93 2022-04-17T14:10:09+05:30 288.1714ms 
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/register 2022-04-17T14:10:45+05:30 289.1212ms 
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/register 2022-04-17T14:11:14+05:30 821.9479ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/c169f835-b582-42cc-9501-dc29b982bd7b 2022-04-17T14:11:35+05:30 736.2068ms 
+PUT - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/c169f835-b582-42cc-9501-dc29b982bd7b 2022-04-17T14:11:47+05:30 680.027ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/c169f835-b582-42cc-9501-dc29b982bd7b 2022-04-17T14:11:56+05:30 653.8904ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /account-frontstore/api/account/60c50853-ccb4-400e-8eb8-11560324da93 2022-04-17T14:12:04+05:30 285.4534ms 

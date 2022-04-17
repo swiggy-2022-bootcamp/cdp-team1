@@ -74,6 +74,14 @@ func (accountRepository *AccountRepository) Update(account model.Account) (*mode
 		return nil, err
 	}
 
+	//if email is updated, check if the changed email is not already being used my other users
+	if fetchedAccount.Email != account.Email {
+		fetchedAccountWithEmail, _ := accountRepository.GetByEmail(account.Email)
+		if fetchedAccountWithEmail != nil {
+			return nil, errors.NewEmailAlreadyRegisteredError()
+		}
+	}
+
 	account.DateAdded = fetchedAccount.DateAdded
 
 	info, err := dynamodbattribute.MarshalMap(account)

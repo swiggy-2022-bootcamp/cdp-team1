@@ -4,10 +4,11 @@ import (
 	"time"
 )
 
+// git commit -m 'password encryption, email id updation is checked for EmailAlreadyRegistered exception, renamed files'
 type Account struct {
-	CustomerId      string `json:"customerId"`
-	Firstname       string `json:"firstname"`
-	Lastname        string `json:"lastname"`
+	CustomerId      string `json:"customer_id"`
+	Firstname       string `json:"first_name"`
+	Lastname        string `json:"last_name"`
 	Email           string `json:"email"`
 	Password        string `json:"password"`
 	Telephone       string `json:"telephone"`
@@ -19,5 +20,5 @@ type Account struct {
 		UserBalance  PaymentsModeDTO
 	*/
 	Agree     int       `json:"agree"`
-	DateAdded time.Time `json:"dateAdded"`
+	DateAdded time.Time `json:"date_added"`
 }
