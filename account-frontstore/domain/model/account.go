@@ -4,7 +4,6 @@ import (
 	"time"
 )
 
-// git commit -m 'password encryption, email id updation is checked for EmailAlreadyRegistered exception, renamed files'
 type Account struct {
 	CustomerId      string `json:"customer_id"`
 	Firstname       string `json:"first_name"`

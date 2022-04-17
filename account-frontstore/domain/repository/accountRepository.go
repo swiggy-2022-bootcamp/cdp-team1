@@ -34,21 +34,21 @@ func (accountRepository *AccountRepository) Create(account model.Account) (*mode
 
 	input := &dynamodb.PutItemInput{
 		Item:      info,
-		TableName: aws.String("Customers"),
+		TableName: aws.String("team-1-customers"),
 	}
 
 	_, err = db.PutItem(input)
 	if err != nil {
-		return nil, err
+		return nil, &errors.AccountError{Status: 400, ErrorMessage: err.Error()}
 	}
 	return &account, nil
 }
 
 func (accountRepository *AccountRepository) GetById(customerId string) (*model.Account, error) {
 	params := &dynamodb.GetItemInput{
-		TableName: aws.String("Customers"),
+		TableName: aws.String("team-1-customers"),
 		Key: map[string]*dynamodb.AttributeValue{
-			"customerId": {
+			"customer_id": {
 				S: aws.String(customerId),
 			},
 		},
@@ -56,7 +56,7 @@ func (accountRepository *AccountRepository) GetById(customerId string) (*model.A
 
 	resp, err := db.GetItem(params)
 	if err != nil {
-		return nil, err
+		return nil, &errors.AccountError{Status: 400, ErrorMessage: err.Error()}
 	}
 
 	if len(resp.Item) == 0 {
@@ -91,12 +91,12 @@ func (accountRepository *AccountRepository) Update(account model.Account) (*mode
 
 	input := &dynamodb.PutItemInput{
 		Item:      info,
-		TableName: aws.String("Customers"),
+		TableName: aws.String("team-1-customers"),
 	}
 
 	_, err = db.PutItem(input)
 	if err != nil {
-		return nil, err
+		return nil, &errors.AccountError{Status: 400, ErrorMessage: err.Error()}
 	}
 	return &account, nil
 }
@@ -104,7 +104,7 @@ func (accountRepository *AccountRepository) Update(account model.Account) (*mode
 func (accountRepository *AccountRepository) GetByEmail(customerEmail string) (*model.Account, error) {
 	emailIndex := "email-index"
 	params := &dynamodb.QueryInput{
-		TableName:              aws.String("Customers"),
+		TableName:              aws.String("team-1-customers"),
 		IndexName:              &emailIndex,
 		KeyConditionExpression: aws.String("#email = :customersEmail"),
 		ExpressionAttributeNames: map[string]*string{
@@ -119,7 +119,7 @@ func (accountRepository *AccountRepository) GetByEmail(customerEmail string) (*m
 
 	resp, err := db.Query(params)
 	if err != nil {
-		return nil, err
+		return nil, &errors.AccountError{Status: 400, ErrorMessage: err.Error()}
 	}
 
 	if len(resp.Items) == 0 {
