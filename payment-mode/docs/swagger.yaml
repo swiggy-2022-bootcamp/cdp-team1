@@ -18,6 +18,22 @@ definitions:
     required:
     - mode
     type: object
+  models.PaymentRequest:
+    properties:
+      order_amount:
+        type: integer
+      order_id:
+        type: string
+      payment_mode:
+        $ref: '#/definitions/models.PaymentMode'
+      user_id:
+        type: string
+    required:
+    - order_amount
+    - order_id
+    - payment_mode
+    - user_id
+    type: object
   models.UserPaymentMode:
     properties:
       payment_modes:
@@ -59,6 +75,40 @@ paths:
       summary: To check if the service is running or not.
       tags:
       - HealthCheckResponse
+  /pay:
+    post:
+      consumes:
+      - application/json
+      description: To set payment modes for an order.
+      parameters:
+      - description: Payment request
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/models.PaymentRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "406":
+          description: Not Acceptable
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To set payment modes for an order.
+      tags:
+      - PaymentRequest
   /paymentmethods/{userId}:
     get:
       consumes:
@@ -124,6 +174,41 @@ paths:
           schema:
             type: string
       summary: To add a new payment method for a user.
+      tags:
+      - PaymentMode
+  /setpaymentmethods/{userId}:
+    post:
+      consumes:
+      - application/json
+      description: To set payment modes for an order.
+      parameters:
+      - description: User id
+        in: path
+        name: userId
+        required: true
+        type: string
+      - description: Payment mode details
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/models.PaymentMode'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To set payment modes for an order.
       tags:
       - PaymentMode
 swagger: "2.0"

@@ -51,6 +51,58 @@ const docTemplate = `{
                 }
             }
         },
+        "/pay": {
+            "post": {
+                "description": "To set payment modes for an order.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "PaymentRequest"
+                ],
+                "summary": "To set payment modes for an order.",
+                "parameters": [
+                    {
+                        "description": "Payment request",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.PaymentRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "406": {
+                        "description": "Not Acceptable",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/paymentmethods/{userId}": {
             "get": {
                 "description": "To get available payment modes of a user.",
@@ -151,6 +203,59 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/setpaymentmethods/{userId}": {
+            "post": {
+                "description": "To set payment modes for an order.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "PaymentMode"
+                ],
+                "summary": "To set payment modes for an order.",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User id",
+                        "name": "userId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Payment mode details",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.PaymentMode"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -178,6 +283,29 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "mode": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.PaymentRequest": {
+            "type": "object",
+            "required": [
+                "order_amount",
+                "order_id",
+                "payment_mode",
+                "user_id"
+            ],
+            "properties": {
+                "order_amount": {
+                    "type": "integer"
+                },
+                "order_id": {
+                    "type": "string"
+                },
+                "payment_mode": {
+                    "$ref": "#/definitions/models.PaymentMode"
+                },
+                "user_id": {
                     "type": "string"
                 }
             }

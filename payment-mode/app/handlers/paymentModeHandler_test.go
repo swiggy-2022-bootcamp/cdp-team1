@@ -24,60 +24,44 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 		Mode:       "Credit Card",
 		CardNumber: 4242424242424242,
 	}
-	userPaymentModeUpdate := models.UserPaymentMode{
-		UserId:       userId,
-		PaymentModes: make([]models.PaymentMode, 0, 0),
+	paymentModeValidationError := models.PaymentMode{
+		CardNumber: 4242424242424242,
+		Balance:    500,
 	}
-	currentPaymentMode := make([]models.PaymentMode, 0, 0)
-	userPaymentModeConflict := models.UserPaymentMode{
-		UserId:       userId,
-		PaymentModes: append(currentPaymentMode, paymentMode),
-	}
-
 	testCases := []struct {
 		name          string
-		buildStubs    func(paymentService *mocks.MockPaymentRepository)
+		buildStubs    func(paymentService *mocks.MockPaymentService)
 		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
 	}{
 		{
 			name: "BadRequestFailure",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					AddPaymentMode(&paymentMode, userId).
 					Times(0).
-					Return(nil, nil)
+					Return(nil)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
 				require.Equal(t, http.StatusBadRequest, recorder.Code)
 			},
 		},
 		{
-			name: "ConflictPaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
-					Times(1).
-					Return(&userPaymentModeConflict, nil)
-
-				paymentRepository.EXPECT().
-					UpdatePaymentModeToDB(&userPaymentModeConflict).
+			name: "ValidationFailure",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					AddPaymentMode(&paymentMode, userId).
 					Times(0).
 					Return(nil)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
-				require.Equal(t, http.StatusConflict, recorder.Code)
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
 			},
 		},
 		{
-			name: "SuccessUpdatePaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
-					Times(1).
-					Return(&userPaymentModeUpdate, nil)
-
-				paymentRepository.EXPECT().
-					UpdatePaymentModeToDB(&userPaymentModeConflict).
+			name: "Success",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					AddPaymentMode(&paymentMode, userId).
 					Times(1).
 					Return(nil)
 			},
@@ -86,73 +70,12 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 			},
 		},
 		{
-			name: "FailureUpdatePaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
-					Times(1).
-					Return(&userPaymentModeUpdate, nil)
-
-				paymentRepository.EXPECT().
-					UpdatePaymentModeToDB(&userPaymentModeConflict).
+			name: "Failure",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					AddPaymentMode(&paymentMode, userId).
 					Times(1).
 					Return(app_errors.NewUnexpectedError(""))
-			},
-			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
-				require.Equal(t, http.StatusInternalServerError, recorder.Code)
-			},
-		},
-		{
-			name: "SuccessAddPaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
-					Times(1).
-					Return(nil, app_errors.NewNotFoundError(""))
-
-				paymentRepository.EXPECT().
-					AddPaymentModeToDB(&userPaymentModeConflict).
-					Times(1).
-					Return(nil)
-			},
-			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
-				require.Equal(t, http.StatusOK, recorder.Code)
-			},
-		},
-		{
-			name: "FailureAddPaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
-					Times(1).
-					Return(nil, app_errors.NewNotFoundError(""))
-
-				paymentRepository.EXPECT().
-					AddPaymentModeToDB(&userPaymentModeConflict).
-					Times(1).
-					Return(app_errors.NewUnexpectedError(""))
-			},
-			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
-				require.Equal(t, http.StatusInternalServerError, recorder.Code)
-			},
-		},
-		{
-			name: "FailureGetPaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
-					Times(1).
-					Return(nil, app_errors.NewUnexpectedError(""))
-
-				paymentRepository.EXPECT().
-					AddPaymentModeToDB(&userPaymentModeConflict).
-					Times(0).
-					Return(nil)
-
-				paymentRepository.EXPECT().
-					UpdatePaymentModeToDB(&userPaymentModeConflict).
-					Times(0).
-					Return(nil)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
 				require.Equal(t, http.StatusInternalServerError, recorder.Code)
@@ -170,16 +93,20 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 			data, err := json.Marshal(paymentMode)
 			require.NoError(t, err)
 
-			paymentRepository := mocks.NewMockPaymentRepository(ctrl)
-			tc.buildStubs(paymentRepository)
+			paymentService := mocks.NewMockPaymentService(ctrl)
+			tc.buildStubs(paymentService)
 
-			server := NewServer(paymentRepository)
+			server := NewServer(paymentService)
 
 			recorder := httptest.NewRecorder()
 			url := fmt.Sprintf("/payment-mode/api/paymentmethods/%s", userId)
 			var request *http.Request
 			if tc.name == "BadRequestFailure" {
 				request = httptest.NewRequest(http.MethodPost, url, nil)
+			} else if tc.name == "ValidationFailure" {
+				data, err := json.Marshal(paymentModeValidationError)
+				require.NoError(t, err)
+				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
 			} else {
 				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
 			}
@@ -205,14 +132,14 @@ func TestPaymentHandler_GetPaymentMode(t *testing.T) {
 
 	testCases := []struct {
 		name          string
-		buildStubs    func(paymentRepository *mocks.MockPaymentRepository)
+		buildStubs    func(paymentService *mocks.MockPaymentService)
 		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
 	}{
 		{
-			name: "SuccessUpdatePaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
+			name: "SuccessGetPaymentMode",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					GetPaymentMode(userId).
 					Times(1).
 					Return(&userPaymentMode, nil)
 			},
@@ -222,10 +149,10 @@ func TestPaymentHandler_GetPaymentMode(t *testing.T) {
 			},
 		},
 		{
-			name: "FailureUserPaymentModeNotFound",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
+			name: "FailureUserNotFound",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					GetPaymentMode(userId).
 					Times(1).
 					Return(nil, app_errors.NewNotFoundError(""))
 
@@ -236,9 +163,9 @@ func TestPaymentHandler_GetPaymentMode(t *testing.T) {
 		},
 		{
 			name: "FailureInternalServerError",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					GetPaymentMode(userId).
 					Times(1).
 					Return(nil, app_errors.NewUnexpectedError(""))
 
@@ -256,14 +183,220 @@ func TestPaymentHandler_GetPaymentMode(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			defer ctrl.Finish()
 
-			paymentRepository := mocks.NewMockPaymentRepository(ctrl)
-			tc.buildStubs(paymentRepository)
+			paymentService := mocks.NewMockPaymentService(ctrl)
+			tc.buildStubs(paymentService)
 
-			server := NewServer(paymentRepository)
+			server := NewServer(paymentService)
 
 			recorder := httptest.NewRecorder()
 			url := fmt.Sprintf("/payment-mode/api/paymentmethods/%s", userId)
 			request := httptest.NewRequest(http.MethodGet, url, nil)
+
+			server.ServeHTTP(recorder, request)
+
+			tc.checkResponse(t, recorder)
+		})
+	}
+}
+
+func TestPaymentHandler_SetPaymentMode(t *testing.T) {
+	userId := "abcd-efgh-1234-4321"
+	paymentMode := models.PaymentMode{
+		Mode:       "Credit Card",
+		CardNumber: 4242424242424242,
+	}
+	paymentModeValidationError := models.PaymentMode{
+		CardNumber: 4242424242424242,
+		Balance:    500,
+	}
+	testCases := []struct {
+		name          string
+		buildStubs    func(paymentService *mocks.MockPaymentService)
+		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
+	}{
+		{
+			name: "BadRequestFailure",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					SetPaymentMode(&paymentMode, userId).
+					Times(0).
+					Return(false, nil)
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
+			},
+		},
+		{
+			name: "ValidationFailure",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					SetPaymentMode(&paymentMode, userId).
+					Times(0).
+					Return(false, nil)
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
+			},
+		},
+		{
+			name: "Success",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					SetPaymentMode(userId, paymentMode).
+					Times(1).
+					Return(true, nil)
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusOK, recorder.Code)
+			},
+		},
+		{
+			name: "Failure",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					SetPaymentMode(userId, paymentMode).
+					Times(1).
+					Return(false, app_errors.NewNotFoundError(""))
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusNotFound, recorder.Code)
+			},
+		},
+	}
+
+	for i := range testCases {
+		tc := testCases[i]
+
+		t.Run(tc.name, func(t *testing.T) {
+			ctrl := gomock.NewController(t)
+			defer ctrl.Finish()
+
+			data, err := json.Marshal(paymentMode)
+			require.NoError(t, err)
+
+			paymentService := mocks.NewMockPaymentService(ctrl)
+			tc.buildStubs(paymentService)
+
+			server := NewServer(paymentService)
+
+			recorder := httptest.NewRecorder()
+			url := fmt.Sprintf("/payment-mode/api/setpaymentmethods/%s", userId)
+			var request *http.Request
+			if tc.name == "BadRequestFailure" {
+				request = httptest.NewRequest(http.MethodPost, url, nil)
+			} else if tc.name == "ValidationFailure" {
+				data, err := json.Marshal(paymentModeValidationError)
+				require.NoError(t, err)
+				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
+			} else {
+				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
+			}
+
+			server.ServeHTTP(recorder, request)
+
+			tc.checkResponse(t, recorder)
+		})
+	}
+}
+
+func TestPaymentHandler_CompletePayment(t *testing.T) {
+	userId := "abcd-efgh-1234-4321"
+	paymentMode := models.PaymentMode{
+		Mode:       "Credit Card",
+		CardNumber: 4242424242424242,
+	}
+	paymentRequest := models.PaymentRequest{
+		SelectedPaymentMode: paymentMode,
+		UserId:              userId,
+		OrderId:             "OA-123",
+		OrderAmount:         1000,
+	}
+	paymentRequestValidationError := models.PaymentRequest{
+		SelectedPaymentMode: paymentMode,
+		UserId:              userId,
+	}
+	testCases := []struct {
+		name          string
+		buildStubs    func(paymentService *mocks.MockPaymentService)
+		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
+	}{
+		{
+			name: "BadRequestFailure",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					CheckBalanceAndCompletePayment(&paymentRequest).
+					Times(0).
+					Return(false, nil)
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
+			},
+		},
+		{
+			name: "ValidationFailure",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					CheckBalanceAndCompletePayment(&paymentRequest).
+					Times(0).
+					Return(false, nil)
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
+			},
+		},
+		{
+			name: "Success",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					CheckBalanceAndCompletePayment(&paymentRequest).
+					Times(1).
+					Return(true, nil)
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusAccepted, recorder.Code)
+			},
+		},
+		{
+			name: "Failure",
+			buildStubs: func(paymentService *mocks.MockPaymentService) {
+				paymentService.EXPECT().
+					CheckBalanceAndCompletePayment(&paymentRequest).
+					Times(1).
+					Return(false, app_errors.NewRequestNotAcceptedError(""))
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusNotAcceptable, recorder.Code)
+			},
+		},
+	}
+
+	for i := range testCases {
+		tc := testCases[i]
+
+		t.Run(tc.name, func(t *testing.T) {
+			ctrl := gomock.NewController(t)
+			defer ctrl.Finish()
+
+			data, err := json.Marshal(paymentRequest)
+			require.NoError(t, err)
+
+			paymentService := mocks.NewMockPaymentService(ctrl)
+			tc.buildStubs(paymentService)
+
+			server := NewServer(paymentService)
+
+			recorder := httptest.NewRecorder()
+			url := fmt.Sprintf("/payment-mode/api/pay")
+			var request *http.Request
+			if tc.name == "BadRequestFailure" {
+				request = httptest.NewRequest(http.MethodPost, url, nil)
+			} else if tc.name == "ValidationFailure" {
+				data, err := json.Marshal(paymentRequestValidationError)
+				require.NoError(t, err)
+				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
+			} else {
+				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
+			}
 
 			server.ServeHTTP(recorder, request)
 

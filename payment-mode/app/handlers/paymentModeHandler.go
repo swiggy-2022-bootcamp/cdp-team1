@@ -83,6 +83,19 @@ func (ph PaymentHandler) GetPaymentMode(c *gin.Context) {
 	c.JSON(http.StatusOK, userPaymentModes)
 }
 
+// SetPaymentMode godoc
+// @Summary To set payment modes for an order.
+// @Description To set payment modes for an order.
+// @Tags PaymentMode
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param userId path string true "User id"
+// @Param req body models.PaymentMode true "Payment mode details"
+// @Success	200  string 	http.StatusOK
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	User not found
+// @Router /setpaymentmethods/{userId} [POST]
 func (ph PaymentHandler) SetPaymentMode(c *gin.Context) {
 	userId := c.Param("userId")
 
@@ -109,6 +122,19 @@ func (ph PaymentHandler) SetPaymentMode(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Payment mode verified successfully"})
 }
 
+// CompletePayment godoc
+// @Summary To set payment modes for an order.
+// @Description To set payment modes for an order.
+// @Tags PaymentRequest
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param req body models.PaymentRequest true "Payment request"
+// @Success	201  string 	http.StatusAccepted
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Payment method is not added for the current user.
+// @Failure 406  string		Insufficient funds, payment failed.
+// @Router /pay [POST]
 func (ph PaymentHandler) CompletePayment(c *gin.Context) {
 	var paymentRequest models.PaymentRequest
 	if err := c.BindJSON(&paymentRequest); err != nil {
@@ -130,5 +156,5 @@ func (ph PaymentHandler) CompletePayment(c *gin.Context) {
 		c.JSON(err.Code, gin.H{"message": err.Message})
 		return
 	}
-	c.JSON(http.StatusAccepted, gin.H{"message": "Payment successfull"})
+	c.JSON(http.StatusAccepted, gin.H{"message": "Payment successful"})
 }
