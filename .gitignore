@@ -25,3 +25,9 @@ main
 
 # Log files
 *.log
+
+# Properties file
+*.properties
+
+# Code coverage reports
+*.cov

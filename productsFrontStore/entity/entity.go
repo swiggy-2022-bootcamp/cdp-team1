@@ -6,12 +6,6 @@ import "github.com/google/uuid"
 type ID = uuid.UUID
 
 //NewID create a new entity ID
-func NewID() ID {
-	return ID(uuid.New())
+func NewID() string {
+	return uuid.New().String()
 }
-
-//StringToID convert a string to an entity ID
-//func StringToID(s string) (ID, error) {
-//	id, err := uuid.Parse(s)
-//	return ID(id), err
-//}

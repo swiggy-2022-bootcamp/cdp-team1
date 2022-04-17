@@ -9,8 +9,12 @@ import (
 	_ "qwik.in/productsFrontStore/docs"
 )
 
-func InitRoutes(router *gin.Engine) {
+func InitRoutes(router *gin.Engine, handler handlers.ProductHandler) {
+	router.GET("/", handlers.HealthCheck)
+
 	newRouter := router.Group("products/api")
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	newRouter.GET("/", handlers.HealthCheck)
+	newRouter.GET("/", handler.GetProducts)
+	newRouter.GET("/:id", handler.GetProductById)
+	newRouter.GET("/category/:id", handler.GetProductByCategory)
 }

@@ -1,7 +1,7 @@
 package entity
 
 type Product struct {
-	ID                 ID                   `json:"id"`
+	ID                 string               `json:"id"`
 	Model              string               `json:"model"`
 	Quantity           string               `json:"quantity"`
 	Price              string               `json:"price"`
@@ -75,6 +75,10 @@ func NewProduct(model, quantity, price, manufacturerId, sku string,
 	}
 
 	return product, nil
+}
+
+func (p *Product) SetId() {
+	p.ID = NewID()
 }
 
 func (p *Product) Validate() error {
