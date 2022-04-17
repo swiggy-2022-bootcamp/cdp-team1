@@ -8,3 +8,13 @@ POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04
 [GIN] 2022/04/17 - 16:30:03 | 202 |    1.4700423s |             ::1 | POST     "/shipping/api/newAddress"
 POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T16:30:09+05:30 352.8885ms 
 [GIN] 2022/04/17 - 16:30:09 | 202 |    352.8885ms |             ::1 | POST     "/shipping/api/newAddress"
+📛ERROR: 2022/04/17 18:17:49 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 18:17:49 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T18:18:17+05:30 320.7798ms 
+[GIN] 2022/04/17 - 18:18:17 | 202 |    320.7798ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T18:18:19+05:30 302.7863ms 
+[GIN] 2022/04/17 - 18:18:19 | 202 |    302.7863ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T18:18:20+05:30 337.1705ms 
+[GIN] 2022/04/17 - 18:18:20 | 202 |    337.1705ms |             ::1 | POST     "/shipping/api/newAddress"

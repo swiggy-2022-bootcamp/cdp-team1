@@ -2,16 +2,23 @@ FROM golang:1.18-alpine
 
 RUN apk update && apk add --no-cache git build-base
 
-WORKDIR /go/github.com/swiggy-2022-bootcamp/cdp-team4/shipping
+WORKDIR /app
 
-COPY . /go/github.com/swiggy-2022-bootcamp/cdp-team4/shipping
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
+
+#Copy the source code.
+COPY . .
 
 # get all the dependencies
 RUN go get ./...
 
 # build
-RUN go build -o /shippingService
+RUN go build ./main.go
 
-EXPOSE 7001
+EXPOSE 9003
 
-CMD [ "/shippingService" ] 
+COPY .env  .
+
+CMD [ "./main" ] 
