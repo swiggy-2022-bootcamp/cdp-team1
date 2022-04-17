@@ -20,6 +20,10 @@ func TestTransactionHandler_AddTransactionPoints(t *testing.T) {
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
 		OrderId: "OA-123",
 	}
+	transactionAmountValidationError := &models.TransactionAmount{
+		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
+		OrderId: "OA-123",
+	}
 	testCases := []struct {
 		name          string
 		buildStubs    func(transactionService *mocks.MockTransactionService)
@@ -27,6 +31,18 @@ func TestTransactionHandler_AddTransactionPoints(t *testing.T) {
 	}{
 		{
 			name: "FailureWithMalformedBody",
+			buildStubs: func(transactionService *mocks.MockTransactionService) {
+				transactionService.EXPECT().
+					AddTransactionPoints(transactionAmount).
+					Times(0).
+					Return(nil)
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
+			},
+		},
+		{
+			name: "FailureWithValidationError",
 			buildStubs: func(transactionService *mocks.MockTransactionService) {
 				transactionService.EXPECT().
 					AddTransactionPoints(transactionAmount).
@@ -94,6 +110,10 @@ func TestTransactionHandler_AddTransactionPoints(t *testing.T) {
 			var request *http.Request
 			if tc.name == "FailureWithMalformedBody" {
 				request = httptest.NewRequest(http.MethodPost, url, nil)
+			} else if tc.name == "FailureWithValidationError" {
+				data, err := json.Marshal(transactionAmountValidationError)
+				require.NoError(t, err)
+				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
 			} else {
 				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
 			}
@@ -181,6 +201,10 @@ func TestTransactionHandler_UseTransactionPoints(t *testing.T) {
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
 		OrderId: "OA-123",
 	}
+	transactionAmountValidationError := &models.TransactionAmount{
+		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
+		OrderId: "OA-123",
+	}
 	testCases := []struct {
 		name          string
 		buildStubs    func(transactionService *mocks.MockTransactionService)
@@ -188,6 +212,18 @@ func TestTransactionHandler_UseTransactionPoints(t *testing.T) {
 	}{
 		{
 			name: "FailureWithMalformedBody",
+			buildStubs: func(transactionService *mocks.MockTransactionService) {
+				transactionService.EXPECT().
+					UseTransactionPoints(transactionAmount).
+					Times(0).
+					Return(false, nil, nil)
+			},
+			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
+			},
+		},
+		{
+			name: "FailureWithValidationError",
 			buildStubs: func(transactionService *mocks.MockTransactionService) {
 				transactionService.EXPECT().
 					UseTransactionPoints(transactionAmount).
@@ -237,7 +273,7 @@ func TestTransactionHandler_UseTransactionPoints(t *testing.T) {
 		{
 			name: "Success",
 			buildStubs: func(transactionService *mocks.MockTransactionService) {
-				
+
 				transactionService.EXPECT().
 					UseTransactionPoints(transactionAmount).
 					Times(1).
@@ -269,6 +305,10 @@ func TestTransactionHandler_UseTransactionPoints(t *testing.T) {
 			var request *http.Request
 			if tc.name == "FailureWithMalformedBody" {
 				request = httptest.NewRequest(http.MethodPost, url, nil)
+			} else if tc.name == "FailureWithValidationError" {
+				data, err := json.Marshal(transactionAmountValidationError)
+				require.NoError(t, err)
+				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
 			} else {
 				request = httptest.NewRequest(http.MethodPost, url, bytes.NewReader(data))
 			}
