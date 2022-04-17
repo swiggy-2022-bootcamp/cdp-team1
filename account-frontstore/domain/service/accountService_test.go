@@ -50,7 +50,7 @@ func TestShouldThrowUserNotFoundError(t *testing.T) {
 
 	accountRepo.On("GetByEmail", "repeatedEmail@gmail.com").Return(nil, errors.NewUserNotFoundError())
 	accountRepo.On("GetById", "894425b4-9141-41d0-9590-177336c0ca76").Return(nil, errors.NewUserNotFoundError())
-	accountRepo.On("Update", account).Return(nil, errors.NewUserNotFoundError())
+	accountRepo.On("Update", mock.Anything).Return(nil, errors.NewUserNotFoundError())
 
 	fetchedAccount, err := accountService.GetAccountById(account.CustomerId)
 	assert.Nil(t, fetchedAccount)
