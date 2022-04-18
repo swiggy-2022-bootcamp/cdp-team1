@@ -14,6 +14,12 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 *.ini
-shipping/.aws/
-shipping/.env
-shipping/.idea/
+*.idea/*
+*.aws/*
+.env
+shipping/.aws/credentials
+*.xml
+*.iml
+shipping/.idea/httpRequests/2022-04-16T093512.200.json
+shipping/.idea/httpRequests/http-client.cookies
+shipping/.idea/httpRequests/http-requests-log.http
