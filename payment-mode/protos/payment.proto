@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package protos;
+
+option go_package = "/protos";
+
+service Payment{
+  rpc CompletePayment (PaymentRequest) returns (PaymentResponse);
+}
+
+message PaymentRequest{
+  string      userId = 1;
+  string      orderId = 2;
+  int32       amount = 3;
+  PaymentMode paymentMode = 4;
+}
+
+message PaymentResponse{
+  bool isPaymentSuccessful = 1;
+}
+
+message PaymentMode{
+  string mode = 1;
+  int64  cardNumber = 2;
+  int32  balance = 3;
+}
