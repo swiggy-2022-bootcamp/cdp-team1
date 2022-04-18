@@ -1,7 +1,7 @@
 version: "3"
 services:
   backend:
-    build: .
+    image: mellomaniac/swiggy-qwik:product-front-store
     ports:
       - "9009:9009"
       - "19091:19091"
