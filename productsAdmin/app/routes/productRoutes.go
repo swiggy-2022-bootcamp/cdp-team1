@@ -3,11 +3,11 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"qwik.in/productsAdmin/app/handlers"
-)
 
-import (
 	swaggerFiles "github.com/swaggo/files"
+
 	ginSwagger "github.com/swaggo/gin-swagger"
+
 	_ "qwik.in/productsAdmin/docs"
 )
 
@@ -21,4 +21,6 @@ func InitRoutes(router *gin.Engine, handler handlers.ProductHandler) {
 	newRouter.PUT("/:id", handler.UpdateProduct)
 	newRouter.DELETE("/:id", handler.DeleteProduct)
 	newRouter.GET("/search", handler.SearchProduct)
+
+	newRouter.GET("/quantity/:id", handler.GetQuantityForProductId)
 }

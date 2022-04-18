@@ -1,12 +1,13 @@
 package handlers
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
 	"qwik.in/productsAdmin/entity"
 	"qwik.in/productsAdmin/log"
 	"qwik.in/productsAdmin/service"
-	"strconv"
 )
 
 type ProductHandler struct {
@@ -128,6 +129,19 @@ func (p ProductHandler) SearchProduct(c *gin.Context) {
 	products, err := p.productService.SearchProduct(limit)
 	if err == nil {
 		c.JSON(http.StatusOK, products)
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Something went wrong"})
+	}
+}
+
+func (p ProductHandler) GetQuantityForProductId(c *gin.Context) {
+
+	productId := c.Param("id")
+	log.Info("Get quantity for product with id : ", productId)
+
+	response, err := p.productService.GetQuantityForProductId(productId)
+	if err == nil {
+		c.JSON(http.StatusOK, response)
 	} else {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "Something went wrong"})
 	}

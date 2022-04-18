@@ -2,6 +2,7 @@ package service
 
 import (
 	"github.com/stretchr/testify/mock"
+	"qwik.in/productsAdmin/app/proto"
 	"qwik.in/productsAdmin/entity"
 )
 
@@ -38,4 +39,10 @@ func (m MockProductService) SearchProduct(limit int64) ([]entity.Product, error)
 	args := m.Called()
 	result := args.Get(0)
 	return result.([]entity.Product), args.Error(1)
+}
+
+func (m MockProductService) GetQuantityForProductId(productId string) (*proto.Response, error) {
+	args := m.Called(productId)
+	result := args.Get(0)
+	return result.(*proto.Response), args.Error(1)
 }

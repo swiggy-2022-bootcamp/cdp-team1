@@ -1,7 +1,14 @@
 package service
 
 import (
+	"context"
+	"time"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+	"qwik.in/productsAdmin/app/proto"
 	"qwik.in/productsAdmin/entity"
+	"qwik.in/productsAdmin/log"
 	"qwik.in/productsAdmin/repository"
 )
 
@@ -51,4 +58,27 @@ func (p ProductServiceImpl) SearchProduct(limit int64) ([]entity.Product, error)
 		return nil, err
 	}
 	return all, nil
+}
+
+func (p ProductServiceImpl) GetQuantityForProductId(productId string) (*proto.Response, error) {
+	log.Info("Connecting with gRPC server")
+	// Set up a connection to the server.
+	conn, err := grpc.Dial(":19091", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Error("did not connect: ", err)
+		return nil, err
+	}
+	defer conn.Close()
+	c := proto.NewQuantityServiceClient(conn)
+
+	// Contact the server and print out its response.
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	defer cancel()
+	r, err := c.GetQuantity(ctx, &proto.Request{Id: productId})
+	if err != nil {
+		log.Error("could not get esponse: ", err)
+		return nil, err
+	}
+	log.Info("gRPC received id: ", r.GetId(), " and quantity: ", r.GetQuantity())
+	return r, nil
 }
