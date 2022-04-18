@@ -13,7 +13,7 @@ import (
 
 func TestTransactionServiceImpl_AddTransactionPoints(t *testing.T) {
 	gin.SetMode(gin.TestMode)
-	transactionAmount := &models.TransactionAmount{
+	transactionAmount := &models.TransactionDetails{
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459thj",
 		OrderId: "OA-123",
 		Amount:  500,
@@ -204,12 +204,12 @@ func TestTransactionServiceImpl_CalculateTransactionPoints(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	testCases := []struct {
 		name              string
-		transactionAmount *models.TransactionAmount
+		transactionAmount *models.TransactionDetails
 		expectedPoints    int
 	}{
 		{
 			name: "Whole number",
-			transactionAmount: &models.TransactionAmount{
+			transactionAmount: &models.TransactionDetails{
 				UserId: "1",
 				Amount: 5000,
 			},
@@ -217,7 +217,7 @@ func TestTransactionServiceImpl_CalculateTransactionPoints(t *testing.T) {
 		},
 		{
 			name: "Amount less than 100",
-			transactionAmount: &models.TransactionAmount{
+			transactionAmount: &models.TransactionDetails{
 				UserId: "1",
 				Amount: 5,
 			},
@@ -225,7 +225,7 @@ func TestTransactionServiceImpl_CalculateTransactionPoints(t *testing.T) {
 		},
 		{
 			name: "Points rounded to narest integer",
-			transactionAmount: &models.TransactionAmount{
+			transactionAmount: &models.TransactionDetails{
 				UserId: "1",
 				Amount: 399,
 			},
@@ -249,7 +249,7 @@ func TestTransactionServiceImpl_CalculateTransactionPoints(t *testing.T) {
 
 func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
 	gin.SetMode(gin.TestMode)
-	transactionAmount := &models.TransactionAmount{
+	transactionAmount := &models.TransactionDetails{
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459thj",
 		Amount:  5000,
 		OrderId: "OA-123",
@@ -263,7 +263,7 @@ func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
 	testCases := []struct {
 		name          string
 		buildStubs    func(repository *mocks.MockTransactionRepository)
-		checkResponse func(t *testing.T, isRequestValid bool, amount *models.TransactionAmount, err interface{})
+		checkResponse func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{})
 	}{
 		{
 			name: "FailureGetTransactionPoints",
@@ -273,7 +273,7 @@ func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(-1, app_erros.NewUnexpectedError(""))
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionAmount, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
 				require.Equal(t, false, isRequestValid)
 				require.Equal(t, amount, transactionAmount)
 				require.Equal(t, app_erros.NewUnexpectedError(""), err)
@@ -287,7 +287,7 @@ func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(0, nil)
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionAmount, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
 				require.Equal(t, false, isRequestValid)
 				require.Equal(t, amount, transactionAmount)
 				require.Equal(t, app_erros.NewExpectationFailed("You have 0 transaction points"), err)
@@ -308,7 +308,7 @@ func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(nil)
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionAmount, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
 				require.Equal(t, true, isRequestValid)
 				require.Equal(t, amount, transactionAmount)
 				require.Equal(t, true, reflect.ValueOf(err).IsNil())
@@ -329,7 +329,7 @@ func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(app_erros.NewUnexpectedError(""))
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionAmount, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
 				require.Equal(t, false, isRequestValid)
 				require.Equal(t, amount, transactionAmount)
 				require.Equal(t, app_erros.NewUnexpectedError(""), err)
@@ -348,7 +348,7 @@ func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
 					Times(0).
 					Return(nil)
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionAmount, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
 				require.Equal(t, false, isRequestValid)
 				require.Equal(t, amount, transactionAmount)
 				require.Equal(t, app_erros.NewExpectationFailed("Cannot use transaction points as order amount is lesser than available points"), err)

@@ -15,12 +15,12 @@ import (
 )
 
 func TestTransactionHandler_AddTransactionPoints(t *testing.T) {
-	transactionAmount := &models.TransactionAmount{
+	transactionAmount := &models.TransactionDetails{
 		Amount:  20000,
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
 		OrderId: "OA-123",
 	}
-	transactionAmountValidationError := &models.TransactionAmount{
+	transactionAmountValidationError := &models.TransactionDetails{
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
 		OrderId: "OA-123",
 	}
@@ -196,12 +196,12 @@ func TestTransactionHandler_GetTransactionPointsByUserID(t *testing.T) {
 }
 
 func TestTransactionHandler_UseTransactionPoints(t *testing.T) {
-	transactionAmount := &models.TransactionAmount{
+	transactionAmount := &models.TransactionDetails{
 		Amount:  20000,
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
 		OrderId: "OA-123",
 	}
-	transactionAmountValidationError := &models.TransactionAmount{
+	transactionAmountValidationError := &models.TransactionDetails{
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
 		OrderId: "OA-123",
 	}

@@ -16,7 +16,7 @@ func NewTransactionServiceImpl(transactionRepository repository.TransactionRepos
 	return &TransactionServiceImpl{transactionRepository: transactionRepository}
 }
 
-func (t TransactionServiceImpl) AddTransactionPoints(transactionAmount *models.TransactionAmount) *apperros.AppError {
+func (t TransactionServiceImpl) AddTransactionPoints(transactionAmount *models.TransactionDetails) *apperros.AppError {
 	//calculate transaction points earned
 	points := t.CalculateTransactionPoints(transactionAmount)
 	transaction := &models.Transaction{
@@ -58,14 +58,14 @@ func (t TransactionServiceImpl) GetTransactionPointsByUserId(userId string) (int
 	return userTransactionPoints, nil
 }
 
-func (t TransactionServiceImpl) CalculateTransactionPoints(transactionAmount *models.TransactionAmount) int {
+func (t TransactionServiceImpl) CalculateTransactionPoints(transactionAmount *models.TransactionDetails) int {
 	//For every 100 Rupees user will get 1 transaction point
 	var points int
 	points = transactionAmount.Amount / 100
 	return points
 }
 
-func (t TransactionServiceImpl) UseTransactionPoints(transactionAmount *models.TransactionAmount) (bool, *models.TransactionAmount, *apperros.AppError) {
+func (t TransactionServiceImpl) UseTransactionPoints(transactionAmount *models.TransactionDetails) (bool, *models.TransactionDetails, *apperros.AppError) {
 	//Fetch user transaction details from DB
 	userTransactionPoints, err := t.transactionRepository.GetTransactionPointsByUserIdFromDB(transactionAmount.UserId)
 
