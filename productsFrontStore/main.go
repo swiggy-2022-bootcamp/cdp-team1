@@ -1,8 +1,6 @@
 package main
 
-import (
-	"qwik.in/productsFrontStore/app"
-)
+import "qwik.in/productsFrontStore/app"
 
 // @title          Swiggy Qwik - Product_Front_Store module
 // @version        1.0

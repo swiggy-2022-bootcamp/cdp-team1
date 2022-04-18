@@ -1,9 +1,9 @@
 package config
 
-// Server
+// REST API Server
 const (
-	SERVICE_NAME = "Product Admin Service"
-	SERVER_PORT  = "9009"
+	SERVICE_NAME     = "Product Admin Service"
+	REST_SERVER_PORT = "9009"
 )
 
 // Log
@@ -16,4 +16,9 @@ const (
 const (
 	DYNAMO_DB_REGION = "us-east-1"
 	DYNAMO_DB_URL    = "https://dynamodb.us-east-1.amazonaws.com"
+)
+
+// gRPC Server
+const (
+	GRPC_SERVER_PORT = "19091"
 )
