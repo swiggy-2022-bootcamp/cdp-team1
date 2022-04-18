@@ -36,7 +36,7 @@ func (m *MockTransactionService) EXPECT() *MockTransactionServiceMockRecorder {
 }
 
 // AddTransactionPoints mocks base method.
-func (m *MockTransactionService) AddTransactionPoints(arg0 *models.TransactionAmount) *app_erros.AppError {
+func (m *MockTransactionService) AddTransactionPoints(arg0 *models.TransactionDetails) *app_erros.AppError {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "AddTransactionPoints", arg0)
 	ret0, _ := ret[0].(*app_erros.AppError)
@@ -50,7 +50,7 @@ func (mr *MockTransactionServiceMockRecorder) AddTransactionPoints(arg0 interfac
 }
 
 // CalculateTransactionPoints mocks base method.
-func (m *MockTransactionService) CalculateTransactionPoints(arg0 *models.TransactionAmount) int {
+func (m *MockTransactionService) CalculateTransactionPoints(arg0 *models.TransactionDetails) int {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CalculateTransactionPoints", arg0)
 	ret0, _ := ret[0].(int)
@@ -93,11 +93,11 @@ func (mr *MockTransactionServiceMockRecorder) UpdateTransactionPoints(arg0, arg1
 }
 
 // UseTransactionPoints mocks base method.
-func (m *MockTransactionService) UseTransactionPoints(arg0 *models.TransactionAmount) (bool, *models.TransactionAmount, *app_erros.AppError) {
+func (m *MockTransactionService) UseTransactionPoints(arg0 *models.TransactionDetails) (bool, *models.TransactionDetails, *app_erros.AppError) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "UseTransactionPoints", arg0)
 	ret0, _ := ret[0].(bool)
-	ret1, _ := ret[1].(*models.TransactionAmount)
+	ret1, _ := ret[1].(*models.TransactionDetails)
 	ret2, _ := ret[2].(*app_erros.AppError)
 	return ret0, ret1, ret2
 }

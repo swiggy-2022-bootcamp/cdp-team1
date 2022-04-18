@@ -26,7 +26,7 @@ func NewTransactionHandler(transactionService services.TransactionService) Trans
 // @Schemes
 // @Accept json
 // @Produce json
-// @Param req body models.TransactionAmount true "Transaction details"
+// @Param req body models.TransactionDetails true "Transaction details"
 // @Param userId path string true "User id"
 // @Success	200  string		Transaction points added successfully
 // @Failure 400  string   	Bad request
@@ -34,7 +34,7 @@ func NewTransactionHandler(transactionService services.TransactionService) Trans
 // @Router /transaction/{userId} [POST]
 func (th TransactionHandler) AddTransactionPoints(c *gin.Context) {
 	userId := c.Param("userId")
-	var transactionAmount models.TransactionAmount
+	var transactionAmount models.TransactionDetails
 
 	if err := c.BindJSON(&transactionAmount); err != nil {
 		c.Error(err)
@@ -89,16 +89,16 @@ func (th TransactionHandler) GetTransactionPointsByUserID(c *gin.Context) {
 // @Schemes
 // @Accept json
 // @Produce json
-// @Param req body models.TransactionAmount true "Transaction details"
+// @Param req body models.TransactionDetails true "Transaction details"
 // @Param userId path string true "User id"
-// @Success	200  {object}	models.TransactionAmount
+// @Success	200  {object}	models.TransactionDetails
 // @Failure 400  string   	Bad request
 // @Failure 417  string		Expectation failed
 // @Failure 500  string		Internal Server Error
 // @Router /transaction/use-transaction-points/{userId} [POST]
 func (th TransactionHandler) UseTransactionPoints(c *gin.Context) {
 	userId := c.Param("userId")
-	var transactionAmount models.TransactionAmount
+	var transactionAmount models.TransactionDetails
 
 	if err := c.BindJSON(&transactionAmount); err != nil {
 		c.Error(err)

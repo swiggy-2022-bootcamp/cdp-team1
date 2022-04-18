@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package protos;
+
+option go_package = "/protos";
+
+service TransactionPoints{
+  rpc AddTransactionPoints (TransactionDetails) returns (AddPointsResponse);
+  rpc UseTransactionPoints (TransactionDetails) returns (UsePointsResponse);
+}
+
+message TransactionDetails{
+  string UserId  = 1;
+  string OrderId = 2;
+  int32  Amount  = 3;
+}
+
+message AddPointsResponse{
+
+}
+
+message UsePointsResponse{
+  bool                transactionPointsUsed = 1;
+  TransactionDetails  transactionDetails    = 2;
+}
