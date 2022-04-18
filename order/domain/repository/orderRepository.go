@@ -13,9 +13,9 @@ import (
 
 type OrderRepositoryDB interface {
 	Create(model.Order) *error.AppError
-	ReadStatus(string) (*model.Order, *error.AppError)
-	ReadID(string) (*model.Order, *error.AppError)
-	ReadCustomerID(string) (*model.Order, *error.AppError)
+	ReadStatus(string) (*[]model.Order, *error.AppError)
+	ReadOrderID(string) (*model.Order, *error.AppError)
+	ReadCustomerID(string) (*[]model.Order, *error.AppError)
 	ReadAll() (*[]model.Order, *error.AppError)
 	Update(model.Order) *error.AppError
 	Delete(model.Order) *error.AppError
@@ -69,43 +69,43 @@ func (odb OrderRepository) Create(order model.Order) *error.AppError {
 	return nil
 }
 
-func (odb OrderRepository) ReadStatus(status string) (*model.Order, *error.AppError) {
+func (odb OrderRepository) ReadStatus(status string) (*[]model.Order, *error.AppError) {
 
-	order := &model.Order{}
+	order := &[]model.Order{}
 
-	query := &dynamodb.GetItemInput{
-		TableName: aws.String(orderCollection),
-		Key: map[string]*dynamodb.AttributeValue{
-			"status": {
+	query := &dynamodb.ScanInput{
+		TableName:        aws.String(orderCollection),
+		FilterExpression: aws.String("status = :status"),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			":status": {
 				S: aws.String(status),
 			},
 		},
 	}
 
-	result, err := odb.orderDB.GetItem(query)
+	result, err := odb.orderDB.Scan(query)
 	if err != nil {
 		log.Info(result)
 		log.Error("Failed to get item from database - " + err.Error())
 		return nil, error.NewUnexpectedError(err.Error())
 	}
 
-	if result.Item == nil {
-		log.Error("This status for user doesn't exists. - ")
+	if result.Items == nil {
+		log.Error("Order for user with that status doesn't exist - ")
 		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
 		return nil, notFoundError
 	}
 
-	err = dynamodbattribute.UnmarshalMap(result.Item, order)
+	err = dynamodbattribute.UnmarshalListOfMaps(result.Items, order)
 	if err != nil {
 		log.Error("Failed to unmarshal document fetched from DB - " + err.Error())
 		return nil, error.NewUnexpectedError(err.Error())
 	}
 
 	return order, nil
-
 }
 
-func (odb OrderRepository) ReadID(id string) (*model.Order, *error.AppError) {
+func (odb OrderRepository) ReadOrderID(id string) (*model.Order, *error.AppError) {
 
 	order := &model.Order{}
 
@@ -126,8 +126,8 @@ func (odb OrderRepository) ReadID(id string) (*model.Order, *error.AppError) {
 	}
 
 	if result.Item == nil {
-		log.Error("This order for user doesn't exist. - ")
-		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		log.Error("This order id doesn't exist - ")
+		notFoundError := error.NewNotFoundError(" This order id for user doesn't exist")
 		return nil, notFoundError
 	}
 
@@ -140,33 +140,34 @@ func (odb OrderRepository) ReadID(id string) (*model.Order, *error.AppError) {
 	return order, nil
 }
 
-func (odb OrderRepository) ReadCustomerID(customer_id string) (*model.Order, *error.AppError) {
+func (odb OrderRepository) ReadCustomerID(customer_id string) (*[]model.Order, *error.AppError) {
 
-	order := &model.Order{}
+	order := &[]model.Order{}
 
-	query := &dynamodb.GetItemInput{
-		TableName: aws.String(orderCollection),
-		Key: map[string]*dynamodb.AttributeValue{
-			"CustomerId": {
+	query := &dynamodb.ScanInput{
+		TableName:        aws.String(orderCollection),
+		FilterExpression: aws.String("customer_id = :customer_id"),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			":CustomerId": {
 				S: aws.String(customer_id),
 			},
 		},
 	}
 
-	result, err := odb.orderDB.GetItem(query)
+	result, err := odb.orderDB.Scan(query)
 	if err != nil {
 		log.Info(result)
 		log.Error("Failed to get item from database - " + err.Error())
 		return nil, error.NewUnexpectedError(err.Error())
 	}
 
-	if result.Item == nil {
-		log.Error("Order for user doesn't exist. - ")
-		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+	if result.Items == nil {
+		log.Error("Orders for user doesn't exist - ")
+		notFoundError := error.NewNotFoundError("Orders for user doesn't exist")
 		return nil, notFoundError
 	}
 
-	err = dynamodbattribute.UnmarshalMap(result.Item, order)
+	err = dynamodbattribute.UnmarshalListOfMaps(result.Items, order)
 	if err != nil {
 		log.Error("Failed to unmarshal document fetched from DB - " + err.Error())
 		return nil, error.NewUnexpectedError(err.Error())

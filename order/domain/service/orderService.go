@@ -8,7 +8,7 @@ import (
 
 type OrderService interface {
 	GetAllOrder() (*[]model.Order, *error.AppError)
-	GetOrderByStatus(string) (*model.Order, *error.AppError)
+	GetOrderByStatus(string) (*[]model.Order, *error.AppError)
 	UpdateOrder(model.Order) *error.AppError
 	DeleteOrderById(string) *error.AppError
 	DeleteAllOrder() *error.AppError
@@ -35,7 +35,7 @@ func (odb OrderServiceImpl) GetAllOrder() (*[]model.Order, *error.AppError) {
 	return u, nil
 }
 
-func (odb OrderServiceImpl) GetOrderByStatus(status string) (*model.Order, *error.AppError) {
+func (odb OrderServiceImpl) GetOrderByStatus(status string) (*[]model.Order, *error.AppError) {
 
 	u, err := odb.orderRepository.ReadStatus(status)
 
