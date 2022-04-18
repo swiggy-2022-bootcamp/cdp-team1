@@ -19,6 +19,12 @@ import (
 	"time"
 )
 
+var (
+	Repository repository.ProductRepository
+	Service    service.ProductService
+	Handler    handlers.ProductHandler
+)
+
 var wg sync.WaitGroup
 
 func Start() {
@@ -48,18 +54,12 @@ func initGrpcServer() {
 		log.Error("failed to GRPC listen: ", err)
 	}
 	gs := grpc.NewServer()
-	proto.RegisterQuantityServiceServer(gs, service.NewProductQualityService())
+	proto.RegisterQuantityServiceServer(gs, service.NewProductQuantityService())
 	log.Info("gRPC Server: Listening on port ", lis.Addr())
 	if err := gs.Serve(lis); err != nil {
 		log.Error("gRPC Server: Failed to serve : ", err.Error())
 	}
 }
-
-var (
-	Repository repository.ProductRepository
-	Service    service.ProductService
-	Handler    handlers.ProductHandler
-)
 
 func initRestServer() {
 	defer wg.Done()

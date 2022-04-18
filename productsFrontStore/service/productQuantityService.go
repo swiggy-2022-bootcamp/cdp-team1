@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-type ProductQualityService struct {
+type ProductQuantityService struct {
 	proto.UnimplementedQuantityServiceServer
 }
 
@@ -17,7 +17,7 @@ var (
 	Service    ProductService
 )
 
-func NewProductQualityService() *ProductQualityService {
+func NewProductQuantityService() *ProductQuantityService {
 	Repository = repository.NewDynamoRepository()
 	err := Repository.Connect()
 	if err != nil {
@@ -25,10 +25,10 @@ func NewProductQualityService() *ProductQualityService {
 		return nil
 	}
 	Service = NewProductService(Repository)
-	return &ProductQualityService{}
+	return &ProductQuantityService{}
 }
 
-func (s *ProductQualityService) GetQuantity(ctx context.Context, in *proto.Request) (*proto.Response, error) {
+func (s *ProductQuantityService) GetQuantity(ctx context.Context, in *proto.Request) (*proto.Response, error) {
 	log.Info("gRPC received message: ", in.GetId())
 	product, err1 := Service.GetProductById(in.GetId())
 	if err1 != nil {
