@@ -1,0 +1,10 @@
+version: "3"
+services:
+  backend:
+    build: .
+    ports:
+      - "9119:9119"
+      - "19091:19091"
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}

@@ -1,8 +1,8 @@
 package service
 
 import (
-	"qwik.in/productsAdmin/app/proto"
 	"qwik.in/productsAdmin/entity"
+	"qwik.in/productsAdmin/proto"
 )
 
 type ProductService interface {

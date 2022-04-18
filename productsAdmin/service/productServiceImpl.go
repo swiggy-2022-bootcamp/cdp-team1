@@ -7,9 +7,9 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"qwik.in/productsAdmin/app/proto"
 	"qwik.in/productsAdmin/entity"
 	"qwik.in/productsAdmin/log"
+	"qwik.in/productsAdmin/proto"
 	"qwik.in/productsAdmin/repository"
 )
 
@@ -82,7 +82,7 @@ func (p ProductServiceImpl) GetQuantityForProductId(productId string) (*proto.Re
 	defer cancel()
 	r, err := c.GetQuantity(ctx, &proto.Request{Id: productId})
 	if err != nil {
-		log.Error("could not get esponse: ", err)
+		log.Error("could not get response: ", err)
 		return nil, err
 	}
 	log.Info("gRPC received id: ", r.GetId(), " and quantity: ", r.GetQuantity())
