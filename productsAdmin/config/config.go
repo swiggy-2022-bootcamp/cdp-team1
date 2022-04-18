@@ -2,8 +2,8 @@ package config
 
 // Server
 const (
-	SERVICE_NAME = "Product Admin Service"
-	SERVER_PORT  = "9119"
+	SERVICE_NAME     = "Product Admin Service"
+	REST_SERVER_PORT = "9119"
 )
 
 // Log
@@ -16,4 +16,9 @@ const (
 const (
 	DYNAMO_DB_REGION = "us-east-1"
 	DYNAMO_DB_URL    = "https://dynamodb.us-east-1.amazonaws.com"
+)
+
+// gRPC Server config for Get Quantity for PorductID
+const (
+	GRPC_SERVER_PORT = "19091"
 )

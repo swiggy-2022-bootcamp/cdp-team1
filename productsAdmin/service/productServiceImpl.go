@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"qwik.in/productsAdmin/config"
 	"time"
 
 	"google.golang.org/grpc"
@@ -63,12 +64,17 @@ func (p ProductServiceImpl) SearchProduct(limit int64) ([]entity.Product, error)
 func (p ProductServiceImpl) GetQuantityForProductId(productId string) (*proto.Response, error) {
 	log.Info("Connecting with gRPC server")
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(":19091", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(":"+config.GRPC_SERVER_PORT, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Error("did not connect: ", err)
 		return nil, err
 	}
-	defer conn.Close()
+	defer func(conn *grpc.ClientConn) {
+		err := conn.Close()
+		if err != nil {
+
+		}
+	}(conn)
 	c := proto.NewQuantityServiceClient(conn)
 
 	// Contact the server and print out its response.

@@ -36,8 +36,8 @@ func Start() {
 
 	routes.InitRoutes(router, productHandler)
 
-	log.Info(config.SERVICE_NAME, " starting on port ", config.SERVER_PORT)
-	err = router.Run(":" + config.SERVER_PORT)
+	log.Info(config.SERVICE_NAME, " starting on port ", config.REST_SERVER_PORT)
+	err = router.Run(":" + config.REST_SERVER_PORT)
 
 	if err != nil {
 		log.Error(config.SERVICE_NAME, " startup failed")
