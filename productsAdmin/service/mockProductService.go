@@ -2,8 +2,8 @@ package service
 
 import (
 	"github.com/stretchr/testify/mock"
-	"qwik.in/productsAdmin/app/proto"
 	"qwik.in/productsAdmin/entity"
+	"qwik.in/productsAdmin/proto"
 )
 
 type MockProductService struct {
