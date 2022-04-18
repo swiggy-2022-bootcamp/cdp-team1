@@ -16,5 +16,6 @@ func ShippingRouter(router *gin.Engine) {
 	router.GET("/shipping/api/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	//Actual Endpoints
 	router.POST("/shipping/api/newAddress", shippingHandler.CreateShippingAddrHandlerFunc())
-	router.GET("/shipping/api/:id", shippingHandler.GetShippingAddrHandlerFunc())
+	router.GET("/shipping/api/getAddress/:id", shippingHandler.GetShippingAddrHandlerFunc())
+	router.GET("/shipping/api/existing", shippingHandler.GetDefaultShippingAddrHandlerFunc())
 }

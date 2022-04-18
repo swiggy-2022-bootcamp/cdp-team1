@@ -9,6 +9,7 @@ import (
 type ShippingAddrService interface {
 	CreateNewShippingAddress(int, string, string, string, string, string, string, string, string, int, string, bool) (string, *errs.AppError)
 	GetShippingAddressById(string) (*repository.ShippingAddress, *errs.AppError)
+	GetDefaultShippingAddr(bool) (*repository.ShippingAddress, *errs.AppError)
 }
 
 //ShippingAddrServiceImpl ..
@@ -33,6 +34,7 @@ func (s ShippingAddrServiceImpl) CreateNewShippingAddress(userID int, shippingAd
 	return data, nil
 }
 
+//GetShippingAddressById ..
 func (s ShippingAddrServiceImpl) GetShippingAddressById(shippingAddressId string) (*repository.ShippingAddress, *errs.AppError) {
 	res, err := s.shippingAddrRepo.FindShippingAddressByIdImpl(shippingAddressId)
 	if err != nil {
@@ -41,19 +43,11 @@ func (s ShippingAddrServiceImpl) GetShippingAddressById(shippingAddressId string
 	return res, nil
 }
 
-//
-//func (s ShippingAddrServiceImpl) DeleteShippingAddressById(shippingAddressId string) (bool, *errs.AppError) {
-//	_, err := s.shippingAddrRepo.DeleteShippingAddressById(shippingAddressId)
-//	if err != nil {
-//		return false, err
-//	}
-//	return true, nil
-//}
-//
-//func (s ShippingAddrServiceImpl) UpdateShippingAddressById(shippingAddressId string, newShippingAddress repository.ShippingAddress) (bool, *errs.AppError) {
-//	_, err := s.shippingAddrRepo.UpdateShippingAddressById(shippingAddressId, newShippingAddress)
-//	if err != nil {
-//		return false, err
-//	}
-//	return true, nil
-//}
+//GetDefaultShippingAddr ..
+func (s ShippingAddrServiceImpl) GetDefaultShippingAddr(isDefaultAddress bool) (*repository.ShippingAddress, *errs.AppError) {
+	data, err := s.shippingAddrRepo.FindDefaultShippingAddressImpl(isDefaultAddress)
+	if err != nil {
+		return nil, err
+	}
+	return data, nil
+}

@@ -3,6 +3,7 @@ package app
 import (
 	"fmt"
 	"github.com/ashwin2125/qwk/shipping/domain/services"
+	"github.com/ashwin2125/qwk/shipping/domain/tools/logger"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -30,7 +31,7 @@ type ShippingAddrDTO struct {
 
 // CreateShippingAddrHandlerFunc ..
 // @Summary      Creates New Shipping Address
-// @Description  Creates a shipping address for the user.
+// @Description  Creates a new shipping address for the user.
 // @Tags         ShippingAddress Service
 // @Produce      json
 // @Success      200  {object}  map[string]interface{}
@@ -76,7 +77,7 @@ func (sh ShippingHandler) CreateShippingAddrHandlerFunc() gin.HandlerFunc {
 // @Produce      json
 // @Success      200  {object}  map[string]interface{}
 // @Failure      400  {number} 	http.StatusBadRequest
-// @Router       /shippingaddress/:id    [get]
+// @Router       /getAddress/:id    [get]
 func (sh ShippingHandler) GetShippingAddrHandlerFunc() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		id := ctx.Param("id")
@@ -88,5 +89,25 @@ func (sh ShippingHandler) GetShippingAddrHandlerFunc() gin.HandlerFunc {
 			return
 		}
 		ctx.JSON(http.StatusAccepted, gin.H{"record": res})
+	}
+}
+
+// GetDefaultShippingAddrHandlerFunc ..
+// @Summary      Gets Default Shipping Address
+// @Description  Returns default Shipping Address
+// @Tags         ShippingAddress Service
+// @Produce      json
+// @Success      200  {object}  map[string]interface{}
+// @Failure      400  {number} 	http.StatusBadRequest
+// @Router       /existing/   [get]
+func (sh ShippingHandler) GetDefaultShippingAddrHandlerFunc() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		res, err := sh.ShippingAddrService.GetDefaultShippingAddr(true)
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Provided Shipping Address does not exist"})
+			return
+		}
+		logger.Info("Default Address Fetched ✅ ", res)
+		ctx.JSON(http.StatusAccepted, res)
 	}
 }

@@ -6,9 +6,11 @@ import (
 	"github.com/ashwin2125/qwk/shipping/domain/database"
 	"github.com/ashwin2125/qwk/shipping/domain/models"
 	"github.com/ashwin2125/qwk/shipping/domain/tools/errs"
+	"github.com/ashwin2125/qwk/shipping/domain/tools/logger"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
+	"github.com/aws/aws-sdk-go/service/dynamodb/expression"
 	"time"
 )
 
@@ -32,6 +34,7 @@ type ShippingAddress struct {
 type ShippingAddrRepo interface {
 	CreateNewShippingAddrImpl(ShippingAddress) (string, *errs.AppError)
 	FindShippingAddressByIdImpl(string) (*ShippingAddress, *errs.AppError)
+	FindDefaultShippingAddressImpl(bool) (*ShippingAddress, *errs.AppError)
 }
 
 //ShippingAddressRepoImpl ..
@@ -83,7 +86,7 @@ func ShippingAddrRepoFunc() ShippingAddressRepoImpl {
 }
 
 //CreateNewShippingAddrImpl ..
-func (sdr ShippingAddressRepoImpl) CreateNewShippingAddrImpl(p ShippingAddress) (string, *errs.AppError) {
+func (sar ShippingAddressRepoImpl) CreateNewShippingAddrImpl(p ShippingAddress) (string, *errs.AppError) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	ShippingAddressRecord := toPersistedDynamodbEntitySA(p)
@@ -97,7 +100,7 @@ func (sdr ShippingAddressRepoImpl) CreateNewShippingAddrImpl(p ShippingAddress) 
 		TableName: aws.String("team-1-shipping"),
 	}
 
-	_, err = sdr.Session.PutItemWithContext(ctx, input)
+	_, err = sar.Session.PutItemWithContext(ctx, input)
 
 	if err != nil {
 		return "", &errs.AppError{Message: fmt.Sprintf("Unable to Put the Item in DB - %s", err.Error())}
@@ -107,7 +110,7 @@ func (sdr ShippingAddressRepoImpl) CreateNewShippingAddrImpl(p ShippingAddress) 
 }
 
 //FindShippingAddressByIdImpl ..
-func (sdr ShippingAddressRepoImpl) FindShippingAddressByIdImpl(shippingAddressId string) (*ShippingAddress, *errs.AppError) {
+func (sar ShippingAddressRepoImpl) FindShippingAddressByIdImpl(shippingAddressId string) (*ShippingAddress, *errs.AppError) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
@@ -120,7 +123,7 @@ func (sdr ShippingAddressRepoImpl) FindShippingAddressByIdImpl(shippingAddressId
 		},
 	}
 
-	result, err := sdr.Session.GetItemWithContext(ctx, input)
+	result, err := sar.Session.GetItemWithContext(ctx, input)
 	if err != nil {
 		return nil, &errs.AppError{Message: fmt.Sprintf("Unable to Get the Item in DB - %s", err.Error())}
 	}
@@ -137,4 +140,35 @@ func (sdr ShippingAddressRepoImpl) FindShippingAddressByIdImpl(shippingAddressId
 	}
 
 	return (*ShippingAddress)(&ShippingAddressModel), nil
+}
+
+// FindDefaultShippingAddressImpl  ..
+func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(isDefaultAddress bool) (*ShippingAddress, *errs.AppError) {
+	item := models.ShippingAddrModel{}
+	filt := expression.Name("default_address").Equal(expression.Value(isDefaultAddress))
+	expr, err := expression.NewBuilder().WithFilter(filt).Build()
+	if err != nil {
+		fmt.Println("Error in Expression Builder")
+		logger.Error("Got Error building expression: %s", err)
+	}
+	params := &dynamodb.ScanInput{
+		ExpressionAttributeNames:  expr.Names(),
+		ExpressionAttributeValues: expr.Values(),
+		FilterExpression:          expr.Filter(),
+		TableName:                 aws.String("team-1-shipping"),
+	}
+	result, err := sar.Session.Scan(params)
+	if err != nil {
+		fmt.Println("Error in API Query")
+		logger.Error("Query API call failed - %s", err)
+	}
+	for _, i := range result.Items {
+		err = dynamodbattribute.UnmarshalMap(i, &item)
+		if err != nil {
+			fmt.Println(item)
+			fmt.Println("Error in Unmarshalling the values")
+			logger.Error("Got error while unmarshalling - %s", err)
+		}
+	}
+	return (*ShippingAddress)(&item), nil
 }

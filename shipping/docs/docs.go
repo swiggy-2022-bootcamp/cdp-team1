@@ -47,16 +47,16 @@ const docTemplate = `{
                 }
             }
         },
-        "/newAddress": {
-            "post": {
-                "description": "Creates a shipping address for the user.",
+        "/existing/": {
+            "get": {
+                "description": "Returns default Shipping Address",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "ShippingAddress Service"
                 ],
-                "summary": "Creates New Shipping Address",
+                "summary": "Gets Default Shipping Address",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -74,7 +74,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/shippingaddress/:id": {
+        "/getAddress/:id": {
             "get": {
                 "description": "Returns shippingAddress from ShippingAddressId",
                 "produces": [
@@ -84,6 +84,33 @@ const docTemplate = `{
                     "ShippingAddress Service"
                 ],
                 "summary": "Get Shipping Address By ShippingAddressId",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/newAddress": {
+            "post": {
+                "description": "Creates a new shipping address for the user.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ShippingAddress Service"
+                ],
+                "summary": "Creates New Shipping Address",
                 "responses": {
                     "200": {
                         "description": "OK",

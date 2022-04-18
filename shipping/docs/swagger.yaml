@@ -27,9 +27,9 @@ paths:
       summary: Health of shipping service
       tags:
       - Health
-  /newAddress:
-    post:
-      description: Creates a shipping address for the user.
+  /existing/:
+    get:
+      description: Returns default Shipping Address
       produces:
       - application/json
       responses:
@@ -42,10 +42,10 @@ paths:
           description: Bad Request
           schema:
             type: number
-      summary: Creates New Shipping Address
+      summary: Gets Default Shipping Address
       tags:
       - ShippingAddress Service
-  /shippingaddress/:id:
+  /getAddress/:id:
     get:
       description: Returns shippingAddress from ShippingAddressId
       produces:
@@ -61,6 +61,24 @@ paths:
           schema:
             type: number
       summary: Get Shipping Address By ShippingAddressId
+      tags:
+      - ShippingAddress Service
+  /newAddress:
+    post:
+      description: Creates a new shipping address for the user.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Creates New Shipping Address
       tags:
       - ShippingAddress Service
 schemes:
