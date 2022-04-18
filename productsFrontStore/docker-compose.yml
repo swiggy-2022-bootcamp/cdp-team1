@@ -5,5 +5,6 @@ services:
     ports:
       - "9009:9009"
       - "19091:19091"
-    volumes:
-      - .:/app
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}

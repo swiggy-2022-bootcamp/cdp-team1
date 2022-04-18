@@ -31,3 +31,6 @@ main
 
 # Code coverage reports
 *.cov
+
+# Environment file
+*.env
