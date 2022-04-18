@@ -8,9 +8,9 @@ import (
 
 type OrderService interface {
 	GetAllOrder() (*[]model.Order, *error.AppError)
-	GetOrderByStatus(string) (*[]model.Order, *error.AppError)
-	UpdateOrder(model.Order) (*model.Order, *error.AppError)
-	DeleteOrderById(string) (*model.Order, *error.AppError)
+	GetOrderByStatus(string) (*model.Order, *error.AppError)
+	UpdateOrder(model.Order) *error.AppError
+	DeleteOrderById(string) *error.AppError
 	DeleteAllOrder() *error.AppError
 }
 
@@ -35,7 +35,7 @@ func (odb OrderServiceImpl) GetAllOrder() (*[]model.Order, *error.AppError) {
 	return u, nil
 }
 
-func (odb OrderServiceImpl) GetOrderByStatus(status string) (*[]model.Order, *error.AppError) {
+func (odb OrderServiceImpl) GetOrderByStatus(status string) (*model.Order, *error.AppError) {
 
 	u, err := odb.orderRepository.ReadStatus(status)
 
@@ -46,26 +46,26 @@ func (odb OrderServiceImpl) GetOrderByStatus(status string) (*[]model.Order, *er
 	return u, nil
 }
 
-func (odb OrderServiceImpl) UpdateOrder(order model.Order) (*model.Order, *error.AppError) {
+func (odb OrderServiceImpl) UpdateOrder(order model.Order) *error.AppError {
 
-	u, err := odb.orderRepository.Update(order)
+	err := odb.orderRepository.Update(order)
 
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return u, nil
+	return nil
 }
 
-func (odb OrderServiceImpl) DeleteOrderById(id string) (*model.Order, *error.AppError) {
+func (odb OrderServiceImpl) DeleteOrderById(id string) *error.AppError {
 
-	u, err := odb.orderRepository.Delete(model.Order{Id: id})
+	err := odb.orderRepository.Delete(model.Order{OrderId: id})
 
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return u, nil
+	return nil
 }
 
 func (odb OrderServiceImpl) DeleteAllOrder() *error.AppError {

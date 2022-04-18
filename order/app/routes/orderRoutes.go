@@ -28,6 +28,6 @@ func (or OrderRoutes) InitRoutes(newRouter *gin.RouterGroup) {
 	newRouter.GET("/orders/:id", or.orderHandler.GetOrderById)
 	newRouter.PUT("orders/:id", or.orderHandler.UpdateOrder)
 	newRouter.DELETE("/orders/:id", or.orderHandler.DeleteOrderById)
-	newRouter.GET("/orders/users/:id", or.orderHandler.GetOrderByCustomerId)
+	newRouter.GET("/orders/user/:id", or.orderHandler.GetOrderByCustomerId)
 	newRouter.POST("/orders/invoice/:id", or.orderHandler.CreateInvoice)
 }

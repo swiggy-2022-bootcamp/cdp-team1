@@ -8,7 +8,7 @@ type Product struct {
 }
 
 type Order struct {
-	Id         string             `json:"id,omitempty"`
+	OrderId    string             `json:"id,omitempty"`
 	CustomerId primitive.ObjectID `json:"customer_id,omitempty"`
 	Status     string             `json:"status"`
 	Datetime   string             `json:"datetime"`

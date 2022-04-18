@@ -6,19 +6,24 @@ import (
 	"orderService/internal/error"
 	"orderService/log"
 
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 )
 
 type OrderRepositoryDB interface {
-	ReadStatus(string) (*[]model.Order, *error.AppError)
+	Create(model.Order) *error.AppError
+	ReadStatus(string) (*model.Order, *error.AppError)
 	ReadID(string) (*model.Order, *error.AppError)
 	ReadCustomerID(string) (*model.Order, *error.AppError)
 	ReadAll() (*[]model.Order, *error.AppError)
-	Update(model.Order) (*model.Order, *error.AppError)
-	Delete(model.Order) (*model.Order, *error.AppError)
+	Update(model.Order) *error.AppError
+	Delete(model.Order) *error.AppError
 	DeleteAll() *error.AppError
 	DBHealthCheck() bool
 }
+
+const orderCollection = "orderCollection"
 
 type OrderRepository struct {
 	orderDB *dynamodb.DynamoDB
@@ -42,114 +47,247 @@ func (or OrderRepository) DBHealthCheck() bool {
 	return true
 }
 
-func (odb OrderRepository) ReadStatus(id string) (*[]model.Order, *error.AppError) {
+func (odb OrderRepository) Create(order model.Order) *error.AppError {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	data, err := dynamodbattribute.MarshalMap(order)
+	if err != nil {
+		log.Error("Marshalling of order failed - " + err.Error())
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	// orderCollection := Collection(cdb.dbClient, "Order")
-	// order := model.Order{}
-	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
+	query := &dynamodb.PutItemInput{
+		Item:      data,
+		TableName: aws.String(orderCollection),
+	}
 
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
+	_, err = odb.orderDB.PutItem(query)
+	if err != nil {
+		log.Error("Failed to insert item into database - " + err.Error())
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	return &[]model.Order{}, nil
+	return nil
+}
+
+func (odb OrderRepository) ReadStatus(status string) (*model.Order, *error.AppError) {
+
+	order := &model.Order{}
+
+	query := &dynamodb.GetItemInput{
+		TableName: aws.String(orderCollection),
+		Key: map[string]*dynamodb.AttributeValue{
+			"status": {
+				S: aws.String(status),
+			},
+		},
+	}
+
+	result, err := odb.orderDB.GetItem(query)
+	if err != nil {
+		log.Info(result)
+		log.Error("Failed to get item from database - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
+
+	if result.Item == nil {
+		log.Error("This status for user doesn't exists. - ")
+		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		return nil, notFoundError
+	}
+
+	err = dynamodbattribute.UnmarshalMap(result.Item, order)
+	if err != nil {
+		log.Error("Failed to unmarshal document fetched from DB - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
+
+	return order, nil
+
 }
 
 func (odb OrderRepository) ReadID(id string) (*model.Order, *error.AppError) {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	order := &model.Order{}
 
-	// orderCollection := Collection(cdb.dbClient, "Order")
-	// order := model.Order{}
-	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
+	query := &dynamodb.GetItemInput{
+		TableName: aws.String(orderCollection),
+		Key: map[string]*dynamodb.AttributeValue{
+			"OrderId": {
+				S: aws.String(id),
+			},
+		},
+	}
 
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
+	result, err := odb.orderDB.GetItem(query)
+	if err != nil {
+		log.Info(result)
+		log.Error("Failed to get item from database - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
 
-	return &model.Order{}, nil
+	if result.Item == nil {
+		log.Error("This order for user doesn't exist. - ")
+		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		return nil, notFoundError
+	}
+
+	err = dynamodbattribute.UnmarshalMap(result.Item, order)
+	if err != nil {
+		log.Error("Failed to unmarshal document fetched from DB - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
+
+	return order, nil
 }
 
-func (odb OrderRepository) ReadCustomerID(id string) (*model.Order, *error.AppError) {
+func (odb OrderRepository) ReadCustomerID(customer_id string) (*model.Order, *error.AppError) {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	order := &model.Order{}
 
-	// orderCollection := Collection(cdb.dbClient, "Order")
-	// order := model.Order{}
-	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
+	query := &dynamodb.GetItemInput{
+		TableName: aws.String(orderCollection),
+		Key: map[string]*dynamodb.AttributeValue{
+			"CustomerId": {
+				S: aws.String(customer_id),
+			},
+		},
+	}
 
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
+	result, err := odb.orderDB.GetItem(query)
+	if err != nil {
+		log.Info(result)
+		log.Error("Failed to get item from database - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
 
-	return &model.Order{}, nil
+	if result.Item == nil {
+		log.Error("Order for user doesn't exist. - ")
+		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		return nil, notFoundError
+	}
+
+	err = dynamodbattribute.UnmarshalMap(result.Item, order)
+	if err != nil {
+		log.Error("Failed to unmarshal document fetched from DB - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
+
+	return order, nil
 }
 
 func (odb OrderRepository) ReadAll() (*[]model.Order, *error.AppError) {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	order := &[]model.Order{}
 
-	// orderCollection := Collection(cdb.dbClient, "Order")
-	// order := model.Order{}
-	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
+	query := &dynamodb.ScanInput{
+		TableName: aws.String(orderCollection),
+	}
 
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
+	result, err := odb.orderDB.Scan(query)
+	if err != nil {
+		log.Info(result)
+		log.Error("Failed to get item from database - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
 
-	return &[]model.Order{}, nil
+	if result.Items == nil {
+		log.Error("Order for user doesn't exist. - ")
+		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		return nil, notFoundError
+	}
+
+	err = dynamodbattribute.UnmarshalListOfMaps(result.Items, order)
+	if err != nil {
+		log.Error("Failed to unmarshal document fetched from DB - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
+
+	return order, nil
 }
 
-func (odb OrderRepository) Update(order model.Order) (*model.Order, *error.AppError) {
+func (odb OrderRepository) Update(order model.Order) *error.AppError {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	update, err := dynamodbattribute.MarshalMap(order)
+	if err != nil {
+		log.Error(err)
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	// orderCollection := Collection(cdb.dbClient, "Order")
-	// order := model.Order{}
-	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
+	input := &dynamodb.UpdateItemInput{
+		Key: map[string]*dynamodb.AttributeValue{
+			"id": {
+				S: aws.String(order.OrderId),
+			},
+		},
+		TableName:                 aws.String(orderCollection),
+		UpdateExpression:          aws.String("set order = :order"),
+		ExpressionAttributeValues: update,
+		ReturnValues:              aws.String("UPDATED_NEW"),
+	}
 
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
+	_, err = odb.orderDB.UpdateItem(input)
+	if err != nil {
+		log.Error(err)
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	return &model.Order{}, nil
+	return nil
 }
 
-func (odb OrderRepository) Delete(order model.Order) (*model.Order, *error.AppError) {
+func (odb OrderRepository) Delete(order model.Order) *error.AppError {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	input := &dynamodb.DeleteItemInput{
+		Key: map[string]*dynamodb.AttributeValue{
+			"id": {
+				S: aws.String(order.OrderId),
+			},
+		},
+		TableName: aws.String(orderCollection),
+	}
 
-	// orderCollection := Collection(cdb.dbClient, "Order")
-	// order := model.Order{}
-	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
+	_, err := odb.orderDB.DeleteItem(input)
+	if err != nil {
+		log.Error(err)
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
-
-	return &model.Order{}, nil
+	return nil
 }
 
 func (odb OrderRepository) DeleteAll() *error.AppError {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	input := &dynamodb.ScanInput{
+		TableName: aws.String(orderCollection),
+	}
 
-	// orderCollection := Collection(cdb.dbClient, "Order")
-	// order := model.Order{}
-	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
+	result, err := odb.orderDB.Scan(input)
+	if err != nil {
+		log.Error(err)
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	// if err != nil {
-	// 	return error.NewUnexpectedError("Unexpected error from DB")
-	// }
+	if result.Items == nil {
+		log.Error("Order for user doesn't exist. - ")
+		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		return notFoundError
+	}
+
+	for _, item := range result.Items {
+		input := &dynamodb.DeleteItemInput{
+			Key: map[string]*dynamodb.AttributeValue{
+				"id": {
+					S: aws.String(*item["id"].S),
+				},
+			},
+			TableName: aws.String(orderCollection),
+		}
+
+		_, err := odb.orderDB.DeleteItem(input)
+		if err != nil {
+			log.Error(err)
+			return error.NewUnexpectedError(err.Error())
+		}
+	}
 
 	return nil
 }
