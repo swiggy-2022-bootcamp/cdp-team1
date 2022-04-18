@@ -15,3 +15,13 @@
 # vendor/
 .idea/*
 *.ini
+.aws/*
+*.env
+shipping/.idea/httpRequests/http-client.cookies
+shipping/.idea/httpRequests/2022-04-16T093512.200.json
+shipping/.idea/modules.xml
+shipping/.idea/vcs.xml
+shipping/.idea/shipping.iml
+shipping/.idea/workspace.xml
+shipping/.idea/httpRequests/http-requests-log.http
+shipping/.aws/credentials
