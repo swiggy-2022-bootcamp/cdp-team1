@@ -6,7 +6,7 @@
     "info": {
         "description": "ShippingAddress Service",
         "title": "Gin Swagger Example API",
-        "termsOfService": "http://swagger.io/terms/",
+        "termsOfService": "https://swagger.io/terms/",
         "contact": {
             "name": "Ashwin Gopalsamy",
             "email": "ashwinyaal@gmail.com"

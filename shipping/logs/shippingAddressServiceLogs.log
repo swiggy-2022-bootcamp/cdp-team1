@@ -317,3 +317,139 @@ GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 [GIN] 2022/04/18 - 07:42:47 | 200 |       270.2µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
 GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T07:42:47+05:30 0s 
 [GIN] 2022/04/18 - 07:42:47 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+📛ERROR: 2022/04/18 20:01:32 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 20:01:32 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/swagger/index.html 2022-04-18T20:01:54+05:30 568.4µs 
+[GIN] 2022/04/18 - 20:01:54 | 200 |       568.4µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:02:00+05:30 0s 
+[GIN] 2022/04/18 - 20:02:00 | 200 |       999.7µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:02:00+05:30 2.9968ms 
+[GIN] 2022/04/18 - 20:02:00 | 200 |      3.9969ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:02:00+05:30 997.6µs 
+[GIN] 2022/04/18 - 20:02:00 | 200 |      1.9968ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:02:00+05:30 999.2µs 
+[GIN] 2022/04/18 - 20:02:00 | 200 |       999.2µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:02:00+05:30 774.9µs 
+[GIN] 2022/04/18 - 20:02:00 | 200 |       774.9µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+📛ERROR: 2022/04/18 20:26:33 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 20:26:33 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:37+05:30 0s 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       519.5µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:37+05:30 0s 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       508.2µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:37+05:30 581.8µs 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       581.8µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:37+05:30 6.3223ms 
+[GIN] 2022/04/18 - 20:26:37 | 200 |      6.3223ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:37+05:30 1.003ms 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       1.003ms |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:37+05:30 0s 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       653.5µs |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 304 |       823.1µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 304 |       947.4µs |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 903.8µs 
+[GIN] 2022/04/18 - 20:26:39 | 200 |       903.8µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:39+05:30 1.0017ms 
+[GIN] 2022/04/18 - 20:26:39 | 304 |      1.0017ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:39+05:30 0s 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 461.8µs 
+[GIN] 2022/04/18 - 20:26:39 | 200 |       461.8µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 896.7µs 
+[GIN] 2022/04/18 - 20:26:39 | 200 |       896.7µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 693.5µs 
+[GIN] 2022/04/18 - 20:26:39 | 200 |       693.5µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:39+05:30 1.5753ms 
+[GIN] 2022/04/18 - 20:26:39 | 200 |      1.5753ms |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |       506.3µs |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:39+05:30 221.2µs 
+[GIN] 2022/04/18 - 20:26:39 | 304 |       221.2µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 757.7µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       757.7µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:40+05:30 1.0023ms 
+[GIN] 2022/04/18 - 20:26:40 | 304 |      1.0023ms |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 304 |         641µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:40+05:30 641µs 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:40+05:30 641µs 
+[GIN] 2022/04/18 - 20:26:40 | 304 |         641µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+[GIN] 2022/04/18 - 20:26:40 | 304 |         641µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 501.3µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       501.3µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 664.2µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       664.2µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 463.9µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       463.9µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 497.8µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       497.8µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 843.8µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       843.8µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 671.2µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       671.2µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 999µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |         999µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 552.8µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       552.8µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:41+05:30 0s 
+[GIN] 2022/04/18 - 20:26:41 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:41+05:30 0s 
+[GIN] 2022/04/18 - 20:26:41 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:48+05:30 0s 
+[GIN] 2022/04/18 - 20:26:48 | 200 |      1.0032ms |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:57+05:30 733.1µs 
+[GIN] 2022/04/18 - 20:26:57 | 200 |       733.1µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger.json 2022-04-18T20:27:03+05:30 0s 
+[GIN] 2022/04/18 - 20:27:03 | 404 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger.json"
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/do.json 2022-04-18T20:27:06+05:30 1.0048ms 
+[GIN] 2022/04/18 - 20:27:06 | 404 |      1.0651ms |             ::1 | GET      "/shipping/api/swagger/do.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:27:08+05:30 993.5µs 
+[GIN] 2022/04/18 - 20:27:08 | 200 |       993.5µs |             ::1 | GET      "/shipping/api/swagger/doc.json"

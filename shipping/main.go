@@ -5,7 +5,7 @@ import "github.com/ashwin2125/qwk/shipping/app"
 // @title Gin Swagger Example API
 // @version 2.0
 // @description ShippingAddress Service
-// @termsOfService http://swagger.io/terms/
+// @termsOfService https://swagger.io/terms/
 
 // @contact.name Ashwin Gopalsamy
 // @contact.email ashwinyaal@gmail.com
