@@ -89,6 +89,14 @@ func (s TransactionProtoServer) UseTransactionPoints(ctx context.Context, transa
 	}
 }
 
+func (s TransactionProtoServer) GetTransactionPoints(ctx context.Context, request *protos.GetPointsRequest) (*protos.GetPointsResponse, error) {
+	userTransactionPoints, err := transactionRepository.GetTransactionPointsByUserIdFromDB(request.GetUserId())
+	if err != nil {
+		return &protos.GetPointsResponse{Points: int32(-1)}, err.Error()
+	}
+	return &protos.GetPointsResponse{Points: int32(userTransactionPoints)}, nil
+}
+
 func (s TransactionProtoServer) CalculateTransactionPoints(transactionDetails *protos.TransactionDetails) int {
 	//For every 100 Rupees user will get 1 transaction point
 	var points int

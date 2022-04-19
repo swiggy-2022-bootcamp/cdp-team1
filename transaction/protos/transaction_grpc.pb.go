@@ -24,6 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type TransactionPointsClient interface {
 	AddTransactionPoints(ctx context.Context, in *TransactionDetails, opts ...grpc.CallOption) (*AddPointsResponse, error)
 	UseTransactionPoints(ctx context.Context, in *TransactionDetails, opts ...grpc.CallOption) (*UsePointsResponse, error)
+	GetTransactionPoints(ctx context.Context, in *GetPointsRequest, opts ...grpc.CallOption) (*GetPointsResponse, error)
 }
 
 type transactionPointsClient struct {
@@ -52,12 +53,22 @@ func (c *transactionPointsClient) UseTransactionPoints(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *transactionPointsClient) GetTransactionPoints(ctx context.Context, in *GetPointsRequest, opts ...grpc.CallOption) (*GetPointsResponse, error) {
+	out := new(GetPointsResponse)
+	err := c.cc.Invoke(ctx, "/protos.TransactionPoints/GetTransactionPoints", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TransactionPointsServer is the server API for TransactionPoints service.
 // All implementations must embed UnimplementedTransactionPointsServer
 // for forward compatibility
 type TransactionPointsServer interface {
 	AddTransactionPoints(context.Context, *TransactionDetails) (*AddPointsResponse, error)
 	UseTransactionPoints(context.Context, *TransactionDetails) (*UsePointsResponse, error)
+	GetTransactionPoints(context.Context, *GetPointsRequest) (*GetPointsResponse, error)
 	mustEmbedUnimplementedTransactionPointsServer()
 }
 
@@ -70,6 +81,9 @@ func (UnimplementedTransactionPointsServer) AddTransactionPoints(context.Context
 }
 func (UnimplementedTransactionPointsServer) UseTransactionPoints(context.Context, *TransactionDetails) (*UsePointsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UseTransactionPoints not implemented")
+}
+func (UnimplementedTransactionPointsServer) GetTransactionPoints(context.Context, *GetPointsRequest) (*GetPointsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionPoints not implemented")
 }
 func (UnimplementedTransactionPointsServer) mustEmbedUnimplementedTransactionPointsServer() {}
 
@@ -120,6 +134,24 @@ func _TransactionPoints_UseTransactionPoints_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TransactionPoints_GetTransactionPoints_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPointsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TransactionPointsServer).GetTransactionPoints(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/protos.TransactionPoints/GetTransactionPoints",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TransactionPointsServer).GetTransactionPoints(ctx, req.(*GetPointsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TransactionPoints_ServiceDesc is the grpc.ServiceDesc for TransactionPoints service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -134,6 +166,10 @@ var TransactionPoints_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UseTransactionPoints",
 			Handler:    _TransactionPoints_UseTransactionPoints_Handler,
+		},
+		{
+			MethodName: "GetTransactionPoints",
+			Handler:    _TransactionPoints_GetTransactionPoints_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
