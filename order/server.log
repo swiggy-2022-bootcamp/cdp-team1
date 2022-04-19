@@ -39,3 +39,84 @@ GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/favicon-32x32.png 2022-04-11T10:45:05+05:30 996.6µs 
 GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/favicon-32x32.png 2022-04-11T10:46:57+05:30 0s 
 GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36 /order/api/swagger/favicon-32x32.png 2022-04-11T10:47:16+05:30 0s 
+ERROR: 2022/04/19 23:08:58 [Connection to dynamoDB failed.]
+ERROR: 2022/04/19 23:08:58 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: 80T8VDQMIO9SQ2UGUI59AMML7BVV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders         --> orderService/app/handlers.OrderHandler.GetAllOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/status/:status --> orderService/app/handlers.OrderHandler.GetOrderByStatus-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.GetOrderById-fm (3 handlers)
+[GIN-debug] PUT    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.UpdateOrder-fm (3 handlers)
+[GIN-debug] DELETE /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.DeleteOrderById-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/user/:id --> orderService/app/handlers.OrderHandler.GetOrderByCustomerId-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders/invoice/:id --> orderService/app/handlers.OrderHandler.CreateInvoice-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7000
+ERROR: 2022/04/19 23:08:58 [listen tcp :7000: bind: address already in use - Failed to start server]
+ERROR: 2022/04/19 23:09:32 [Connection to dynamoDB failed.]
+ERROR: 2022/04/19 23:09:33 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: ISFEGJJE8PFOVU9R4AG1M8FSKJVV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders         --> orderService/app/handlers.OrderHandler.GetAllOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/status/:status --> orderService/app/handlers.OrderHandler.GetOrderByStatus-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.GetOrderById-fm (3 handlers)
+[GIN-debug] PUT    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.UpdateOrder-fm (3 handlers)
+[GIN-debug] DELETE /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.DeleteOrderById-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/user/:id --> orderService/app/handlers.OrderHandler.GetOrderByCustomerId-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders/invoice/:id --> orderService/app/handlers.OrderHandler.CreateInvoice-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/19 23:09:33 [listen tcp :5000: bind: address already in use - Failed to start server]
+ERROR: 2022/04/19 23:09:44 [Connection to dynamoDB failed.]
+ERROR: 2022/04/19 23:09:45 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: T6CI2R5LB0HVK0HN5CG543097FVV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders         --> orderService/app/handlers.OrderHandler.GetAllOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/status/:status --> orderService/app/handlers.OrderHandler.GetOrderByStatus-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.GetOrderById-fm (3 handlers)
+[GIN-debug] PUT    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.UpdateOrder-fm (3 handlers)
+[GIN-debug] DELETE /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.DeleteOrderById-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/user/:id --> orderService/app/handlers.OrderHandler.GetOrderByCustomerId-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders/invoice/:id --> orderService/app/handlers.OrderHandler.CreateInvoice-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :2000
+ERROR: 2022/04/19 23:15:33 [Connection to dynamoDB failed.]
+ERROR: 2022/04/19 23:15:33 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: 81UL79L5C5PIIO44OSOS823UC7VV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders         --> orderService/app/handlers.OrderHandler.CreateOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders         --> orderService/app/handlers.OrderHandler.GetAllOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/status/:status --> orderService/app/handlers.OrderHandler.GetOrderByStatus-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.GetOrderById-fm (3 handlers)
+[GIN-debug] PUT    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.UpdateOrder-fm (3 handlers)
+[GIN-debug] DELETE /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.DeleteOrderById-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/user/:id --> orderService/app/handlers.OrderHandler.GetOrderByCustomerId-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders/invoice/:id --> orderService/app/handlers.OrderHandler.CreateInvoice-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :2000
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /orders 2022-04-19T23:15:53+05:30 833ns 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /orders/21 2022-04-19T23:16:54+05:30 666ns 

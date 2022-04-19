@@ -23,6 +23,7 @@ func (or OrderRoutes) InitRoutes(newRouter *gin.RouterGroup) {
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	newRouter.GET("/", or.healthCheckHandler.HealthCheck)
 
+	newRouter.POST("/orders", or.orderHandler.CreateOrder)
 	newRouter.GET("/orders", or.orderHandler.GetAllOrder)
 	newRouter.GET("/orders/status/:status", or.orderHandler.GetOrderByStatus)
 	newRouter.GET("/orders/:id", or.orderHandler.GetOrderById)
