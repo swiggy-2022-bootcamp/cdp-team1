@@ -12,15 +12,15 @@ import (
 )
 
 type OrderRepositoryDB interface {
-	Create(model.Order) *error.AppError
+	Create(*model.Order) *error.AppError
 	ReadStatus(string) (*[]model.Order, *error.AppError)
-	ReadOrderID(string) (*model.Order, *error.AppError)
+	ReadOrderID(string, string) (*model.Order, *error.AppError)
 	ReadCustomerID(string) (*[]model.Order, *error.AppError)
 	ReadAll() (*[]model.Order, *error.AppError)
-	Update(model.Order) *error.AppError
+	Update(string, string) *error.AppError
 	Delete(model.Order) *error.AppError
-	DeleteAll() *error.AppError
 	DBHealthCheck() bool
+	// DeleteAll() *error.AppError
 }
 
 const orderCollection = "orderCollection"
@@ -47,7 +47,7 @@ func (or OrderRepository) DBHealthCheck() bool {
 	return true
 }
 
-func (odb OrderRepository) Create(order model.Order) *error.AppError {
+func (odb OrderRepository) Create(order *model.Order) *error.AppError {
 
 	data, err := dynamodbattribute.MarshalMap(order)
 	if err != nil {
@@ -105,7 +105,7 @@ func (odb OrderRepository) ReadStatus(status string) (*[]model.Order, *error.App
 	return order, nil
 }
 
-func (odb OrderRepository) ReadOrderID(id string) (*model.Order, *error.AppError) {
+func (odb OrderRepository) ReadOrderID(order_id string, customer_id string) (*model.Order, *error.AppError) {
 
 	order := &model.Order{}
 
@@ -113,7 +113,10 @@ func (odb OrderRepository) ReadOrderID(id string) (*model.Order, *error.AppError
 		TableName: aws.String(orderCollection),
 		Key: map[string]*dynamodb.AttributeValue{
 			"OrderId": {
-				S: aws.String(id),
+				S: aws.String(order_id),
+			},
+			"CustomerId": {
+				S: aws.String(customer_id),
 			},
 		},
 	}
@@ -206,27 +209,25 @@ func (odb OrderRepository) ReadAll() (*[]model.Order, *error.AppError) {
 	return order, nil
 }
 
-func (odb OrderRepository) Update(order model.Order) *error.AppError {
-
-	update, err := dynamodbattribute.MarshalMap(order)
-	if err != nil {
-		log.Error(err)
-		return error.NewUnexpectedError(err.Error())
-	}
+func (odb OrderRepository) Update(order_id string, updated_status string) *error.AppError {
 
 	input := &dynamodb.UpdateItemInput{
-		Key: map[string]*dynamodb.AttributeValue{
-			"id": {
-				S: aws.String(order.OrderId),
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			"status": {
+				N: aws.String(updated_status),
 			},
 		},
-		TableName:                 aws.String(orderCollection),
-		UpdateExpression:          aws.String("set order = :order"),
-		ExpressionAttributeValues: update,
-		ReturnValues:              aws.String("UPDATED_NEW"),
+		Key: map[string]*dynamodb.AttributeValue{
+			"OrderId": {
+				S: aws.String(order_id),
+			},
+		},
+		TableName:        aws.String(orderCollection),
+		UpdateExpression: aws.String("set status = :status"),
+		ReturnValues:     aws.String("UPDATED_NEW"),
 	}
 
-	_, err = odb.orderDB.UpdateItem(input)
+	_, err := odb.orderDB.UpdateItem(input)
 	if err != nil {
 		log.Error(err)
 		return error.NewUnexpectedError(err.Error())
@@ -255,40 +256,40 @@ func (odb OrderRepository) Delete(order model.Order) *error.AppError {
 	return nil
 }
 
-func (odb OrderRepository) DeleteAll() *error.AppError {
+// func (odb OrderRepository) DeleteAll() *error.AppError {
 
-	input := &dynamodb.ScanInput{
-		TableName: aws.String(orderCollection),
-	}
+// 	input := &dynamodb.ScanInput{
+// 		TableName: aws.String(orderCollection),
+// 	}
 
-	result, err := odb.orderDB.Scan(input)
-	if err != nil {
-		log.Error(err)
-		return error.NewUnexpectedError(err.Error())
-	}
+// 	result, err := odb.orderDB.Scan(input)
+// 	if err != nil {
+// 		log.Error(err)
+// 		return error.NewUnexpectedError(err.Error())
+// 	}
 
-	if result.Items == nil {
-		log.Error("Order for user doesn't exist. - ")
-		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
-		return notFoundError
-	}
+// 	if result.Items == nil {
+// 		log.Error("Order for user doesn't exist. - ")
+// 		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+// 		return notFoundError
+// 	}
 
-	for _, item := range result.Items {
-		input := &dynamodb.DeleteItemInput{
-			Key: map[string]*dynamodb.AttributeValue{
-				"id": {
-					S: aws.String(*item["id"].S),
-				},
-			},
-			TableName: aws.String(orderCollection),
-		}
+// 	for _, item := range result.Items {
+// 		input := &dynamodb.DeleteItemInput{
+// 			Key: map[string]*dynamodb.AttributeValue{
+// 				"id": {
+// 					S: aws.String(*item["id"].S),
+// 				},
+// 			},
+// 			TableName: aws.String(orderCollection),
+// 		}
 
-		_, err := odb.orderDB.DeleteItem(input)
-		if err != nil {
-			log.Error(err)
-			return error.NewUnexpectedError(err.Error())
-		}
-	}
+// 		_, err := odb.orderDB.DeleteItem(input)
+// 		if err != nil {
+// 			log.Error(err)
+// 			return error.NewUnexpectedError(err.Error())
+// 		}
+// 	}
 
-	return nil
-}
+// 	return nil
+// }
