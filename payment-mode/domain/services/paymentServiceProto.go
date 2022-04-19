@@ -4,6 +4,7 @@ import (
 	"context"
 	app_errors "qwik.in/payment-mode/app-errors"
 	"qwik.in/payment-mode/domain/repository"
+	"qwik.in/payment-mode/log"
 	"qwik.in/payment-mode/protos"
 )
 
@@ -52,4 +53,33 @@ func (s PaymentProtoServer) CompletePayment(ctx context.Context, paymentRequest 
 	}
 
 	return paymentResponse, app_errors.NewNotFoundError("Payment method is not added for the current user.").Error()
+}
+
+func (s PaymentProtoServer) GetPaymentModes(ctx context.Context, paymentModeRequest *protos.PaymentModeRequest) (*protos.PaymentModeResponse, error) {
+
+	paymentModes := make([]*protos.PaymentMode, 0, 0)
+	response := &protos.PaymentModeResponse{
+		UserId:       paymentModeRequest.GetUserId(),
+		PaymentModes: paymentModes,
+	}
+
+	// Fetch payment modes for the given user
+	userPaymentModes, err := paymentRepository.GetPaymentModeFromDB(paymentModeRequest.GetUserId())
+	if err != nil {
+		log.Error(err)
+		return nil, err.Error()
+	}
+
+	//Convert dynamoDB object into proto message object.
+	var paymentModeProto *protos.PaymentMode
+	for _, paymentMode := range userPaymentModes.PaymentModes {
+		paymentModeProto = &protos.PaymentMode{
+			Mode:       paymentMode.Mode,
+			CardNumber: int64(paymentMode.CardNumber),
+			Balance:    int32(paymentMode.Balance),
+		}
+		paymentModes = append(paymentModes, paymentModeProto)
+	}
+	response.PaymentModes = paymentModes
+	return response, nil
 }

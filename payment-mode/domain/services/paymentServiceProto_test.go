@@ -8,8 +8,8 @@ import (
 	"qwik.in/payment-mode/domain/models"
 	"qwik.in/payment-mode/mocks"
 	"qwik.in/payment-mode/protos"
+	"reflect"
 	"testing"
-	"time"
 )
 
 func TestPaymentProtoServer_CompletePayment(t *testing.T) {
@@ -175,10 +175,101 @@ func TestPaymentProtoServer_CompletePayment(t *testing.T) {
 			paymentRepository := mocks.NewMockPaymentRepository(ctrl)
 			tc.buildStubs(paymentRepository)
 			paymentProtoService := NewPaymentProtoService(paymentRepository)
-			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-			defer cancel()
-			isPaymentSuccessful, err := paymentProtoService.CompletePayment(ctx, paymentRequest)
+			isPaymentSuccessful, err := paymentProtoService.CompletePayment(context.Background(), paymentRequest)
 			tc.checkResponse(t, isPaymentSuccessful.IsPaymentSuccessful, err)
+		})
+	}
+}
+
+func TestPaymentProtoServer_GetPaymentModes(t *testing.T) {
+	userId := "abcd-efgh-1234-4321"
+
+	//Object that will be returned from the database.
+	paymentMode := models.PaymentMode{
+		Mode:       "Credit Card",
+		CardNumber: 4242424242424242,
+	}
+	currentPaymentMode := make([]models.PaymentMode, 0, 0)
+	userPaymentMode := models.UserPaymentMode{
+		UserId:       userId,
+		PaymentModes: append(currentPaymentMode, paymentMode),
+	}
+
+	//Proto Object that will be returned to the client
+	paymentRequest := &protos.PaymentModeRequest{
+		UserId: userId,
+	}
+	paymentModeProto := &protos.PaymentMode{
+		Mode:       "Credit Card",
+		CardNumber: 4242424242424242,
+	}
+	currentPaymentModeProto := make([]*protos.PaymentMode, 0, 0)
+	paymentModeResponse := &protos.PaymentModeResponse{
+		UserId:       userId,
+		PaymentModes: append(currentPaymentModeProto, paymentModeProto),
+	}
+
+	testCases := []struct {
+		name          string
+		buildStubs    func(paymentRepository *mocks.MockPaymentRepository)
+		checkResponse func(t *testing.T, response *protos.PaymentModeResponse, err error)
+	}{
+		{
+			name: "SuccessGetPaymentMode",
+			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
+				paymentRepository.EXPECT().
+					GetPaymentModeFromDB(userId).
+					Times(1).
+					Return(&userPaymentMode, nil)
+			},
+			checkResponse: func(t *testing.T, response *protos.PaymentModeResponse, err error) {
+				require.NoError(t, err)
+				require.Equal(t, response, paymentModeResponse)
+
+			},
+		},
+		{
+			name: "FailureUserPaymentModeNotFound",
+			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
+				paymentRepository.EXPECT().
+					GetPaymentModeFromDB(userId).
+					Times(1).
+					Return(nil, app_errors.NewNotFoundError(""))
+
+			},
+			checkResponse: func(t *testing.T, response *protos.PaymentModeResponse, err error) {
+				require.Equal(t, true, reflect.ValueOf(response).IsNil())
+				require.Equal(t, app_errors.NewNotFoundError("").Error(), err)
+			},
+		},
+		{
+			name: "FailureInternalServerError",
+			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
+				paymentRepository.EXPECT().
+					GetPaymentModeFromDB(userId).
+					Times(1).
+					Return(nil, app_errors.NewUnexpectedError(""))
+
+			},
+			checkResponse: func(t *testing.T, response *protos.PaymentModeResponse, err error) {
+				require.Equal(t, true, reflect.ValueOf(response).IsNil())
+				require.Equal(t, app_errors.NewUnexpectedError("").Error(), err)
+			},
+		},
+	}
+
+	for i := range testCases {
+		tc := testCases[i]
+
+		t.Run(tc.name, func(t *testing.T) {
+			ctrl := gomock.NewController(t)
+			defer ctrl.Finish()
+
+			paymentRepository := mocks.NewMockPaymentRepository(ctrl)
+			tc.buildStubs(paymentRepository)
+			paymentProtoServer := NewPaymentProtoService(paymentRepository)
+			result, err := paymentProtoServer.GetPaymentModes(context.Background(), paymentRequest)
+			tc.checkResponse(t, result, err)
 		})
 	}
 }

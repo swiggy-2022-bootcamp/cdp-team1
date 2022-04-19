@@ -6,6 +6,7 @@ option go_package = "/protos";
 
 service Payment{
   rpc CompletePayment (PaymentRequest) returns (PaymentResponse);
+  rpc GetPaymentModes (PaymentModeRequest) returns (PaymentModeResponse);
 }
 
 message PaymentRequest{
@@ -23,4 +24,13 @@ message PaymentMode{
   string mode = 1;
   int64  cardNumber = 2;
   int32  balance = 3;
+}
+
+message PaymentModeRequest{
+  string userId = 1;
+}
+
+message PaymentModeResponse{
+  string userId = 1;
+  repeated PaymentMode paymentModes = 2;
 }
