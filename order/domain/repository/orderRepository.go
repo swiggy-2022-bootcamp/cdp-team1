@@ -2,9 +2,11 @@ package repository
 
 import (
 	"context"
+	"math/rand"
 	"orderService/domain/model"
 	"orderService/internal/error"
 	"orderService/log"
+	"strconv"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -14,11 +16,12 @@ import (
 type OrderRepositoryDB interface {
 	Create(*model.Order) *error.AppError
 	ReadStatus(string) (*[]model.Order, *error.AppError)
-	ReadOrderID(string, string) (*model.Order, *error.AppError)
+	ReadOrderID(string) (*model.Order, *error.AppError)
 	ReadCustomerID(string) (*[]model.Order, *error.AppError)
 	ReadAll() (*[]model.Order, *error.AppError)
 	Update(string, string) *error.AppError
 	Delete(model.Order) *error.AppError
+	CreateOrderInvoice(string) *error.AppError
 	DBHealthCheck() bool
 	// DeleteAll() *error.AppError
 }
@@ -105,7 +108,7 @@ func (odb OrderRepository) ReadStatus(status string) (*[]model.Order, *error.App
 	return order, nil
 }
 
-func (odb OrderRepository) ReadOrderID(order_id string, customer_id string) (*model.Order, *error.AppError) {
+func (odb OrderRepository) ReadOrderID(order_id string) (*model.Order, *error.AppError) {
 
 	order := &model.Order{}
 
@@ -114,9 +117,6 @@ func (odb OrderRepository) ReadOrderID(order_id string, customer_id string) (*mo
 		Key: map[string]*dynamodb.AttributeValue{
 			"OrderId": {
 				S: aws.String(order_id),
-			},
-			"CustomerId": {
-				S: aws.String(customer_id),
 			},
 		},
 	}
@@ -248,6 +248,36 @@ func (odb OrderRepository) Delete(order model.Order) *error.AppError {
 	}
 
 	_, err := odb.orderDB.DeleteItem(input)
+	if err != nil {
+		log.Error(err)
+		return error.NewUnexpectedError(err.Error())
+	}
+
+	return nil
+}
+
+func (odb OrderRepository) CreateOrderInvoice(order_id string) *error.AppError {
+
+	invoice_number := rand.Intn(1000000)
+	invoice_number_str := strconv.Itoa(invoice_number)
+
+	input := &dynamodb.UpdateItemInput{
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			"Invoice": {
+				N: aws.String(invoice_number_str),
+			},
+		},
+		Key: map[string]*dynamodb.AttributeValue{
+			"OrderId": {
+				S: aws.String(order_id),
+			},
+		},
+		TableName:        aws.String(orderCollection),
+		UpdateExpression: aws.String("set status = :status"),
+		ReturnValues:     aws.String("UPDATED_NEW"),
+	}
+
+	_, err := odb.orderDB.UpdateItem(input)
 	if err != nil {
 		log.Error(err)
 		return error.NewUnexpectedError(err.Error())

@@ -10,11 +10,11 @@ type OrderService interface {
 	CreateOrder(*model.Order) *error.AppError
 	GetAllOrders() (*[]model.Order, *error.AppError)
 	GetOrderByStatus(string) (*[]model.Order, *error.AppError)
-	GetOrderById(string, string) (*model.Order, *error.AppError)
+	GetOrderById(string) (*model.Order, *error.AppError)
 	GetOrderByCustomerId(string) (*[]model.Order, *error.AppError)
 	UpdateOrder(string, string) *error.AppError
 	DeleteOrderById(string) *error.AppError
-	CreateInvoice() *error.AppError
+	CreateInvoice(string) *error.AppError
 	// DeleteAllOrders() *error.AppError
 }
 
@@ -61,9 +61,9 @@ func (odb OrderServiceImpl) GetOrderByStatus(status string) (*[]model.Order, *er
 	return u, nil
 }
 
-func (odb OrderServiceImpl) GetOrderById(order_id string, customer_id string) (*model.Order, *error.AppError) {
+func (odb OrderServiceImpl) GetOrderById(order_id string) (*model.Order, *error.AppError) {
 
-	u, err := odb.orderRepository.ReadOrderID(order_id, customer_id)
+	u, err := odb.orderRepository.ReadOrderID(order_id)
 
 	if err != nil {
 		return nil, err
@@ -105,13 +105,13 @@ func (odb OrderServiceImpl) DeleteOrderById(id string) *error.AppError {
 	return nil
 }
 
-func (odb OrderServiceImpl) CreateInvoice() *error.AppError {
+func (odb OrderServiceImpl) CreateInvoice(order_id string) *error.AppError {
 
-	// err := odb.orderRepository.CreateInvoice()
+	err := odb.orderRepository.CreateOrderInvoice(order_id)
 
-	// if err != nil {
-	// 	return err
-	// }
+	if err != nil {
+		return err
+	}
 
 	return nil
 }

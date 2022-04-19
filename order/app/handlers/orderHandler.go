@@ -20,12 +20,11 @@ func NewOrderHandler(orderService service.OrderService) OrderHandler {
 	return OrderHandler{orderService: orderService}
 }
 
-// Order godoc
+// CreaterOrder godoc
 // @Summary To place an order for a user
 // @Description To create orders
 // @Tags Order
 // @Schemes
-// @Accept json
 // @Produce json
 // @Success	200  string 	Order created successfully
 // @Failure 400  string 	Bad request
@@ -57,6 +56,16 @@ func (oh OrderHandler) CreateOrder(c *gin.Context) {
 
 }
 
+// GetAllOrders godoc
+// @Summary To get all orders.
+// @Description Fetch all orders in the database
+// @Tags Order
+// @Schemes
+// @Produce json
+// @Success	200  {object} 	model.Order
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /orders [GET]
 func (oh OrderHandler) GetAllOrder(c *gin.Context) {
 
 	result, err := oh.orderService.GetAllOrders()
@@ -69,6 +78,18 @@ func (oh OrderHandler) GetAllOrder(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": result})
 }
 
+// GetOrderByOrderStatus godoc
+// @Summary To get all order of a specific status.
+// @Description Fetch all the orders with a specific status
+// @Tags Order
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param status string true "status"
+// @Success	200  {object} 	model.Order
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /orders/status/:status [GET]
 func (oh OrderHandler) GetOrderByStatus(c *gin.Context) {
 
 	var status string
@@ -88,9 +109,19 @@ func (oh OrderHandler) GetOrderByStatus(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": result})
 }
 
+// GetOrderByOrderId godoc
+// @Summary To get an order by order id.
+// @Description Fetch the order by the order id
+// @Tags Order
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param id string true "id"
+// @Success	200  {object} 	model.Order
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /orders/:id [GET]
 func (oh OrderHandler) GetOrderById(c *gin.Context) {
-
-	customer_id := "dummy" // To be replaced with grpc call to auth service
 
 	var order_id string
 	if err := c.BindJSON(&order_id); err != nil {
@@ -106,7 +137,7 @@ func (oh OrderHandler) GetOrderById(c *gin.Context) {
 		return
 	}
 
-	result, err := oh.orderService.GetOrderById(order_id, customer_id)
+	result, err := oh.orderService.GetOrderById(order_id)
 	if err != nil {
 		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})
@@ -116,20 +147,156 @@ func (oh OrderHandler) GetOrderById(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": result})
 }
 
+// GetOrderByOrderId godoc
+// @Summary To get an order by order id.
+// @Description Fetch the order by the order id
+// @Tags Order
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param id string true "id"
+// @Param req body string true "Updated status"
+// @Success	200  string 	Order updated successfully
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /orders/:id [PUT]
 func (oh OrderHandler) UpdateOrder(c *gin.Context) {
-	//todo
+
+	order_id := c.Param("id")
+
+	// get order id from parameter and status from body
+	var status string
+	if err := c.BindJSON(&status); err != nil {
+		c.Error(err)
+		requestError := error.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
+		return
+	}
+
+	//use the validator library to validate required fields
+	if validationErr := validate.Struct(&status); validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+		return
+	}
+
+	err := oh.orderService.UpdateOrder(order_id, status)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Order updated successfully"})
 }
 
+// DeleteOrderById godoc
+// @Summary To delete an order by order id.
+// @Description Delete the order by the order id
+// @Tags Order
+// @Schemes
+// @Accept json
+// @Param id string true "id"
+// @Success	200  string 	Order deleted successfully
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /orders/:id [DELETE]
 func (oh OrderHandler) DeleteOrderById(c *gin.Context) {
-	//todo
+
+	var order_id string
+	if err := c.BindJSON(&order_id); err != nil {
+		c.Error(err)
+		requestError := error.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
+		return
+	}
+
+	//use the validator library to validate required fields
+	if validationErr := validate.Struct(&order_id); validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+		return
+	}
+
+	err := oh.orderService.DeleteOrderById(order_id)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Order deleted successfully"})
 }
 
+// GetOrderByCustomerId godoc
+// @Summary To get an order by customer id.
+// @Description Fetch all the order by the customer id
+// @Tags Order
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param id string true "id"
+// @Success	200  {object} 	model.Order
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /orders/user/:id [GET]
 func (oh OrderHandler) GetOrderByCustomerId(c *gin.Context) {
-	//todo
+
+	var customer_id string
+	if err := c.BindJSON(&customer_id); err != nil {
+		c.Error(err)
+		requestError := error.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
+		return
+	}
+
+	//use the validator library to validate required fields
+	if validationErr := validate.Struct(&customer_id); validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+		return
+	}
+
+	result, err := oh.orderService.GetOrderByCustomerId(customer_id)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": result})
 }
 
+// CreateInvoice godoc
+// @Summary To create an invoice
+// @Description To create an invoice for a given order id
+// @Tags Order
+// @Schemes
+// @Success	200  string 	Invoice Number created successfully
+// @Failure 400  string 	Bad request
+// @Failure 500  string 	Internal server error
+// @Router /orders/invoice/:id [POST]
 func (oh OrderHandler) CreateInvoice(c *gin.Context) {
-	//todo
+
+	var order_id string
+	if err := c.BindJSON(&order_id); err != nil {
+		c.Error(err)
+		requestError := error.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
+		return
+	}
+
+	//use the validator library to validate required fields
+	if validationErr := validate.Struct(&order_id); validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+		return
+	}
+
+	err := oh.orderService.CreateInvoice(order_id)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Invoice created successfully"})
 }
 
 // set SECRET=sUpErCaLiFrAgIlIsTiCeXpIaLiDoCiOuS in .env file
