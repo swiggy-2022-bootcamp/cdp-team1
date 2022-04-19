@@ -1,0 +1,121 @@
+basePath: /account-frontstore/api
+definitions:
+  model.Account:
+    properties:
+      agree:
+        description: "//TBC:\n\t\tCart         Cart `json:\"cart\"`\n\t\tRewardsTotal
+          float64\n\t\tUserBalance  PaymentsModeDTO"
+        type: integer
+      customer_group_id:
+        type: integer
+      customer_id:
+        type: string
+      date_added:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      telephone:
+        type: string
+    type: object
+host: localhost:7001
+info:
+  contact:
+    email: ravikumarsravi1999@gmail.com
+    name: Ravikumar S
+  description: This microservice is for Account-FrontStore service.
+  license:
+    name: Apache 2.0
+  title: Swiggy Qwik - Account-FrontStore module
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: This request will return 200 OK if server is up..
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: To check if the service is running or not.
+      tags:
+      - ""
+  /account/{accessorId}:
+    get:
+      consumes:
+      - application/json
+      description: Lets front store get customer account by customer id.
+      parameters:
+      - description: accessor id
+        in: path
+        name: accessorId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Account'
+      summary: Get account by ID
+      tags:
+      - ""
+    put:
+      consumes:
+      - application/json
+      description: Lets front store update account by id.
+      parameters:
+      - description: accessorId id
+        in: path
+        name: accessorId
+        required: true
+        type: string
+      - description: Updated account
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/model.Account'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Account'
+      summary: Update Account
+      tags:
+      - ""
+  /customer:
+    post:
+      consumes:
+      - application/json
+      description: Lets register customer in front store.
+      parameters:
+      - description: New account to add
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/model.Account'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Account'
+      summary: Register Customer
+      tags:
+      - ""
+swagger: "2.0"

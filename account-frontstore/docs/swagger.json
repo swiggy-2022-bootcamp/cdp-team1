@@ -1,0 +1,182 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This microservice is for Account-FrontStore service.",
+        "title": "Swiggy Qwik - Account-FrontStore module",
+        "contact": {
+            "name": "Ravikumar S",
+            "email": "ravikumarsravi1999@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:7001",
+    "basePath": "/account-frontstore/api",
+    "paths": {
+        "/": {
+            "get": {
+                "description": "This request will return 200 OK if server is up..",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "To check if the service is running or not.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/{accessorId}": {
+            "get": {
+                "description": "Lets front store get customer account by customer id.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "Get account by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "accessor id",
+                        "name": "accessorId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Account"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Lets front store update account by id.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "Update Account",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "accessorId id",
+                        "name": "accessorId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Updated account",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Account"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Account"
+                        }
+                    }
+                }
+            }
+        },
+        "/customer": {
+            "post": {
+                "description": "Lets register customer in front store.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "Register Customer",
+                "parameters": [
+                    {
+                        "description": "New account to add",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Account"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Account"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.Account": {
+            "type": "object",
+            "properties": {
+                "agree": {
+                    "description": "//TBC:\n\t\tCart         Cart `json:\"cart\"`\n\t\tRewardsTotal float64\n\t\tUserBalance  PaymentsModeDTO",
+                    "type": "integer"
+                },
+                "customer_group_id": {
+                    "type": "integer"
+                },
+                "customer_id": {
+                    "type": "string"
+                },
+                "date_added": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "telephone": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
