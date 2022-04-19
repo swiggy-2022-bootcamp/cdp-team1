@@ -620,3 +620,836 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/user 2022-04-17T15:03:36+05:30 440.9664ms 
 POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/user 2022-04-17T15:03:48+05:30 490.6581ms 
 GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /customer-admin/api/user 2022-04-17T15:03:56+05:30 312.8772ms 
+INFO: 2022/04/18 19:37:39 [Connected to dynamoDB]
+INFO: 2022/04/18 19:37:40 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api//swagger/index.html 2022-04-18T19:38:07+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /favicon.ico 2022-04-18T19:38:07+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:38:35+05:30 602.9µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T19:38:35+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T19:38:35+05:30 1.9999ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T19:38:35+05:30 4.9941ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T19:38:35+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T19:38:35+05:30 572.4µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:38:47+05:30 319.8µs 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T19:38:47+05:30 0s 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T19:38:47+05:30 0s 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T19:38:47+05:30 0s 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T19:38:48+05:30 0s 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T19:38:48+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger.json 2022-04-18T19:42:39+05:30 0s 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T19:44:35+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:44:36+05:30 1.0421ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T19:44:36+05:30 559.2µs 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T19:44:36+05:30 0s 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T19:44:36+05:30 557µs 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T19:44:37+05:30 0s 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T19:44:37+05:30 0s 
+INFO: 2022/04/18 19:50:27 [Connected to dynamoDB]
+INFO: 2022/04/18 19:50:27 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:50:32+05:30 2.0808ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T19:50:32+05:30 2.5545ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T19:50:32+05:30 2.3374ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T19:50:32+05:30 4.4153ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T19:50:33+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T19:50:33+05:30 572.9µs 
+INFO: 2022/04/18 19:54:48 [Connected to dynamoDB]
+INFO: 2022/04/18 19:54:48 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:54:52+05:30 2.9233ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T19:54:52+05:30 2.9115ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T19:54:52+05:30 2.37ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T19:54:52+05:30 11.8112ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T19:54:54+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T19:54:54+05:30 0s 
+INFO: 2022/04/18 19:55:32 [Connected to dynamoDB]
+INFO: 2022/04/18 19:55:32 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:55:35+05:30 1.4345ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T19:55:35+05:30 1.7388ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T19:55:35+05:30 3.0925ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T19:55:35+05:30 8.26ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T19:55:36+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T19:55:36+05:30 931.1µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:56:02+05:30 195.7µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:57:18+05:30 563µs 
+INFO: 2022/04/18 19:59:09 [Connected to dynamoDB]
+INFO: 2022/04/18 19:59:09 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:59:11+05:30 2.0335ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T19:59:11+05:30 2.8344ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T19:59:11+05:30 998.9µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T19:59:11+05:30 21.0559ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T19:59:12+05:30 917.3µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T19:59:12+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T19:59:20+05:30 0s 
+INFO: 2022/04/18 20:00:45 [Connected to dynamoDB]
+INFO: 2022/04/18 20:00:45 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T20:00:45+05:30 1.6996ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T20:00:45+05:30 3.6642ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T20:00:45+05:30 10.4842ms 
+GET - [200] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:00:45+05:30 7.5983ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T20:00:46+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T20:00:47+05:30 0s 
+INFO: 2022/04/18 20:06:15 [Connected to dynamoDB]
+INFO: 2022/04/18 20:06:15 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T20:06:20+05:30 2.6ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T20:06:20+05:30 1.8881ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:06:20+05:30 1.8568ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T20:06:20+05:30 14.2182ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T20:06:20+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T20:06:20+05:30 1.0067ms 
+INFO: 2022/04/18 20:09:09 [Connected to dynamoDB]
+INFO: 2022/04/18 20:09:09 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-18T20:09:14+05:30 2.9994ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-18T20:09:14+05:30 1.4291ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:09:14+05:30 974.2µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-18T20:09:14+05:30 5.5899ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-18T20:09:14+05:30 1.0055ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-18T20:09:14+05:30 0s 
+INFO: 2022/04/18 20:16:26 [Connected to dynamoDB]
+INFO: 2022/04/18 20:16:26 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui 2022-04-18T20:16:33+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/index.html 2022-04-18T20:16:42+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/index.html 2022-04-18T20:16:59+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui 2022-04-18T20:17:14+05:30 0s 
+INFO: 2022/04/18 20:17:41 [Connected to dynamoDB]
+INFO: 2022/04/18 20:17:41 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+[GIN-debug] redirecting request 301: /customer-admin/api/swaggerui/ --> /customer-admin/api/swaggerui/
+GET - [200] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:17:41+05:30 269.133ms 
+GET - [200] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/swagger-ui.css 2022-04-18T20:17:41+05:30 2.4979ms 
+GET - [200] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/index.css 2022-04-18T20:17:41+05:30 2.1635ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/swagger-initializer.js 2022-04-18T20:17:41+05:30 1.8655ms 
+GET - [200] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/swagger-ui-bundle.js 2022-04-18T20:17:41+05:30 6.8946ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/swagger-ui-standalone-preset.js 2022-04-18T20:17:41+05:30 4.7606ms 
+GET - [404] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/docs/swagger.json 2022-04-18T20:17:43+05:30 0s 
+GET - [200] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/favicon-32x32.png 2022-04-18T20:17:43+05:30 1ms 
+GET - [301] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/index.html 2022-04-18T20:17:53+05:30 1.0246ms 
+GET - [404] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/docs/swagger.json 2022-04-18T20:17:54+05:30 0s 
+INFO: 2022/04/18 20:18:29 [Connected to dynamoDB]
+INFO: 2022/04/18 20:18:29 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (3 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (3 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (3 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (3 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (3 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:18:33+05:30 8.7571ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/swagger-initializer.js 2022-04-18T20:18:33+05:30 364.5873ms 
+INFO: 2022/04/18 20:20:23 [Connected to dynamoDB]
+INFO: 2022/04/18 20:20:23 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:20:26+05:30 5.6473ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/swagger-initializer.js 2022-04-18T20:20:26+05:30 3.6929ms 
+INFO: 2022/04/18 20:22:05 [Connected to dynamoDB]
+INFO: 2022/04/18 20:22:05 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:22:08+05:30 5.9777ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/swagger-initializer.js 2022-04-18T20:22:08+05:30 188.5867ms 
+INFO: 2022/04/18 20:22:44 [Connected to dynamoDB]
+INFO: 2022/04/18 20:22:44 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /customer-admin/api/swaggerui/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:22:44+05:30 2.0517ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:22:46+05:30 1.5112ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:22:49+05:30 985.1µs 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:22:49+05:30 1.0719ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:22:50+05:30 822.3µs 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:22:50+05:30 1.3663ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:22:57+05:30 1.5724ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:23:02+05:30 674.5µs 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swaggerui/ 2022-04-18T20:23:06+05:30 716.9µs 
+INFO: 2022/04/18 20:30:36 [Connected to dynamoDB]
+INFO: 2022/04/18 20:30:37 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /                         --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer                 --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer/:customerId     --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /user                     --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /user                     --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:42+05:30 1.3695ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:45+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:46+05:30 2.002ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:46+05:30 1.2481ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:46+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:46+05:30 793.9µs 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:46+05:30 1.1471ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:46+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:46+05:30 1.1333ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:30:47+05:30 0s 
+INFO: 2022/04/18 20:32:30 [Connected to dynamoDB]
+INFO: 2022/04/18 20:32:31 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /                         --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer                 --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer/:customerId     --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /user                     --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /user                     --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:32:35+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swagger/index.html 2022-04-18T20:32:51+05:30 999.1µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swagger/swagger-ui.css 2022-04-18T20:32:51+05:30 2.2949ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swagger/swagger-ui-bundle.js 2022-04-18T20:32:51+05:30 4.2759ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swagger/swagger-ui-standalone-preset.js 2022-04-18T20:32:51+05:30 4.0271ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swagger/doc.json 2022-04-18T20:32:52+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swagger/favicon-32x32.png 2022-04-18T20:32:52+05:30 0s 
+INFO: 2022/04/18 20:38:50 [Connected to dynamoDB]
+INFO: 2022/04/18 20:38:50 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /                         --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer                 --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer/:customerId     --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /user                     --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /user                     --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+[GIN-debug] redirecting request 301: /swaggerui/ --> /swaggerui/
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-18T20:38:53+05:30 258.2105ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/index.css 2022-04-18T20:38:53+05:30 13.6857ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/swagger-ui.css 2022-04-18T20:38:53+05:30 13.6857ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/swagger-initializer.js 2022-04-18T20:38:53+05:30 8.7091ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/swagger-ui-standalone-preset.js 2022-04-18T20:38:53+05:30 10.0657ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/swagger-ui-bundle.js 2022-04-18T20:38:53+05:30 25.7981ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/swagger.json 2022-04-18T20:38:54+05:30 1.2042ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/favicon-32x32.png 2022-04-18T20:38:54+05:30 1.3033ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:49:03+05:30 4.9007ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/swagger.json 2022-04-19T18:49:03+05:30 1.3115ms 
+INFO: 2022/04/19 18:52:59 [Connected to dynamoDB]
+INFO: 2022/04/19 18:52:59 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /                         --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer                 --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer/:customerId     --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /user                     --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /user                     --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:53:02+05:30 2.415ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:53:04+05:30 2.1922ms 
+INFO: 2022/04/19 18:53:21 [Connected to dynamoDB]
+INFO: 2022/04/19 18:53:21 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /                         --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer                 --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer/:customerId     --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /user                     --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /user                     --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:53:23+05:30 4.0201ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:53:24+05:30 2.9113ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:53:25+05:30 2.5337ms 
+INFO: 2022/04/19 18:53:59 [Connected to dynamoDB]
+INFO: 2022/04/19 18:53:59 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /                         --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer                 --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer/:customerId     --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /user                     --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /user                     --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:54:01+05:30 1.9946ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swagger/index.hmtl 2022-04-19T18:55:10+05:30 716.3µs 
+INFO: 2022/04/19 18:57:00 [Connected to dynamoDB]
+INFO: 2022/04/19 18:57:00 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /swaggerui/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /                         --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer                 --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer/:customerId     --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer/:customerId     --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /user                     --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /user                     --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:57:02+05:30 2.1855ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:57:03+05:30 3.5572ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:57:03+05:30 3.2343ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:57:03+05:30 1.6033ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:57:04+05:30 2.7069ms 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T18:57:04+05:30 2.7681ms 
+INFO: 2022/04/19 19:02:48 [Connected to dynamoDB]
+INFO: 2022/04/19 19:02:48 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swaggerui/ 2022-04-19T19:02:50+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 //swagger/*any 2022-04-19T19:02:57+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 //swagger/index.html 2022-04-19T19:03:04+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /swagger/index.html 2022-04-19T19:03:09+05:30 0s 
+INFO: 2022/04/19 19:03:59 [Connected to dynamoDB]
+INFO: 2022/04/19 19:03:59 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:04:00+05:30 481.2µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:04:00+05:30 1.5443ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:04:00+05:30 897.3µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:04:00+05:30 2.0224ms 
+GET - [500] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:04:00+05:30 122.6µs 
+INFO: 2022/04/19 19:13:36 [Connected to dynamoDB]
+INFO: 2022/04/19 19:13:36 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:13:46+05:30 582.1µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:13:46+05:30 1.2136ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:13:46+05:30 3.3127ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:13:46+05:30 2.6941ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:13:46+05:30 447.4µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:13:46+05:30 398.2µs 
+INFO: 2022/04/19 19:26:40 [Connected to dynamoDB]
+INFO: 2022/04/19 19:26:40 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:26:42+05:30 706.7µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:26:42+05:30 1.3659ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:26:42+05:30 1.9862ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:26:42+05:30 3.7336ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:26:43+05:30 1.276ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:26:43+05:30 754µs 
+INFO: 2022/04/19 19:28:06 [Connected to dynamoDB]
+INFO: 2022/04/19 19:28:06 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:28:10+05:30 778.8µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:28:10+05:30 1.1352ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:28:10+05:30 2.0053ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:28:10+05:30 2.605ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:28:11+05:30 1.2273ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:28:11+05:30 0s 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer/email/{customerEmail} 2022-04-19T19:30:47+05:30 0s 
+INFO: 2022/04/19 19:33:00 [Connected to dynamoDB]
+INFO: 2022/04/19 19:33:00 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:33:00+05:30 1.3669ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:33:00+05:30 1.2811ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:33:00+05:30 508.2µs 
+GET - [200] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:33:00+05:30 2.528ms 
+GET - [200] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:33:01+05:30 1.6324ms 
+GET - [200] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:33:01+05:30 0s 
+GET - [404] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 / 2022-04-19T19:33:11+05:30 0s 
+GET - [404] 127.0.0.1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer/email/s 2022-04-19T19:33:54+05:30 0s 
+INFO: 2022/04/19 19:36:36 [Connected to dynamoDB]
+INFO: 2022/04/19 19:36:36 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:36:42+05:30 262.5µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:36:42+05:30 1.2328ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:36:42+05:30 2.4196ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:36:42+05:30 440.4µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:36:42+05:30 868.5µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:36:42+05:30 229.6µs 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer/email/s 2022-04-19T19:36:55+05:30 0s 
+INFO: 2022/04/19 19:37:41 [Connected to dynamoDB]
+INFO: 2022/04/19 19:37:41 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:37:43+05:30 736.1µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:37:43+05:30 1.4877ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:37:43+05:30 479.9µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:37:43+05:30 2.7004ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:37:43+05:30 521.2µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:37:43+05:30 923.3µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/ 2022-04-19T19:37:51+05:30 711.4µs 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/customer/email/ravi 2022-04-19T19:38:04+05:30 277.9314ms 
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/customer/email/ravi@gmail.copm 2022-04-19T19:38:12+05:30 275.3791ms 
+INFO: 2022/04/19 19:40:40 [Connected to dynamoDB]
+INFO: 2022/04/19 19:40:41 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:40:44+05:30 265.4µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:40:45+05:30 1.6058ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:40:45+05:30 3.9306ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:40:45+05:30 1.1169ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:40:45+05:30 324µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:40:45+05:30 0s 
+INFO: 2022/04/19 19:42:19 [Connected to dynamoDB]
+INFO: 2022/04/19 19:42:19 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:42:28+05:30 364.3µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:42:28+05:30 661.7µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:42:28+05:30 1.9844ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:42:28+05:30 1.2526ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:42:29+05:30 358.7µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:42:29+05:30 328.2µs 
+POST - [400] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/customer 2022-04-19T19:43:17+05:30 792.3103ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:43:27+05:30 108.8µs 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:43:27+05:30 0s 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:43:27+05:30 48.3µs 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:43:27+05:30 0s 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:43:27+05:30 730.7µs 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:43:27+05:30 0s 
+INFO: 2022/04/19 19:46:51 [Connected to dynamoDB]
+INFO: 2022/04/19 19:46:51 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:46:51+05:30 682.9µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:46:51+05:30 766.5µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:46:51+05:30 3.8229ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:46:51+05:30 1.9048ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:46:52+05:30 841.1µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:46:52+05:30 0s 
+INFO: 2022/04/19 19:48:59 [Connected to dynamoDB]
+INFO: 2022/04/19 19:49:00 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /customer-admin/api/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /customer-admin/api/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /customer-admin/api/customer --> qwik.in/customers-admin/app/handlers.CreateCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.GetCustomerById (4 handlers)
+[GIN-debug] GET    /customer-admin/api/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.GetCustomerByEmail (4 handlers)
+[GIN-debug] PUT    /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.UpdateCustomer (4 handlers)
+[GIN-debug] DELETE /customer-admin/api/customer/:customerId --> qwik.in/customers-admin/app/handlers.DeleteCustomer (4 handlers)
+[GIN-debug] GET    /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /customer-admin/api/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/index.html 2022-04-19T19:49:15+05:30 1.0124ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui.css 2022-04-19T19:49:15+05:30 1.0948ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-standalone-preset.js 2022-04-19T19:49:15+05:30 1.125ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/swagger-ui-bundle.js 2022-04-19T19:49:15+05:30 6.1388ms 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:49:16+05:30 471.2µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:49:16+05:30 955.9µs 
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/user 2022-04-19T19:49:35+05:30 242.7673ms 

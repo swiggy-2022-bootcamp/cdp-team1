@@ -1,0 +1,253 @@
+basePath: /customer-admin/api
+definitions:
+  model.AdminUser:
+    properties:
+      date_added:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      status:
+        type: integer
+      telephone:
+        type: string
+      user_group:
+        type: string
+      user_group_id:
+        type: integer
+      user_id:
+        type: string
+      user_name:
+        type: string
+    type: object
+  model.Customer:
+    properties:
+      address:
+        description: TBC
+        items:
+          properties:
+            area:
+              type: string
+            city:
+              type: string
+            country:
+              type: string
+            default:
+              type: integer
+            house_number:
+              type: string
+            pincode:
+              type: string
+            street:
+              type: string
+          type: object
+        type: array
+      affiliate:
+        properties:
+          bank_account_name:
+            type: string
+          bank_account_number:
+            type: string
+          bank_branch_number:
+            type: string
+          bank_name:
+            type: string
+          bank_swift_code:
+            type: string
+          commission:
+            type: string
+          company:
+            type: string
+          status:
+            type: integer
+          tax:
+            type: string
+          tracking:
+            type: string
+          website:
+            type: string
+        type: object
+      agree:
+        type: integer
+      approved:
+        type: integer
+      customer_group_id:
+        type: integer
+      customer_id:
+        type: string
+      date_added:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      newsletter:
+        type: integer
+      password:
+        type: string
+      safe:
+        type: integer
+      status:
+        type: integer
+      telephone:
+        type: string
+    type: object
+host: localhost:7002
+info:
+  contact:
+    email: ravikumarsravi1999@gmail.com
+    name: Ravikumar S
+  description: This microservice is for Customer-Admin service.
+  license:
+    name: Apache 2.0
+  title: Swiggy Qwik - Customer-Admin module
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: This request will return 200 OK if server is up..
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: To check if the service is running or not.
+      tags:
+      - ""
+  /customer:
+    post:
+      consumes:
+      - application/json
+      description: Lets admin create customer.
+      parameters:
+      - description: New customer to add
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/model.Customer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Customer'
+      summary: Create Customer
+      tags:
+      - ""
+  /customer/{customerId}:
+    delete:
+      consumes:
+      - application/json
+      description: Lets admin delete customer by customer id.
+      parameters:
+      - description: customer id
+        in: path
+        name: customerId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete Customer
+      tags:
+      - ""
+    get:
+      consumes:
+      - application/json
+      description: Lets admin get customer by customer id.
+      parameters:
+      - description: customer id
+        in: path
+        name: customerId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Customer'
+      summary: Get Customer by ID
+      tags:
+      - ""
+    put:
+      consumes:
+      - application/json
+      description: Lets admin update customer by customer id.
+      parameters:
+      - description: customer id
+        in: path
+        name: customerId
+        required: true
+        type: string
+      - description: Updated customer
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/model.Customer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Customer'
+      summary: Update Customer
+      tags:
+      - ""
+  /customer/email/{customerEmail}:
+    get:
+      consumes:
+      - application/json
+      description: Lets admin get customer by customer email.
+      parameters:
+      - description: customer email
+        in: path
+        name: customerEmail
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Customer'
+      summary: Get Customer by Email
+      tags:
+      - ""
+  /user:
+    get:
+      consumes:
+      - application/json
+      description: Get admin users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.AdminUser'
+      summary: Get admins
+      tags:
+      - ""
+swagger: "2.0"

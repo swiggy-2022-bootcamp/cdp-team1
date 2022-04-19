@@ -16,6 +16,15 @@ func init() {
 	adminService = service.InitAdminService(&repository.AdminUserRepository{})
 }
 
+// GetAdminUsers godoc
+// @Summary Get admins
+// @Description Get admin users
+// @Tags
+// @Schemes
+// @Accept json
+// @Produce json
+// @Success	200  {object} model.AdminUser
+// @Router /user [GET]
 func GetAdminUsers(c *gin.Context) {
 	c.JSON(200, adminService.GetAllAdminUsers())
 }

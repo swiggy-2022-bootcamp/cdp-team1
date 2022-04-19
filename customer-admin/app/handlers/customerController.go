@@ -16,6 +16,16 @@ func init() {
 	customerService = service.InitCustomerService(&repository.CustomerRepository{})
 }
 
+// CreateCustomer godoc
+// @Summary Create Customer
+// @Description Lets admin create customer.
+// @Tags
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param req body model.Customer true "New customer to add"
+// @Success	200  {object} model.Customer
+// @Router /customer [POST]
 func CreateCustomer(c *gin.Context) {
 	newCustomer := model.Customer{}
 	json.NewDecoder(c.Request.Body).Decode(&newCustomer)
@@ -30,6 +40,16 @@ func CreateCustomer(c *gin.Context) {
 	c.JSON(200, *createdCustomer)
 }
 
+// GetCustomerById godoc
+// @Summary Get Customer by ID
+// @Description Lets admin get customer by customer id.
+// @Tags
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param customerId path string true "customer id"
+// @Success	200  {object} model.Customer
+// @Router /customer/{customerId} [GET]
 func GetCustomerById(c *gin.Context) {
 	fetchedCustomer, err := customerService.GetCustomerById(c.Param("customerId"))
 
@@ -42,6 +62,16 @@ func GetCustomerById(c *gin.Context) {
 	c.JSON(200, *fetchedCustomer)
 }
 
+// GetCustomerByEmail godoc
+// @Summary Get Customer by Email
+// @Description Lets admin get customer by customer email.
+// @Tags
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param customerEmail path string true "customer email"
+// @Success	200  {object} model.Customer
+// @Router /customer/email/{customerEmail} [GET]
 func GetCustomerByEmail(c *gin.Context) {
 	fetchedCustomer, err := customerService.GetCustomerByEmail(c.Param("customerEmail"))
 
@@ -54,6 +84,17 @@ func GetCustomerByEmail(c *gin.Context) {
 	c.JSON(200, *fetchedCustomer)
 }
 
+// UpdateCustomer godoc
+// @Summary Update Customer
+// @Description Lets admin update customer by customer id.
+// @Tags
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param customerId path string true "customer id"
+// @Param req body model.Customer true "Updated customer"
+// @Success	200  {object} model.Customer
+// @Router /customer/{customerId} [PUT]
 func UpdateCustomer(c *gin.Context) {
 	customer := model.Customer{}
 	json.NewDecoder(c.Request.Body).Decode(&customer)
@@ -68,6 +109,16 @@ func UpdateCustomer(c *gin.Context) {
 	c.JSON(200, *updatedCustomer)
 }
 
+// DeleteCustomer godoc
+// @Summary Delete Customer
+// @Description Lets admin delete customer by customer id.
+// @Tags
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param customerId path string true "customer id"
+// @Success	200  {string} deletion successful
+// @Router /customer/{customerId} [DELETE]
 func DeleteCustomer(c *gin.Context) {
 	successMessage, err := customerService.DeleteCustomer(c.Param("customerId"))
 
