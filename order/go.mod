@@ -8,7 +8,6 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/swaggo/gin-swagger v1.4.1
 	github.com/swaggo/swag v1.8.1
-	go.mongodb.org/mongo-driver v1.9.0
 )
 
 require (
@@ -29,7 +28,7 @@ require (
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
-	github.com/go-playground/validator/v10 v10.4.1 // indirect
+	github.com/go-playground/validator/v10 v10.4.1
 	github.com/golang/protobuf v1.3.3 // indirect
 	github.com/joho/godotenv v1.4.0
 	github.com/josharian/intern v1.0.0 // indirect
