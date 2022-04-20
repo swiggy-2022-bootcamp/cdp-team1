@@ -45,7 +45,6 @@ definitions:
     required:
     - payment_modes
     type: object
-host: localhost:9000
 info:
   contact:
     email: aadityakhetan123@gmail.com
@@ -79,7 +78,7 @@ paths:
     post:
       consumes:
       - application/json
-      description: To set payment modes for an order.
+      description: To complete payment for an order.
       parameters:
       - description: Payment request
         in: body
@@ -106,7 +105,7 @@ paths:
           description: Internal Server Error
           schema:
             type: string
-      summary: To set payment modes for an order.
+      summary: To complete payment for an order.
       tags:
       - PaymentRequest
   /paymentmethods/{userId}:

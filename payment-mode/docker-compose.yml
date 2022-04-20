@@ -1,8 +1,11 @@
 version: "3"
 services:
-  backend:
+  payment-service:
     build: .
+    container_name: payment-service
+    restart: always
+    volumes:
+      - /app
     ports:
       - "9000:9000"
-    volumes:
-      - .:/app
+      - "9004:9004"

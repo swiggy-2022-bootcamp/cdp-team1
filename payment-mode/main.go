@@ -8,7 +8,6 @@ import "qwik.in/payment-mode/app"
 // @contact.name   Aaditya Khetan
 // @contact.email  aadityakhetan123@gmail.com
 // @license.name  Apache 2.0
-// @host      localhost:9000
 // @BasePath /payment-mode/api
 func main() {
 	app.Start()

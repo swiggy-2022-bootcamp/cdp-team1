@@ -53,7 +53,7 @@ const docTemplate = `{
         },
         "/pay": {
             "post": {
-                "description": "To set payment modes for an order.",
+                "description": "To complete payment for an order.",
                 "consumes": [
                     "application/json"
                 ],
@@ -63,7 +63,7 @@ const docTemplate = `{
                 "tags": [
                     "PaymentRequest"
                 ],
-                "summary": "To set payment modes for an order.",
+                "summary": "To complete payment for an order.",
                 "parameters": [
                     {
                         "description": "Payment request",
@@ -333,7 +333,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:9000",
+	Host:             "",
 	BasePath:         "/payment-mode/api",
 	Schemes:          []string{},
 	Title:            "Swiggy Qwik - Payment_Mode module",
