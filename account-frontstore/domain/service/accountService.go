@@ -1,10 +1,15 @@
 package service
 
 import (
+	"context"
 	"golang.org/x/crypto/bcrypt"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+	"log"
 	"qwik.in/account-frontstore/domain/model"
 	"qwik.in/account-frontstore/domain/repository"
 	"qwik.in/account-frontstore/internal/errors"
+	"qwik.in/account-frontstore/protos"
 	"time"
 )
 
@@ -47,6 +52,7 @@ func (accountService *AccountService) CreateAccount(account model.Account) (*mod
 
 func (accountService *AccountService) GetAccountById(customerId string) (*model.Account, error) {
 	fetchedAccount, err := accountService.accountRepository.GetById(customerId)
+	fetchedAccount.RewardsTotal = GetRewardPointsByCustomerId()
 	if err != nil {
 		return nil, err
 	}
@@ -68,4 +74,28 @@ func (accountService *AccountService) UpdateAccount(customerId string, account m
 		return nil, err
 	}
 	return updatedAccount, nil
+}
+
+func GetRewardPointsByCustomerId() int32 {
+	conn, err := grpc.Dial("localhost:9003", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatalf("Connection failed : %v", err)
+	}
+	defer conn.Close()
+	c := protos.NewTransactionPointsClient(conn)
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	getPointsRequest := &protos.GetPointsRequest{
+		UserId: "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
+	}
+
+	result, err := c.GetTransactionPoints(ctx, getPointsRequest)
+	if err != nil {
+		log.Printf("Error adding transaction points : %v", err)
+	} else {
+		log.Printf("Transaction points are %d", result.Points)
+	}
+	return result.Points
 }

@@ -12,12 +12,9 @@ type Account struct {
 	Password        string `json:"password"`
 	Telephone       string `json:"telephone"`
 	CustomerGroupId int    `json:"customer_group_id"`
-	/*
-		//TBC:
-		Cart         Cart `json:"cart"`
-		RewardsTotal float64
-		UserBalance  PaymentsModeDTO
-	*/
+	//Cart         Cart `json:"cart"`
+	RewardsTotal int32
+	//UserBalance  PaymentsModeDTO
 	Agree     int       `json:"agree"`
 	DateAdded time.Time `json:"date_added"`
 }
