@@ -10,4 +10,6 @@ RUN cd /app && git clone -b products-admin https://github.com/swiggy-2022-bootca
 WORKDIR /app/cdp-team1/productsAdmin
 RUN go build -o main .
 
+EXPOSE 9119
+
 CMD [ "/app/cdp-team1/productsAdmin/main" ]
