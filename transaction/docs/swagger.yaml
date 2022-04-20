@@ -7,7 +7,7 @@ definitions:
       server:
         type: string
     type: object
-  models.TransactionAmount:
+  models.TransactionDetails:
     properties:
       amount:
         type: integer
@@ -19,7 +19,6 @@ definitions:
     - amount
     - order_id
     type: object
-host: localhost:9001
 info:
   contact:
     email: aadityakhetan123@gmail.com
@@ -88,7 +87,7 @@ paths:
         name: req
         required: true
         schema:
-          $ref: '#/definitions/models.TransactionAmount'
+          $ref: '#/definitions/models.TransactionDetails'
       - description: User id
         in: path
         name: userId
@@ -124,7 +123,7 @@ paths:
         name: req
         required: true
         schema:
-          $ref: '#/definitions/models.TransactionAmount'
+          $ref: '#/definitions/models.TransactionDetails'
       - description: User id
         in: path
         name: userId
@@ -136,7 +135,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.TransactionAmount'
+            $ref: '#/definitions/models.TransactionDetails'
         "400":
           description: Bad Request
           schema:
