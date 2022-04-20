@@ -1,19 +1,21 @@
 package services
 
 import (
+	"context"
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
 	app_erros "qwik.in/transaction/app-erros"
 	"qwik.in/transaction/domain/models"
 	"qwik.in/transaction/mocks"
+	"qwik.in/transaction/protos"
 	"reflect"
 	"testing"
 )
 
-func TestTransactionServiceImpl_AddTransactionPoints(t *testing.T) {
+func TestTransactionProtoServer_AddTransactionPoints(t *testing.T) {
 	gin.SetMode(gin.TestMode)
-	transactionDetails := &models.TransactionDetails{
+	transactionDetails := &protos.TransactionDetails{
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459thj",
 		OrderId: "OA-123",
 		Amount:  500,
@@ -26,7 +28,7 @@ func TestTransactionServiceImpl_AddTransactionPoints(t *testing.T) {
 	testCases := []struct {
 		name          string
 		buildStubs    func(repository *mocks.MockTransactionRepository)
-		checkResponse func(t *testing.T, expected interface{}, actual interface{})
+		checkResponse func(t *testing.T, err error)
 	}{
 		{
 			name: "SuccessUpdateTransactionPoints",
@@ -41,8 +43,8 @@ func TestTransactionServiceImpl_AddTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(nil)
 			},
-			checkResponse: func(t *testing.T, expected interface{}, actual interface{}) {
-				require.Equal(t, true, reflect.ValueOf(actual).IsNil())
+			checkResponse: func(t *testing.T, err error) {
+				require.NoError(t, err)
 			},
 		},
 		{
@@ -58,8 +60,8 @@ func TestTransactionServiceImpl_AddTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(nil)
 			},
-			checkResponse: func(t *testing.T, expected interface{}, actual interface{}) {
-				require.Equal(t, true, reflect.ValueOf(actual).IsNil())
+			checkResponse: func(t *testing.T, err error) {
+				require.NoError(t, err)
 			},
 		},
 		{
@@ -75,8 +77,8 @@ func TestTransactionServiceImpl_AddTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(app_erros.NewUnexpectedError(""))
 			},
-			checkResponse: func(t *testing.T, expected interface{}, actual interface{}) {
-				require.Equal(t, app_erros.NewUnexpectedError(""), actual)
+			checkResponse: func(t *testing.T, err error) {
+				require.Equal(t, app_erros.NewUnexpectedError("").Error(), err)
 			},
 		},
 		{
@@ -92,8 +94,8 @@ func TestTransactionServiceImpl_AddTransactionPoints(t *testing.T) {
 					Times(0).
 					Return(nil)
 			},
-			checkResponse: func(t *testing.T, expected interface{}, actual interface{}) {
-				require.Equal(t, app_erros.NewUnexpectedError(""), actual)
+			checkResponse: func(t *testing.T, err error) {
+				require.Equal(t, app_erros.NewUnexpectedError("").Error(), err)
 			},
 		},
 		{
@@ -109,8 +111,8 @@ func TestTransactionServiceImpl_AddTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(app_erros.NewUnexpectedError(""))
 			},
-			checkResponse: func(t *testing.T, expected interface{}, actual interface{}) {
-				require.Equal(t, app_erros.NewUnexpectedError(""), actual)
+			checkResponse: func(t *testing.T, err error) {
+				require.Equal(t, app_erros.NewUnexpectedError("").Error(), err)
 			},
 		},
 	}
@@ -125,47 +127,53 @@ func TestTransactionServiceImpl_AddTransactionPoints(t *testing.T) {
 			transactionRepository := mocks.NewMockTransactionRepository(ctrl)
 			tc.buildStubs(transactionRepository)
 
-			transactionServiceImpl := NewTransactionServiceImpl(transactionRepository)
-			err := transactionServiceImpl.AddTransactionPoints(transactionDetails)
-			tc.checkResponse(t, nil, err)
+			transactionProtoServer := NewTransactionProtoServer(transactionRepository)
+			_, err := transactionProtoServer.AddTransactionPoints(context.Background(), transactionDetails)
+			tc.checkResponse(t, err)
 		})
 	}
 }
 
-func TestTransactionServiceImpl_GetTransactionPointsByUserId(t *testing.T) {
+func TestTransactionProtoServer_GetTransactionPoints(t *testing.T) {
 	gin.SetMode(gin.TestMode)
-	userId := "bb912edc-50d9-42d7-b7a1-9ce66d459thj"
-	failurePoints := -1
-	successPoints := 100
+	request := &protos.GetPointsRequest{
+		UserId: "bb912edc-50d9-42d7-b7a1-9ce66d459thj",
+	}
+	failurePoints := &protos.GetPointsResponse{
+		Points: int32(-1),
+	}
+	successPoints := &protos.GetPointsResponse{
+		Points: int32(100),
+	}
 
 	testCases := []struct {
 		name          string
 		buildStubs    func(repository *mocks.MockTransactionRepository)
-		checkResponse func(t *testing.T, points interface{}, err interface{})
+		checkResponse func(t *testing.T, points *protos.GetPointsResponse, err error)
 	}{
 		{
 			name: "SuccessUserFound",
 			buildStubs: func(repository *mocks.MockTransactionRepository) {
 				repository.EXPECT().
-					GetTransactionPointsByUserIdFromDB(userId).
+					GetTransactionPointsByUserIdFromDB(request.GetUserId()).
 					Times(1).
-					Return(successPoints, nil)
+					Return(100, nil)
 			},
-			checkResponse: func(t *testing.T, points interface{}, err interface{}) {
+			checkResponse: func(t *testing.T, points *protos.GetPointsResponse, err error) {
 				require.Equal(t, successPoints, points)
-				require.Equal(t, true, reflect.ValueOf(err).IsNil())
+				require.NoError(t, err)
 			},
 		},
 		{
 			name: "FailureUserNotFound",
 			buildStubs: func(repository *mocks.MockTransactionRepository) {
 				repository.EXPECT().
-					GetTransactionPointsByUserIdFromDB(userId).
+					GetTransactionPointsByUserIdFromDB(request.GetUserId()).
 					Times(1).
-					Return(failurePoints, app_erros.NewNotFoundError(""))
+					Return(-1, app_erros.NewNotFoundError(""))
 			},
-			checkResponse: func(t *testing.T, points interface{}, err interface{}) {
-				require.Equal(t, app_erros.NewNotFoundError(""), err)
+			checkResponse: func(t *testing.T, points *protos.GetPointsResponse, err error) {
+				require.Equal(t, app_erros.NewNotFoundError("").Error(), err)
 				require.Equal(t, failurePoints, points)
 			},
 		},
@@ -173,12 +181,12 @@ func TestTransactionServiceImpl_GetTransactionPointsByUserId(t *testing.T) {
 			name: "FailureUnexpectedError",
 			buildStubs: func(repository *mocks.MockTransactionRepository) {
 				repository.EXPECT().
-					GetTransactionPointsByUserIdFromDB(userId).
+					GetTransactionPointsByUserIdFromDB(request.GetUserId()).
 					Times(1).
-					Return(failurePoints, app_erros.NewUnexpectedError(""))
+					Return(-1, app_erros.NewUnexpectedError(""))
 			},
-			checkResponse: func(t *testing.T, points interface{}, err interface{}) {
-				require.Equal(t, app_erros.NewUnexpectedError(""), err)
+			checkResponse: func(t *testing.T, points *protos.GetPointsResponse, err error) {
+				require.Equal(t, app_erros.NewUnexpectedError("").Error(), err)
 				require.Equal(t, failurePoints, points)
 			},
 		},
@@ -193,153 +201,106 @@ func TestTransactionServiceImpl_GetTransactionPointsByUserId(t *testing.T) {
 			transactionRepository := mocks.NewMockTransactionRepository(ctrl)
 			tc.buildStubs(transactionRepository)
 
-			transactionServiceImpl := NewTransactionServiceImpl(transactionRepository)
-			points, err := transactionServiceImpl.GetTransactionPointsByUserId(userId)
+			transactionProtoServer := NewTransactionProtoServer(transactionRepository)
+			points, err := transactionProtoServer.GetTransactionPoints(context.Background(), request)
 			tc.checkResponse(t, points, err)
 		})
 	}
 }
 
-func TestTransactionServiceImpl_CalculateTransactionPoints(t *testing.T) {
+func TestTransactionProtoServer_UseTransactionPoints(t *testing.T) {
 	gin.SetMode(gin.TestMode)
-	testCases := []struct {
-		name              string
-		transactionAmount *models.TransactionDetails
-		expectedPoints    int
-	}{
-		{
-			name: "Whole number",
-			transactionAmount: &models.TransactionDetails{
-				UserId: "1",
-				Amount: 5000,
-			},
-			expectedPoints: 50,
-		},
-		{
-			name: "Amount less than 100",
-			transactionAmount: &models.TransactionDetails{
-				UserId: "1",
-				Amount: 5,
-			},
-			expectedPoints: 0,
-		},
-		{
-			name: "Points rounded to narest integer",
-			transactionAmount: &models.TransactionDetails{
-				UserId: "1",
-				Amount: 399,
-			},
-			expectedPoints: 3,
-		},
-	}
-
-	for i := range testCases {
-		tc := testCases[i]
-		t.Run(tc.name, func(t *testing.T) {
-			ctrl := gomock.NewController(t)
-			defer ctrl.Finish()
-
-			repository := mocks.NewMockTransactionRepository(ctrl)
-			transactionService := NewTransactionServiceImpl(repository)
-			actual := transactionService.CalculateTransactionPoints(tc.transactionAmount)
-			require.Equal(t, tc.expectedPoints, actual)
-		})
-	}
-}
-
-func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
-	gin.SetMode(gin.TestMode)
-	transactionAmount := &models.TransactionDetails{
+	transactionDetails := &protos.TransactionDetails{
 		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459thj",
 		Amount:  5000,
 		OrderId: "OA-123",
 	}
 
 	transaction := &models.Transaction{
-		UserId:            transactionAmount.UserId,
+		UserId:            transactionDetails.UserId,
 		TransactionPoints: 0,
 	}
 
 	testCases := []struct {
 		name          string
 		buildStubs    func(repository *mocks.MockTransactionRepository)
-		checkResponse func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{})
+		checkResponse func(t *testing.T, isRequestValid bool, amount *protos.TransactionDetails, err error)
 	}{
 		{
 			name: "FailureGetTransactionPoints",
 			buildStubs: func(repository *mocks.MockTransactionRepository) {
 				repository.EXPECT().
-					GetTransactionPointsByUserIdFromDB(transactionAmount.UserId).
+					GetTransactionPointsByUserIdFromDB(transactionDetails.UserId).
 					Times(1).
 					Return(-1, app_erros.NewUnexpectedError(""))
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *protos.TransactionDetails, err error) {
 				require.Equal(t, false, isRequestValid)
-				require.Equal(t, amount, transactionAmount)
-				require.Equal(t, app_erros.NewUnexpectedError(""), err)
+				require.Equal(t, amount, transactionDetails)
+				require.Equal(t, app_erros.NewUnexpectedError("").Error(), err)
 			},
 		},
 		{
 			name: "UserTransactionPointsIsZero",
 			buildStubs: func(repository *mocks.MockTransactionRepository) {
 				repository.EXPECT().
-					GetTransactionPointsByUserIdFromDB(transactionAmount.UserId).
+					GetTransactionPointsByUserIdFromDB(transactionDetails.UserId).
 					Times(1).
 					Return(0, nil)
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *protos.TransactionDetails, err error) {
 				require.Equal(t, false, isRequestValid)
-				require.Equal(t, amount, transactionAmount)
-				require.Equal(t, app_erros.NewExpectationFailed("You have 0 transaction points"), err)
+				require.Equal(t, amount, transactionDetails)
+				require.Equal(t, app_erros.NewExpectationFailed("You have 0 transaction points").Error(), err)
 			},
 		},
 		{
 			name: "Success",
 			buildStubs: func(repository *mocks.MockTransactionRepository) {
 				repository.EXPECT().
-					GetTransactionPointsByUserIdFromDB(transactionAmount.UserId).
+					GetTransactionPointsByUserIdFromDB(transactionDetails.UserId).
 					Times(1).
 					Return(100, nil)
 
-				transactionAmount.Amount -= 100
+				transactionDetails.Amount -= 100
 
 				repository.EXPECT().
 					UpdateTransactionPointsToDB(transaction).
 					Times(1).
 					Return(nil)
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *protos.TransactionDetails, err error) {
 				require.Equal(t, true, isRequestValid)
-				require.Equal(t, amount, transactionAmount)
-				require.Equal(t, true, reflect.ValueOf(err).IsNil())
+				require.Equal(t, amount, transactionDetails)
+				require.NoError(t, err)
 			},
 		},
 		{
 			name: "FailureUpdateTransactionToDB",
 			buildStubs: func(repository *mocks.MockTransactionRepository) {
 				repository.EXPECT().
-					GetTransactionPointsByUserIdFromDB(transactionAmount.UserId).
+					GetTransactionPointsByUserIdFromDB(transactionDetails.UserId).
 					Times(1).
 					Return(100, nil)
 
-				transactionAmount.Amount -= 100
+				transactionDetails.Amount -= 100
 
 				repository.EXPECT().
 					UpdateTransactionPointsToDB(transaction).
 					Times(1).
 					Return(app_erros.NewUnexpectedError(""))
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *protos.TransactionDetails, err error) {
 				require.Equal(t, false, isRequestValid)
-				require.Equal(t, amount, transactionAmount)
-				require.Equal(t, app_erros.NewUnexpectedError(""), err)
+				require.Equal(t, amount, transactionDetails)
+				require.Equal(t, app_erros.NewUnexpectedError("").Error(), err)
 			},
 		},
 		{
 			name: "OrderAmountLessThanTransactionPoints",
 			buildStubs: func(repository *mocks.MockTransactionRepository) {
 				repository.EXPECT().
-					GetTransactionPointsByUserIdFromDB(transactionAmount.UserId).
+					GetTransactionPointsByUserIdFromDB(transactionDetails.UserId).
 					Times(1).
 					Return(100000, nil)
 
@@ -348,10 +309,10 @@ func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
 					Times(0).
 					Return(nil)
 			},
-			checkResponse: func(t *testing.T, isRequestValid bool, amount *models.TransactionDetails, err interface{}) {
+			checkResponse: func(t *testing.T, isRequestValid bool, amount *protos.TransactionDetails, err error) {
 				require.Equal(t, false, isRequestValid)
-				require.Equal(t, amount, transactionAmount)
-				require.Equal(t, app_erros.NewExpectationFailed("Cannot use transaction points as order amount is lesser than available points"), err)
+				require.Equal(t, amount, transactionDetails)
+				require.Equal(t, app_erros.NewExpectationFailed("Cannot use transaction points as order amount is lesser than available points").Error(), err)
 			},
 		},
 	}
@@ -366,15 +327,62 @@ func TestTransactionServiceImpl_UseTransactionPoints(t *testing.T) {
 			repository := mocks.NewMockTransactionRepository(ctrl)
 			tc.buildStubs(repository)
 
-			transactionServiceImpl := NewTransactionServiceImpl(repository)
+			transactionProtoServer := NewTransactionProtoServer(repository)
 
-			requestAccepted, amount, err := transactionServiceImpl.UseTransactionPoints(transactionAmount)
-			tc.checkResponse(t, requestAccepted, amount, err)
+			response, err := transactionProtoServer.UseTransactionPoints(context.Background(), transactionDetails)
+			tc.checkResponse(t, response.TransactionPointsUsed, response.TransactionDetails, err)
 		})
 	}
 }
 
-func TestTransactionServiceImpl_UpdateTransactionPoints(t *testing.T) {
+func TestTransactionProtoServer_CalculateTransactionPoints(t *testing.T) {
+	gin.SetMode(gin.TestMode)
+	testCases := []struct {
+		name              string
+		transactionAmount *protos.TransactionDetails
+		expectedPoints    int
+	}{
+		{
+			name: "Whole number",
+			transactionAmount: &protos.TransactionDetails{
+				UserId: "1",
+				Amount: 5000,
+			},
+			expectedPoints: 50,
+		},
+		{
+			name: "Amount less than 100",
+			transactionAmount: &protos.TransactionDetails{
+				UserId: "1",
+				Amount: 5,
+			},
+			expectedPoints: 0,
+		},
+		{
+			name: "Points rounded to narest integer",
+			transactionAmount: &protos.TransactionDetails{
+				UserId: "1",
+				Amount: 399,
+			},
+			expectedPoints: 3,
+		},
+	}
+
+	for i := range testCases {
+		tc := testCases[i]
+		t.Run(tc.name, func(t *testing.T) {
+			ctrl := gomock.NewController(t)
+			defer ctrl.Finish()
+
+			repository := mocks.NewMockTransactionRepository(ctrl)
+			transactionProtoServer := NewTransactionProtoServer(repository)
+			actual := transactionProtoServer.CalculateTransactionPoints(tc.transactionAmount)
+			require.Equal(t, tc.expectedPoints, actual)
+		})
+	}
+}
+
+func TestTransactionProtoServer_UpdateTransactionPoints(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	transaction := &models.Transaction{
 		UserId:            "bb912edc-50d9-42d7-b7a1-9ce66d459thj",
@@ -384,7 +392,7 @@ func TestTransactionServiceImpl_UpdateTransactionPoints(t *testing.T) {
 	testCases := []struct {
 		name          string
 		buildStubs    func(repository *mocks.MockTransactionRepository)
-		checkResponse func(t *testing.T, actual interface{}, expected interface{})
+		checkResponse func(t *testing.T, err interface{})
 	}{
 		{
 			name: "Success",
@@ -394,8 +402,8 @@ func TestTransactionServiceImpl_UpdateTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(nil)
 			},
-			checkResponse: func(t *testing.T, actual interface{}, expected interface{}) {
-				require.Equal(t, true, reflect.ValueOf(expected).IsNil())
+			checkResponse: func(t *testing.T, err interface{}) {
+				require.Equal(t, true, reflect.ValueOf(err).IsNil())
 			},
 		},
 		{
@@ -406,8 +414,8 @@ func TestTransactionServiceImpl_UpdateTransactionPoints(t *testing.T) {
 					Times(1).
 					Return(app_erros.NewUnexpectedError(""))
 			},
-			checkResponse: func(t *testing.T, actual interface{}, expected interface{}) {
-				require.Equal(t, app_erros.NewUnexpectedError(""), expected)
+			checkResponse: func(t *testing.T, err interface{}) {
+				require.Equal(t, app_erros.NewUnexpectedError(""), err)
 			},
 		},
 	}
@@ -420,12 +428,12 @@ func TestTransactionServiceImpl_UpdateTransactionPoints(t *testing.T) {
 			defer ctrl.Finish()
 
 			repostiory := mocks.NewMockTransactionRepository(ctrl)
-			transactionServiceImpl := NewTransactionServiceImpl(repostiory)
+			transactionProtoServer := NewTransactionProtoServer(repostiory)
 
 			tc.buildStubs(repostiory)
 
-			err := transactionServiceImpl.UpdateTransactionPoints(transaction.TransactionPoints, transaction.UserId)
-			tc.checkResponse(t, nil, err)
+			err := transactionProtoServer.UpdateTransactionPoints(transaction.TransactionPoints, transaction.UserId)
+			tc.checkResponse(t, err)
 		})
 	}
 }
