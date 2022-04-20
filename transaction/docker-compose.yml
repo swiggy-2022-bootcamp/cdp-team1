@@ -1,8 +1,11 @@
 version: "3"
 services:
-  backend:
+  transaction-service:
     build: .
+    container_name: transaction-service
+    restart: always
     ports:
       - "9001:9001"
+      - "9003:9003"
     volumes:
-      - .:/app
+      - ./app
