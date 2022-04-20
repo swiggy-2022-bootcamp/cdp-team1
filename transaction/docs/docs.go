@@ -71,7 +71,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.TransactionAmount"
+                            "$ref": "#/definitions/models.TransactionDetails"
                         }
                     },
                     {
@@ -86,7 +86,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.TransactionAmount"
+                            "$ref": "#/definitions/models.TransactionDetails"
                         }
                     },
                     "400": {
@@ -172,7 +172,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.TransactionAmount"
+                            "$ref": "#/definitions/models.TransactionDetails"
                         }
                     },
                     {
@@ -218,7 +218,7 @@ const docTemplate = `{
                 }
             }
         },
-        "models.TransactionAmount": {
+        "models.TransactionDetails": {
             "type": "object",
             "required": [
                 "amount",
@@ -242,7 +242,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:9001",
+	Host:             "",
 	BasePath:         "/transaction/api",
 	Schemes:          []string{},
 	Title:            "Swiggy Qwik - Transaction module",
