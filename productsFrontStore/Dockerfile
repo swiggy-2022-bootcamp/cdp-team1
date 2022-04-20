@@ -10,4 +10,7 @@ RUN cd /app && git clone -b products-front-store https://github.com/swiggy-2022-
 WORKDIR /app/cdp-team1/productsFrontStore
 RUN go build -o main .
 
+EXPOSE 9009
+EXPOSE 19091
+
 CMD [ "/app/cdp-team1/productsFrontStore/main" ]
