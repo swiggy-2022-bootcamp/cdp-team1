@@ -13,4 +13,12 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
-.idea/
+
+# Server log files
+*.log
+
+# .Idea folder
+.idea
+
+# .Env files
+# .env
