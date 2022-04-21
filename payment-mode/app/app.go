@@ -67,6 +67,7 @@ func Start() {
 		os.Exit(0)
 	}()
 
+	//Starting REST server and GRPC server
 	wg.Add(2)
 	go StartRESTServer()
 	go StartGRPCServer()
@@ -75,6 +76,7 @@ func Start() {
 
 func StartRESTServer() {
 	defer wg.Done()
+
 	//Configuring gin server and router
 	server = gin.New()
 	server.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
@@ -92,11 +94,13 @@ func StartRESTServer() {
 
 func StartGRPCServer() {
 	defer wg.Done()
+	//Opening PORT 9004 for GRPC server
 	lis, err := net.Listen("tcp", ":9004")
 	if err != nil {
 		log.Error("Failed to listen on port %s with error %v", "9004", err)
 	}
 
+	//Creating and registering the GRPC server
 	grpcServer := grpc.NewServer()
 	protos.RegisterPaymentServer(grpcServer, paymentServiceProto)
 	err = grpcServer.Serve(lis)

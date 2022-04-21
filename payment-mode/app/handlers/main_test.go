@@ -12,6 +12,7 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
+// Creating test server with PaymentService mock.
 func NewServer(paymentService *mocks.MockPaymentService) *gin.Engine {
 	paymentHandler := NewPaymentHandler(paymentService)
 

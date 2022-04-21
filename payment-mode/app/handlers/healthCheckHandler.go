@@ -10,6 +10,7 @@ type HealthCheckHandler struct {
 	paymentRepository repository.PaymentRepository
 }
 
+// Response for health check API call
 type HealthCheckResponse struct {
 	Server   string `json:"server"`
 	Database string `json:"database"`
@@ -31,6 +32,7 @@ func NewHealthCheckHandler(paymentRepository repository.PaymentRepository) Healt
 // @Router / [GET]
 func (hc HealthCheckHandler) HealthCheck(c *gin.Context) {
 
+	// Checks if database is active or not
 	if hc.paymentRepository.DBHealthCheck() {
 		response := &HealthCheckResponse{
 			Server:   "Server is up",

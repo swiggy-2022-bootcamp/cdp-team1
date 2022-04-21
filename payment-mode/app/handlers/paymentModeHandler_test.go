@@ -34,6 +34,7 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
 	}{
 		{
+			// Missing payment mode body in the request
 			name: "BadRequestFailure",
 			buildStubs: func(paymentService *mocks.MockPaymentService) {
 				paymentService.EXPECT().
@@ -46,6 +47,7 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 			},
 		},
 		{
+			// Required field not present in request body.
 			name: "ValidationFailure",
 			buildStubs: func(paymentService *mocks.MockPaymentService) {
 				paymentService.EXPECT().
@@ -58,6 +60,7 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 			},
 		},
 		{
+			// Payment added successfully.
 			name: "Success",
 			buildStubs: func(paymentService *mocks.MockPaymentService) {
 				paymentService.EXPECT().
@@ -70,6 +73,7 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 			},
 		},
 		{
+			// Payment mode addition failed with Internal server error.
 			name: "Failure",
 			buildStubs: func(paymentService *mocks.MockPaymentService) {
 				paymentService.EXPECT().
@@ -93,11 +97,13 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 			data, err := json.Marshal(paymentMode)
 			require.NoError(t, err)
 
+			// Mock payment service
 			paymentService := mocks.NewMockPaymentService(ctrl)
 			tc.buildStubs(paymentService)
 
 			server := NewServer(paymentService)
 
+			// Making an HTTP request
 			recorder := httptest.NewRecorder()
 			url := fmt.Sprintf("/payment-mode/api/paymentmethods/%s", userId)
 			var request *http.Request

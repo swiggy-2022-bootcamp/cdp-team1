@@ -24,33 +24,12 @@ func ConnectDB() *dynamodb.DynamoDB {
 	}
 	fmt.Println("Connected to DynamoDB")
 	return client
-	//client, err := mongo.NewClient(options.Client().ApplyURI(EnvMonogoURI()))
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//
-	////Connect to database
-	//ctx, _ := context.WithTimeout(context.Background(), time.Second*10)
-	//err = client.Connect(ctx)
-	//if err != nil {
-	//	log.Fatal(err)
-	//}
-	//
 
-	//return client
 }
-
-// DB create instance of client to be used in the application
-//Singleton design pattern.
-//var DB = ConnectDB()
-
-//func GetCollection(client *mongo.Client, collectionName string) *mongo.Collection {
-//	collection := client.Database("paymentMode").Collection(collectionName)
-//	return collection
-//}
 
 func CreateTable(DB *dynamodb.DynamoDB) error {
 
+	// Preparing create table input with table details
 	input := &dynamodb.CreateTableInput{
 		AttributeDefinitions: []*dynamodb.AttributeDefinition{
 			{
@@ -70,6 +49,8 @@ func CreateTable(DB *dynamodb.DynamoDB) error {
 		},
 		TableName: aws.String("paymentCollection"),
 	}
+
+	// Create table query
 	response, err := DB.CreateTable(input)
 	if err != nil {
 		log.Error("Got error calling CreateTable: %s", err)

@@ -24,6 +24,7 @@ func TestHealthCheck(t *testing.T) {
 		{
 			name: "Success",
 			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
+				// Call to MOCK DBHealthCheck() returning true.
 				paymentRepository.EXPECT().
 					DBHealthCheck().
 					Times(1).
@@ -38,6 +39,7 @@ func TestHealthCheck(t *testing.T) {
 		{
 			name: "InternalServerError",
 			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
+				// Call to MOCK DBHealthCheck() returning false.
 				paymentRepository.EXPECT().
 					DBHealthCheck().
 					Times(1).
@@ -58,14 +60,17 @@ func TestHealthCheck(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			defer ctrl.Finish()
 
+			//Creating an object og mock repository.
 			paymentRepository := mocks.NewMockPaymentRepository(ctrl)
 			tc.buildStubs(paymentRepository)
 
+			//Creating handler and setting up router
 			healthCheckHandler := NewHealthCheckHandler(paymentRepository)
 			server := gin.Default()
 			router := server.Group("payment-mode/api")
 			router.GET("/", healthCheckHandler.HealthCheck)
 
+			// Making an HTTP call and recording the response
 			recorder := httptest.NewRecorder()
 			url := fmt.Sprintf("/payment-mode/api/")
 			request := httptest.NewRequest(http.MethodGet, url, nil)
@@ -87,12 +92,12 @@ func TestNewHealthCheckHandler(t *testing.T) {
 	assert.Equal(t, healthCheckHandler.paymentRepository, paymentRepository)
 }
 
-func requireBodyMatchResposne(t *testing.T, body *bytes.Buffer, requiredResponse HealthCheckResponse) {
-	data, err := ioutil.ReadAll(body)
+func requireBodyMatchResposne(t *testing.T, actualResponse *bytes.Buffer, expectedResponse HealthCheckResponse) {
+	data, err := ioutil.ReadAll(actualResponse)
 	require.NoError(t, err)
 
 	var responseReceived HealthCheckResponse
 	err = json.Unmarshal(data, &responseReceived)
 	require.NoError(t, err)
-	require.Equal(t, responseReceived, requiredResponse)
+	require.Equal(t, responseReceived, expectedResponse)
 }

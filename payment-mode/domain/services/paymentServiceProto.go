@@ -23,35 +23,44 @@ func (s PaymentProtoServer) CompletePayment(ctx context.Context, paymentRequest 
 	paymentResponse := &protos.PaymentResponse{
 		IsPaymentSuccessful: false,
 	}
+
+	// Fetch user payment modes from DB
 	userPaymentModes, err := paymentRepository.GetPaymentModeFromDB(paymentRequest.GetUserId())
 
 	if err != nil {
 		return paymentResponse, err.Error()
 	}
 
+	// Search the payment request mode.
 	for i, availablePaymentMode := range userPaymentModes.PaymentModes {
 
 		if availablePaymentMode.Mode == paymentRequest.GetPaymentMode().Mode && availablePaymentMode.CardNumber == int(paymentRequest.GetPaymentMode().CardNumber) {
 
+			// Verifying if the available balance is greater the order amount.
 			if availablePaymentMode.Balance >= int(paymentRequest.GetAmount()) {
 
+				// Reducing account balance and updating the database
 				availablePaymentMode.Balance -= int(paymentRequest.GetAmount())
 				userPaymentModes.PaymentModes[i] = availablePaymentMode
 				updateErr := paymentRepository.UpdatePaymentModeToDB(userPaymentModes)
 
 				if updateErr != nil {
+					// Payment failure. DB update error.
 					return paymentResponse, updateErr.Error()
 				} else {
+					// Payment successful
 					paymentResponse.IsPaymentSuccessful = true
 					return paymentResponse, nil
 				}
 
 			} else {
+				// Payment failure. Balance is less than order amount
 				return paymentResponse, app_errors.NewRequestNotAcceptedError("Insufficient funds, payment failed.").Error()
 			}
 		}
 	}
 
+	// Payment failure. Payment mode not found
 	return paymentResponse, app_errors.NewNotFoundError("Payment method is not added for the current user.").Error()
 }
 

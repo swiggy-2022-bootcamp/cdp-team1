@@ -1,6 +1,7 @@
 package services
 
 import (
+	"math/rand"
 	"net/http"
 	app_errors "qwik.in/payment-mode/app-errors"
 	"qwik.in/payment-mode/domain/models"
@@ -34,6 +35,8 @@ func (p PaymentServiceImpl) AddPaymentMode(paymentMode *models.PaymentMode, user
 	if err != nil {
 		if err.Code == http.StatusNotFound {
 			newPaymentModes := make([]models.PaymentMode, 0, 0)
+			//Generating random number to initialize balance
+			paymentMode.Balance = (rand.Intn(10) + 1) * 10000
 			newUserPaymentMode := models.UserPaymentMode{
 				UserId:       userId,
 				PaymentModes: append(newPaymentModes, *paymentMode),
@@ -60,6 +63,7 @@ func (p PaymentServiceImpl) AddPaymentMode(paymentMode *models.PaymentMode, user
 	}
 
 	// If not there add the payment mode object in userPaymentMode's paymentMethods field.
+	paymentMode.Balance = (rand.Intn(10) + 1) * 10000
 	currentPaymentModes = append(currentPaymentModes, *paymentMode)
 	newUserPaymentMode := models.UserPaymentMode{
 		UserId:       userId,
@@ -91,33 +95,41 @@ func (p PaymentServiceImpl) SetPaymentMode(userId string, paymentMode models.Pay
 		return false, err
 	}
 
+	// Returns true, if the provided payment mode is added for the given user
 	for _, addedPaymentModes := range userPaymentModes.PaymentModes {
 		if addedPaymentModes.Mode == paymentMode.Mode && addedPaymentModes.CardNumber == paymentMode.CardNumber {
 			return true, nil
 		}
 	}
 
+	// If given payment mode is not available, it returns 404 error.
 	return false, app_errors.NewNotFoundError("The given payment mode doesn't exist for the current user.")
 
 }
 
 func (p PaymentServiceImpl) CheckBalanceAndCompletePayment(paymentRequest *models.PaymentRequest) (bool, *app_errors.AppError) {
+	// Fetch available modes of payment for the given user.
 	userPaymentModes, err := p.paymentRepository.GetPaymentModeFromDB(paymentRequest.UserId)
 
 	if err != nil {
 		return false, err
 	}
 
+	// Looping through the available payment modes
 	for i, availablePaymentMode := range userPaymentModes.PaymentModes {
 
+		// Searching for selected payment mode from available modes
 		if availablePaymentMode.Mode == paymentRequest.SelectedPaymentMode.Mode && availablePaymentMode.CardNumber == paymentRequest.SelectedPaymentMode.CardNumber {
 
+			// Verifying if the available balance is sufficient for the given order amount.
 			if availablePaymentMode.Balance >= paymentRequest.OrderAmount {
 
+				// Reducing the balance and updating it to the DB.
 				availablePaymentMode.Balance -= paymentRequest.OrderAmount
 				userPaymentModes.PaymentModes[i] = availablePaymentMode
 				updateErr := p.paymentRepository.UpdatePaymentModeToDB(userPaymentModes)
 
+				// Payment failure. Returning false due to DB update failure
 				if updateErr != nil {
 					return false, updateErr
 				} else {
@@ -125,10 +137,12 @@ func (p PaymentServiceImpl) CheckBalanceAndCompletePayment(paymentRequest *model
 				}
 
 			} else {
+				//  Payment failure. Balance is less than the order amount.
 				return false, app_errors.NewRequestNotAcceptedError("Insufficient funds, payment failed.")
 			}
 		}
 	}
 
+	// Payment failure. Payment mode not found in user payment mode list.
 	return false, app_errors.NewNotFoundError("Payment method is not added for the current user.")
 }

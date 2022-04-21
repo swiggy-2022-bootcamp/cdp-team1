@@ -35,7 +35,7 @@ func NewPaymentHandler(paymentService services.PaymentService) PaymentHandler {
 // @Router /paymentmethods/{userId} [POST]
 func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 
-	userId := c.Param("userId") //To be replaced with grpc call to auth service.
+	userId := c.Param("userId")
 
 	var paymentMode models.PaymentMode
 	if err := c.BindJSON(&paymentMode); err != nil {
