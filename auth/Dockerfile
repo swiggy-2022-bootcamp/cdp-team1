@@ -1,6 +1,7 @@
 FROM golang:1.18-alpine
 
-RUN apk update && apk add --no-cache git build-base
+RUN apk update && apk add --no-cache git build-base && apk add tzdata
+ENV TZ=Asia/Kolkata
 
 # Set destination for COPY
 WORKDIR /auth
