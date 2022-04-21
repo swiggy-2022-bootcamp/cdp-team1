@@ -1,6 +1,8 @@
 package routes
 
 import (
+	"authService/db"
+	"authService/domain"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -11,7 +13,15 @@ import (
 
 func RegisterAuthRoutes(authRouter *gin.Engine) {
 
-	authHandlers := handlers.AuthHandlers{}
+	dbClient := db.NewDynamoDBClient()
+
+	authRepo := db.NewAuthRepositoryDB(dbClient, 100)
+	adminRepo := db.NewAdminRepositoryDB(dbClient, 100)
+	custRepo := db.NewCustomerRepositoryDB(dbClient, 100)
+
+	authSvc := domain.NewAuthService(authRepo, adminRepo, custRepo)
+
+	authHandlers := handlers.AuthHandlers{AuthSvc: authSvc}
 
 	apiRouter := authRouter.Group("/api")
 
@@ -21,4 +31,7 @@ func RegisterAuthRoutes(authRouter *gin.Engine) {
 	authRoutesGroup := apiRouter.Group("/auth")
 
 	authRoutesGroup.GET("/", authHandlers.HealthCheckHandler)
+	authRoutesGroup.POST("/login", authHandlers.LoginHandler)
+	authRoutesGroup.POST("/logout", authHandlers.LogoutHandler)
+	authRoutesGroup.POST("/verify", authHandlers.VerificationHandler)
 }

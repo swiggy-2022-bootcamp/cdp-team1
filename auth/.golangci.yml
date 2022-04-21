@@ -6,7 +6,7 @@ linters:
   enable:
     - deadcode
     - errcheck
-#    - goimports
+    - goimports
     - golint
     - gosimple
     - govet
