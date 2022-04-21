@@ -5,6 +5,39 @@ definitions:
       status:
         type: string
     type: object
+  dto.LoginRequestDTO:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  dto.LoginResponseDTO:
+    properties:
+      auth_token:
+        type: string
+    type: object
+  dto.LogoutResponseDTO:
+    properties:
+      message:
+        type: string
+    type: object
+  dto.VerificationRequestDTO:
+    properties:
+      role:
+        type: string
+      user_id:
+        type: string
+    type: object
+  errs.AppError:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
 info:
   contact:
     email: ayan59dutta@gmail.com
@@ -30,4 +63,77 @@ paths:
             $ref: '#/definitions/dto.HealthResponseDTO'
       tags:
       - auth
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Login
+      parameters:
+      - description: User login
+        in: body
+        name: dto.LoginRequestDTO
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginRequestDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.LoginResponseDTO'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errs.AppError'
+      tags:
+      - auth
+  /auth/logout:
+    post:
+      description: Logout
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.LogoutResponseDTO'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errs.AppError'
+      security:
+      - Bearer Token: []
+      tags:
+      - auth
+  /auth/verify:
+    post:
+      consumes:
+      - application/json
+      description: Login
+      parameters:
+      - description: Verify Token
+        in: body
+        name: dto.VerificationRequestDTO
+        required: true
+        schema:
+          $ref: '#/definitions/dto.VerificationRequestDTO'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errs.AppError'
+      security:
+      - Bearer Token: []
+      tags:
+      - auth
+securityDefinitions:
+  Bearer Token:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"
