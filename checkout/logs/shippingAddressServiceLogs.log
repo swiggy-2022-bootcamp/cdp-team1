@@ -1,0 +1,929 @@
+📛ERROR: 2022/04/20 22:43:19 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 22:43:19 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/ 2022-04-20T22:43:25+05:30 0s 
+[GIN] 2022/04/20 - 22:43:25 | 200 |            0s |             ::1 | GET      "/checkout/api/"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api 2022-04-20T22:43:32+05:30 0s 
+[GIN] 2022/04/20 - 22:43:32 | 404 |            0s |             ::1 | GET      "/shipping/api"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing/ 2022-04-20T22:43:37+05:30 0s 
+[GIN] 2022/04/20 - 22:43:37 | 404 |       122.4µs |             ::1 | GET      "/shipping/api/existing/"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-20T22:43:39+05:30 0s 
+[GIN] 2022/04/20 - 22:43:39 | 404 |            0s |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/20 22:44:19 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 22:44:19 [Created the table{
+
+}]
+❕INFO: 2022/04/20 22:44:25 [Default Address Fetched ✅  0xc0000f0000]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-20T22:44:25+05:30 320.7942ms 
+[GIN] 2022/04/20 - 22:44:25 | 202 |    320.7942ms |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/20 23:04:59 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:04:59 [Created the table{
+
+}]
+❕INFO: 2022/04/20 23:05:16 [Default Address Fetched ✅  0xc0000b71e0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-20T23:05:16+05:30 331.7441ms 
+[GIN] 2022/04/20 - 23:05:16 | 202 |    331.7441ms |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/20 23:09:57 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:09:57 [Created the table{
+
+}]
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingAddress 2022-04-20T23:10:05+05:30 654.9µs 
+[GIN] 2022/04/20 - 23:10:05 | 404 |       654.9µs |             ::1 | GET      "/shipping/api/existingAddress"
+📛ERROR: 2022/04/20 23:10:16 [Error reading RESPONSE value from GET Request]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:10:16+05:30 4.178ms 
+[GIN] 2022/04/20 - 23:10:16 | 500 |       4.178ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:10:48 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:10:48 [Created the table{
+
+}]
+📛ERROR: 2022/04/20 23:10:54 [Error reading RESPONSE value from GET Request]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:10:54+05:30 2.6528ms 
+[GIN] 2022/04/20 - 23:10:54 | 500 |      3.2066ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:12:55 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:12:55 [Created the table{
+
+}]
+📛ERROR: 2022/04/20 23:13:04 [Error reading RESPONSE value from GET Request]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:13:04+05:30 3.231ms 
+[GIN] 2022/04/20 - 23:13:04 | 500 |       3.231ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:13:33 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:13:33 [Created the table{
+
+}]
+📛ERROR: 2022/04/20 23:13:43 [Error reading RESPONSE value from GET Request]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:13:43+05:30 3.1537ms 
+[GIN] 2022/04/20 - 23:13:43 | 500 |      3.1537ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:17:14 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:17:14 [Created the table{
+
+}]
+📛ERROR: 2022/04/20 23:17:20 [Error reading RESPONSE value from GET Request]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:17:20+05:30 0s 
+[GIN] 2022/04/20 - 23:17:20 | 400 |            0s |             ::1 | GET      "/shipping/api/existingApi"
+❕INFO: 2022/04/20 23:17:42 [Default Address Fetched ✅  0xc0000b6420]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-20T23:17:42+05:30 326.9267ms 
+[GIN] 2022/04/20 - 23:17:42 | 202 |    326.9267ms |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/20 23:19:21 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:19:21 [Created the table{
+
+}]
+📛ERROR: 2022/04/20 23:19:28 [Error reading RESPONSE value from GET Request]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:19:28+05:30 505.5µs 
+[GIN] 2022/04/20 - 23:19:28 | 400 |       505.5µs |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:20:04 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:20:04 [Created the table{
+
+}]
+📛ERROR: 2022/04/20 23:20:09 [Error reading RESPONSE value from GET Request]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:20:09+05:30 533.8µs 
+[GIN] 2022/04/20 - 23:20:09 | 400 |       533.8µs |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:21:15 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:21:15 [Created the table{
+
+}]
+📛ERROR: 2022/04/20 23:21:20 [Error reading RESPONSE value from GET Request]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:21:20+05:30 1.1776ms 
+[GIN] 2022/04/20 - 23:21:20 | 400 |      1.1776ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:26:38 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:26:38 [Created the table{
+
+}]
+❕INFO: 2022/04/20 23:26:43 [Default Address Fetched ✅  0xc000638000]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-20T23:26:43+05:30 340.5598ms 
+[GIN] 2022/04/20 - 23:26:43 | 202 |    340.5598ms |             ::1 | GET      "/shipping/api/existing"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:26:46+05:30 5.5539ms 
+[GIN] 2022/04/20 - 23:26:46 | 500 |      5.5539ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:27:02 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:27:02 [Created the table{
+
+}]
+❕INFO: 2022/04/20 23:27:11 [Default Address Fetched ✅  0xc0002c2000]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-20T23:27:11+05:30 338.6162ms 
+[GIN] 2022/04/20 - 23:27:11 | 202 |    338.6162ms |             ::1 | GET      "/shipping/api/existing"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:27:13+05:30 3.5686ms 
+[GIN] 2022/04/20 - 23:27:13 | 500 |      4.1181ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:29:55 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:29:55 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:30:01+05:30 1.139ms 
+[GIN] 2022/04/20 - 23:30:01 | 200 |       1.139ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:31:40 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:31:40 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:31:45+05:30 1.0412ms 
+[GIN] 2022/04/20 - 23:31:45 | 200 |      1.0412ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:32:39 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:32:39 [Created the table{
+
+}]
+❕INFO: 2022/04/20 23:32:44 [Default Address Fetched ✅  0xc000340000]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-20T23:32:44+05:30 334.9766ms 
+[GIN] 2022/04/20 - 23:32:44 | 202 |    334.9766ms |             ::1 | GET      "/shipping/api/existing"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:32:44+05:30 335.9782ms 
+[GIN] 2022/04/20 - 23:32:44 | 200 |    335.9782ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:33:59 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:33:59 [Created the table{
+
+}]
+❕INFO: 2022/04/20 23:34:13 [Default Address Fetched ✅  0xc0005380b0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-20T23:34:13+05:30 336.5437ms 
+[GIN] 2022/04/20 - 23:34:13 | 202 |    336.5437ms |             ::1 | GET      "/shipping/api/existing"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:34:13+05:30 338.0791ms 
+[GIN] 2022/04/20 - 23:34:13 | 200 |    338.0791ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:36:17 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:36:17 [Created the table{
+
+}]
+📛ERROR: 2022/04/20 23:36:21 [Default Shipping Address does not exist]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:36:21+05:30 503.5µs 
+[GIN] 2022/04/20 - 23:36:21 | 400 |       503.5µs |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:36:42 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:36:42 [Created the table{
+
+}]
+❕INFO: 2022/04/20 23:36:43 [Default Address Fetched ✅  0xc000136370]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-20T23:36:43+05:30 316.4086ms 
+[GIN] 2022/04/20 - 23:36:43 | 202 |    316.4086ms |             ::1 | GET      "/shipping/api/existing"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:36:43+05:30 319.3311ms 
+[GIN] 2022/04/20 - 23:36:43 | 200 |    319.3311ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:37:24 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:37:24 [Created the table{
+
+}]
+❕INFO: 2022/04/20 23:37:28 [Default Address Fetched ✅  0xc00011e000]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-20T23:37:28+05:30 331.7811ms 
+[GIN] 2022/04/20 - 23:37:28 | 202 |    331.7811ms |             ::1 | GET      "/shipping/api/existing"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:37:28+05:30 332.8818ms 
+[GIN] 2022/04/20 - 23:37:28 | 200 |    332.8818ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/20 23:39:32 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/20 23:39:32 [Created the table{
+
+}]
+❕INFO: 2022/04/20 23:39:37 [Default Address Fetched ✅  0xc000320dc0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-20T23:39:37+05:30 329.704ms 
+[GIN] 2022/04/20 - 23:39:37 | 202 |     329.704ms |             ::1 | GET      "/shipping/api/existing"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-20T23:39:37+05:30 332.1132ms 
+[GIN] 2022/04/20 - 23:39:37 | 202 |    332.1132ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/21 06:48:47 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 06:48:47 [Created the table{
+
+}]
+❕INFO: 2022/04/21 06:49:07 [Default Address Fetched ✅  0xc000072d10]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-21T06:49:07+05:30 334.9656ms 
+[GIN] 2022/04/21 - 06:49:07 | 202 |    334.9656ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 06:49:10 [Default Address Fetched ✅  0xc000348000]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-21T06:49:10+05:30 325.3359ms 
+[GIN] 2022/04/21 - 06:49:10 | 202 |    325.3359ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 06:49:10 [Default ShippingAddress Fetched ✅ 0xc0007df200]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-21T06:49:10+05:30 331.397ms 
+[GIN] 2022/04/21 - 06:49:10 | 500 |     331.397ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/21 06:51:19 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 06:51:19 [Created the table{
+
+}]
+❕INFO: 2022/04/21 06:51:24 [Default Address Fetched ✅  0xc000318d10]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-21T06:51:24+05:30 325.0207ms 
+[GIN] 2022/04/21 - 06:51:24 | 202 |    325.0207ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 06:51:24 [Default ShippingAddress Fetched ✅ 0xc000070510]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-21T06:51:24+05:30 326.9273ms 
+[GIN] 2022/04/21 - 06:51:24 | 202 |    326.9273ms |             ::1 | GET      "/shipping/api/existingApi"
+❕INFO: 2022/04/21 06:51:31 [Default Address Fetched ✅  0xc000319080]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-21T06:51:31+05:30 339.247ms 
+[GIN] 2022/04/21 - 06:51:31 | 202 |    339.7875ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 06:51:34 [Default Address Fetched ✅  0xc0004ec000]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-21T06:51:34+05:30 334.2292ms 
+[GIN] 2022/04/21 - 06:51:34 | 202 |    334.2292ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 06:51:34 [Default ShippingAddress Fetched ✅ 0xc00059e2d0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-21T06:51:34+05:30 335.2954ms 
+[GIN] 2022/04/21 - 06:51:34 | 202 |    335.2954ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/21 06:52:23 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 06:52:23 [Created the table{
+
+}]
+❕INFO: 2022/04/21 06:52:33 [Default Address Fetched ✅  0xc000104000]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-21T06:52:33+05:30 330.9648ms 
+[GIN] 2022/04/21 - 06:52:33 | 202 |    330.9648ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 06:52:33 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingApi 2022-04-21T06:52:33+05:30 333.1533ms 
+[GIN] 2022/04/21 - 06:52:33 | 202 |    333.1533ms |             ::1 | GET      "/shipping/api/existingApi"
+📛ERROR: 2022/04/21 07:58:21 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 07:58:21 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 07:58:22 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 07:58:22 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:00:12 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:00:12 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:00:13 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:00:13 [Created the table{
+
+}]
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/getShipping 2022-04-21T08:00:21+05:30 0s 
+[GIN] 2022/04/21 - 08:00:21 | 404 |            0s |             ::1 | GET      "/checkout/api/getShipping"
+❕INFO: 2022/04/21 08:00:33 [Default Address Fetched ✅  0xc000560000]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-21T08:00:33+05:30 332.7085ms 
+[GIN] 2022/04/21 - 08:00:33 | 202 |    332.7085ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 08:00:33 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingaddress 2022-04-21T08:00:33+05:30 335.0844ms 
+[GIN] 2022/04/21 - 08:00:33 | 202 |    335.0844ms |             ::1 | GET      "/checkout/api/shippingaddress"
+❕INFO: 2022/04/21 08:00:43 [Default Address Fetched ✅  0xc00031e370]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-21T08:00:43+05:30 323.291ms 
+[GIN] 2022/04/21 - 08:00:43 | 202 |     323.291ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 08:00:46 [Default Address Fetched ✅  0xc00031e580]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-21T08:00:46+05:30 352.6305ms 
+[GIN] 2022/04/21 - 08:00:46 | 202 |    352.6305ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 08:00:46 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingaddress 2022-04-21T08:00:46+05:30 352.7637ms 
+[GIN] 2022/04/21 - 08:00:46 | 202 |    352.7637ms |             ::1 | GET      "/checkout/api/shippingaddress"
+❕INFO: 2022/04/21 08:00:54 [Default Address Fetched ✅  0xc0005cc160]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-21T08:00:54+05:30 318.4737ms 
+[GIN] 2022/04/21 - 08:00:54 | 202 |    318.4737ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 08:00:57 [Default Address Fetched ✅  0xc0005602c0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-21T08:00:57+05:30 356.1951ms 
+[GIN] 2022/04/21 - 08:00:57 | 202 |    356.1951ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/21 08:00:57 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingaddress 2022-04-21T08:00:57+05:30 356.6407ms 
+[GIN] 2022/04/21 - 08:00:57 | 202 |    356.6407ms |             ::1 | GET      "/checkout/api/shippingaddress"
+❕INFO: 2022/04/21 08:02:54 [Default Address Fetched ✅  0xc000382a40]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:02:54+05:30 1.4430411s 
+[GIN] 2022/04/21 - 08:02:54 | 202 |     1.443137s |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:04:32 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:04:32 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:04:33 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:04:33 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:04:43 [Default Address Fetched ✅  0xc000382ec0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:04:43+05:30 333.7064ms 
+[GIN] 2022/04/21 - 08:04:43 | 202 |    333.7064ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:12:32 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:12:32 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:12:33 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:12:33 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:12:40 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:12:40+05:30 339.2943ms 
+[GIN] 2022/04/21 - 08:12:40 | 202 |    339.2943ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:15:55 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:15:55 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:15:56 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:15:56 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:16:00 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:16:00+05:30 334.2139ms 
+[GIN] 2022/04/21 - 08:16:00 | 202 |    334.2139ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:18:29 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:18:29 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:18:30 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:18:30 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:18:36 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:18:36+05:30 337.2072ms 
+[GIN] 2022/04/21 - 08:18:36 | 202 |    337.2072ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:18:54 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:18:54 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:18:55 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:18:55 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:19:00 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:19:00+05:30 357.2666ms 
+[GIN] 2022/04/21 - 08:19:00 | 202 |    357.2666ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:19:23 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:19:23 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:19:24 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:19:24 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:19:27 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:19:27+05:30 334.5687ms 
+[GIN] 2022/04/21 - 08:19:27 | 202 |    334.5687ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:19:55 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:19:55 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:19:56 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:19:56 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:20:13 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:20:13+05:30 335.682ms 
+[GIN] 2022/04/21 - 08:20:13 | 202 |     336.251ms |             ::1 | GET      "/cart/api/allCartItems"
+❕INFO: 2022/04/21 08:20:15 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:20:15+05:30 332.0752ms 
+[GIN] 2022/04/21 - 08:20:15 | 202 |    332.0752ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:20:34 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:20:34 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:20:35 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:20:35 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:20:39 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:20:39+05:30 342.8861ms 
+[GIN] 2022/04/21 - 08:20:39 | 202 |    343.0134ms |             ::1 | GET      "/cart/api/allCartItems"
+❕INFO: 2022/04/21 08:20:42 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:20:42+05:30 328.1548ms 
+[GIN] 2022/04/21 - 08:20:42 | 202 |    328.1548ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:21:15 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:21:15 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:21:15 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:21:15 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:21:20 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:21:20+05:30 334.5916ms 
+[GIN] 2022/04/21 - 08:21:20 | 202 |    334.5916ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:22:06 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:22:06 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:22:07 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:22:07 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:22:11 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:22:11+05:30 330.9452ms 
+[GIN] 2022/04/21 - 08:22:11 | 202 |    330.9452ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:22:52 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:22:52 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:22:53 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:22:53 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:22:57 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:22:57+05:30 331.3236ms 
+[GIN] 2022/04/21 - 08:22:57 | 202 |    331.8482ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 08:23:24 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 08:23:24 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 08:23:24 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 08:23:24 [Created the table{
+
+}]
+❕INFO: 2022/04/21 08:23:25 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:23:25+05:30 327.7113ms 
+[GIN] 2022/04/21 - 08:23:25 | 202 |    327.7113ms |             ::1 | GET      "/cart/api/allCartItems"
+❕INFO: 2022/04/21 08:23:29 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T08:23:29+05:30 334.5833ms 
+[GIN] 2022/04/21 - 08:23:29 | 202 |    334.5833ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 09:40:07 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 09:40:07 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 09:40:07 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 09:40:07 [Created the table{
+
+}]
+❕INFO: 2022/04/21 09:40:21 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T09:40:21+05:30 302.5393ms 
+[GIN] 2022/04/21 - 09:40:21 | 202 |    302.5393ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 09:44:23 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 09:44:23 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 09:44:24 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 09:44:24 [Created the table{
+
+}]
+❕INFO: 2022/04/21 09:44:29 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T09:44:29+05:30 330.8414ms 
+[GIN] 2022/04/21 - 09:44:29 | 202 |    330.9226ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 09:46:32 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 09:46:32 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 09:46:32 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 09:46:32 [Created the table{
+
+}]
+❕INFO: 2022/04/21 09:46:34 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T09:46:34+05:30 305.6039ms 
+[GIN] 2022/04/21 - 09:46:34 | 202 |    305.6039ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 09:49:03 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 09:49:03 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 09:49:04 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 09:49:04 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 09:49:05 [Got error while unmarshalling - %s UnmarshalTypeError: cannot unmarshal map into Go value of type []models.CartProductModel]
+❕INFO: 2022/04/21 09:49:05 [Default Address Fetched ✅  <nil>]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T09:49:05+05:30 353.0229ms 
+[GIN] 2022/04/21 - 09:49:05 | 202 |    353.0229ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/21 09:52:53 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/21 09:52:53 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 09:52:53 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/21 09:52:53 [Created the table{
+
+}]
+📛ERROR: 2022/04/21 09:52:58 [Got error while unmarshalling - %s UnmarshalTypeError: cannot unmarshal map into Go value of type []models.CartProductModel]
+❕INFO: 2022/04/21 09:52:58 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-21T09:52:58+05:30 338.1859ms 
+[GIN] 2022/04/21 - 09:52:58 | 202 |    338.1859ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:28:48 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:28:48 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:28:48 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:28:48 [Created the table{
+
+}]
+❕INFO: 2022/04/22 07:29:23 [Default Address Fetched ✅  0xc0000a2d10]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-22T07:29:23+05:30 346.5663ms 
+[GIN] 2022/04/22 - 07:29:23 | 202 |    346.5663ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/22 07:29:26 [Default Address Fetched ✅  0xc000138fd0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-22T07:29:26+05:30 323.6247ms 
+[GIN] 2022/04/22 - 07:29:26 | 202 |    323.6247ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/22 07:29:26 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingaddress 2022-04-22T07:29:26+05:30 325.7331ms 
+[GIN] 2022/04/22 - 07:29:26 | 202 |    325.7331ms |             ::1 | GET      "/checkout/api/shippingaddress"
+📛ERROR: 2022/04/22 07:29:29 [Got error while unmarshalling - %s UnmarshalTypeError: cannot unmarshal map into Go value of type []models.CartProductModel]
+❕INFO: 2022/04/22 07:29:29 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:29:29+05:30 330.3763ms 
+[GIN] 2022/04/22 - 07:29:29 | 202 |    330.8836ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:30:15 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:30:15 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:30:16 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:30:16 [Created the table{
+
+}]
+❕INFO: 2022/04/22 07:30:22 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:30:22+05:30 312.3903ms 
+[GIN] 2022/04/22 - 07:30:22 | 202 |    312.3903ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:31:02 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:31:02 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:31:03 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:31:03 [Created the table{
+
+}]
+❕INFO: 2022/04/22 07:31:07 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:31:07+05:30 348.6198ms 
+[GIN] 2022/04/22 - 07:31:07 | 202 |    348.6198ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:31:24 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:31:24 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:31:24 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:31:24 [Created the table{
+
+}]
+❕INFO: 2022/04/22 07:31:25 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:31:25+05:30 334.6872ms 
+[GIN] 2022/04/22 - 07:31:25 | 202 |    334.6872ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:34:27 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:34:27 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:34:28 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:34:28 [Created the table{
+
+}]
+❕INFO: 2022/04/22 07:34:35 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:34:35+05:30 336.2017ms 
+[GIN] 2022/04/22 - 07:34:35 | 202 |    336.2017ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:37:52 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:37:52 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:37:52 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:37:52 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:37:53 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:37:53 [Default Address Fetched ✅  {1  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:37:53+05:30 325.3787ms 
+[GIN] 2022/04/22 - 07:37:53 | 202 |    325.3787ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:38:36 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:38:36 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:38:37 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:38:37 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:38:38 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:38:38 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:38:38+05:30 328.3243ms 
+[GIN] 2022/04/22 - 07:38:38 | 202 |    328.3243ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:38:45 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:38:45 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:38:45+05:30 335.8847ms 
+[GIN] 2022/04/22 - 07:38:45 | 202 |    335.8847ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:19 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:44:19 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:44:20 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:44:20 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:44:21 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:21 [Default Address Fetched ✅  {1  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:21+05:30 289.6477ms 
+[GIN] 2022/04/22 - 07:44:21 | 202 |    289.6477ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:25 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:25 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:25+05:30 325.8808ms 
+[GIN] 2022/04/22 - 07:44:25 | 202 |    325.8808ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:26 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:26 [Default Address Fetched ✅  {1  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:26+05:30 335.1002ms 
+[GIN] 2022/04/22 - 07:44:26 | 202 |    335.1002ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:27 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:27 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:27+05:30 301.4701ms 
+[GIN] 2022/04/22 - 07:44:27 | 202 |    301.5854ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:29 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:29 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:29+05:30 305.8405ms 
+[GIN] 2022/04/22 - 07:44:29 | 202 |    305.8405ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:30 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:30 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:30+05:30 321.2926ms 
+[GIN] 2022/04/22 - 07:44:30 | 202 |    321.2926ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:31 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:31 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:31+05:30 323.8457ms 
+[GIN] 2022/04/22 - 07:44:31 | 202 |    323.8457ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:32 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:32 [Default Address Fetched ✅  {1  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:32+05:30 305.6045ms 
+[GIN] 2022/04/22 - 07:44:32 | 202 |    305.6045ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:33 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:33 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:33+05:30 352.6896ms 
+[GIN] 2022/04/22 - 07:44:33 | 202 |    352.6896ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:33 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:33 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:33+05:30 319.1168ms 
+[GIN] 2022/04/22 - 07:44:33 | 202 |    319.1168ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:34 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:34 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:34+05:30 342.0055ms 
+[GIN] 2022/04/22 - 07:44:34 | 202 |    342.0055ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:35 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:35 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:35+05:30 324.19ms 
+[GIN] 2022/04/22 - 07:44:35 | 202 |      324.19ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:35 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:35 [Default Address Fetched ✅  {1  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:35+05:30 304.8633ms 
+[GIN] 2022/04/22 - 07:44:35 | 202 |    304.8633ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:44:36 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:44:36 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:44:36+05:30 338.5229ms 
+[GIN] 2022/04/22 - 07:44:36 | 202 |    338.5229ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:48:14 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:48:14 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:48:15 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:48:15 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:48:16 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:48:16 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:48:16+05:30 300.607ms 
+[GIN] 2022/04/22 - 07:48:16 | 202 |     300.607ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:48:52 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:48:52 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:48:53 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:48:53 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:48:54 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:48:54 [Default Address Fetched ✅  {1 1 []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:48:54+05:30 300.3352ms 
+[GIN] 2022/04/22 - 07:48:54 | 202 |    300.3352ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:54:24 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:54:24 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:54:24 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:54:24 [Created the table{
+
+}]
+❕INFO: 2022/04/22 07:54:25 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:54:25+05:30 308.0788ms 
+[GIN] 2022/04/22 - 07:54:25 | 202 |    308.0788ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:54:56 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:54:56 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:54:56 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:54:56 [Created the table{
+
+}]
+❕INFO: 2022/04/22 07:55:01 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:55:01+05:30 320.6027ms 
+[GIN] 2022/04/22 - 07:55:01 | 202 |    320.6027ms |             ::1 | GET      "/cart/api/allCartItems"
+❕INFO: 2022/04/22 07:55:03 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:55:03+05:30 314.5697ms 
+[GIN] 2022/04/22 - 07:55:03 | 202 |    314.5697ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:56:02 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:56:02 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:56:03 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:56:03 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:56:07 [Error unmarshalling the MAP to CartModelData]
+❕INFO: 2022/04/22 07:56:07 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:56:07+05:30 339.7731ms 
+[GIN] 2022/04/22 - 07:56:07 | 202 |    339.8556ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 07:57:24 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 07:57:24 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 07:57:25 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 07:57:25 [Created the table{
+
+}]
+❕INFO: 2022/04/22 07:57:30 [Default Address Fetched ✅  {  []}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T07:57:30+05:30 306.1546ms 
+[GIN] 2022/04/22 - 07:57:30 | 202 |    306.1546ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 08:04:37 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:04:37 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:04:38 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:04:38 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:04:42 [Default Address Fetched ✅  0xc000092c00]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/allCartItems 2022-04-22T08:04:42+05:30 305.5078ms 
+[GIN] 2022/04/22 - 08:04:42 | 202 |    305.5078ms |             ::1 | GET      "/cart/api/allCartItems"
+📛ERROR: 2022/04/22 08:22:41 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:22:41 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:22:42 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:22:42 [Created the table{
+
+}]
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:23:01+05:30 0s 
+[GIN] 2022/04/22 - 08:23:01 | 404 |            0s |             ::1 | GET      "/checkout/api/cartItems"
+❕INFO: 2022/04/22 08:23:06 [Default Address Fetched ✅  0xc000316fc0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:23:06+05:30 300.2527ms 
+[GIN] 2022/04/22 - 08:23:06 | 202 |    300.2527ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:23:09 [Default Address Fetched ✅  0xc0005bedc0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-22T08:23:09+05:30 321.2314ms 
+[GIN] 2022/04/22 - 08:23:09 | 202 |    321.2314ms |             ::1 | GET      "/shipping/api/existing"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:23:12+05:30 0s 
+[GIN] 2022/04/22 - 08:23:12 | 404 |       534.2µs |             ::1 | GET      "/checkout/api/cartItems"
+❕INFO: 2022/04/22 08:23:22 [Default Address Fetched ✅  0xc0000363c0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-22T08:23:22+05:30 325.4345ms 
+[GIN] 2022/04/22 - 08:23:22 | 202 |    325.4345ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:23:22 [Default ShippingAddress Fetched ✅ {1 1 { 2}}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartitems 2022-04-22T08:23:22+05:30 327.5272ms 
+[GIN] 2022/04/22 - 08:23:22 | 202 |    327.5272ms |             ::1 | GET      "/checkout/api/cartitems"
+📛ERROR: 2022/04/22 08:25:05 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:25:05 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:25:06 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:25:06 [Created the table{
+
+}]
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:25:10+05:30 0s 
+[GIN] 2022/04/22 - 08:25:10 | 404 |            0s |             ::1 | GET      "/checkout/api/cartItems"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:25:11+05:30 0s 
+[GIN] 2022/04/22 - 08:25:11 | 404 |        75.4µs |             ::1 | GET      "/checkout/api/cartItems"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:25:11+05:30 0s 
+[GIN] 2022/04/22 - 08:25:11 | 404 |            0s |             ::1 | GET      "/checkout/api/cartItems"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:25:14+05:30 0s 
+[GIN] 2022/04/22 - 08:25:14 | 404 |       376.5µs |             ::1 | GET      "/checkout/api/cartItems"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:25:15+05:30 0s 
+[GIN] 2022/04/22 - 08:25:15 | 404 |            0s |             ::1 | GET      "/checkout/api/cartItems"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:25:15+05:30 0s 
+[GIN] 2022/04/22 - 08:25:15 | 404 |         779µs |             ::1 | GET      "/checkout/api/cartItems"
+📛ERROR: 2022/04/22 08:25:31 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:25:31 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:25:32 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:25:32 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:25:33 [Default Address Fetched ✅  0xc0000ec300]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-22T08:25:33+05:30 334.3374ms 
+[GIN] 2022/04/22 - 08:25:33 | 202 |    334.3374ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:25:33 [Default ShippingAddress Fetched ✅ {1 1 { 2}}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:25:33+05:30 336.7753ms 
+[GIN] 2022/04/22 - 08:25:33 | 202 |    336.7753ms |             ::1 | GET      "/checkout/api/cartItems"
+❕INFO: 2022/04/22 08:25:39 [Default Address Fetched ✅  0xc000318e70]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-22T08:25:39+05:30 313.4722ms 
+[GIN] 2022/04/22 - 08:25:39 | 202 |    313.4722ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/22 08:25:39 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-22T08:25:39+05:30 314.4691ms 
+[GIN] 2022/04/22 - 08:25:39 | 202 |    314.4691ms |             ::1 | GET      "/checkout/api/shippingAddress"
+📛ERROR: 2022/04/22 08:27:12 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:27:12 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:27:12 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:27:12 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:27:13 [Default Address Fetched ✅  0xc000094a00]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:27:13+05:30 354.7957ms 
+[GIN] 2022/04/22 - 08:27:13 | 202 |    354.7957ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:27:18 [Default Address Fetched ✅  0xc000316e00]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:27:18+05:30 319.2731ms 
+[GIN] 2022/04/22 - 08:27:18 | 202 |    319.2731ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:27:19 [Default Address Fetched ✅  0xc0002c7f40]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:27:19+05:30 316.2417ms 
+[GIN] 2022/04/22 - 08:27:19 | 202 |    316.2417ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:27:20 [Default Address Fetched ✅  0xc000317300]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:27:20+05:30 308.5514ms 
+[GIN] 2022/04/22 - 08:27:20 | 202 |    308.5514ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:27:21 [Default Address Fetched ✅  0xc000317580]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:27:21+05:30 337.5903ms 
+[GIN] 2022/04/22 - 08:27:21 | 202 |    337.5903ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:27:21 [Default Address Fetched ✅  0xc000036640]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:27:21+05:30 310.6091ms 
+[GIN] 2022/04/22 - 08:27:21 | 202 |    310.6091ms |             ::1 | GET      "/cart/api/cartItems"
+📛ERROR: 2022/04/22 08:34:46 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:34:46 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:34:46 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:34:46 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:34:48 [Default Address Fetched ✅  0xc000036e40]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:34:48+05:30 300.769ms 
+[GIN] 2022/04/22 - 08:34:48 | 202 |     300.769ms |             ::1 | GET      "/cart/api/cartItems"
+📛ERROR: 2022/04/22 08:36:40 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:36:40 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:36:41 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:36:41 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:36:42 [Default Address Fetched ✅  0xc000036c40]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:36:42+05:30 363.7517ms 
+[GIN] 2022/04/22 - 08:36:42 | 202 |    363.7517ms |             ::1 | GET      "/cart/api/cartItems"
+📛ERROR: 2022/04/22 08:36:58 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:36:58 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:36:59 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:36:59 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:37:00 [Default Address Fetched ✅  0xc00008ef00]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:37:00+05:30 330.9589ms 
+[GIN] 2022/04/22 - 08:37:00 | 202 |    330.9589ms |             ::1 | GET      "/cart/api/cartItems"
+📛ERROR: 2022/04/22 08:37:32 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:37:32 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:37:33 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:37:33 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:37:39 [Default Address Fetched ✅  0xc0000933c0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:37:39+05:30 298.9998ms 
+[GIN] 2022/04/22 - 08:37:39 | 202 |    298.9998ms |             ::1 | GET      "/cart/api/cartItems"
+📛ERROR: 2022/04/22 08:38:18 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:38:18 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:38:19 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:38:19 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:38:26 [Default Address Fetched ✅  0xc000714c80]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:38:26+05:30 305.6157ms 
+[GIN] 2022/04/22 - 08:38:26 | 202 |    305.6157ms |             ::1 | GET      "/cart/api/cartItems"
+📛ERROR: 2022/04/22 08:39:20 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:39:20 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:39:21 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:39:21 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:39:26 [Default Address Fetched ✅  0xc000532980]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:39:26+05:30 323.2676ms 
+[GIN] 2022/04/22 - 08:39:26 | 202 |    323.2676ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:39:28 [Default Address Fetched ✅  0xc000532b40]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:39:28+05:30 299.2251ms 
+[GIN] 2022/04/22 - 08:39:28 | 202 |    299.2251ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:39:28 [Default Address Fetched ✅  0xc00034c1c0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:39:28+05:30 325.1177ms 
+[GIN] 2022/04/22 - 08:39:28 | 202 |    325.1177ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:39:32 [Default Address Fetched ✅  0xc00034c480]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:39:32+05:30 305.8036ms 
+[GIN] 2022/04/22 - 08:39:32 | 202 |    305.8036ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:39:36 [Default Address Fetched ✅  0xc000136630]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-22T08:39:36+05:30 308.1326ms 
+[GIN] 2022/04/22 - 08:39:36 | 202 |    308.1326ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/22 08:39:36 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-22T08:39:36+05:30 309.9498ms 
+[GIN] 2022/04/22 - 08:39:36 | 202 |    309.9498ms |             ::1 | GET      "/checkout/api/shippingAddress"
+❕INFO: 2022/04/22 08:39:38 [Default Address Fetched ✅  0xc00034c680]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-22T08:39:38+05:30 351.249ms 
+[GIN] 2022/04/22 - 08:39:38 | 202 |     351.249ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:39:38 [Cart Items Fetched ✅ {1 1 [{ 2} { 11} { 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:39:38+05:30 352.7233ms 
+[GIN] 2022/04/22 - 08:39:38 | 202 |    352.7233ms |             ::1 | GET      "/checkout/api/cartItems"
+❕INFO: 2022/04/22 08:39:43 [Default Address Fetched ✅  0xc000095280]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-22T08:39:43+05:30 308.2197ms 
+[GIN] 2022/04/22 - 08:39:43 | 202 |    308.2197ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:39:43 [Cart Items Fetched ✅ {1 1 [{ 2} { 11} { 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:39:43+05:30 308.2197ms 
+[GIN] 2022/04/22 - 08:39:43 | 202 |    308.2197ms |             ::1 | GET      "/checkout/api/cartItems"
+📛ERROR: 2022/04/22 08:40:31 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:40:31 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:40:32 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:40:32 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:40:37 [Default Address Fetched ✅  0xc00030e500]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:40:37+05:30 357.1634ms 
+[GIN] 2022/04/22 - 08:40:37 | 202 |    357.1634ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:40:38 [Default Address Fetched ✅  0xc000386a40]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:40:38+05:30 322.0895ms 
+[GIN] 2022/04/22 - 08:40:38 | 202 |    322.0895ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:40:41 [Default Address Fetched ✅  0xc000136f20]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-22T08:40:41+05:30 332.0527ms 
+[GIN] 2022/04/22 - 08:40:41 | 202 |    332.0527ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/22 08:40:41 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-22T08:40:41+05:30 333.0127ms 
+[GIN] 2022/04/22 - 08:40:41 | 202 |    333.0127ms |             ::1 | GET      "/checkout/api/shippingAddress"
+❕INFO: 2022/04/22 08:40:44 [Default Address Fetched ✅  0xc00030ee00]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-22T08:40:44+05:30 353.1721ms 
+[GIN] 2022/04/22 - 08:40:44 | 202 |    353.1721ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:40:44 [Cart Items Fetched ✅ {1 1 [{dairymilk 2} {kitkat 11} {munch 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:40:44+05:30 354.0003ms 
+[GIN] 2022/04/22 - 08:40:44 | 202 |    354.0003ms |             ::1 | GET      "/checkout/api/cartItems"
+📛ERROR: 2022/04/22 08:54:00 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/22 08:54:00 [Created the table{
+
+}]
+📛ERROR: 2022/04/22 08:54:01 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/22 08:54:01 [Created the table{
+
+}]
+❕INFO: 2022/04/22 08:54:20 [Default Address Fetched ✅  0xc000094580]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-22T08:54:20+05:30 314.9908ms 
+[GIN] 2022/04/22 - 08:54:20 | 202 |    315.0753ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:54:20 [Cart Items Fetched ✅ {1 1 [{dairymilk 2} {kitkat 11} {munch 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-22T08:54:20+05:30 317.5273ms 
+[GIN] 2022/04/22 - 08:54:20 | 202 |    317.5273ms |             ::1 | GET      "/checkout/api/cartItems"
+❕INFO: 2022/04/22 08:54:25 [Default Address Fetched ✅  0xc00038f780]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-22T08:54:25+05:30 331.8157ms 
+[GIN] 2022/04/22 - 08:54:25 | 202 |    331.8157ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/22 08:54:27 [Default Address Fetched ✅  0xc000398dc0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-22T08:54:27+05:30 348.8804ms 
+[GIN] 2022/04/22 - 08:54:27 | 202 |    348.8804ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/22 08:54:29 [Default Address Fetched ✅  0xc000399080]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-22T08:54:29+05:30 324.6797ms 
+[GIN] 2022/04/22 - 08:54:29 | 202 |    324.6797ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/22 08:54:29 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-22T08:54:29+05:30 325.1969ms 
+[GIN] 2022/04/22 - 08:54:29 | 202 |    325.1969ms |             ::1 | GET      "/checkout/api/shippingAddress"

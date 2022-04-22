@@ -3,10 +3,12 @@ module qwik.in/checkout
 go 1.18
 
 require (
+	github.com/aws/aws-sdk-go v1.43.42
 	github.com/gin-gonic/gin v1.7.7
-	github.com/swaggo/files v0.0.0-20210815190702-a29dd2bc99b2
-	github.com/swaggo/gin-swagger v1.4.1
-	github.com/swaggo/swag v1.7.9
+	github.com/joho/godotenv v1.4.0
+	github.com/pkg/errors v0.9.1
+	github.com/swaggo/gin-swagger v1.4.2
+	github.com/swaggo/swag v1.8.1
 )
 
 require (
@@ -22,6 +24,7 @@ require (
 	github.com/go-playground/universal-translator v0.17.0 // indirect
 	github.com/go-playground/validator/v10 v10.4.1 // indirect
 	github.com/golang/protobuf v1.3.3 // indirect
+	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.9 // indirect
 	github.com/leodido/go-urn v1.2.0 // indirect

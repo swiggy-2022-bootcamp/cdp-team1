@@ -12,17 +12,20 @@ info:
 paths:
   /:
     get:
-      consumes:
-      - application/json
-      description: This request will return 200 OK if the server is up.
+      description: used to check whether shipping service is up and running or not
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            type: string
-      summary: To check if the service is running or not.
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Health of shipping service
       tags:
-      - ""
+      - Health
 swagger: "2.0"

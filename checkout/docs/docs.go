@@ -12,7 +12,7 @@ const docTemplate = `{
         "title": "{{.Title}}",
         "contact": {
             "name": "Ashwin Gopalsamy",
-            "email": "ashwingopalsamy@gmail.com"
+            "email": "ashwinyaal@gmail.com"
         },
         "license": {
             "name": "Apache 2.0"
@@ -24,22 +24,26 @@ const docTemplate = `{
     "paths": {
         "/": {
             "get": {
-                "description": "This request will return 200 OK if server is up..",
-                "consumes": [
-                    "application/json"
-                ],
+                "description": "used to check whether shipping service is up and running or not",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    ""
+                    "Health"
                 ],
-                "summary": "To check if the service is running or not.",
+                "summary": "Health of shipping service",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
                         }
                     }
                 }
@@ -52,7 +56,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "localhost:9002",
-	BasePath:         "/transaction/api",
+	BasePath:         "/checkout/api",
 	Schemes:          []string{},
 	Title:            "Swiggy Qwik - Checkout module",
 	Description:      "This microservice is for checkout service.",
