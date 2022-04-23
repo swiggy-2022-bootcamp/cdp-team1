@@ -48,6 +48,14 @@ func (cr CartRepository) DBHealthCheck() bool {
 
 func (cdb CartRepository) Create(cart model.Cart) *error.AppError {
 
+	// check if quantity is greater than 0
+	products := cart.Products
+	checkQuantity := products[0].Quantity
+	if checkQuantity <= 0 {
+		log.Error("Quantity should be greater than 0")
+		return error.NewBadRequestError("Quantity should be greater than 0")
+	}
+
 	data, err := dynamodbattribute.MarshalMap(cart)
 	if err != nil {
 		log.Error("Marshalling of cart failed - " + err.Error())
@@ -135,6 +143,15 @@ func (cdb CartRepository) ReadAll() (*[]model.Cart, *error.AppError) {
 
 func (cdb CartRepository) UpdateExisting(cart *model.Cart) *error.AppError {
 
+	// check if quantity is greater than 0
+	products := cart.Products
+	for _, product := range products {
+		if product.Quantity <= 0 {
+			log.Error("Quantity should be greater than 0")
+			return error.NewBadRequestError("Quantity should be greater than 0")
+		}
+	}
+
 	type updateQuery struct {
 		Products []model.Product `json:":products"`
 	}
@@ -166,29 +183,6 @@ func (cdb CartRepository) UpdateExisting(cart *model.Cart) *error.AppError {
 	}
 
 	return nil
-
-	// query := &dynamodb.GetItemInput{
-	// 	Key: map[string]*dynamodb.AttributeValue{
-	// 		"CustomerId": {
-	// 			S: aws.String(cart.CustomerId),
-	// 		},
-	// 	},
-	// 	TableName: aws.String(cartCollection),
-	// }
-
-	// result, err := cdb.cartDB.GetItem(query)
-	// if err != nil {
-	// 	log.Error(result)
-	// 	log.Error("Failed to get item from database - " + err.Error())
-	// 	return error.NewUnexpectedError(err.Error())
-	// }
-
-	// if result.Item == nil {
-	// 	log.Error("Cart for user doesn't exist. - ")
-	// 	notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
-	// 	return notFoundError
-	// }
-
 }
 
 func (cdb CartRepository) Delete(customer_id string) *error.AppError {
@@ -248,33 +242,3 @@ func (cdb CartRepository) DeleteAll() *error.AppError {
 
 	return nil
 }
-
-// func (cdb CartRepository) Update(customer_id string, product_id string, updated_quantity int) *error.AppError {
-
-// 	input := &dynamodb.UpdateItemInput{
-// 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-// 			"customer_id": {
-// 				S: aws.String(customer_id),
-// 			},
-// 			"quantity": {
-// 				N: aws.Int(updated_quantity),
-// 			},
-// 		},
-// 		Key: map[string]*dynamodb.AttributeValue{
-// 			"CustomerId": {
-// 				S: aws.String(customer_id),
-// 			},
-// 		},
-// 		TableName:        aws.String(cartCollection),
-// 		UpdateExpression: aws.String("set quantity = :quantity"),
-// 		ReturnValues:     aws.String("UPDATED_NEW"),
-// 	}
-
-// 	_, err := cdb.cartDB.UpdateItem(input)
-// 	if err != nil {
-// 		log.Error(err)
-// 		return error.NewUnexpectedError(err.Error())
-// 	}
-
-// 	return nil
-// }

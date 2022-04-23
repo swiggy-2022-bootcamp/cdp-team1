@@ -20,6 +20,16 @@ func NewCartHandler(cartService service.CartService) CartHandler {
 	return CartHandler{cartService: cartService}
 }
 
+// CreateCart godoc
+// @Summary To create a new cart
+// @Description To create a new cart for the logged in user
+// @Tags Cart
+// @Schemes
+// @Produce json
+// @Success	200  string 	Cart created successfully
+// @Failure 400  string 	Bad request
+// @Failure 500  string 	Internal server error
+// @Router /cart [POST]
 func (ch CartHandler) CreateCart(c *gin.Context) {
 
 	customer_id := c.Param("id")
@@ -44,9 +54,22 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Payment mode added successfully"})
+	c.JSON(http.StatusOK, gin.H{"message": "Cart created successfully"})
 }
 
+// UpdateCart godoc
+// @Summary To update cart
+// @Description Update cart's quantity
+// @Tags Cart
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param id string true "id"
+// @Param req body string true "Updated quantity"
+// @Success	200  string 	Cart updated successfully
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /cart [PUT]
 func (ch CartHandler) UpdateCart(c *gin.Context) {
 
 	customer_id := c.Param("id")
@@ -66,10 +89,8 @@ func (ch CartHandler) UpdateCart(c *gin.Context) {
 		return
 	}
 
-	var productId string
-	productId = product.ProductId
-	var quantity int
-	quantity = product.Quantity
+	productId := product.ProductId
+	quantity := product.Quantity
 
 	err := ch.cartService.UpdateCart(customer_id, productId, quantity)
 	if err != nil {
@@ -81,6 +102,16 @@ func (ch CartHandler) UpdateCart(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Cart updated successfully"})
 }
 
+// GetAllCart godoc
+// @Summary To get all carts.
+// @Description Fetch all carts in the database
+// @Tags Cart
+// @Schemes
+// @Produce json
+// @Success	200  {object} 	[]model.Order
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /cart [GET]
 func (ch CartHandler) GetAllCart(c *gin.Context) {
 
 	result, err := ch.cartService.GetAllCart()
@@ -93,6 +124,17 @@ func (ch CartHandler) GetAllCart(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": result})
 }
 
+// DeleteCartById godoc
+// @Summary To delete a cart
+// @Description Delete the cart by the customer id
+// @Tags Cart
+// @Schemes
+// @Accept json
+// @Param id string true "id"
+// @Success	200  string 	Cart deleted successfully
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /cart/:id [DELETE]
 func (ch CartHandler) DeleteCart(c *gin.Context) {
 
 	var customer_id string
@@ -119,8 +161,27 @@ func (ch CartHandler) DeleteCart(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Cart deleted successfully"})
 }
 
+// DeleteCartAll godoc
+// @Summary To delete all the cart
+// @Description Delete all the cart by the customer id
+// @Tags Cart
+// @Schemes
+// @Accept json
+// @Param id string true "id"
+// @Success	200  string 	Cart deleted successfully
+// @Failure 500  string 	Internal server error
+// @Failure 404  string 	Order not found
+// @Router /cart/empty [DELETE]
 func (ch CartHandler) DeleteCartAll(c *gin.Context) {
-	// todo
+
+	err := ch.cartService.DeleteAllCart()
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Cart deleted successfully"})
 }
 
 // set SECRET=sUpErCaLiFrAgIlIsTiCeXpIaLiDoCiOuS in .env file
