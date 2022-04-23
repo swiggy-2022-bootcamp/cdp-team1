@@ -52,7 +52,7 @@ func (oh OrderHandler) CreateOrder(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Payment mode added successfully"})
+	c.JSON(http.StatusOK, gin.H{"message": "Order created successfully"})
 
 }
 
