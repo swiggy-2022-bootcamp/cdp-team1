@@ -10,7 +10,7 @@ import (
 )
 
 func Router(router *gin.Engine) {
-	newRouter := router.Group("customer-admin/api")
+	newRouter := router.Group("api/customer-admin")
 	newRouter.Use(cors.AllowAll())
 
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))

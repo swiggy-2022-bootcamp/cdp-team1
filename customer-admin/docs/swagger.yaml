@@ -1,4 +1,4 @@
-basePath: /customer-admin/api
+basePath: /api/customer-admin
 definitions:
   model.AdminUser:
     properties:
@@ -104,7 +104,7 @@ info:
   contact:
     email: ravikumarsravi1999@gmail.com
     name: Ravikumar S
-  description: This microservice is for Customer-Admin service.
+  description: This microservice is for Customer-Admin.
   license:
     name: Apache 2.0
   title: Swiggy Qwik - Customer-Admin module

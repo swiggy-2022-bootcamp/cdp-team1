@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This microservice is for Customer-Admin service.",
+        "description": "This microservice is for Customer-Admin.",
         "title": "Swiggy Qwik - Customer-Admin module",
         "contact": {
             "name": "Ravikumar S",
@@ -13,7 +13,7 @@
         "version": "1.0"
     },
     "host": "localhost:7002",
-    "basePath": "/customer-admin/api",
+    "basePath": "/api/customer-admin",
     "paths": {
         "/": {
             "get": {

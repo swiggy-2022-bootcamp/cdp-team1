@@ -394,10 +394,10 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "localhost:7002",
-	BasePath:         "/customer-admin/api",
+	BasePath:         "/api/customer-admin",
 	Schemes:          []string{},
 	Title:            "Swiggy Qwik - Customer-Admin module",
-	Description:      "This microservice is for Customer-Admin service.",
+	Description:      "This microservice is for Customer-Admin.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }
