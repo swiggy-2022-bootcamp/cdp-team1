@@ -52,10 +52,11 @@ func (accountService *AccountService) CreateAccount(account model.Account) (*mod
 
 func (accountService *AccountService) GetAccountById(customerId string) (*model.Account, error) {
 	fetchedAccount, err := accountService.accountRepository.GetById(customerId)
-	fetchedAccount.RewardsTotal = GetRewardPointsByCustomerId()
 	if err != nil {
 		return nil, err
 	}
+	fetchedAccount.RewardsTotal = GetRewardPointsByCustomerId(customerId)
+	fetchedAccount.UserBalance = GetPaymentMethodsByCustomerId()
 	return fetchedAccount, nil
 }
 
@@ -76,7 +77,7 @@ func (accountService *AccountService) UpdateAccount(customerId string, account m
 	return updatedAccount, nil
 }
 
-func GetRewardPointsByCustomerId() int32 {
+func GetRewardPointsByCustomerId(customerId string) int32 {
 	conn, err := grpc.Dial("localhost:9003", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Connection failed : %v", err)
@@ -89,13 +90,38 @@ func GetRewardPointsByCustomerId() int32 {
 
 	getPointsRequest := &protos.GetPointsRequest{
 		UserId: "bb912edc-50d9-42d7-b7a1-9ce66d459tuf",
+		//UserId: customerId,
 	}
 
 	result, err := c.GetTransactionPoints(ctx, getPointsRequest)
 	if err != nil {
-		log.Printf("Error adding transaction points : %v", err)
+		log.Printf("Error getting transaction points : %v", err)
 	} else {
 		log.Printf("Transaction points are %d", result.Points)
 	}
 	return result.Points
+}
+
+func GetPaymentMethodsByCustomerId() []*protos.PaymentMode {
+	conn, err := grpc.Dial("localhost:9004", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatalf("Connection failed : %v", err)
+	}
+	defer conn.Close()
+	c := protos.NewPaymentClient(conn)
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	paymentModeRequest := &protos.PaymentModeRequest{
+		UserId: "bb912edc-50d9-42d7-b7a1-9ce66d457ecc",
+	}
+
+	result, err := c.GetPaymentModes(ctx, paymentModeRequest)
+	if err != nil {
+		log.Printf("Failed to fetch payment modes for the given user : %v", err)
+	} else {
+		log.Printf("%s - Payment Successful", result.PaymentModes)
+	}
+	return result.PaymentModes
 }

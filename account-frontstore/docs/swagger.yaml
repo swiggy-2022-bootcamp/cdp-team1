@@ -1,10 +1,8 @@
-basePath: /account-frontstore/api
+basePath: /api/account-frontstore
 definitions:
   model.Account:
     properties:
       agree:
-        description: "//TBC:\n\t\tCart         Cart `json:\"cart\"`\n\t\tRewardsTotal
-          float64\n\t\tUserBalance  PaymentsModeDTO"
         type: integer
       customer_group_id:
         type: integer
@@ -20,7 +18,23 @@ definitions:
         type: string
       password:
         type: string
+      rewardsTotal:
+        description: Cart         Cart `json:"cart"`
+        type: integer
       telephone:
+        type: string
+      userBalance:
+        items:
+          $ref: '#/definitions/protos.PaymentMode'
+        type: array
+    type: object
+  protos.PaymentMode:
+    properties:
+      balance:
+        type: integer
+      cardNumber:
+        type: integer
+      mode:
         type: string
     type: object
 host: localhost:7001
@@ -28,7 +42,7 @@ info:
   contact:
     email: ravikumarsravi1999@gmail.com
     name: Ravikumar S
-  description: This microservice is for Account-FrontStore service.
+  description: This microservice is for Account-FrontStore.
   license:
     name: Apache 2.0
   title: Swiggy Qwik - Account-FrontStore module

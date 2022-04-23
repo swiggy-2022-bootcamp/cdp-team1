@@ -12,7 +12,7 @@ import (
 // @contact.email  ravikumarsravi1999@gmail.com
 // @license.name  Apache 2.0
 // @host      localhost:7001
-// @BasePath /account-frontstore/api
+// @BasePath /api/account-frontstore
 func main() {
 	app.Start()
 }

@@ -8,14 +8,12 @@ import (
 	_ "qwik.in/account-frontstore/docs"
 )
 
-//Router ..
 func Router(router *gin.Engine) {
-	newRouter := router.Group("account-frontstore/api")
+	newRouter := router.Group("api/account-frontstore")
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	newRouter.GET("/", handlers.HealthCheck)
 	newRouter.POST("/register", handlers.RegisterAccount)
 
-	//ping this
 	newRouter.GET("/account/:accessorId", handlers.GetAccountById)
 	newRouter.PUT("/account/:accessorId", handlers.UpdateAccount)
 }

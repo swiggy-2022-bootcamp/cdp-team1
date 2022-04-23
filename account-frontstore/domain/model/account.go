@@ -1,6 +1,7 @@
 package model
 
 import (
+	"qwik.in/account-frontstore/protos"
 	"time"
 )
 
@@ -14,7 +15,7 @@ type Account struct {
 	CustomerGroupId int    `json:"customer_group_id"`
 	//Cart         Cart `json:"cart"`
 	RewardsTotal int32
-	//UserBalance  PaymentsModeDTO
-	Agree     int       `json:"agree"`
-	DateAdded time.Time `json:"date_added"`
+	UserBalance  []*protos.PaymentMode
+	Agree        int       `json:"agree"`
+	DateAdded    time.Time `json:"date_added"`
 }

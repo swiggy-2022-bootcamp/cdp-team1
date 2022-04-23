@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This microservice is for Account-FrontStore service.",
+        "description": "This microservice is for Account-FrontStore.",
         "title": "Swiggy Qwik - Account-FrontStore module",
         "contact": {
             "name": "Ravikumar S",
@@ -13,7 +13,7 @@
         "version": "1.0"
     },
     "host": "localhost:7001",
-    "basePath": "/account-frontstore/api",
+    "basePath": "/api/account-frontstore",
     "paths": {
         "/": {
             "get": {
@@ -149,7 +149,6 @@
             "type": "object",
             "properties": {
                 "agree": {
-                    "description": "//TBC:\n\t\tCart         Cart `json:\"cart\"`\n\t\tRewardsTotal float64\n\t\tUserBalance  PaymentsModeDTO",
                     "type": "integer"
                 },
                 "customer_group_id": {
@@ -173,7 +172,31 @@
                 "password": {
                     "type": "string"
                 },
+                "rewardsTotal": {
+                    "description": "Cart         Cart `json:\"cart\"`",
+                    "type": "integer"
+                },
                 "telephone": {
+                    "type": "string"
+                },
+                "userBalance": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/protos.PaymentMode"
+                    }
+                }
+            }
+        },
+        "protos.PaymentMode": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "type": "integer"
+                },
+                "cardNumber": {
+                    "type": "integer"
+                },
+                "mode": {
                     "type": "string"
                 }
             }

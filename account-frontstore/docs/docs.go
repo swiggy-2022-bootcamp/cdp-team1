@@ -156,7 +156,6 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "agree": {
-                    "description": "//TBC:\n\t\tCart         Cart ` + "`" + `json:\"cart\"` + "`" + `\n\t\tRewardsTotal float64\n\t\tUserBalance  PaymentsModeDTO",
                     "type": "integer"
                 },
                 "customer_group_id": {
@@ -180,7 +179,31 @@ const docTemplate = `{
                 "password": {
                     "type": "string"
                 },
+                "rewardsTotal": {
+                    "description": "Cart         Cart ` + "`" + `json:\"cart\"` + "`" + `",
+                    "type": "integer"
+                },
                 "telephone": {
+                    "type": "string"
+                },
+                "userBalance": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/protos.PaymentMode"
+                    }
+                }
+            }
+        },
+        "protos.PaymentMode": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "type": "integer"
+                },
+                "cardNumber": {
+                    "type": "integer"
+                },
+                "mode": {
                     "type": "string"
                 }
             }
@@ -192,10 +215,10 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "localhost:7001",
-	BasePath:         "/account-frontstore/api",
+	BasePath:         "/api/account-frontstore",
 	Schemes:          []string{},
 	Title:            "Swiggy Qwik - Account-FrontStore module",
-	Description:      "This microservice is for Account-FrontStore service.",
+	Description:      "This microservice is for Account-FrontStore.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }
