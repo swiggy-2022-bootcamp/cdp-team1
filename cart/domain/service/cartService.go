@@ -7,10 +7,10 @@ import (
 )
 
 type CartService interface {
-	AddToCart(model.Cart) *error.AppError
+	AddToCart(*model.Cart) *error.AppError
 	GetAllCart() (*[]model.Cart, *error.AppError)
-	UpdateCart(model.Cart) (*model.Cart, *error.AppError)
-	DeleteCartById(string) (*model.Cart, *error.AppError)
+	UpdateCart(string, string) *error.AppError
+	DeleteCartByCustomerId(string) *error.AppError
 	DeleteAllCart() *error.AppError
 }
 
@@ -24,9 +24,9 @@ func NewCartService(cartRepository repository.CartRepositoryDB) CartService {
 	}
 }
 
-func (csvc CartServiceImpl) AddToCart(cart model.Cart) *error.AppError {
+func (csvc CartServiceImpl) AddToCart(cart *model.Cart) *error.AppError {
 
-	_, err := csvc.cartRepository.Create(cart)
+	err := csvc.cartRepository.Create(cart)
 
 	if err != nil {
 		return err
@@ -46,26 +46,26 @@ func (csvc CartServiceImpl) GetAllCart() (*[]model.Cart, *error.AppError) {
 	return u, err
 }
 
-func (csvc CartServiceImpl) UpdateCart(Cart model.Cart) (*model.Cart, *error.AppError) {
+func (csvc CartServiceImpl) UpdateCart(customer_id string, quantity string) *error.AppError {
 
-	u, err := csvc.cartRepository.Update(model.Cart{})
+	err := csvc.cartRepository.Update(customer_id, quantity)
 
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return u, err
+	return err
 }
 
-func (csvc CartServiceImpl) DeleteCartById(id string) (*model.Cart, *error.AppError) {
+func (csvc CartServiceImpl) DeleteCartByCustomerId(customer_id string) *error.AppError {
 
-	u, err := csvc.cartRepository.Delete(model.Cart{})
+	err := csvc.cartRepository.Delete(customer_id)
 
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return u, err
+	return err
 }
 
 func (csvc CartServiceImpl) DeleteAllCart() *error.AppError {

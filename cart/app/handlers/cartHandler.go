@@ -3,7 +3,7 @@ package handlers
 import (
 	"cartService/domain/model"
 	"cartService/domain/service"
-	apperrors "cartService/internal/error"
+	"cartService/internal/error"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -22,42 +22,94 @@ func NewCartHandler(cartService service.CartService) CartHandler {
 
 func (ch CartHandler) CreateCart(c *gin.Context) {
 
-	// get userid from jwt
-	// userID := c.MustGet("userID").(string)
-
-	var cartModel model.Cart
-	if err := c.BindJSON(&cartModel); err != nil {
+	var cart model.Cart
+	if err := c.BindJSON(&cart); err != nil {
 		c.Error(err)
-		err2 := apperrors.NewBadRequestError(err.Error())
-		c.JSON(err2.Code, gin.H{"message": err2.Message})
+		requestError := error.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
 		return
 	}
 
-	if validationErr := validate.Struct(&cartModel); validationErr != nil {
+	//use the validator library to validate required fields
+	if validationErr := validate.Struct(&cart); validationErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
 		return
 	}
-
-	err := ch.cartService.AddToCart(cartModel)
-
+	err := ch.cartService.AddToCart(&cart)
 	if err != nil {
+		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Added to cart successfully"})
+	c.JSON(http.StatusOK, gin.H{"message": "Payment mode added successfully"})
 }
 
 func (ch CartHandler) UpdateCart(c *gin.Context) {
-	// todo check
+
+	cart_id := c.Param("id")
+
+	// get cart id from parameter and status from body
+	var status string
+	if err := c.BindJSON(&status); err != nil {
+		c.Error(err)
+		requestError := error.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
+		return
+	}
+
+	//use the validator library to validate required fields
+	if validationErr := validate.Struct(&status); validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+		return
+	}
+
+	err := ch.cartService.UpdateCart(cart_id, status)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Cart updated successfully"})
 }
 
-func (ch CartHandler) GetCart(c *gin.Context) {
-	// todo
+func (ch CartHandler) GetAllCart(c *gin.Context) {
+
+	result, err := ch.cartService.GetAllCart()
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": result})
 }
 
 func (ch CartHandler) DeleteCart(c *gin.Context) {
-	// todo
+
+	var customer_id string
+	if err := c.BindJSON(&customer_id); err != nil {
+		c.Error(err)
+		requestError := error.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
+		return
+	}
+
+	//use the validator library to validate required fields
+	if validationErr := validate.Struct(&customer_id); validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+		return
+	}
+
+	err := ch.cartService.DeleteCartByCustomerId(customer_id)
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Cart deleted successfully"})
 }
 
 func (ch CartHandler) DeleteCartAll(c *gin.Context) {

@@ -6,19 +6,21 @@ import (
 	"cartService/log"
 	"context"
 
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 )
 
 type CartRepositoryDB interface {
-	Create(model.Cart) (*model.Cart, *error.AppError)
-	Read(id string) (*model.Cart, *error.AppError)
+	Create(*model.Cart) *error.AppError
 	ReadAll() (*[]model.Cart, *error.AppError)
-	Update(model.Cart) (*model.Cart, *error.AppError)
-	Delete(model.Cart) (*model.Cart, *error.AppError)
+	Update(string, string) *error.AppError
+	Delete(string) *error.AppError
 	DeleteAll() *error.AppError
 	DBHealthCheck() bool
 }
+
+const cartCollection = "cartCollection"
 
 type CartRepository struct {
 	cartDB *dynamodb.DynamoDB
@@ -42,103 +44,139 @@ func (cr CartRepository) DBHealthCheck() bool {
 	return true
 }
 
-func (cdb CartRepository) Create(cart model.Cart) (*model.Cart, *error.AppError) {
+func (cdb CartRepository) Create(cart *model.Cart) *error.AppError {
 
-	newCart := model.Cart{
-		CustomerId: cart.CustomerId,
-		Products:   cart.Products,
+	data, err := dynamodbattribute.MarshalMap(cart)
+	if err != nil {
+		log.Error("Marshalling of cart failed - " + err.Error())
+		return error.NewUnexpectedError(err.Error())
 	}
 
-	newCart.Id = primitive.NewObjectID().Hex()
+	query := &dynamodb.PutItemInput{
+		Item:      data,
+		TableName: aws.String(cartCollection),
+	}
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	_, err = cdb.cartDB.PutItem(query)
+	if err != nil {
+		log.Error("Failed to insert item into database - " + err.Error())
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	// orderCollection := Collection(cdb.dbClient, "cart")
-	// _, err := cartCollection.InsertOne(ctx, newCart)
-
-	//if err != nil {
-	//	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	//}
-
-	cart.Id = newCart.Id
-
-	return &cart, nil
-}
-
-func (cdb CartRepository) Read(id string) (*model.Cart, *error.AppError) {
-
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
-
-	// orderCollection := Collection(cdb.dbClient, "cart")
-	// order := model.Cart{}
-	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
-
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
-
-	return &model.Cart{}, nil
+	return nil
 }
 
 func (cdb CartRepository) ReadAll() (*[]model.Cart, *error.AppError) {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	cart := &[]model.Cart{}
 
-	// orderCollection := Collection(cdb.dbClient, "cart")
-	// order := model.Cart{}
-	// err := orderCollection.FindOne(ctx, bson.M{"_id": id}).Decode(&order)
+	query := &dynamodb.ScanInput{
+		TableName: aws.String(cartCollection),
+	}
 
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
+	result, err := cdb.cartDB.Scan(query)
+	if err != nil {
+		log.Info(result)
+		log.Error("Failed to get item from database - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
 
-	return &[]model.Cart{}, nil
+	if result.Items == nil {
+		log.Error("Cart for user doesn't exist. - ")
+		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		return nil, notFoundError
+	}
+
+	err = dynamodbattribute.UnmarshalListOfMaps(result.Items, cart)
+	if err != nil {
+		log.Error("Failed to unmarshal document fetched from DB - " + err.Error())
+		return nil, error.NewUnexpectedError(err.Error())
+	}
+
+	return cart, nil
 }
 
-func (cdb CartRepository) Update(cart model.Cart) (*model.Cart, *error.AppError) {
+func (cdb CartRepository) Update(customer_id string, updated_quantity string) *error.AppError {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	input := &dynamodb.UpdateItemInput{
+		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+			"quantity": {
+				N: aws.String(updated_quantity),
+			},
+		},
+		Key: map[string]*dynamodb.AttributeValue{
+			"CustomerId": {
+				S: aws.String(customer_id),
+			},
+		},
+		TableName:        aws.String(cartCollection),
+		UpdateExpression: aws.String("set quantity = :quantity"),
+		ReturnValues:     aws.String("UPDATED_NEW"),
+	}
 
-	// orderCollection := Collection(cdb.dbClient, "cart")
-	// _, err := orderCollection.UpdateOne(ctx, bson.M{"_id": cart.Id}, bson.M{"$set": cart})
+	_, err := cdb.cartDB.UpdateItem(input)
+	if err != nil {
+		log.Error(err)
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
-
-	return &model.Cart{}, nil
+	return nil
 }
 
-func (cdb CartRepository) Delete(cart model.Cart) (*model.Cart, *error.AppError) {
+func (cdb CartRepository) Delete(customer_id string) *error.AppError {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	input := &dynamodb.DeleteItemInput{
+		Key: map[string]*dynamodb.AttributeValue{
+			"id": {
+				S: aws.String(customer_id),
+			},
+		},
+		TableName: aws.String(cartCollection),
+	}
 
-	// orderCollection := Collection(cdb.dbClient, "cart")
-	// _, err := orderCollection.DeleteOne(ctx, bson.M{"_id": cart.Id})
+	_, err := cdb.cartDB.DeleteItem(input)
+	if err != nil {
+		log.Error(err)
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	// if err != nil {
-	// 	return nil, error.NewUnexpectedError("Unexpected error from DB")
-	// }
-
-	return &model.Cart{}, nil
+	return nil
 }
 
 func (cdb CartRepository) DeleteAll() *error.AppError {
 
-	// ctx, cxl := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cxl()
+	input := &dynamodb.ScanInput{
+		TableName: aws.String(cartCollection),
+	}
 
-	// orderCollection := Collection(cdb.dbClient, "cart")
-	// _, err := orderCollection.DeleteMany(ctx, bson.M{})
+	result, err := cdb.cartDB.Scan(input)
+	if err != nil {
+		log.Error(err)
+		return error.NewUnexpectedError(err.Error())
+	}
 
-	// if err != nil {
-	// 	return error.NewUnexpectedError("Unexpected error from DB")
-	// }
+	if result.Items == nil {
+		log.Error("Cart for user doesn't exist. - ")
+		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		return notFoundError
+	}
+
+	for _, item := range result.Items {
+		input := &dynamodb.DeleteItemInput{
+			Key: map[string]*dynamodb.AttributeValue{
+				"CustomerId": {
+					S: aws.String(*item["customer_id"].S),
+				},
+			},
+			TableName: aws.String(cartCollection),
+		}
+
+		_, err := cdb.cartDB.DeleteItem(input)
+		if err != nil {
+			log.Error(err)
+			return error.NewUnexpectedError(err.Error())
+		}
+	}
 
 	return nil
 }
