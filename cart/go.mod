@@ -8,7 +8,6 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/swaggo/gin-swagger v1.4.1
 	github.com/swaggo/swag v1.7.9
-	go.mongodb.org/mongo-driver v1.9.0
 )
 
 require (
