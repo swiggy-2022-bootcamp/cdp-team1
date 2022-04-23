@@ -22,8 +22,10 @@ func NewCartHandler(cartService service.CartService) CartHandler {
 
 func (ch CartHandler) CreateCart(c *gin.Context) {
 
-	var cart model.Cart
-	if err := c.BindJSON(&cart); err != nil {
+	customer_id := c.Param("id")
+
+	var product model.Product
+	if err := c.BindJSON(&product); err != nil {
 		c.Error(err)
 		requestError := error.NewBadRequestError(err.Error())
 		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
@@ -31,11 +33,11 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 	}
 
 	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&cart); validationErr != nil {
+	if validationErr := validate.Struct(&product); validationErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
 		return
 	}
-	err := ch.cartService.AddToCart(&cart)
+	err := ch.cartService.AddToCart(&product, customer_id)
 	if err != nil {
 		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})
@@ -47,11 +49,11 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 
 func (ch CartHandler) UpdateCart(c *gin.Context) {
 
-	cart_id := c.Param("id")
+	customer_id := c.Param("id")
 
 	// get cart id from parameter and status from body
-	var status string
-	if err := c.BindJSON(&status); err != nil {
+	var product model.Product
+	if err := c.BindJSON(&product); err != nil {
 		c.Error(err)
 		requestError := error.NewBadRequestError(err.Error())
 		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
@@ -59,12 +61,17 @@ func (ch CartHandler) UpdateCart(c *gin.Context) {
 	}
 
 	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&status); validationErr != nil {
+	if validationErr := validate.Struct(&product); validationErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
 		return
 	}
 
-	err := ch.cartService.UpdateCart(cart_id, status)
+	var productId string
+	productId = product.ProductId
+	var quantity int
+	quantity = product.Quantity
+
+	err := ch.cartService.UpdateCart(customer_id, productId, quantity)
 	if err != nil {
 		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})

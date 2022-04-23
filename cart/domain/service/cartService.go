@@ -7,9 +7,9 @@ import (
 )
 
 type CartService interface {
-	AddToCart(*model.Cart) *error.AppError
+	AddToCart(*model.Product, string) *error.AppError
 	GetAllCart() (*[]model.Cart, *error.AppError)
-	UpdateCart(string, string) *error.AppError
+	UpdateCart(string, string, int) *error.AppError
 	DeleteCartByCustomerId(string) *error.AppError
 	DeleteAllCart() *error.AppError
 }
@@ -24,15 +24,43 @@ func NewCartService(cartRepository repository.CartRepositoryDB) CartService {
 	}
 }
 
-func (csvc CartServiceImpl) AddToCart(cart *model.Cart) *error.AppError {
+func (csvc CartServiceImpl) AddToCart(product *model.Product, customer_id string) *error.AppError {
 
-	err := csvc.cartRepository.Create(cart)
+	// Check if cart already exists
+	// If exists, update the quantity
+	// If not, create a new cart
+	curr_cart, err := csvc.cartRepository.Read(customer_id)
 
 	if err != nil {
+
+		curr_cart.Products = append(curr_cart.Products, *product)
+
+		updated_cart := model.Cart{
+			CustomerId: customer_id,
+			Products:   curr_cart.Products,
+		}
+
+		err2 := csvc.cartRepository.UpdateExisting(&updated_cart)
+
+		if err2 != nil {
+			return err2
+		}
+
+		return nil
+	}
+
+	new_cart := model.Cart{
+		CustomerId: customer_id,
+		Products:   []model.Product{*product},
+	}
+
+	err3 := csvc.cartRepository.Create(new_cart)
+
+	if err3 != nil {
 		return err
 	}
 
-	return err
+	return err3
 }
 
 func (csvc CartServiceImpl) GetAllCart() (*[]model.Cart, *error.AppError) {
@@ -46,15 +74,30 @@ func (csvc CartServiceImpl) GetAllCart() (*[]model.Cart, *error.AppError) {
 	return u, err
 }
 
-func (csvc CartServiceImpl) UpdateCart(customer_id string, quantity string) *error.AppError {
+func (csvc CartServiceImpl) UpdateCart(customer_id string, product_id string, quantity int) *error.AppError {
 
-	err := csvc.cartRepository.Update(customer_id, quantity)
+	// Get current cart object
+	curr_cart, err := csvc.cartRepository.Read(customer_id)
 
 	if err != nil {
 		return err
 	}
 
-	return err
+	// Find the product in the cart
+	// Update the quantity
+	for i, p := range curr_cart.Products {
+		if p.ProductId == product_id {
+			curr_cart.Products[i].Quantity = quantity
+		}
+	}
+
+	err2 := csvc.cartRepository.UpdateExisting(curr_cart)
+
+	if err2 != nil {
+		return err
+	}
+
+	return err2
 }
 
 func (csvc CartServiceImpl) DeleteCartByCustomerId(customer_id string) *error.AppError {
