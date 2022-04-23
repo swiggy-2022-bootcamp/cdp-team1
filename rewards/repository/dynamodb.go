@@ -110,3 +110,24 @@ func (r dynamoRepository) DeleteReward(rewardId string) error {
 		return nil
 	}
 }
+func (r dynamoRepository) SaveReward(Reward entity.Reward) error {
+
+	RewardAVMap, err := dynamodbattribute.MarshalMap(Reward)
+	if err != nil {
+		return err
+	}
+
+	params := &dynamodb.PutItemInput{
+		TableName: aws.String("Rewards"),
+		Item:      RewardAVMap,
+	}
+
+	resp, err := db.PutItem(params)
+	if err != nil {
+		log.Error(err.Error())
+		return err
+	} else {
+		log.Info(resp)
+		return nil
+	}
+}

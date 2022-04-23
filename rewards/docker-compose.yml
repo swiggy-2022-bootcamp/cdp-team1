@@ -1,0 +1,9 @@
+version: "1"
+services:
+  reward-service:
+    build: .
+    container_name: reward-service
+    ports:
+      - "9020:9020"
+    volumes:
+      - .:/app

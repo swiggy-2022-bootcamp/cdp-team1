@@ -7,12 +7,15 @@ type Reward struct {
 	Points      int    `json:"points"`
 }
 
-func NewRewards(id string, name string, description string, points int) (*Reward,error) {
+func NewRewards(id string, name string, description string, points int) (*Reward, error) {
 	reward := &Reward{
 		ID:          id,
 		Name:        name,
 		Description: description,
 		Points:      points,
 	}
-	return reward,nil
+	return reward, nil
+}
+func (p *Reward) SetId() {
+	p.ID = NewID()
 }

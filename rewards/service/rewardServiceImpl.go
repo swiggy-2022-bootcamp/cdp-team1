@@ -37,3 +37,17 @@ func (p RewardServiceImpl) SearchReward(query string) (entity.Reward, error) {
 	}
 	return one, nil
 }
+func (r RewardServiceImpl) UpdateReward(RewardId string, Reward entity.Reward) error {
+	Reward.ID = RewardId
+	if err := r.rewardRepository.SaveReward(Reward); err != nil {
+		return err
+	}
+	return nil
+}
+func (r RewardServiceImpl) CreateReward(Reward entity.Reward) error {
+	Reward.SetId()
+	if err := r.rewardRepository.SaveReward(Reward); err != nil {
+		return err
+	}
+	return nil
+}

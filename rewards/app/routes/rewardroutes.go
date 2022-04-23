@@ -17,5 +17,8 @@ func InitRoutes(router *gin.Engine, handler handlers.RewardHandler) {
 	newRouter.GET("/health", handlers.HealthCheck)
 	newRouter.GET("/search/:id", handler.Searchreward)
 	newRouter.GET("/", handler.Getall)
-	
+	newRouter.PUT("/:id", handler.UpdateReward)
+	newRouter.DELETE("/:id", handler.DeleteReward)
+	newRouter.POST("/", handler.AddReward)
+
 }
