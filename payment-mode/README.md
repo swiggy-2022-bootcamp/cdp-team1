@@ -1,17 +1,17 @@
 # Mode of Payment service
 
-#Responsibilities
+# Responsibilities
 1) Allow user to add and retrieve mode of payments for his account.
 2) Allow user to select one of the payment mode to initiate a payment request.
 3) Check balance amount for the give payment mode selected.
 
-#REST endpoints exposed
+# REST endpoints exposed
 1) [POST] - AddPaymentMode   - http://localhost:9000/api/paymentmethods
 2) [GET]  - GetPaymentModes  - http://localhost:9000/api/paymentmethods
 3) [POST] - CompletePayment  - http://localhost:9000/api/pay
 4) [GET]  - HealthCheckAPI   - http://localhost:9000/api/paymentmethods/health
 
-#Steps to run application
+# Steps to run application
 1) Using docker
    1) 
       `docker build --tag payment-mode -t payment-mode .`
@@ -22,7 +22,7 @@
    2) `go build`
    3) `./payment-mode`
    
-#Features Implemented
+# Features Implemented
 1) HealthCheck API
 2) Swagger documentation - http://localhost:9000/api/swagger/index.html
 3) Dockerized the application
@@ -33,10 +33,12 @@
 8) GRPC service methods
 9) Reduced docker image size from 1GB to 50 MB using multi-stage build.
 
-#Architecture
+# Architecture
+
 ![PaymentMicroservice](./images/PaymentMicroservice.jpg)
 
-#Sonarqube Reports
+# Sonarqube Reports
+
 ![Code Coverage](./images/PaymentServiceCodeCoverage.jpg)
 
 ![Code Coverage Graph](./images/PaymentServiceCodeCoverageGraph.png)

@@ -12,6 +12,7 @@ pipeline {
         REGION = "${REGION}"
         ACCESS_KEY = "${AWS_SECRET_ACCESS_KEY}"
         KEY_ID = "${AWS_ACCESS_KEY_ID}"
+        JWT_SECRET_KEY = "${JWT_SECRET_KEY}"
     }
     stages {
         stage('Pre Test') {
