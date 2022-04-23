@@ -32,10 +32,15 @@ func NewPaymentHandler(paymentService services.PaymentService) PaymentHandler {
 // @Failure 400  string 	Bad request
 // @Failure 500  string 	Internal server error
 // @Failure 409  string 	Payment mode already exists
-// @Router /paymentmethods/{userId} [POST]
+// @Router /paymentmethods/ [POST]
 func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 
-	userId := c.Param("userId")
+	userId, err := ph.paymentService.GetUserId(c.GetHeader("Authorization"))
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
 
 	var paymentMode models.PaymentMode
 	if err := c.BindJSON(&paymentMode); err != nil {
@@ -50,7 +55,7 @@ func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
 		return
 	}
-	err := ph.paymentService.AddPaymentMode(&paymentMode, userId)
+	err = ph.paymentService.AddPaymentMode(&paymentMode, userId)
 	if err != nil {
 		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})
@@ -73,7 +78,14 @@ func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 // @Failure 404  string 	User not found
 // @Router /paymentmethods/{userId} [GET]
 func (ph PaymentHandler) GetPaymentMode(c *gin.Context) {
-	userId := c.Param("userId")
+
+	userId, err := ph.paymentService.GetUserId(c.GetHeader("Authorization"))
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
+
 	userPaymentModes, err := ph.paymentService.GetPaymentMode(userId)
 	if err != nil {
 		c.Error(err.Error())
@@ -81,45 +93,6 @@ func (ph PaymentHandler) GetPaymentMode(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, userPaymentModes)
-}
-
-// SetPaymentMode godoc
-// @Summary To set payment modes for an order.
-// @Description To set payment modes for an order.
-// @Tags PaymentMode
-// @Schemes
-// @Accept json
-// @Produce json
-// @Param userId path string true "User id"
-// @Param req body models.PaymentMode true "Payment mode details"
-// @Success	200  string 	http.StatusOK
-// @Failure 500  string 	Internal server error
-// @Failure 404  string 	User not found
-// @Router /setpaymentmethods/{userId} [POST]
-func (ph PaymentHandler) SetPaymentMode(c *gin.Context) {
-	userId := c.Param("userId")
-
-	var paymentMode models.PaymentMode
-	if err := c.BindJSON(&paymentMode); err != nil {
-		c.Error(err)
-		requestError := apperrors.NewBadRequestError(err.Error())
-		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
-		return
-	}
-
-	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&paymentMode); validationErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
-		return
-	}
-
-	_, err := ph.paymentService.SetPaymentMode(userId, paymentMode)
-	if err != nil {
-		c.Error(err.Error())
-		c.JSON(err.Code, gin.H{"message": err.Message})
-		return
-	}
-	c.JSON(http.StatusOK, gin.H{"message": "Payment mode verified successfully"})
 }
 
 // CompletePayment godoc

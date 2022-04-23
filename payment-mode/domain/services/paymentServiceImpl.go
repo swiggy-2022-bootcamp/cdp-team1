@@ -1,9 +1,11 @@
 package services
 
 import (
-	"math/rand"
+	"fmt"
+	"github.com/golang-jwt/jwt"
 	"net/http"
 	app_errors "qwik.in/payment-mode/app-errors"
+	"qwik.in/payment-mode/config"
 	"qwik.in/payment-mode/domain/models"
 	"qwik.in/payment-mode/domain/repository"
 	"qwik.in/payment-mode/log"
@@ -19,11 +21,23 @@ func NewPaymentServiceImpl(paymentRepository repository.PaymentRepository) Payme
 	}
 }
 
-func (p PaymentServiceImpl) GetUserId(token string) string {
+func (p PaymentServiceImpl) GetUserId(authToken string) (string, *app_errors.AppError) {
 
-	//TODO
-	//Should communicate with the authentication service to fetch userId from the token passed.
-	return token
+	token, err := jwt.Parse(authToken, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+		}
+
+		return []byte(config.EnvJWTSecretKey()), nil
+	})
+	if err != nil {
+		return "", app_errors.NewAuthenticationError("invalid token")
+	}
+	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+
+		return claims["user_id"].(string), nil
+	}
+	return "", app_errors.NewAuthenticationError("invalid token")
 }
 
 func (p PaymentServiceImpl) AddPaymentMode(paymentMode *models.PaymentMode, userId string) *app_errors.AppError {
@@ -36,7 +50,7 @@ func (p PaymentServiceImpl) AddPaymentMode(paymentMode *models.PaymentMode, user
 		if err.Code == http.StatusNotFound {
 			newPaymentModes := make([]models.PaymentMode, 0, 0)
 			//Generating random number to initialize balance
-			paymentMode.Balance = (rand.Intn(10) + 1) * 10000
+			paymentMode.Balance = 50000
 			newUserPaymentMode := models.UserPaymentMode{
 				UserId:       userId,
 				PaymentModes: append(newPaymentModes, *paymentMode),
@@ -63,7 +77,7 @@ func (p PaymentServiceImpl) AddPaymentMode(paymentMode *models.PaymentMode, user
 	}
 
 	// If not there add the payment mode object in userPaymentMode's paymentMethods field.
-	paymentMode.Balance = (rand.Intn(10) + 1) * 10000
+	paymentMode.Balance = 50000
 	currentPaymentModes = append(currentPaymentModes, *paymentMode)
 	newUserPaymentMode := models.UserPaymentMode{
 		UserId:       userId,
@@ -86,25 +100,6 @@ func (p PaymentServiceImpl) GetPaymentMode(userId string) (*models.UserPaymentMo
 		return nil, err
 	}
 	return userPaymentModes, nil
-}
-
-func (p PaymentServiceImpl) SetPaymentMode(userId string, paymentMode models.PaymentMode) (bool, *app_errors.AppError) {
-	userPaymentModes, err := p.paymentRepository.GetPaymentModeFromDB(userId)
-
-	if err != nil {
-		return false, err
-	}
-
-	// Returns true, if the provided payment mode is added for the given user
-	for _, addedPaymentModes := range userPaymentModes.PaymentModes {
-		if addedPaymentModes.Mode == paymentMode.Mode && addedPaymentModes.CardNumber == paymentMode.CardNumber {
-			return true, nil
-		}
-	}
-
-	// If given payment mode is not available, it returns 404 error.
-	return false, app_errors.NewNotFoundError("The given payment mode doesn't exist for the current user.")
-
 }
 
 func (p PaymentServiceImpl) CheckBalanceAndCompletePayment(paymentRequest *models.PaymentRequest) (bool, *app_errors.AppError) {

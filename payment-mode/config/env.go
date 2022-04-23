@@ -20,6 +20,10 @@ func EnvRegion() string {
 	loadEnvFile()
 	return os.Getenv("REGION")
 }
+func EnvJWTSecretKey() string {
+	loadEnvFile()
+	return os.Getenv("SECRET")
+}
 
 func loadEnvFile() {
 	err := godotenv.Load()

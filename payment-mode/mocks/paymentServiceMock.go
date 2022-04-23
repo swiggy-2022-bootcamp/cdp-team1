@@ -80,30 +80,16 @@ func (mr *MockPaymentServiceMockRecorder) GetPaymentMode(arg0 interface{}) *gomo
 }
 
 // GetUserId mocks base method.
-func (m *MockPaymentService) GetUserId(arg0 string) string {
+func (m *MockPaymentService) GetUserId(arg0 string) (string, *app_errors.AppError) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetUserId", arg0)
 	ret0, _ := ret[0].(string)
-	return ret0
+	ret1, _ := ret[1].(*app_errors.AppError)
+	return ret0, ret1
 }
 
 // GetUserId indicates an expected call of GetUserId.
 func (mr *MockPaymentServiceMockRecorder) GetUserId(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserId", reflect.TypeOf((*MockPaymentService)(nil).GetUserId), arg0)
-}
-
-// SetPaymentMode mocks base method.
-func (m *MockPaymentService) SetPaymentMode(arg0 string, arg1 models.PaymentMode) (bool, *app_errors.AppError) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetPaymentMode", arg0, arg1)
-	ret0, _ := ret[0].(bool)
-	ret1, _ := ret[1].(*app_errors.AppError)
-	return ret0, ret1
-}
-
-// SetPaymentMode indicates an expected call of SetPaymentMode.
-func (mr *MockPaymentServiceMockRecorder) SetPaymentMode(arg0, arg1 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetPaymentMode", reflect.TypeOf((*MockPaymentService)(nil).SetPaymentMode), arg0, arg1)
 }

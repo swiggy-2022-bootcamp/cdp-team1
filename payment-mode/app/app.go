@@ -80,7 +80,7 @@ func StartRESTServer() {
 	//Configuring gin server and router
 	server = gin.New()
 	server.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
-	router := server.Group("payment-mode/api")
+	router := server.Group("/api")
 	paymentRoutes.InitRoutes(router)
 
 	//Starting server on port 9000

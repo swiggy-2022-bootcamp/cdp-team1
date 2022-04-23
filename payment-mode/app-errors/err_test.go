@@ -6,6 +6,17 @@ import (
 	"testing"
 )
 
+func TestAppError_Error(t *testing.T) {
+	err := NewBadRequestError("")
+	errObj := err.Error()
+	assert.Error(t, errObj)
+}
+
+func TestAppError_AsMessage(t *testing.T) {
+	err := NewBadRequestError("error")
+	errMsg := err.AsMessage()
+	assert.Equal(t, errMsg.Message, "error")
+}
 func TestNewNotFoundError(t *testing.T) {
 	err := NewNotFoundError("Not found")
 	assert.Equal(t, err.Code, http.StatusNotFound)
@@ -34,4 +45,10 @@ func TestNewRequestNotAcceptedError(t *testing.T) {
 	err := NewRequestNotAcceptedError("Request not accepted")
 	assert.Equal(t, err.Code, http.StatusNotAcceptable)
 	assert.Equal(t, err.Message, "Request not accepted")
+}
+
+func TestNewAuthenticationError(t *testing.T) {
+	err := NewAuthenticationError("Unauthorized access")
+	assert.Equal(t, err.Code, http.StatusUnauthorized)
+	assert.Equal(t, err.Message, "Unauthorized access")
 }

@@ -23,11 +23,10 @@ func (pr PaymentRoutes) InitRoutes(newRouter *gin.RouterGroup) {
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	//HealthCheck Route
-	newRouter.GET("/", pr.healthCheckHandler.HealthCheck)
+	newRouter.GET("/paymentmethods/health", pr.healthCheckHandler.HealthCheck)
 
 	//Payment mode service routes
-	newRouter.POST("/paymentmethods/:userId", pr.paymentHandler.AddPaymentMode)
-	newRouter.GET("/paymentmethods/:userId", pr.paymentHandler.GetPaymentMode)
-	newRouter.POST("/setpaymentmethods/:userId", pr.paymentHandler.SetPaymentMode)
+	newRouter.POST("/paymentmethods", pr.paymentHandler.AddPaymentMode)
+	newRouter.GET("/paymentmethods", pr.paymentHandler.GetPaymentMode)
 	newRouter.POST("/pay", pr.paymentHandler.CompletePayment)
 }

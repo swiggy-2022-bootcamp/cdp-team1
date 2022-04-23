@@ -16,6 +16,7 @@ func TestPaymentHandler_AddPaymentMode(t *testing.T) {
 	paymentMode := models.PaymentMode{
 		Mode:       "Credit Card",
 		CardNumber: 4242424242424242,
+		Balance:    50000,
 	}
 	userPaymentModeUpdate := models.UserPaymentMode{
 		UserId:       userId,
@@ -231,82 +232,6 @@ func TestPaymentHandler_GetPaymentMode(t *testing.T) {
 			tc.buildStubs(paymentRepository)
 			paymentServiceImpl := NewPaymentServiceImpl(paymentRepository)
 			result, err := paymentServiceImpl.GetPaymentMode(userId)
-			tc.checkResponse(t, result, err)
-		})
-	}
-}
-
-func TestPaymentServiceImpl_SetPaymentMode(t *testing.T) {
-	userId := "abcd-efgh-1234-4321"
-	paymentMode := models.PaymentMode{
-		Mode:       "Credit Card",
-		CardNumber: 4242424242424242,
-	}
-	currentPaymentMode := make([]models.PaymentMode, 0, 0)
-	userPaymentModeSuccess := models.UserPaymentMode{
-		UserId:       userId,
-		PaymentModes: append(currentPaymentMode, paymentMode),
-	}
-	userPaymentModeFailure := models.UserPaymentMode{
-		UserId:       userId,
-		PaymentModes: currentPaymentMode,
-	}
-	testCases := []struct {
-		name          string
-		buildStubs    func(paymentRepository *mocks.MockPaymentRepository)
-		checkResponse func(t *testing.T, isPaymentModeValid bool, errors interface{})
-	}{
-		{
-			name: "FailureGetPaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
-					Times(1).
-					Return(nil, app_errors.NewUnexpectedError(""))
-			},
-			checkResponse: func(t *testing.T, isPaymentModeValid bool, errors interface{}) {
-				require.Equal(t, false, isPaymentModeValid)
-				require.Equal(t, app_errors.NewUnexpectedError(""), errors)
-			},
-		},
-		{
-			name: "SuccessSetPaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
-					Times(1).
-					Return(&userPaymentModeSuccess, nil)
-			},
-			checkResponse: func(t *testing.T, isPaymentModeValid bool, errors interface{}) {
-				require.Equal(t, true, isPaymentModeValid)
-				require.Equal(t, true, reflect.ValueOf(errors).IsNil())
-			},
-		},
-		{
-			name: "FailureSetPaymentMode",
-			buildStubs: func(paymentRepository *mocks.MockPaymentRepository) {
-				paymentRepository.EXPECT().
-					GetPaymentModeFromDB(userId).
-					Times(1).
-					Return(&userPaymentModeFailure, nil)
-			},
-			checkResponse: func(t *testing.T, isPaymentModeValid bool, errors interface{}) {
-				require.Equal(t, false, isPaymentModeValid)
-				require.Equal(t, app_errors.NewNotFoundError("The given payment mode doesn't exist for the current user."), errors)
-			},
-		},
-	}
-
-	for i := range testCases {
-		tc := testCases[i]
-		t.Run(tc.name, func(t *testing.T) {
-			ctrl := gomock.NewController(t)
-			defer ctrl.Finish()
-
-			paymentRepository := mocks.NewMockPaymentRepository(ctrl)
-			tc.buildStubs(paymentRepository)
-			paymentServiceImpl := NewPaymentServiceImpl(paymentRepository)
-			result, err := paymentServiceImpl.SetPaymentMode(userId, paymentMode)
 			tc.checkResponse(t, result, err)
 		})
 	}
