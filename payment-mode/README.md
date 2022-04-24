@@ -32,6 +32,7 @@
 7) Sonarqube to calculate code coverage.
 8) GRPC service methods
 9) Reduced docker image size from 1GB to 50 MB using multi-stage build.
+10) Application monitoring with Prometheus and Grafana
 
 # Architecture
 
