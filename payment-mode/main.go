@@ -1,6 +1,9 @@
 package main
 
-import "qwik.in/payment-mode/app"
+import (
+	prometheusUtility "github.com/swiggy-2022-bootcamp/cdp-team1/common-utilities/prometheus-utility"
+	"qwik.in/payment-mode/app"
+)
 
 // @title          Swiggy Qwik - Payment_Mode module
 // @version        1.0
@@ -13,5 +16,6 @@ import "qwik.in/payment-mode/app"
 // @name                        Authorization
 // @BasePath /api
 func main() {
+	prometheusUtility.RegisterMetrics()
 	app.Start()
 }

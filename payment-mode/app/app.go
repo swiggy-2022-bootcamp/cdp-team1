@@ -35,10 +35,6 @@ var (
 	wg                  sync.WaitGroup
 )
 
-func init() {
-	prometheusUtility.RegisterMetrics()
-}
-
 func Start() {
 	ctx = context.TODO()
 
