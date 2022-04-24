@@ -1,6 +1,9 @@
 package main
 
-import "qwik.in/transaction/app"
+import (
+	prometheusUtility "github.com/swiggy-2022-bootcamp/cdp-team1/common-utilities/prometheus-utility"
+	"qwik.in/transaction/app"
+)
 
 // @title          Swiggy Qwik - Transaction module
 // @version        1.0
@@ -10,5 +13,6 @@ import "qwik.in/transaction/app"
 // @license.name  Apache 2.0
 // @BasePath /api
 func main() {
+	prometheusUtility.RegisterMetrics()
 	app.Start()
 }

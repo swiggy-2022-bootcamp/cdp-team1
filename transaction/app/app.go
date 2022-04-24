@@ -33,9 +33,6 @@ var (
 	wg                      sync.WaitGroup
 )
 
-func init() {
-	prometheusUtility.RegisterMetrics()
-}
 func Start() {
 
 	//Variable initializations for DynamoDB
