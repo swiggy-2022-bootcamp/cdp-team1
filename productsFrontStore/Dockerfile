@@ -7,6 +7,8 @@ WORKDIR /app
 
 RUN export GO111MODULE=on
 RUN cd /app && git clone -b products-front-store https://github.com/swiggy-2022-bootcamp/cdp-team1.git
+# COPY . ./cdp-team1/productsFrontStore
+
 WORKDIR /app/cdp-team1/productsFrontStore
 RUN go build -o main .
 
