@@ -1,5 +1,88 @@
-basePath: /products/api
-host: localhost:9000
+basePath: /api/admin/products/
+definitions:
+  entity.Product:
+    properties:
+      height:
+        type: integer
+      id:
+        type: string
+      image:
+        type: string
+      length:
+        type: integer
+      manufacturer_id:
+        type: string
+      minimum:
+        type: integer
+      model:
+        type: string
+      points:
+        type: integer
+      price:
+        type: string
+      product_category:
+        items:
+          type: string
+        type: array
+      product_description:
+        items:
+          $ref: '#/definitions/entity.ProductDescription'
+        type: array
+      product_related:
+        items:
+          type: string
+        type: array
+      product_seo_url:
+        items:
+          $ref: '#/definitions/entity.ProductSeoUrl'
+        type: array
+      quantity:
+        type: string
+      reward:
+        type: integer
+      shipping:
+        type: string
+      sku:
+        type: string
+      weight:
+        type: integer
+      width:
+        type: integer
+    type: object
+  entity.ProductDescription:
+    properties:
+      description:
+        type: string
+      language_id:
+        type: string
+      meta_description:
+        type: string
+      meta_keyword:
+        type: string
+      meta_title:
+        type: string
+      name:
+        type: string
+      tag:
+        type: string
+    type: object
+  entity.ProductSeoUrl:
+    properties:
+      keyword:
+        type: string
+      language_id:
+        type: string
+      store_id:
+        type: string
+    type: object
+  proto.Response:
+    properties:
+      id:
+        type: string
+      quantity:
+        type: integer
+    type: object
+host: localhost:9009
 info:
   contact:
     email: akash283y@gmail.com
@@ -11,18 +94,125 @@ info:
   version: "1.0"
 paths:
   /:
-    delete:
+    get:
       consumes:
       - application/json
-      description: Delete Product with given id
+      description: This request will return 200 OK if server is up..
       produces:
       - application/json
       responses:
         "200":
-          description: ""
-      summary: Delete Products
+          description: OK
+          schema:
+            type: string
+      summary: To check if the service is running or not.
       tags:
       - ""
+  /api/admin/products:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all products
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/entity.Product'
+            type: array
+        "400":
+          description: Something went wrong
+      summary: Get Products
+      tags:
+      - ProductAdmin
+    post:
+      consumes:
+      - application/json
+      description: Create a new product object, generate id and save in DB
+      parameters:
+      - description: Product details
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/entity.Product'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Product Created
+        "400":
+          description: Something went wrong
+      summary: AddProduct
+      tags:
+      - ProductAdmin
+  /api/admin/products/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Product with given id
+      parameters:
+      - description: Product id
+        in: path
+        name: productId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Product Deleted Successfully
+        "400":
+          description: Something went wrong
+      summary: Delete Products
+      tags:
+      - ProductAdmin
+    put:
+      consumes:
+      - application/json
+      description: Update Product with given id
+      parameters:
+      - description: Product id
+        in: path
+        name: productId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Product Updated Successfully
+        "400":
+          description: Something went wrong
+      summary: Update Products
+      tags:
+      - ProductAdmin
+  /api/admin/products/quantity/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Quantity of Product with given id
+      parameters:
+      - description: Product id
+        in: path
+        name: productId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/proto.Response'
+        "400":
+          description: Something went wrong
+      summary: Quantity of Products
+      tags:
+      - ProductAdmin
+  /api/admin/products/search:
     get:
       consumes:
       - application/json
@@ -32,33 +222,9 @@ paths:
       responses:
         "200":
           description: ""
+        "400":
+          description: Something went wrong
       summary: Search Products
       tags:
-      - ""
-    post:
-      consumes:
-      - application/json
-      description: Create a new product object, generate id and save in DB
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: AddProduct
-      tags:
-      - ""
-    put:
-      consumes:
-      - application/json
-      description: Update Product with given id
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ""
-      summary: Update Products
-      tags:
-      - ""
+      - ProductAdmin
 swagger: "2.0"

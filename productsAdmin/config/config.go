@@ -20,5 +20,6 @@ const (
 
 // gRPC Server config for Get Quantity for PorductID
 const (
+	GRPC_SERVER_IP   = "localhost" //"product-front-store" //
 	GRPC_SERVER_PORT = "19091"
 )

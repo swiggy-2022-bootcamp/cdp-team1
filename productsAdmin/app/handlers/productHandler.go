@@ -21,12 +21,14 @@ func NewProductHandler(productService service.ProductService) ProductHandler {
 // AddProduct godoc
 // @Summary AddProduct
 // @Description Create a new product object, generate id and save in DB
-// @Tags
+// @Tags ProductAdmin
 // @Schemes
 // @Accept json
 // @Produce json
-// @Success	200  {string} 	Product Created
-// @Router / [POST]
+// @Param req body entity.Product true "Product details"
+// @Success	200 "Product Created"
+// @Failure 400 "Something went wrong"
+// @Router /api/admin/products [POST]
 func (p ProductHandler) AddProduct(c *gin.Context) {
 	var product entity.Product
 	if err := c.BindJSON(&product); err != nil {
@@ -47,12 +49,13 @@ func (p ProductHandler) AddProduct(c *gin.Context) {
 // GetProduct godoc
 // @Summary Get Products
 // @Description Get a list of all products
-// @Tags
+// @Tags ProductAdmin
 // @Schemes
 // @Accept json
 // @Produce json
-// @Success	200
-// @Router / [GET]
+// @Success	200 {array} entity.Product
+// @Failure 400 "Something went wrong"
+// @Router /api/admin/products [GET]
 func (p ProductHandler) GetProduct(c *gin.Context) {
 	products, err := p.productService.GetAll()
 	if err == nil {
@@ -65,12 +68,14 @@ func (p ProductHandler) GetProduct(c *gin.Context) {
 // UpdateProduct godoc
 // @Summary Update Products
 // @Description Update Product with given id
-// @Tags
+// @Tags ProductAdmin
 // @Schemes
 // @Accept json
 // @Produce json
-// @Success	200
-// @Router / [PUT]
+// @Param productId path string true "Product id"
+// @Success	200 "Product Updated Successfully"
+// @Failure 400 "Something went wrong"
+// @Router /api/admin/products/{id} [PUT]
 func (p ProductHandler) UpdateProduct(c *gin.Context) {
 
 	productId := c.Param("id")
@@ -78,6 +83,8 @@ func (p ProductHandler) UpdateProduct(c *gin.Context) {
 	var product entity.Product
 	if err := c.BindJSON(&product); err != nil {
 		log.Error(err)
+		c.JSON(http.StatusBadRequest, gin.H{"message": "Could not parse product"})
+		return
 	}
 
 	log.Info("Update product having id : ", productId, " with values: ", product)
@@ -93,12 +100,14 @@ func (p ProductHandler) UpdateProduct(c *gin.Context) {
 // DeleteProduct godoc
 // @Summary Delete Products
 // @Description Delete Product with given id
-// @Tags
+// @Tags ProductAdmin
 // @Schemes
 // @Accept json
 // @Produce json
-// @Success	200
-// @Router / [DELETE]
+// @Param productId path string true "Product id"
+// @Success	200 "Product Deleted Successfully"
+// @Failure 400 "Something went wrong"
+// @Router /api/admin/products/{id} [DELETE]
 func (p ProductHandler) DeleteProduct(c *gin.Context) {
 
 	productId := c.Param("id")
@@ -115,12 +124,13 @@ func (p ProductHandler) DeleteProduct(c *gin.Context) {
 // SearchProduct godoc
 // @Summary Search Products
 // @Description Search Product with given query
-// @Tags
+// @Tags ProductAdmin
 // @Schemes
 // @Accept json
 // @Produce json
 // @Success	200
-// @Router / [GET]
+// @Failure 400 "Something went wrong"
+// @Router /api/admin/products/search [GET]
 func (p ProductHandler) SearchProduct(c *gin.Context) {
 
 	limit, _ := strconv.ParseInt(c.Query("limit"), 10, 64)
@@ -134,6 +144,17 @@ func (p ProductHandler) SearchProduct(c *gin.Context) {
 	}
 }
 
+// GetQuantityForProductId godoc
+// @Summary Quantity of Products
+// @Description Get Quantity of Product with given id
+// @Tags ProductAdmin
+// @Schemes
+// @Accept json
+// @Produce json
+// @Param productId path string true "Product id"
+// @Success	200 {object} proto.Response
+// @Failure 400 "Something went wrong"
+// @Router /api/admin/products/quantity/{id} [GET]
 func (p ProductHandler) GetQuantityForProductId(c *gin.Context) {
 
 	productId := c.Param("id")

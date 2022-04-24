@@ -1,9 +1,11 @@
 version: "3"
 services:
   backend:
-    image: mellomaniac/swiggy-qwik:product-admin
+    build: .
     ports:
       - "9119:9119"
     environment:
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    extra_hosts:
+      - "localhost:host-gateway"

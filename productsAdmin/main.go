@@ -10,8 +10,8 @@ import (
 // @contact.name   Akash Yadav
 // @contact.email  akash283y@gmail.com
 // @license.name  Apache 2.0
-// @host      localhost:9009
-// @BasePath /products/api
+// @host      localhost:9119
+// @BasePath /api/admin/products/
 func main() {
 	app.Start()
 }

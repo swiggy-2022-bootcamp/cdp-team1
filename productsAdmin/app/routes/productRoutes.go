@@ -12,7 +12,7 @@ import (
 )
 
 func InitRoutes(router *gin.Engine, handler handlers.ProductHandler) {
-	newRouter := router.Group("products/api")
+	newRouter := router.Group("api/admin/products")
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	newRouter.GET("/health", handlers.HealthCheck)
 
