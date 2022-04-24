@@ -100,3 +100,20 @@ INFO: 2022/04/16 16:44:16 [{
 }]
 PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /categories/api/2 2022-04-16T16:44:16+05:30 258.046758ms 
 GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /categories/api/ 2022-04-16T16:44:22+05:30 255.005522ms 
+INFO: 2022/04/24 11:34:29 [Opened log file successfully]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+INFO: 2022/04/24 11:34:29 [gRPC Server: Listening on port  [::]:19091]
+[GIN-debug] GET    /api/categories/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /api/categories/health    --> qwik.in/categories/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] GET    /api/categories/          --> qwik.in/categories/app/handlers.CategoryHandler.Getall-fm (3 handlers)
+[GIN-debug] PUT    /api/categories/:id       --> qwik.in/categories/app/handlers.CategoryHandler.UpdateCategory-fm (3 handlers)
+[GIN-debug] GET    /api/categories/search/:id --> qwik.in/categories/app/handlers.CategoryHandler.Searchcategory-fm (3 handlers)
+[GIN-debug] DELETE /api/categories/:id       --> qwik.in/categories/app/handlers.CategoryHandler.Deletecategory-fm (3 handlers)
+[GIN-debug] POST   /api/categories/categories --> qwik.in/categories/app/handlers.CategoryHandler.AddCategory-fm (3 handlers)
+INFO: 2022/04/24 11:34:29 [Category Service  starting on port  9122]
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :9122

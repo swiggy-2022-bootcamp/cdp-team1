@@ -1,0 +1,10 @@
+version: "3"
+services:
+  backend:
+    image: mellomaniac/swiggy-qwik:categories
+    ports:
+      - "9122:9122"
+      - "19081:19081"
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}

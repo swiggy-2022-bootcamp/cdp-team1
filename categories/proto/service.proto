@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "qwik.in/categories/proto";
+
+message Request {
+	string id = 1;
+}
+
+message Response {
+	string id = 1;
+	string name = 2;
+    string description = 3;
+    string meta_description = 4;
+    string meta_keyword = 5;
+    string meta_title = 6;
+}
+
+
+
+service fetchcategory {
+	rpc getcategorybyid(Request) returns (Response);
+}

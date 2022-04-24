@@ -4,17 +4,66 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/signal"
+	"sync"
+	"syscall"
+	"time"
+
+	"net"
+
+	"google.golang.org/grpc"
 
 	"github.com/gin-gonic/gin"
 	"qwik.in/categories/app/handlers"
 	"qwik.in/categories/app/routes"
 	"qwik.in/categories/config"
 	"qwik.in/categories/log"
+	"qwik.in/categories/proto"
 	"qwik.in/categories/repository"
 	"qwik.in/categories/service"
 )
 
+var (
+	Repository repository.CategoryRepository
+	Service    service.CategoryService
+	Handler    handlers.CategoryHandler
+)
+
+var wg sync.WaitGroup
+
 func Start() {
+
+	// gracefulStop logic to allow go routines to finish
+	var gracefulStop = make(chan os.Signal)
+	signal.Notify(gracefulStop, syscall.SIGTERM)
+	signal.Notify(gracefulStop, syscall.SIGINT)
+	go func() {
+		sig := <-gracefulStop
+		log.Info("caught sig: %+v", sig)
+		log.Info("Wait for 2 second to finish processing")
+		time.Sleep(2 * time.Second)
+		os.Exit(0)
+	}()
+
+	wg.Add(2)
+	go initRestServer()
+	go initGrpcServer()
+	wg.Wait()
+}
+func initGrpcServer() {
+	defer wg.Done()
+	lis, err := net.Listen("tcp", "0.0.0.0:"+config.GRPC_SERVER_PORT)
+	if err != nil {
+		log.Error("failed to GRPC listen: ", err)
+	}
+	gs := grpc.NewServer()
+	proto.RegisterFetchcategoryServer(gs, service.NewCategoryFetchService())
+	log.Info("gRPC Server: Listening on port ", lis.Addr())
+	if err := gs.Serve(lis); err != nil {
+		log.Error("gRPC Server: Failed to serve : ", err.Error())
+	}
+}
+func initRestServer() {
 
 	CategoryRepository := repository.NewDynamoRepository()
 	err := CategoryRepository.Connect()
