@@ -36,4 +36,4 @@ main
 *.cov
 
 # .Env files
-*.env
+.env
