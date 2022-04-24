@@ -29,3 +29,15 @@ func TestNewExpectationFailed(t *testing.T) {
 	assert.Equal(t, err.Code, http.StatusExpectationFailed)
 	assert.Equal(t, err.Message, "Expectation failed error")
 }
+
+func TestAppError_Error(t *testing.T) {
+	err := NewBadRequestError("")
+	errObj := err.Error()
+	assert.Error(t, errObj)
+}
+
+func TestAppError_AsMessage(t *testing.T) {
+	err := NewBadRequestError("error")
+	errMsg := err.AsMessage()
+	assert.Equal(t, errMsg.Message, "error")
+}

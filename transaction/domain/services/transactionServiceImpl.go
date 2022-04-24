@@ -30,9 +30,9 @@ func (t TransactionServiceImpl) AddTransactionPoints(transactionAmount *models.T
 	//If there is no record for the given userId, create a new record
 	if err != nil {
 		if err.Code == http.StatusNotFound {
-			err_ := t.transactionRepository.AddTransactionPointsFromDB(transaction)
-			if err_ != nil {
-				return err_
+			dbErr := t.transactionRepository.AddTransactionPointsFromDB(transaction)
+			if dbErr != nil {
+				return dbErr
 			} else {
 				return nil
 			}
@@ -80,10 +80,10 @@ func (t TransactionServiceImpl) UseTransactionPoints(transactionAmount *models.T
 			transactionAmount.Amount -= userTransactionPoints
 			userTransactionPoints = 0
 
-			err_ := t.UpdateTransactionPoints(userTransactionPoints, transactionAmount.UserId)
-			if err_ != nil {
+			updateErr := t.UpdateTransactionPoints(userTransactionPoints, transactionAmount.UserId)
+			if updateErr != nil {
 				log.Error("Failed to update transaction points")
-				return false, transactionAmount, err_
+				return false, transactionAmount, updateErr
 			}
 
 			return true, transactionAmount, nil

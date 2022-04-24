@@ -8,7 +8,7 @@ import "qwik.in/transaction/app"
 // @contact.name   Aaditya Khetan
 // @contact.email  aadityakhetan123@gmail.com
 // @license.name  Apache 2.0
-// @BasePath /transaction/api
+// @BasePath /api
 func main() {
 	app.Start()
 }

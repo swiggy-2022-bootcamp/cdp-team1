@@ -74,7 +74,7 @@ func StartRESTServer() {
 	defer wg.Done()
 	restServer = gin.New()
 	restServer.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
-	router := restServer.Group("transaction/api")
+	router := restServer.Group("api")
 	transactionRoutes.InitRoutes(router)
 
 	//Starting restServer on port 9001

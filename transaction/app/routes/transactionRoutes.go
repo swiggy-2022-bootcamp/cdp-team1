@@ -19,9 +19,13 @@ func NewTransactionRoutes(transactionHandler handlers.TransactionHandler, health
 
 func (tr TransactionRoutes) InitRoutes(newRouter *gin.RouterGroup) {
 
+	//Swagger route
 	newRouter.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	newRouter.GET("/", tr.healthCheckhandler.HealthCheck)
 
+	//Health API route
+	newRouter.GET("/transaction/health", tr.healthCheckhandler.HealthCheck)
+
+	// Transaction service routes
 	newRouter.POST("/transaction/:userId", tr.transactionHandler.AddTransactionPoints)
 	newRouter.GET("/transaction/:userId", tr.transactionHandler.GetTransactionPointsByUserID)
 	newRouter.POST("/transaction/use-transaction-points/:userId", tr.transactionHandler.UseTransactionPoints)
