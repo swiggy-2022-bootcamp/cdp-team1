@@ -1,6 +1,7 @@
 package main
 
 import (
+	prometheusUtility "github.com/swiggy-2022-bootcamp/cdp-team1/common-utilities/prometheus-utility"
 	"qwik.in/productsAdmin/app"
 )
 
@@ -13,5 +14,6 @@ import (
 // @host      localhost:9119
 // @BasePath /api/admin/products/
 func main() {
+	prometheusUtility.RegisterMetrics()
 	app.Start()
 }

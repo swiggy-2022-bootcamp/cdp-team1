@@ -8,6 +8,7 @@ import (
 
 	ginSwagger "github.com/swaggo/gin-swagger"
 
+	prometheusUtility "github.com/swiggy-2022-bootcamp/cdp-team1/common-utilities/prometheus-utility"
 	_ "qwik.in/productsAdmin/docs"
 )
 
@@ -23,4 +24,6 @@ func InitRoutes(router *gin.Engine, handler handlers.ProductHandler) {
 	newRouter.GET("/search", handler.SearchProduct)
 
 	newRouter.GET("/quantity/:id", handler.GetQuantityForProductId)
+
+	newRouter.GET("/metrics", prometheusUtility.PrometheusHandler())
 }

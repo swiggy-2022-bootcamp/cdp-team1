@@ -2,6 +2,7 @@ package app
 
 import (
 	"github.com/gin-gonic/gin"
+	prometheusUtility "github.com/swiggy-2022-bootcamp/cdp-team1/common-utilities/prometheus-utility"
 	"google.golang.org/grpc"
 	"io"
 	"net"
@@ -83,6 +84,7 @@ func initRestServer() {
 
 	router := gin.New()
 	router.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
+	router.Use(prometheusUtility.PrometheusMiddleware())
 
 	routes.InitRoutes(router, Handler)
 
