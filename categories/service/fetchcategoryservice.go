@@ -28,11 +28,13 @@ func NewCategoryFetchService() *CategoryFetchService {
 	return &CategoryFetchService{}
 }
 
-func (s *CategoryFetchService) GetCategoryById(ctx context.Context, in *proto.Request) (*proto.Response, error) {
+func (s *CategoryFetchService) Getcategorybyid(ctx context.Context, in *proto.Request) (*proto.Response, error) {
 	log.Info("gRPC received message: ", in.GetId())
 	category, err1 := Service.SearchCategory(in.GetId())
 	if err1 != nil {
-		return nil, err1
+		return &proto.Response{
+			Id: in.GetId(),
+		}, nil
 	}
 	return &proto.Response{
 		Id:              in.GetId(),

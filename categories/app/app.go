@@ -52,7 +52,7 @@ func Start() {
 }
 func initGrpcServer() {
 	defer wg.Done()
-	lis, err := net.Listen("tcp", "0.0.0.0:"+config.GRPC_SERVER_PORT)
+	lis, err := net.Listen("tcp", ":"+config.GRPC_SERVER_PORT)
 	if err != nil {
 		log.Error("failed to GRPC listen: ", err)
 	}
