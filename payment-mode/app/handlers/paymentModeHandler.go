@@ -31,9 +31,7 @@ func NewPaymentHandler(paymentService services.PaymentService) PaymentHandler {
 // @Failure 400  string 	Bad request
 // @Failure 500  string 	Internal server error
 // @Failure 409  string 	Payment mode already exists
-// @securityDefinitions.apikey  Bearer Token
-// @in                          header
-// @name                        Authorization
+// @Security Bearer Token
 // @Router /paymentmethods [POST]
 func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 
@@ -77,9 +75,7 @@ func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 // @Success	200  {object} 	models.UserPaymentMode
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	User not found
-// @securityDefinitions.apikey  Bearer Token
-// @in                          header
-// @name                        Authorization
+// @Security Bearer Token
 // @Router /paymentmethods [GET]
 func (ph PaymentHandler) GetPaymentMode(c *gin.Context) {
 

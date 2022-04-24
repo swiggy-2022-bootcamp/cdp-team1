@@ -109,6 +109,8 @@ paths:
           description: Internal Server Error
           schema:
             type: string
+      security:
+      - Bearer Token: []
       summary: To get available payment modes of a user.
       tags:
       - PaymentMode
@@ -142,6 +144,8 @@ paths:
           description: Internal Server Error
           schema:
             type: string
+      security:
+      - Bearer Token: []
       summary: To add a new payment method for a user.
       tags:
       - PaymentMode

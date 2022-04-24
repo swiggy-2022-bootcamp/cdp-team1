@@ -76,6 +76,11 @@ const docTemplate = `{
         },
         "/paymentmethods": {
             "get": {
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ],
                 "description": "To get available payment modes of a user.",
                 "consumes": [
                     "application/json"
@@ -109,6 +114,11 @@ const docTemplate = `{
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "Bearer Token": []
+                    }
+                ],
                 "description": "To add a new payment method for a user(COD,Debit card, Credit Card).",
                 "consumes": [
                     "application/json"
