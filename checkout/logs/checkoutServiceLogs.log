@@ -1,0 +1,308 @@
+📛ERROR: 2022/04/24 05:29:19 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 05:29:19 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:29:20 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 05:29:20 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:29:21 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 05:29:21 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:30:30 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 05:30:30 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:30:31 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 05:30:31 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:30:32 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 05:30:32 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:35:46 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 05:35:46 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:35:46 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 05:35:46 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:35:47 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 05:35:47 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:39:12 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 05:39:12 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:39:13 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 05:39:13 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 05:39:14 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 05:39:14 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/ 2022-04-24T05:39:21+05:30 505.8µs 
+[GIN] 2022/04/24 - 05:39:21 | 200 |       505.8µs |             ::1 | GET      "/checkout/api/"
+❕INFO: 2022/04/24 05:39:29 [Default Address Fetched ✅  0xc000368000]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-24T05:39:29+05:30 312.7415ms 
+[GIN] 2022/04/24 - 05:39:29 | 202 |    312.7415ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/24 05:39:29 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-24T05:39:29+05:30 316.2209ms 
+[GIN] 2022/04/24 - 05:39:29 | 202 |    316.2209ms |             ::1 | GET      "/checkout/api/shippingAddress"
+❕INFO: 2022/04/24 05:39:34 [Default Address Fetched ✅  0xc0002c99c0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-24T05:39:34+05:30 308.6701ms 
+[GIN] 2022/04/24 - 05:39:34 | 202 |    308.6701ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/24 05:39:34 [Cart Items Fetched ✅ {1 1 [{dairymilk 2} {kitkat 11} {munch 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-24T05:39:34+05:30 309.3098ms 
+[GIN] 2022/04/24 - 05:39:34 | 202 |    309.3098ms |             ::1 | GET      "/checkout/api/cartItems"
+❕INFO: 2022/04/24 05:39:39 [Default Address Fetched ✅  0xc000532370]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-24T05:39:39+05:30 321.6473ms 
+[GIN] 2022/04/24 - 05:39:39 | 202 |    321.6473ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/24 05:39:39 [Default ShippingAddress Fetched ✅ {1 one Ashwin Gounder 3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-24T05:39:39+05:30 322.4639ms 
+[GIN] 2022/04/24 - 05:39:39 | 202 |    322.4639ms |             ::1 | GET      "/checkout/api/shippingAddress"
+❕INFO: 2022/04/24 05:39:42 [Default Address Fetched ✅  0xc0002c9f80]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-24T05:39:42+05:30 337.1803ms 
+[GIN] 2022/04/24 - 05:39:42 | 202 |    337.1803ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/24 05:39:47 [Default Address Fetched ✅  0xc0000ee420]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-24T05:39:47+05:30 338.3347ms 
+[GIN] 2022/04/24 - 05:39:47 | 202 |    338.3347ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/24 06:07:25 [Payment Mode Fetched ✅  0xc00033e5a0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /payment/api/payments 2022-04-24T06:07:25+05:30 1.3665561s 
+[GIN] 2022/04/24 - 06:07:25 | 202 |    1.3665561s |             ::1 | GET      "/payment/api/payments"
+❕INFO: 2022/04/24 06:07:25 [Payment Mode Fetched ✅ {1 [{ swiggyipp@upi} { 5329 8149 5574 6562} { 1}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/payments 2022-04-24T06:07:25+05:30 1.3690369s 
+[GIN] 2022/04/24 - 06:07:25 | 202 |    1.3690369s |             ::1 | GET      "/checkout/api/payments"
+📛ERROR: 2022/04/24 06:09:55 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 06:09:55 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 06:09:56 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 06:09:56 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 06:09:56 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 06:09:56 [Created the table{
+
+}]
+❕INFO: 2022/04/24 06:10:02 [Payment Mode Fetched ✅  0xc000303320]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /payment/api/payments 2022-04-24T06:10:02+05:30 346.1935ms 
+[GIN] 2022/04/24 - 06:10:02 | 202 |    346.1935ms |             ::1 | GET      "/payment/api/payments"
+❕INFO: 2022/04/24 06:10:02 [Payment Mode Fetched ✅ {1 [{ swiggyipp@upi} { 5329 8149 5574 6562} { 1}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/payments 2022-04-24T06:10:02+05:30 348.3686ms 
+[GIN] 2022/04/24 - 06:10:02 | 202 |    348.3686ms |             ::1 | GET      "/checkout/api/payments"
+📛ERROR: 2022/04/24 06:12:41 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 06:12:41 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 06:12:42 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 06:12:42 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 06:12:43 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 06:12:43 [Created the table{
+
+}]
+❕INFO: 2022/04/24 06:12:51 [Payment Mode Fetched ✅  0xc0002301b0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /payment/api/payments 2022-04-24T06:12:51+05:30 341.26ms 
+[GIN] 2022/04/24 - 06:12:51 | 202 |      341.26ms |             ::1 | GET      "/payment/api/payments"
+❕INFO: 2022/04/24 06:12:51 [Payment Mode Fetched ✅ {500 1 [{ swiggyipp@upi} { 5329 8149 5574 6562} { 1}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/payments 2022-04-24T06:12:51+05:30 342.8299ms 
+[GIN] 2022/04/24 - 06:12:51 | 202 |    342.8299ms |             ::1 | GET      "/checkout/api/payments"
+📛ERROR: 2022/04/24 06:13:39 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 06:13:39 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 06:13:40 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 06:13:40 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 06:13:41 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 06:13:41 [Created the table{
+
+}]
+❕INFO: 2022/04/24 06:13:49 [Payment Mode Fetched ✅  0xc0002e32c0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /payment/api/payments 2022-04-24T06:13:49+05:30 345.4947ms 
+[GIN] 2022/04/24 - 06:13:49 | 202 |    345.4947ms |             ::1 | GET      "/payment/api/payments"
+❕INFO: 2022/04/24 06:13:49 [Payment Mode Fetched ✅ {500 1 [{upi swiggyipp@upi} {creditcard 5329 8149 5574 6562} {wallet 1}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/payments 2022-04-24T06:13:49+05:30 347.0829ms 
+[GIN] 2022/04/24 - 06:13:49 | 202 |    347.0829ms |             ::1 | GET      "/checkout/api/payments"
+📛ERROR: 2022/04/24 12:23:04 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 12:23:04 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:23:04 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 12:23:04 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:23:05 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 12:23:05 [Created the table{
+
+}]
+❕INFO: 2022/04/24 12:23:25 [Default Address Fetched ✅  0xc00013bad0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-24T12:23:25+05:30 329.7736ms 
+[GIN] 2022/04/24 - 12:23:25 | 202 |    329.7736ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/24 12:23:25 [Default ShippingAddress Fetched ✅ {1 one Ashwin  3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true 0}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-24T12:23:25+05:30 331.879ms 
+[GIN] 2022/04/24 - 12:23:25 | 202 |     331.879ms |             ::1 | GET      "/checkout/api/shippingAddress"
+❕INFO: 2022/04/24 12:23:29 [Payment Mode Fetched ✅  0xc000089650]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /payment/api/payments 2022-04-24T12:23:29+05:30 331.3018ms 
+[GIN] 2022/04/24 - 12:23:29 | 202 |    331.3018ms |             ::1 | GET      "/payment/api/payments"
+❕INFO: 2022/04/24 12:23:29 [Payment Mode Fetched ✅ {500 1 [{upi swiggyipp@upi} {creditcard 5329 8149 5574 6562} {wallet 1}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/payments 2022-04-24T12:23:29+05:30 332.5166ms 
+[GIN] 2022/04/24 - 12:23:29 | 202 |    332.5166ms |             ::1 | GET      "/checkout/api/payments"
+❕INFO: 2022/04/24 12:23:41 [Default Address Fetched ✅  0xc000621600]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-24T12:23:41+05:30 344.636ms 
+[GIN] 2022/04/24 - 12:23:41 | 202 |     344.636ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/24 12:23:41 [Cart Items Fetched ✅ {1 1 [{dairymilk 2} {kitkat 11} {munch 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-24T12:23:41+05:30 346.0158ms 
+[GIN] 2022/04/24 - 12:23:41 | 202 |    346.0158ms |             ::1 | GET      "/checkout/api/cartItems"
+❕INFO: 2022/04/24 12:23:48 [Default Address Fetched ✅  0xc000311ac0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-24T12:23:48+05:30 344.0473ms 
+[GIN] 2022/04/24 - 12:23:48 | 202 |    344.0473ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/24 12:23:48 [Cart Items Fetched ✅ {1 1 [{dairymilk 2} {kitkat 11} {munch 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-24T12:23:48+05:30 345.5549ms 
+[GIN] 2022/04/24 - 12:23:48 | 202 |    345.5549ms |             ::1 | GET      "/checkout/api/cartItems"
+❕INFO: 2022/04/24 12:24:23 [Default Address Fetched ✅  0xc0002c7a40]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-24T12:24:23+05:30 316.4981ms 
+[GIN] 2022/04/24 - 12:24:23 | 202 |    316.4981ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/24 12:24:26 [Default Address Fetched ✅  0xc000318f20]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-24T12:24:26+05:30 349.3525ms 
+[GIN] 2022/04/24 - 12:24:26 | 202 |    349.3525ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/24 12:24:29 [Payment Mode Fetched ✅  0xc000586900]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /payment/api/payments 2022-04-24T12:24:29+05:30 331.4951ms 
+[GIN] 2022/04/24 - 12:24:29 | 202 |    332.0064ms |             ::1 | GET      "/payment/api/payments"
+❕INFO: 2022/04/24 12:24:29 [Payment Mode Fetched ✅ {500 1 [{upi swiggyipp@upi} {creditcard 5329 8149 5574 6562} {wallet 1}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/payments 2022-04-24T12:24:29+05:30 332.9888ms 
+[GIN] 2022/04/24 - 12:24:29 | 202 |    332.9888ms |             ::1 | GET      "/checkout/api/payments"
+📛ERROR: 2022/04/24 12:25:02 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 12:25:02 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:25:02 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 12:25:02 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:25:03 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 12:25:03 [Created the table{
+
+}]
+❕INFO: 2022/04/24 12:25:10 [Default Address Fetched ✅  0xc0003ee160]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-24T12:25:10+05:30 333.6664ms 
+[GIN] 2022/04/24 - 12:25:10 | 202 |    333.6664ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/24 12:25:10 [Default ShippingAddress Fetched ✅ {1 one Ashwin  3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true 0}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-24T12:25:10+05:30 336.9413ms 
+[GIN] 2022/04/24 - 12:25:10 | 202 |    336.9413ms |             ::1 | GET      "/checkout/api/shippingAddress"
+❕INFO: 2022/04/24 12:25:12 [Payment Mode Fetched ✅  0xc000546780]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /payment/api/payments 2022-04-24T12:25:12+05:30 321.808ms 
+[GIN] 2022/04/24 - 12:25:12 | 202 |     321.808ms |             ::1 | GET      "/payment/api/payments"
+❕INFO: 2022/04/24 12:25:12 [Payment Mode Fetched ✅ {500 1 [{upi swiggyipp@upi} {creditcard 5329 8149 5574 6562} {wallet 1}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/payments 2022-04-24T12:25:12+05:30 323.8592ms 
+[GIN] 2022/04/24 - 12:25:12 | 202 |    323.8592ms |             ::1 | GET      "/checkout/api/payments"
+❕INFO: 2022/04/24 12:25:15 [Default Address Fetched ✅  0xc000249a00]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-24T12:25:15+05:30 303.2173ms 
+[GIN] 2022/04/24 - 12:25:15 | 202 |    303.2173ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/24 12:25:15 [Cart Items Fetched ✅ {1 1 [{dairymilk 2} {kitkat 11} {munch 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-24T12:25:15+05:30 304.6918ms 
+[GIN] 2022/04/24 - 12:25:15 | 202 |    304.6918ms |             ::1 | GET      "/checkout/api/cartItems"
+❕INFO: 2022/04/24 12:25:17 [Default Address Fetched ✅  0xc0005447c0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cartItems 2022-04-24T12:25:17+05:30 332.7039ms 
+[GIN] 2022/04/24 - 12:25:17 | 202 |    332.7039ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/24 12:25:20 [Default Address Fetched ✅  0xc0002ba2c0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-24T12:25:20+05:30 369.7413ms 
+[GIN] 2022/04/24 - 12:25:20 | 202 |    369.7413ms |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/24 12:28:50 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 12:28:50 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:28:51 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 12:28:51 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:28:51 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 12:28:51 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:32:04 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 12:32:04 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:32:05 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 12:32:05 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:32:05 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 12:32:05 [Created the table{
+
+}]
+❕INFO: 2022/04/24 12:32:13 [ ✅ Default Address Fetched 0xc0005c0000]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-24T12:32:13+05:30 309.8953ms 
+[GIN] 2022/04/24 - 12:32:13 | 202 |    309.8953ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/24 12:32:13 [Default ShippingAddress Fetched ✅ {1 one Ashwin  3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true 0}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-24T12:32:13+05:30 312.2173ms 
+[GIN] 2022/04/24 - 12:32:13 | 202 |    312.2173ms |             ::1 | GET      "/checkout/api/shippingAddress"
+📛ERROR: 2022/04/24 12:34:08 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 12:34:08 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:34:09 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 12:34:09 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:34:10 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 12:34:10 [Created the table{
+
+}]
+❕INFO: 2022/04/24 12:34:14 [ ✅ Default Address Fetched 0xc0005b8160]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-24T12:34:14+05:30 297.2338ms 
+[GIN] 2022/04/24 - 12:34:14 | 202 |    297.2338ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/24 12:34:14 [✅ Default ShippingAddress Fetched  {1 one Ashwin  3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true 0}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-24T12:34:14+05:30 298.9709ms 
+[GIN] 2022/04/24 - 12:34:14 | 202 |    298.9709ms |             ::1 | GET      "/checkout/api/shippingAddress"
+❕INFO: 2022/04/24 12:34:18 [ ✅ Payment Mode Fetched 0xc000089f20]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /payment/api/payments 2022-04-24T12:34:18+05:30 340.4157ms 
+[GIN] 2022/04/24 - 12:34:18 | 202 |     341.419ms |             ::1 | GET      "/payment/api/payments"
+❕INFO: 2022/04/24 12:34:18 [✅ Payment Mode Fetched {500 1 [{upi swiggyipp@upi} {creditcard 5329 8149 5574 6562} {wallet 1}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/payments 2022-04-24T12:34:18+05:30 342.1984ms 
+[GIN] 2022/04/24 - 12:34:18 | 202 |    342.1984ms |             ::1 | GET      "/checkout/api/payments"
+❕INFO: 2022/04/24 12:34:20 [✅ Cart Details Fetched  0xc0004f6b80]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-24T12:34:20+05:30 310.3086ms 
+[GIN] 2022/04/24 - 12:34:20 | 202 |    310.3086ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/24 12:34:20 [✅ Cart Items Fetched  {1 1 [{dairymilk 2} {kitkat 11} {munch 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-24T12:34:20+05:30 311.8013ms 
+[GIN] 2022/04/24 - 12:34:20 | 202 |    311.8013ms |             ::1 | GET      "/checkout/api/cartItems"
+📛ERROR: 2022/04/24 12:35:10 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 12:35:10 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:35:11 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/24 12:35:11 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 12:35:11 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/24 12:35:11 [Created the table{
+
+}]
+❕INFO: 2022/04/24 12:35:18 [ ✅ Default Address Fetched 0xc0001bd550]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-24T12:35:18+05:30 318.8376ms 
+[GIN] 2022/04/24 - 12:35:18 | 202 |    318.8376ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/24 12:35:18 [✅ Default ShippingAddress Fetched  {1 one Ashwin  3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true 0}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/shippingAddress 2022-04-24T12:35:18+05:30 320.7004ms 
+[GIN] 2022/04/24 - 12:35:18 | 202 |    320.7004ms |             ::1 | GET      "/checkout/api/shippingAddress"
+❕INFO: 2022/04/24 12:35:21 [ ✅ Payment Mode Fetched 0xc0002e5170]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /payment/api/payments 2022-04-24T12:35:21+05:30 318.6587ms 
+[GIN] 2022/04/24 - 12:35:21 | 202 |    318.6587ms |             ::1 | GET      "/payment/api/payments"
+❕INFO: 2022/04/24 12:35:21 [✅ Payment Mode Fetched {500 1 [{upi swiggyipp@upi} {creditcard 5329 8149 5574 6562} {wallet 1}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/payments 2022-04-24T12:35:21+05:30 320.0159ms 
+[GIN] 2022/04/24 - 12:35:21 | 202 |    320.0159ms |             ::1 | GET      "/checkout/api/payments"
+❕INFO: 2022/04/24 12:35:24 [✅ Cart Details Fetched  0xc0002c9e00]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /cart/api/cartItems 2022-04-24T12:35:24+05:30 337.9241ms 
+[GIN] 2022/04/24 - 12:35:24 | 202 |    337.9241ms |             ::1 | GET      "/cart/api/cartItems"
+❕INFO: 2022/04/24 12:35:24 [✅ Cart Items Fetched  {1 1 [{dairymilk 2} {kitkat 11} {munch 4}]}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/cartItems 2022-04-24T12:35:24+05:30 338.4382ms 
+[GIN] 2022/04/24 - 12:35:24 | 202 |    338.4382ms |             ::1 | GET      "/checkout/api/cartItems"

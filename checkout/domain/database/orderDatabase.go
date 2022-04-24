@@ -46,12 +46,12 @@ func OrderConnectDB() *dynamodb.DynamoDB {
 	//*******************************
 
 	//Lists the Table Input.
-	result, err := orderClient.ListTables(&dynamodb.ListTablesInput{})
+	_, err := orderClient.ListTables(&dynamodb.ListTablesInput{})
 	if err != nil {
 		logger.Error("Connection to Order - DynamoDB - FAILED ! ")
 	} else {
 		fmt.Println("Connection to Order - DynamoDB - SUCCESSFUL ! ")
-		fmt.Println(result)
+		//fmt.Println(result)
 	}
 	return orderClient
 }

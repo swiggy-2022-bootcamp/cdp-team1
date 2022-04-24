@@ -2,10 +2,13 @@ package repository
 
 import (
 	"fmt"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/aws/aws-sdk-go/service/dynamodb/expression"
+
+	//Swagger Docs
 	_ "qwik.in/checkout/docs"
 	"qwik.in/checkout/domain/database"
 	"qwik.in/checkout/domain/models"
@@ -16,9 +19,9 @@ import (
 //ShippingAddress ..
 type ShippingAddress struct {
 	UserID            int    `json:"user_id" dynamodb:"user_id"`
-	ShippingAddressID string `json:"shipping_address_id" dynamodbav:"shipping_address_id"`
+	ShippingAddressID string `json:"shipping_address_id" dynamodb:"shipping_address_id"`
 	FirstName         string `json:"first_name" dynamodbav:"first_name"`
-	LastName          string `json:"last_name" dynamodbav:"lastName"`
+	LastName          string `json:"last_name" dynamodbav:"last_name"`
 	AddressLine1      string `json:"address_line_1" dynamodbav:"address_line_1" `
 	AddressLine2      string `json:"address_line_2" dynamodbav:"address_line_2"`
 	City              string `json:"city" dynamodbav:"city"`
@@ -27,6 +30,7 @@ type ShippingAddress struct {
 	Pincode           int    `json:"pincode" dynamodbav:"pincode"`
 	AddressType       string `json:"address_type" dynamodbav:"address_type"`
 	DefaultAddress    bool   `json:"default_address" dynamodbav:"default_address"`
+	ShippingCost      int    `json:"shipping_cost" dynamodbav:"shipping_cost"`
 }
 
 //ShippingRepo ..
@@ -41,10 +45,10 @@ type ShippingRepoImpl struct {
 }
 
 //ShippingFunc ..
-func ShippingFunc(userID int, shippingAddressId, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool) *ShippingAddress {
+func ShippingFunc(userID int, shippingAddressID, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool, shippingCost int) *ShippingAddress {
 	return &ShippingAddress{
 		UserID:            userID,
-		ShippingAddressID: shippingAddressId,
+		ShippingAddressID: shippingAddressID,
 		FirstName:         firstName,
 		LastName:          lastName,
 		AddressLine1:      addressLine1,
@@ -55,6 +59,7 @@ func ShippingFunc(userID int, shippingAddressId, firstName, lastName, addressLin
 		Pincode:           pincode,
 		AddressType:       addressType,
 		DefaultAddress:    defaultAddress,
+		ShippingCost:      shippingCost,
 	}
 }
 

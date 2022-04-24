@@ -2,9 +2,12 @@ package repository
 
 import (
 	"fmt"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
+
+	//Swagger Docs
 	_ "qwik.in/checkout/docs"
 	"qwik.in/checkout/domain/database"
 	"qwik.in/checkout/domain/tools/errs"
@@ -13,10 +16,10 @@ import (
 
 //Cart - STRUCT ..
 type Cart struct {
-	Id          string `json:"id,omitempty" dynamodbav:"id"`
-	CustomerId  string `json:"customer_id,omitempty" dynamodbav:"customer_id"`
+	ID          string `json:"id,omitempty" dynamodbav:"id"`
+	CustomerID  string `json:"customer_id,omitempty" dynamodbav:"customer_id"`
 	CartProduct []struct {
-		ProductId string `json:"product_id,omitempty" dynamodbav:"product_id"`
+		ProductID string `json:"product_id,omitempty" dynamodbav:"product_id"`
 		Quantity  int    `json:"quantity" dynamodbav:"quantity"`
 	} `json:"products" dynamodbav:"products"`
 }

@@ -28,4 +28,112 @@ paths:
       summary: Health of shipping service
       tags:
       - Health
+  /checkout/api/cartItems:
+    get:
+      description: Returns Cart Items using GET Request.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Gets Cart Items
+      tags:
+      - Cart Service
+  /checkout/api/payments:
+    get:
+      description: Returns Payment Mode using GET Request.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Gets Payment Mode
+      tags:
+      - Payment Mode Service
+  /checkout/api/shippingaddress:
+    get:
+      description: Returns default Shipping Address
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Gets Default Shipping Address
+      tags:
+      - ShippingAddress Service
+  /existing/:
+    get:
+      description: Returns default Shipping Address
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Gets Default Shipping Address
+      tags:
+      - ShippingAddress Service
+  /payment/api/payments:
+    get:
+      description: Returns default Payment Mode
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Gets Default Payment Mode
+      tags:
+      - Payment Service
+  /shipping/api/existing:
+    get:
+      description: Returns default Shipping Address
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Gets Default Shipping Address
+      tags:
+      - ShippingAddress Service
 swagger: "2.0"

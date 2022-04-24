@@ -46,12 +46,12 @@ func ShippingConnectDB() *dynamodb.DynamoDB {
 	logger.Info("Created the table" + response.String())
 	//*******************************
 
-	result, err := shippingClient.ListTables(&dynamodb.ListTablesInput{})
+	_, err := shippingClient.ListTables(&dynamodb.ListTablesInput{})
 	if err != nil {
 		logger.Error("Connection to Shipping Address - DynamoDB - FAILED ! ")
 	} else {
 		fmt.Println("Connection to Shipping Address - DynamoDB - SUCCESSFUL ! ")
-		fmt.Println(result)
+		//fmt.Println(result)
 	}
 	return shippingClient
 }

@@ -48,6 +48,168 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/checkout/api/cartItems": {
+            "get": {
+                "description": "Returns Cart Items using GET Request.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cart Service"
+                ],
+                "summary": "Gets Cart Items",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/checkout/api/payments": {
+            "get": {
+                "description": "Returns Payment Mode using GET Request.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Payment Mode Service"
+                ],
+                "summary": "Gets Payment Mode",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/checkout/api/shippingaddress": {
+            "get": {
+                "description": "Returns default Shipping Address",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ShippingAddress Service"
+                ],
+                "summary": "Gets Default Shipping Address",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/existing/": {
+            "get": {
+                "description": "Returns default Shipping Address",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ShippingAddress Service"
+                ],
+                "summary": "Gets Default Shipping Address",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/payment/api/payments": {
+            "get": {
+                "description": "Returns default Payment Mode",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Payment Service"
+                ],
+                "summary": "Gets Default Payment Mode",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/shipping/api/existing": {
+            "get": {
+                "description": "Returns default Shipping Address",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ShippingAddress Service"
+                ],
+                "summary": "Gets Default Shipping Address",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
         }
     }
 }`

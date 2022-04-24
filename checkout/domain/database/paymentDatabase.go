@@ -46,12 +46,12 @@ func PaymentConnectDB() *dynamodb.DynamoDB {
 	//*******************************
 
 	//Lists the Table Input.
-	result, err := orderClient.ListTables(&dynamodb.ListTablesInput{})
+	_, err := orderClient.ListTables(&dynamodb.ListTablesInput{})
 	if err != nil {
 		logger.Error("Connection to Payment - DynamoDB - FAILED ! ")
 	} else {
 		fmt.Println("Connection to Payment - DynamoDB - SUCCESSFUL ! ")
-		fmt.Println(result)
+		//fmt.Println(result)
 	}
 	return orderClient
 }

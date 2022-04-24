@@ -8,8 +8,8 @@ type OrderProductModel struct {
 
 //OrderModel - Order Service.
 type OrderModel struct {
-	OrderId    string              `json:"id,omitempty" dynamodbav:"id"`
-	CustomerId string              `json:"customer_id,omitempty" dynamodbav:"customer_id"`
+	OrderID    string              `json:"id,omitempty" dynamodbav:"id"`
+	CustomerID string              `json:"customer_id,omitempty" dynamodbav:"customer_id"`
 	Status     string              `json:"status" dynamodbav:"status"`
 	Datetime   string              `json:"datetime" dynamodbav:"datetime"`
 	Products   []OrderProductModel `json:"orders" dynamodbav:"orders"`

@@ -46,12 +46,12 @@ func CartConnectDB() *dynamodb.DynamoDB {
 	//*******************************
 
 	//Lists the Table Input.
-	result, err := cartClient.ListTables(&dynamodb.ListTablesInput{})
+	_, err := cartClient.ListTables(&dynamodb.ListTablesInput{})
 	if err != nil {
 		logger.Error("Connection to Cart - DynamoDB - FAILED ! ")
 	} else {
 		fmt.Println("Connection to Cart - DynamoDB - SUCCESSFUL ! ")
-		fmt.Println(result)
+		//fmt.Println(result)
 	}
 	return cartClient
 }

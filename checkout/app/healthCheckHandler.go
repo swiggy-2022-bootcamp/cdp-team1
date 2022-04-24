@@ -1,9 +1,10 @@
 package app
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
-	_ "qwik.in/checkout/docs"
+
+	"github.com/gin-gonic/gin"
+	_ "qwik.in/checkout/docs" //GoSwagger
 )
 
 // HealthCheck go doc
