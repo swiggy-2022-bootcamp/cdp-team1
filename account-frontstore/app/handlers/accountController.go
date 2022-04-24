@@ -12,7 +12,7 @@ import (
 var accountService service.AccountServiceInterface
 
 func init() {
-	accountService = service.InitAccountService(&repository.AccountRepository{})
+	accountService = service.InitAccountService(&repository.AccountRepository{}, &repository.GrpcClientRepository{})
 }
 
 // RegisterAccount godoc
