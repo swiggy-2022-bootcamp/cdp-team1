@@ -58,3 +58,22 @@ ERROR: 2022/04/17 16:11:22 [Got error calling CreateTable: %s ResourceInUseExcep
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/24 23:15:48 [Connection to dynamoDB failed.]
+ERROR: 2022/04/24 23:15:48 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: O5KBP752HTBFUD6U87JVEE93LBVV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+INFO: 2022/04/24 23:16:06 [caught sig: %+v interrupt]
+INFO: 2022/04/24 23:16:06 [Wait for 2 second to finish processing]
