@@ -48,9 +48,9 @@ func ConnectDB() *dynamodb.DynamoDB {
 	//Checks if Tables are present.
 	_, err := client.ListTables(&dynamodb.ListTablesInput{})
 	if err != nil {
-		logger.Error("Connection to DynamoDB failed. 🛌💤💤")
+		logger.Error("Connection to  Shipping Address DynamoDB failed. 🛌💤💤")
 	}
-	fmt.Println("Connected to DynamoDB ! 🏃💨💨")
+	fmt.Println("Connected to Shipping Address DynamoDB ! 🏃💨💨")
 	return client
 
 }

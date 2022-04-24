@@ -59,6 +59,7 @@ func (sh ShippingHandler) CreateShippingAddrHandlerFunc() gin.HandlerFunc {
 			saDto.Pincode,
 			saDto.AddressType,
 			saDto.DefaultAddress,
+			0,
 		)
 
 		if err != nil {

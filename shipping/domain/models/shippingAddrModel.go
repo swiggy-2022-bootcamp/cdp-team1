@@ -14,4 +14,5 @@ type ShippingAddrModel struct {
 	Pincode           int    `json:"pincode" dynamodbav:"pincode"`
 	AddressType       string `json:"address_type" dynamodbav:"address_type"`
 	DefaultAddress    bool   `json:"default_address" dynamodbav:"default_address"`
+	ShippingCost      int    `json:"shipping_cost" dynamodb:"shipping_cost"`
 }

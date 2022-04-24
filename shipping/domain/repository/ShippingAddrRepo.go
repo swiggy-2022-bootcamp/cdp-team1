@@ -28,6 +28,7 @@ type ShippingAddress struct {
 	Pincode           int    `json:"pincode" dynamodbav:"pincode"`
 	AddressType       string `json:"address_type" dynamodbav:"address_type"`
 	DefaultAddress    bool   `json:"default_address" dynamodbav:"default_address"`
+	ShippingCost      int    `json:"shipping_cost" dynamodb:"shipping_cost"`
 }
 
 //ShippingAddrRepo ..
@@ -44,7 +45,8 @@ type ShippingAddressRepoImpl struct {
 }
 
 //ShippingAddrFunc ..
-func ShippingAddrFunc(userID int, shippingAddressId, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool) *ShippingAddress {
+func ShippingAddrFunc(userID int, shippingAddressId, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool, shippingCost int) *ShippingAddress {
+	shippingCost = GetShippingCost(pincode)
 	return &ShippingAddress{
 		UserID:            userID,
 		ShippingAddressID: shippingAddressId,
@@ -58,10 +60,12 @@ func ShippingAddrFunc(userID int, shippingAddressId, firstName, lastName, addres
 		Pincode:           pincode,
 		AddressType:       addressType,
 		DefaultAddress:    defaultAddress,
+		ShippingCost:      shippingCost,
 	}
 }
 
 func toPersistedDynamodbEntitySA(o ShippingAddress) *models.ShippingAddrModel {
+
 	return &models.ShippingAddrModel{
 		UserID: o.UserID,
 		//ShippingAddressID: uuid.New().String(),
@@ -76,6 +80,7 @@ func toPersistedDynamodbEntitySA(o ShippingAddress) *models.ShippingAddrModel {
 		Pincode:           o.Pincode,
 		AddressType:       o.AddressType,
 		DefaultAddress:    o.DefaultAddress,
+		ShippingCost:      o.ShippingCost,
 	}
 }
 
@@ -171,4 +176,43 @@ func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(isDefaultAddre
 		}
 	}
 	return (*ShippingAddress)(&item), nil
+}
+
+//GetShippingCost ..
+func GetShippingCost(pincode int) int {
+	division := pincode / 100000
+	var cost int
+	switch division {
+	case 1:
+		// Northern Zone : Delhi, Haryana, Punjab, Himachal Pradesh and Jammu & Kashmir
+		cost = 75
+	case 2:
+		// Northern Zone 2 : Uttar Pradesh and Uttarakhand
+		cost = 60
+	case 3:
+		// Western Zone 1 : Rajasthan and Gujarat
+		cost = 50
+	case 4:
+		// Western Zone 2 : Maharashtra, Madhya Pradesh and Chattisgarh
+		cost = 40
+	case 5:
+		// Southern Zone 1 : Andhra Pradesh and Karnataka
+		cost = 40
+	case 6:
+		// Southern Zone 2 : Kerala and Tamil Nadu
+		cost = 50
+	case 7:
+		// Eastern Zone 1 : West Bengal, Orissa and North Eastern States
+		cost = 75
+	case 8:
+		// Eastern Zone 2 : Bihar and Jharkhand
+		cost = 60
+	case 9:
+		// APS Zone - Army Prohibited Service Zone
+		cost = 0
+	default:
+		// Default Shipping Cost
+		cost = 50
+	}
+	return cost
 }
