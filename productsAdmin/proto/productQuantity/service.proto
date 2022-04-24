@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto;
 
-option go_package = "qwik.in/productsAdmin/proto";
+option go_package = "qwik.in/productsAdmin/proto/productQuantity";
 
 message Request {
 	string id = 1;

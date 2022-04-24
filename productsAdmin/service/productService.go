@@ -2,7 +2,7 @@ package service
 
 import (
 	"qwik.in/productsAdmin/entity"
-	"qwik.in/productsAdmin/proto"
+	"qwik.in/productsAdmin/proto/productQuantity"
 )
 
 type ProductService interface {
@@ -11,5 +11,5 @@ type ProductService interface {
 	UpdateProduct(productId string, product entity.Product) error
 	DeleteProduct(productId string) error
 	SearchProduct(limit int64) ([]entity.Product, error)
-	GetQuantityForProductId(productId string) (*proto.Response, error)
+	GetQuantityForProductId(productId string) (*productQuantity.Response, error)
 }

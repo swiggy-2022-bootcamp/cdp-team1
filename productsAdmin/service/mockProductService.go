@@ -3,7 +3,7 @@ package service
 import (
 	"github.com/stretchr/testify/mock"
 	"qwik.in/productsAdmin/entity"
-	"qwik.in/productsAdmin/proto"
+	"qwik.in/productsAdmin/proto/productQuantity"
 )
 
 type MockProductService struct {
@@ -41,8 +41,8 @@ func (m MockProductService) SearchProduct(limit int64) ([]entity.Product, error)
 	return result.([]entity.Product), args.Error(1)
 }
 
-func (m MockProductService) GetQuantityForProductId(productId string) (*proto.Response, error) {
+func (m MockProductService) GetQuantityForProductId(productId string) (*productQuantity.Response, error) {
 	args := m.Called(productId)
 	result := args.Get(0)
-	return result.(*proto.Response), args.Error(1)
+	return result.(*productQuantity.Response), args.Error(1)
 }

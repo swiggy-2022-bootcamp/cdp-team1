@@ -4,6 +4,7 @@ services:
     image: mellomaniac/swiggy-qwik:product-admin
     ports:
       - "9119:9119"
+      - "19191:19191"
     environment:
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}

@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"fmt"
+	"qwik.in/productsAdmin/proto/productQuantity"
 	"time"
 
 	"qwik.in/productsAdmin/config"
@@ -11,7 +12,6 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"qwik.in/productsAdmin/entity"
 	"qwik.in/productsAdmin/log"
-	"qwik.in/productsAdmin/proto"
 	"qwik.in/productsAdmin/repository"
 )
 
@@ -63,10 +63,10 @@ func (p ProductServiceImpl) SearchProduct(limit int64) ([]entity.Product, error)
 	return all, nil
 }
 
-func (p ProductServiceImpl) GetQuantityForProductId(productId string) (*proto.Response, error) {
+func (p ProductServiceImpl) GetQuantityForProductId(productId string) (*productQuantity.Response, error) {
 	log.Info("Connecting with gRPC server")
 	// Set up a connection to the server.
-	serverAddress := fmt.Sprintf("%s:%s", config.GRPC_SERVER_IP, config.GRPC_SERVER_PORT)
+	serverAddress := fmt.Sprintf("%s:%s", config.GRPC_PRODUCT_QUANTITY_SERVER_IP, config.GRPC_PRODUCT_QUANTITY_SERVER_PORT)
 	conn, err := grpc.Dial(serverAddress, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Error("did not connect: ", err)
@@ -80,14 +80,14 @@ func (p ProductServiceImpl) GetQuantityForProductId(productId string) (*proto.Re
 			log.Error("Connection closed with error", err.Error())
 		}
 	}(conn)
-	c := proto.NewQuantityServiceClient(conn)
+	c := productQuantity.NewQuantityServiceClient(conn)
 
 	// Disconnect gRPC call upon
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 
 	// Send gRPC request to server the
-	r, err := c.GetQuantity(ctx, &proto.Request{Id: productId})
+	r, err := c.GetQuantity(ctx, &productQuantity.Request{Id: productId})
 	if err != nil {
 		log.Error("could not get response: ", err)
 		return nil, err

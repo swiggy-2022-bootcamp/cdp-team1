@@ -18,8 +18,13 @@ const (
 	DYNAMO_DB_URL    = "https://dynamodb.us-east-1.amazonaws.com"
 )
 
-// gRPC Server config for Get Quantity for PorductID
+// gRPC Server config for Get Quantity for ProductID
 const (
-	GRPC_SERVER_IP   = "localhost" //"product-front-store" //
-	GRPC_SERVER_PORT = "19091"
+	GRPC_PRODUCT_QUANTITY_SERVER_IP   = "localhost" //"product-front-store" //
+	GRPC_PRODUCT_QUANTITY_SERVER_PORT = "19091"
+)
+
+// gRPC Server config for Get Price for ProductID
+const (
+	GRPC_PRODUCT_PRICE_SERVER_PORT = "19191"
 )

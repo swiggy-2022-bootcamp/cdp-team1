@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.28.0
 // 	protoc        v3.19.4
-// source: service.proto
+// source: productPriceService.proto
 
-package proto
+package productQuantity
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
