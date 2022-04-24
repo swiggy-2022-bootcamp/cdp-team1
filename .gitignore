@@ -14,23 +14,3 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-# Executable main files
-main
-
-# Mac OS created file
-.DS_Store
-
-# GoLand created files
-*.idea
-
-# Log files
-*.log
-
-# Properties file
-*.properties
-
-# Code coverage reports
-*.cov
-
-# Environment file
-*.env
