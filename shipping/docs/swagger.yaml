@@ -1,5 +1,4 @@
 basePath: /
-host: localhost:9003
 info:
   contact:
     email: ashwinyaal@gmail.com
@@ -83,4 +82,9 @@ paths:
       - ShippingAddress Service
 schemes:
 - http
+securityDefinitions:
+  Bearer Token:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

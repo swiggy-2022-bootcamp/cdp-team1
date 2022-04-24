@@ -13,7 +13,6 @@
         },
         "version": "2.0"
     },
-    "host": "localhost:9003",
     "basePath": "/",
     "paths": {
         "/": {
@@ -123,6 +122,13 @@
                     }
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer Token": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }

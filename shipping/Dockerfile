@@ -1,4 +1,4 @@
-FROM golang:1.18-alpine
+FROM golang:1.18-alpine as build
 
 RUN apk update && apk add --no-cache git build-base
 
@@ -15,10 +15,15 @@ COPY . .
 RUN go get ./...
 
 # build
-RUN go build ./main.go
+RUN go build ./main.go -o shippingService
+
+COPY .env .
+
+FROM alpine
+
+COPY --from=build /paymentService /.
+COPY --from=build /app/.env /.
 
 EXPOSE 9003
 
-COPY .env  .
-
-CMD [ "./main" ] 
+ENTRYPOINT [ "./main" ]

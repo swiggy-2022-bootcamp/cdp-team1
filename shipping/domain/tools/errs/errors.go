@@ -1,9 +1,8 @@
 package errs
 
 import (
+	"errors"
 	"net/http"
-
-	"github.com/pkg/errors"
 )
 
 //AppError ..
@@ -48,8 +47,8 @@ func NewValidationError(message string) *AppError {
 	}
 }
 
-//NewBadRequest ..
-func NewBadRequest(message string) *AppError {
+//NewBadRequestError ..
+func NewBadRequestError(message string) *AppError {
 	return &AppError{
 		Message: message,
 		Code:    http.StatusBadRequest,

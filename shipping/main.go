@@ -10,7 +10,9 @@ import "github.com/ashwin2125/qwk/shipping/app"
 // @contact.name Ashwin Gopalsamy
 // @contact.email ashwinyaal@gmail.com
 
-// @host localhost:9003
+// @securityDefinitions.apikey  Bearer Token
+// @in                          header
+// @name                        Authorization
 // @BasePath /
 // @schemes http
 func main() {
