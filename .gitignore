@@ -34,5 +34,6 @@ main
 
 # Coverage Files
 *.cov
-/productsAdmin/dev.env
-/productsFrontStore/dev.env
+
+# .Env files
+*.env
