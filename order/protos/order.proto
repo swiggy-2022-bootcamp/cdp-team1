@@ -21,7 +21,7 @@ message Orders{
     string      status = 3;
     string      datetime = 4;
     int32       amount = 5;
-    Product     Products = 6;
+    repeated Product     Products = 6;
 }
 
 message ProductIds {
@@ -33,7 +33,12 @@ message CreateOrderRequest{
 }
  
 message CreateOrderResponse{
-    Orders      order = 1;
+    string      order_id = 1;
+    string      customer_id = 2;
+    string      status = 3;
+    string      datetime = 4;
+    int32       amount = 5;
+    repeated Product     Products = 6;
 }
 
 message GetCartRequest{
@@ -43,7 +48,7 @@ message GetCartRequest{
 message GetCartResponse{
     string      customer_id = 1;
     repeated Product     Products = 4;
-}    
+}   
 
 message GetAmountRequest{
     repeated ProductIds product_id = 1;
