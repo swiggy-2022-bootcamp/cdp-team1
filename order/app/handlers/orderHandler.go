@@ -85,11 +85,11 @@ func (oh OrderHandler) GetAllOrder(c *gin.Context) {
 // @Schemes
 // @Accept json
 // @Produce json
-// @Param status string true "status"
+// @Param status path string true "status"
 // @Success	200  {object} 	model.Order
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found
-// @Router /orders/status/:status [GET]
+// @Router /orders/status/{status} [GET]
 func (oh OrderHandler) GetOrderByStatus(c *gin.Context) {
 
 	var status string
@@ -116,11 +116,11 @@ func (oh OrderHandler) GetOrderByStatus(c *gin.Context) {
 // @Schemes
 // @Accept json
 // @Produce json
-// @Param id string true "id"
+// @Param id path string true "order id"
 // @Success	200  {object} 	model.Order
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found
-// @Router /orders/:id [GET]
+// @Router /orders/{id} [GET]
 func (oh OrderHandler) GetOrderById(c *gin.Context) {
 
 	var order_id string
@@ -154,12 +154,11 @@ func (oh OrderHandler) GetOrderById(c *gin.Context) {
 // @Schemes
 // @Accept json
 // @Produce json
-// @Param id string true "id"
-// @Param req body string true "Updated status"
+// @Param id path string true "order id"
 // @Success	200  string 	Order updated successfully
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found
-// @Router /orders/:id [PUT]
+// @Router /orders/{id} [PUT]
 func (oh OrderHandler) UpdateOrder(c *gin.Context) {
 
 	order_id := c.Param("id")
@@ -195,11 +194,11 @@ func (oh OrderHandler) UpdateOrder(c *gin.Context) {
 // @Tags Order
 // @Schemes
 // @Accept json
-// @Param id string true "id"
+// @Param id path string true "order id"
 // @Success	200  string 	Order deleted successfully
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found
-// @Router /orders/:id [DELETE]
+// @Router /orders/{id} [DELETE]
 func (oh OrderHandler) DeleteOrderById(c *gin.Context) {
 
 	var order_id string
@@ -233,11 +232,11 @@ func (oh OrderHandler) DeleteOrderById(c *gin.Context) {
 // @Schemes
 // @Accept json
 // @Produce json
-// @Param id string true "id"
+// @Param id path string true "order id"
 // @Success	200  {object} 	model.Order
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found
-// @Router /orders/user/:id [GET]
+// @Router /orders/user/{id} [GET]
 func (oh OrderHandler) GetOrderByCustomerId(c *gin.Context) {
 
 	var customer_id string
@@ -269,10 +268,11 @@ func (oh OrderHandler) GetOrderByCustomerId(c *gin.Context) {
 // @Description To create an invoice for a given order id
 // @Tags Order
 // @Schemes
+// @Param id path string true "order id"
 // @Success	200  string 	Invoice Number created successfully
 // @Failure 400  string 	Bad request
 // @Failure 500  string 	Internal server error
-// @Router /orders/invoice/:id [POST]
+// @Router /orders/invoice/{id} [POST]
 func (oh OrderHandler) CreateInvoice(c *gin.Context) {
 
 	var order_id string
