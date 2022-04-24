@@ -26,11 +26,14 @@ main
 # Log files
 *.log
 
+# Temp files
+*.tmp
+
 # Properties file
 *.properties
 
-# Code coverage reports
+# Coverage Files
 *.cov
 
-# Environment file
+# .Env files
 *.env
