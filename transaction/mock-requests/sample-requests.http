@@ -1,7 +1,0 @@
-POST https://my.api.mockaroo.com/transaction/123?key=f3a1f5b0
-Accept: application/json
-
-{
-  "orderId": "bd3f54d9-c926-474a-ba23-3ff90c6b9795",
-  "transaction_points": 50
-}
