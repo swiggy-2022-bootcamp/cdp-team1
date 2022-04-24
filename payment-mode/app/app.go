@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/gin-gonic/gin"
+	prometheusUtility "github.com/swiggy-2022-bootcamp/cdp-team1/common-utilities/prometheus-utility"
 	"google.golang.org/grpc"
 	"io"
 	"net"
@@ -33,6 +34,10 @@ var (
 	paymentServiceProto services.PaymentProtoServer
 	wg                  sync.WaitGroup
 )
+
+func init() {
+	prometheusUtility.RegisterMetrics()
+}
 
 func Start() {
 	ctx = context.TODO()
@@ -80,6 +85,7 @@ func StartRESTServer() {
 	//Configuring gin server and router
 	server = gin.New()
 	server.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
+	server.Use(prometheusUtility.PrometheusMiddleware())
 	router := server.Group("/api")
 	paymentRoutes.InitRoutes(router)
 
