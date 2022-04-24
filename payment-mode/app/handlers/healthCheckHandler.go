@@ -29,7 +29,7 @@ func NewHealthCheckHandler(paymentRepository repository.PaymentRepository) Healt
 // @Produce json
 // @Success	200  {object} 	HealthCheckResponse
 // @Failure 500  {object} 	HealthCheckResponse
-// @Router / [GET]
+// @Router /paymentmethods/health [GET]
 func (hc HealthCheckHandler) HealthCheck(c *gin.Context) {
 
 	// Checks if database is active or not

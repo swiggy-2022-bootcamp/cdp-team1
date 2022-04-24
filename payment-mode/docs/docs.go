@@ -22,35 +22,6 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/": {
-            "get": {
-                "description": "This request will return 200 OK if server is up..",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "HealthCheckResponse"
-                ],
-                "summary": "To check if the service is running or not.",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handlers.HealthCheckResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/handlers.HealthCheckResponse"
-                        }
-                    }
-                }
-            }
-        },
         "/pay": {
             "post": {
                 "description": "To complete payment for an order.",
@@ -103,7 +74,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/paymentmethods/{userId}": {
+        "/paymentmethods": {
             "get": {
                 "description": "To get available payment modes of a user.",
                 "consumes": [
@@ -116,15 +87,6 @@ const docTemplate = `{
                     "PaymentMode"
                 ],
                 "summary": "To get available payment modes of a user.",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "User id",
-                        "name": "userId",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -167,13 +129,6 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.PaymentMode"
                         }
-                    },
-                    {
-                        "type": "string",
-                        "description": "User id",
-                        "name": "userId",
-                        "in": "path",
-                        "required": true
                     }
                 ],
                 "responses": {
@@ -204,9 +159,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/setpaymentmethods/{userId}": {
-            "post": {
-                "description": "To set payment modes for an order.",
+        "/paymentmethods/health": {
+            "get": {
+                "description": "This request will return 200 OK if server is up..",
                 "consumes": [
                     "application/json"
                 ],
@@ -214,44 +169,20 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "PaymentMode"
+                    "HealthCheckResponse"
                 ],
-                "summary": "To set payment modes for an order.",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "User id",
-                        "name": "userId",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "description": "Payment mode details",
-                        "name": "req",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.PaymentMode"
-                        }
-                    }
-                ],
+                "summary": "To check if the service is running or not.",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
                         }
                     }
                 }
@@ -327,6 +258,13 @@ const docTemplate = `{
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "Bearer Token": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
     }
 }`
 
@@ -334,7 +272,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "",
-	BasePath:         "/payment-mode/api",
+	BasePath:         "/api",
 	Schemes:          []string{},
 	Title:            "Swiggy Qwik - Payment_Mode module",
 	Description:      "This microservice is for payment_mode service.",

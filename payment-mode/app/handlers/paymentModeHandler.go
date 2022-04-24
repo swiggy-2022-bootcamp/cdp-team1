@@ -27,12 +27,14 @@ func NewPaymentHandler(paymentService services.PaymentService) PaymentHandler {
 // @Accept json
 // @Produce json
 // @Param req body models.PaymentMode true "Payment mode details"
-// @Param userId path string true "User id"
 // @Success	200  string 	Payment mode added successfully
 // @Failure 400  string 	Bad request
 // @Failure 500  string 	Internal server error
 // @Failure 409  string 	Payment mode already exists
-// @Router /paymentmethods/ [POST]
+// @securityDefinitions.apikey  Bearer Token
+// @in                          header
+// @name                        Authorization
+// @Router /paymentmethods [POST]
 func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 
 	userId, err := ph.paymentService.GetUserId(c.GetHeader("Authorization"))
@@ -72,11 +74,13 @@ func (ph PaymentHandler) AddPaymentMode(c *gin.Context) {
 // @Schemes
 // @Accept json
 // @Produce json
-// @Param userId path string true "User id"
 // @Success	200  {object} 	models.UserPaymentMode
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	User not found
-// @Router /paymentmethods/{userId} [GET]
+// @securityDefinitions.apikey  Bearer Token
+// @in                          header
+// @name                        Authorization
+// @Router /paymentmethods [GET]
 func (ph PaymentHandler) GetPaymentMode(c *gin.Context) {
 
 	userId, err := ph.paymentService.GetUserId(c.GetHeader("Authorization"))

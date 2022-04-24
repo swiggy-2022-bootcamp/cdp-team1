@@ -1,4 +1,4 @@
-basePath: /payment-mode/api
+basePath: /api
 definitions:
   handlers.HealthCheckResponse:
     properties:
@@ -55,25 +55,6 @@ info:
   title: Swiggy Qwik - Payment_Mode module
   version: "1.0"
 paths:
-  /:
-    get:
-      consumes:
-      - application/json
-      description: This request will return 200 OK if server is up..
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/handlers.HealthCheckResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/handlers.HealthCheckResponse'
-      summary: To check if the service is running or not.
-      tags:
-      - HealthCheckResponse
   /pay:
     post:
       consumes:
@@ -108,17 +89,11 @@ paths:
       summary: To complete payment for an order.
       tags:
       - PaymentRequest
-  /paymentmethods/{userId}:
+  /paymentmethods:
     get:
       consumes:
       - application/json
       description: To get available payment modes of a user.
-      parameters:
-      - description: User id
-        in: path
-        name: userId
-        required: true
-        type: string
       produces:
       - application/json
       responses:
@@ -148,11 +123,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/models.PaymentMode'
-      - description: User id
-        in: path
-        name: userId
-        required: true
-        type: string
       produces:
       - application/json
       responses:
@@ -175,39 +145,28 @@ paths:
       summary: To add a new payment method for a user.
       tags:
       - PaymentMode
-  /setpaymentmethods/{userId}:
-    post:
+  /paymentmethods/health:
+    get:
       consumes:
       - application/json
-      description: To set payment modes for an order.
-      parameters:
-      - description: User id
-        in: path
-        name: userId
-        required: true
-        type: string
-      - description: Payment mode details
-        in: body
-        name: req
-        required: true
-        schema:
-          $ref: '#/definitions/models.PaymentMode'
+      description: This request will return 200 OK if server is up..
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            type: string
-        "404":
-          description: Not Found
-          schema:
-            type: string
+            $ref: '#/definitions/handlers.HealthCheckResponse'
         "500":
           description: Internal Server Error
           schema:
-            type: string
-      summary: To set payment modes for an order.
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+      summary: To check if the service is running or not.
       tags:
-      - PaymentMode
+      - HealthCheckResponse
+securityDefinitions:
+  Bearer Token:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"
