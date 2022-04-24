@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/gin-gonic/gin"
+	prometheusUtility "github.com/swiggy-2022-bootcamp/cdp-team1/common-utilities/prometheus-utility"
 	"google.golang.org/grpc"
 	"io"
 	"net"
@@ -32,6 +33,9 @@ var (
 	wg                      sync.WaitGroup
 )
 
+func init() {
+	prometheusUtility.RegisterMetrics()
+}
 func Start() {
 
 	//Variable initializations for DynamoDB
@@ -74,6 +78,7 @@ func StartRESTServer() {
 	defer wg.Done()
 	restServer = gin.New()
 	restServer.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
+	restServer.Use(prometheusUtility.PrometheusMiddleware())
 	router := restServer.Group("api")
 	transactionRoutes.InitRoutes(router)
 
