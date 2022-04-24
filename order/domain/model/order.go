@@ -12,4 +12,5 @@ type Order struct {
 	Datetime   string    `json:"datetime"`
 	Products   []Product `json:"orders"`
 	Invoice    string    `json:"invoice"`
+	Amount     int       `json:"amount"`
 }

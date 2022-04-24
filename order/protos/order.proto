@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package protos;
+
+option go_package = "/protos";
+
+service Order{
+    rpc CreateOrder (CreateOrderRequest) returns (CreateOrderResponse);
+    rpc GetCart (GetCartRequest) returns (GetCartResponse);
+    rpc GetTotalAmount (GetAmountRequest) returns (GetAmountResponse);
+}
+
+message Product {
+    string      product_id = 1;
+    int32      quantity = 2;
+}
+
+message Orders{
+    string      order_id = 1;
+    string      customer_id = 2;
+    string      status = 3;
+    string      datetime = 4;
+    int32       amount = 5;
+    Product     Products = 6;
+}
+
+message ProductIds {
+    string      product_id = 1;
+}
+
+message CreateOrderRequest{
+    string      customer_id = 1;
+}
+ 
+message CreateOrderResponse{
+    Orders      order = 1;
+}
+
+message GetCartRequest{
+    string      customer_id = 1;
+}
+
+message GetCartResponse{
+    string      customer_id = 1;
+    repeated Product     Products = 4;
+}    
+
+message GetAmountRequest{
+    repeated ProductIds product_id = 1;
+}
+
+message GetAmountResponse{
+    int32       amount = 1;
+}
