@@ -26,7 +26,7 @@ func NewProductPriceService() *ProductPriceService {
 	return &ProductPriceService{}
 }
 
-func (p *ProductPriceService) GetTotalPriceForProducts(ctx context.Context, products *productPrice.Products) (*productPrice.ResponsePrice, error) {
+func (p *ProductPriceService) GetTotalPriceForProducts(ctx context.Context, products *productPrice.ProductsPriceRequests) (*productPrice.ResponsePrice, error) {
 	log.Info("gRPC received message: ", products)
 
 	totalPrice := 0.0

@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ProductPriceServiceClient interface {
-	GetTotalPriceForProducts(ctx context.Context, in *Products, opts ...grpc.CallOption) (*ResponsePrice, error)
+	GetTotalPriceForProducts(ctx context.Context, in *ProductsPriceRequests, opts ...grpc.CallOption) (*ResponsePrice, error)
 }
 
 type productPriceServiceClient struct {
@@ -33,7 +33,7 @@ func NewProductPriceServiceClient(cc grpc.ClientConnInterface) ProductPriceServi
 	return &productPriceServiceClient{cc}
 }
 
-func (c *productPriceServiceClient) GetTotalPriceForProducts(ctx context.Context, in *Products, opts ...grpc.CallOption) (*ResponsePrice, error) {
+func (c *productPriceServiceClient) GetTotalPriceForProducts(ctx context.Context, in *ProductsPriceRequests, opts ...grpc.CallOption) (*ResponsePrice, error) {
 	out := new(ResponsePrice)
 	err := c.cc.Invoke(ctx, "/proto.ProductPriceService/getTotalPriceForProducts", in, out, opts...)
 	if err != nil {
@@ -46,7 +46,7 @@ func (c *productPriceServiceClient) GetTotalPriceForProducts(ctx context.Context
 // All implementations must embed UnimplementedProductPriceServiceServer
 // for forward compatibility
 type ProductPriceServiceServer interface {
-	GetTotalPriceForProducts(context.Context, *Products) (*ResponsePrice, error)
+	GetTotalPriceForProducts(context.Context, *ProductsPriceRequests) (*ResponsePrice, error)
 	mustEmbedUnimplementedProductPriceServiceServer()
 }
 
@@ -54,7 +54,7 @@ type ProductPriceServiceServer interface {
 type UnimplementedProductPriceServiceServer struct {
 }
 
-func (UnimplementedProductPriceServiceServer) GetTotalPriceForProducts(context.Context, *Products) (*ResponsePrice, error) {
+func (UnimplementedProductPriceServiceServer) GetTotalPriceForProducts(context.Context, *ProductsPriceRequests) (*ResponsePrice, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTotalPriceForProducts not implemented")
 }
 func (UnimplementedProductPriceServiceServer) mustEmbedUnimplementedProductPriceServiceServer() {}
@@ -71,7 +71,7 @@ func RegisterProductPriceServiceServer(s grpc.ServiceRegistrar, srv ProductPrice
 }
 
 func _ProductPriceService_GetTotalPriceForProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Products)
+	in := new(ProductsPriceRequests)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -83,7 +83,7 @@ func _ProductPriceService_GetTotalPriceForProducts_Handler(srv interface{}, ctx 
 		FullMethod: "/proto.ProductPriceService/getTotalPriceForProducts",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductPriceServiceServer).GetTotalPriceForProducts(ctx, req.(*Products))
+		return srv.(ProductPriceServiceServer).GetTotalPriceForProducts(ctx, req.(*ProductsPriceRequests))
 	}
 	return interceptor(ctx, in, info, handler)
 }

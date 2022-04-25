@@ -4,13 +4,13 @@ package proto;
 
 option go_package = "qwik.in/productsAdmin/proto/productPrice";
 
-message Product {
+message ProductPriceRequest {
   string id = 1;
   string quantity = 2;
 }
 
-message Products {
-  repeated Product products = 1;
+message ProductsPriceRequests {
+  repeated ProductPriceRequest products = 1;
 }
 
 message ResponsePrice {
@@ -18,5 +18,5 @@ message ResponsePrice {
 }
 
 service ProductPriceService {
-  rpc getTotalPriceForProducts(Products) returns (ResponsePrice);
+  rpc getTotalPriceForProducts(ProductsPriceRequests) returns (ResponsePrice);
 }
