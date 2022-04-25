@@ -21,7 +21,7 @@ COPY .env .
 
 FROM alpine
 
-COPY --from=build /paymentService /.
+COPY --from=build /shippingService /.
 COPY --from=build /app/.env /.
 
 EXPOSE 9003
