@@ -36,6 +36,8 @@ type ShippingAddressDTO1 struct {
 	UserId int `json:"user_id" dynamodbav:"user_id"`
 }
 
+var currentOrder *protos.CreateOrderResponse
+
 // CheckoutGetShippingAddressFlow ..
 // @Summary      Gets Default Shipping Address
 // @Description  Returns default Shipping Address
@@ -241,10 +243,12 @@ func IsCheckoutPaymentSuccessful(userPaymentData PaymentModesDTO) (bool, *protos
 	defer cancel()
 
 	c := protos.NewPaymentClient(conn)
+	fmt.Println(currentOrder.OrderId)
+	fmt.Println(currentOrder.Amount)
 	paymentRequest := &protos.PaymentRequest{
-		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459abcd",
-		Amount:  1,
-		OrderId: "OA-123",
+		UserId:  currentOrder.CustomerId,
+		Amount:  currentOrder.Amount,
+		OrderId: currentOrder.OrderId,
 		PaymentMode: &protos.PaymentMode{
 			Mode:       userPaymentData.Mode,
 			CardNumber: int64(userPaymentData.CardNumber),
@@ -259,5 +263,47 @@ func IsCheckoutPaymentSuccessful(userPaymentData PaymentModesDTO) (bool, *protos
 	} else {
 		logger.Info("Payment Successful !", result.GetIsPaymentSuccessful())
 		return true, result, nil
+	}
+}
+
+// CheckoutGetOrderOverview ..
+// @Summary      Gets Payment Mode
+// @Description  Returns Payment Mode using GET Request.
+// @Tags         Payment Mode Service
+// @Produce      json
+// @Success      200  {object}  map[string]interface{}
+// @Failure      500  {number} 	http.StatusInternalServerError
+// @Router       /checkout/api/confirm  [get]
+func (ch CheckoutHandler) CheckoutGetOrderOverview() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		userId := ctx.Param("id")
+		//userIdAsInt, _ := strconv.Atoi(userId)
+		conn, err := grpc.Dial("localhost:5001", grpc.WithTransportCredentials(insecure.NewCredentials()))
+		if err != nil {
+			log.Fatalf("Connection failed : %v", err)
+		}
+		defer func(conn *grpc.ClientConn) {
+			err := conn.Close()
+			if err != nil {
+				logger.Error("Error : ", err)
+			}
+		}(conn)
+		c := protos.NewOrderClient(conn)
+		orderRequest := &protos.CreateOrderRequest{
+			CustomerId: userId,
+		}
+		newCtx, err1 := context.WithTimeout(context.Background(), 500*time.Second)
+		if err1 != nil {
+			log.Printf("%s", err1)
+		}
+		result, err := c.CreateOrder(newCtx, orderRequest)
+		if err != nil {
+			ctx.JSON(http.StatusInternalServerError, err)
+			log.Printf("Shipping failed : %v", err)
+		} else {
+			fmt.Println(result)
+			currentOrder = result
+			ctx.JSON(http.StatusAccepted, result)
+		}
 	}
 }

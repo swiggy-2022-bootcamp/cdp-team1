@@ -962,3 +962,211 @@ GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing/1 2022-04-
 [GIN] 2022/04/25 - 21:50:43 | 202 |    290.3892ms |             ::1 | GET      "/checkout/api/existing/1"
 GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing/3 2022-04-25T21:50:46+05:30 279.2118ms 
 [GIN] 2022/04/25 - 21:50:46 | 202 |    279.2118ms |             ::1 | GET      "/checkout/api/existing/3"
+📛ERROR: 2022/04/25 22:27:30 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 22:27:30 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 22:27:31 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/25 22:27:31 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 22:27:31 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/25 22:27:31 [Created the table{
+
+}]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/:1 2022-04-25T22:27:47+05:30 2.0333813s 
+[GIN] 2022/04/25 - 22:27:47 | 500 |    2.0333813s |             ::1 | GET      "/checkout/api/confirm/:1"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/1 2022-04-25T22:27:51+05:30 2.0125697s 
+[GIN] 2022/04/25 - 22:27:51 | 500 |    2.0125697s |             ::1 | GET      "/checkout/api/confirm/1"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm21 2022-04-25T22:27:53+05:30 0s 
+[GIN] 2022/04/25 - 22:27:53 | 404 |       297.6µs |             ::1 | GET      "/checkout/api/confirm21"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T22:27:56+05:30 2.0061748s 
+[GIN] 2022/04/25 - 22:27:56 | 500 |    2.0061748s |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T22:30:39+05:30 2.6966376s 
+[GIN] 2022/04/25 - 22:30:39 | 500 |    2.6966376s |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T22:31:14+05:30 2.6805416s 
+[GIN] 2022/04/25 - 22:31:14 | 500 |    2.6805416s |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T22:33:15+05:30 1.3028252s 
+[GIN] 2022/04/25 - 22:33:15 | 500 |    1.3028252s |             ::1 | GET      "/checkout/api/confirm/2"
+📛ERROR: 2022/04/25 23:30:42 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 23:30:42 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 23:30:43 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/25 23:30:43 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 23:30:43 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/25 23:30:43 [Created the table{
+
+}]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T23:31:55+05:30 1.2438268s 
+[GIN] 2022/04/25 - 23:31:55 | 500 |    1.2443803s |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T23:32:21+05:30 333.9605ms 
+[GIN] 2022/04/25 - 23:32:21 | 500 |    333.9605ms |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T23:33:11+05:30 305.8599ms 
+[GIN] 2022/04/25 - 23:33:11 | 500 |    306.3749ms |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T23:40:25+05:30 1.2567115s 
+[GIN] 2022/04/25 - 23:40:25 | 500 |    1.2567115s |             ::1 | GET      "/checkout/api/confirm/2"
+📛ERROR: 2022/04/25 23:56:08 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 23:56:08 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 23:56:08 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/25 23:56:08 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 23:56:09 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/25 23:56:09 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 23:56:45 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 23:56:45 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 23:56:46 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/25 23:56:46 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 23:56:46 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/25 23:56:46 [Created the table{
+
+}]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T23:57:53+05:30 1.3144518s 
+[GIN] 2022/04/25 - 23:57:53 | 500 |    1.3144518s |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-25T23:59:36+05:30 1.28688s 
+[GIN] 2022/04/25 - 23:59:36 | 500 |    1.2873895s |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-26T00:05:54+05:30 1.2562949s 
+[GIN] 2022/04/26 - 00:05:54 | 500 |    1.2562949s |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-26T00:07:15+05:30 1.2148841s 
+[GIN] 2022/04/26 - 00:07:15 | 500 |    1.2148841s |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-26T00:09:48+05:30 1.3295026s 
+[GIN] 2022/04/26 - 00:09:48 | 500 |    1.3295026s |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-26T00:10:03+05:30 327.903ms 
+[GIN] 2022/04/26 - 00:10:03 | 500 |     327.903ms |             ::1 | GET      "/checkout/api/confirm/2"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-26T00:14:30+05:30 1.5193403s 
+[GIN] 2022/04/26 - 00:14:30 | 202 |    1.5193403s |             ::1 | GET      "/checkout/api/confirm/2"
+📛ERROR: 2022/04/26 00:24:30 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/26 00:24:30 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:24:31 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/26 00:24:31 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:24:31 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/26 00:24:31 [Created the table{
+
+}]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:24:44+05:30 5.2351ms 
+[GIN] 2022/04/26 - 00:24:44 | 500 |      5.2351ms |             ::1 | POST     "/checkout/api/confirm"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-26T00:24:57+05:30 2.3787197s 
+[GIN] 2022/04/26 - 00:24:57 | 202 |    2.3787197s |             ::1 | GET      "/checkout/api/confirm/2"
+📛ERROR: 2022/04/26 00:25:07 [Payment failed : %v rpc error: code = Unknown desc = Payment mode for user doesn't exists]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:25:07+05:30 1.2893646s 
+[GIN] 2022/04/26 - 00:25:07 | 500 |    1.2893646s |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 00:25:21 [Payment failed : %v rpc error: code = Unknown desc = Payment mode for user doesn't exists]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:25:21+05:30 301.9886ms 
+[GIN] 2022/04/26 - 00:25:21 | 500 |    301.9886ms |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 00:25:23 [Payment failed : %v rpc error: code = Unknown desc = Payment mode for user doesn't exists]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:25:23+05:30 266.8818ms 
+[GIN] 2022/04/26 - 00:25:23 | 500 |    266.8818ms |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 00:26:42 [Payment failed : %v rpc error: code = Unknown desc = Payment method is not added for the current user.]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:26:42+05:30 1.2235907s 
+[GIN] 2022/04/26 - 00:26:42 | 500 |    1.2235907s |             ::1 | POST     "/checkout/api/confirm"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-26T00:26:51+05:30 2.4562244s 
+[GIN] 2022/04/26 - 00:26:51 | 202 |    2.4562244s |             ::1 | GET      "/checkout/api/confirm/2"
+📛ERROR: 2022/04/26 00:27:00 [Payment failed : %v rpc error: code = Unknown desc = Payment method is not added for the current user.]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:27:00+05:30 300.9348ms 
+[GIN] 2022/04/26 - 00:27:00 | 500 |    300.9348ms |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 00:28:49 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/26 00:28:49 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:28:50 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/26 00:28:50 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:28:51 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/26 00:28:51 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:28:59 [Payment failed : %v rpc error: code = Unknown desc = Payment method is not added for the current user.]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:28:59+05:30 1.220976s 
+[GIN] 2022/04/26 - 00:28:59 | 500 |     1.220976s |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 00:30:20 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/26 00:30:20 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:30:21 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/26 00:30:21 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:30:21 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/26 00:30:21 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:30:30 [Payment failed : %v rpc error: code = Unknown desc = Payment method is not added for the current user.]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:30:30+05:30 1.2182945s 
+[GIN] 2022/04/26 - 00:30:30 | 500 |    1.2182945s |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 00:31:21 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/26 00:31:21 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:31:22 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/26 00:31:22 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:31:23 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/26 00:31:23 [Created the table{
+
+}]
+❕INFO: 2022/04/26 00:31:30 [Payment Successful ! true]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:31:30+05:30 582.5516ms 
+[GIN] 2022/04/26 - 00:31:30 | 202 |    582.5516ms |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 00:32:19 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/26 00:32:19 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:32:20 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/26 00:32:20 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:32:20 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/26 00:32:20 [Created the table{
+
+}]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:32:28+05:30 5.9442ms 
+[GIN] 2022/04/26 - 00:32:28 | 500 |      5.9442ms |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 00:33:29 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/26 00:33:29 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:33:29 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/26 00:33:29 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:33:30 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/26 00:33:30 [Created the table{
+
+}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm/2 2022-04-26T00:33:40+05:30 2.4081175s 
+[GIN] 2022/04/26 - 00:33:40 | 202 |    2.4081175s |             ::1 | GET      "/checkout/api/confirm/2"
+❕INFO: 2022/04/26 00:33:52 [Payment Successful ! true]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:33:52+05:30 1.5067283s 
+[GIN] 2022/04/26 - 00:33:52 | 202 |    1.5067283s |             ::1 | POST     "/checkout/api/confirm"
+❕INFO: 2022/04/26 00:35:49 [Payment Successful ! true]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T00:35:49+05:30 1.5304806s 
+[GIN] 2022/04/26 - 00:35:49 | 202 |    1.5304806s |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 00:36:31 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/26 00:36:31 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:36:31 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/26 00:36:31 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 00:36:32 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/26 00:36:32 [Created the table{
+
+}]
