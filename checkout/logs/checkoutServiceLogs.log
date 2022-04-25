@@ -796,3 +796,67 @@ GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-25T18
 ❕INFO: 2022/04/25 18:44:13 [✅ Default ShippingAddress Fetched  {1 one Ashwin  3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true 50}]
 GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing 2022-04-25T18:44:13+05:30 6.5086208s 
 [GIN] 2022/04/25 - 18:44:13 | 202 |    6.5086208s |             ::1 | GET      "/checkout/api/existing"
+📛ERROR: 2022/04/25 20:58:47 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 20:58:47 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 20:58:48 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/25 20:58:48 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 20:58:48 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/25 20:58:48 [Created the table{
+
+}]
+❕INFO: 2022/04/25 20:59:18 [ ✅ Default Address Fetched 0xc000149e40]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-25T20:59:18+05:30 302.4315ms 
+[GIN] 2022/04/25 - 20:59:18 | 202 |    302.4315ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/25 20:59:18 [✅ Default ShippingAddress Fetched  {3 three Keerthana  3/122 Velayuthamplayam Devarayapuram, Pollachi Coimbatore Tamil Nadu 7806960764 642110 Home true 50}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing/1 2022-04-25T20:59:18+05:30 304.608ms 
+[GIN] 2022/04/25 - 20:59:18 | 202 |     304.608ms |             ::1 | GET      "/checkout/api/existing/1"
+❕INFO: 2022/04/25 20:59:23 [ ✅ Default Address Fetched 0xc000570210]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-25T20:59:23+05:30 300.3815ms 
+[GIN] 2022/04/25 - 20:59:23 | 202 |    300.3815ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/25 20:59:23 [✅ Default ShippingAddress Fetched  {3 three Keerthana  3/122 Velayuthamplayam Devarayapuram, Pollachi Coimbatore Tamil Nadu 7806960764 642110 Home true 50}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing/1 2022-04-25T20:59:23+05:30 300.8452ms 
+[GIN] 2022/04/25 - 20:59:23 | 202 |    300.8452ms |             ::1 | GET      "/checkout/api/existing/1"
+📛ERROR: 2022/04/25 20:59:39 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 20:59:39 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 20:59:39 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/25 20:59:39 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 20:59:40 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/25 20:59:40 [Created the table{
+
+}]
+❕INFO: 2022/04/25 20:59:48 [ ✅ Default Address Fetched 0xc0003c8000]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-25T20:59:48+05:30 288.0234ms 
+[GIN] 2022/04/25 - 20:59:48 | 202 |    288.0234ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/25 20:59:48 [✅ Default ShippingAddress Fetched  {3 three Keerthana  3/122 Velayuthamplayam Devarayapuram, Pollachi Coimbatore Tamil Nadu 7806960764 642110 Home true 50}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing/1 2022-04-25T20:59:48+05:30 289.5905ms 
+[GIN] 2022/04/25 - 20:59:48 | 202 |    289.5905ms |             ::1 | GET      "/checkout/api/existing/1"
+❕INFO: 2022/04/25 21:03:39 [ ✅ Default Address Fetched 0xc0000c82c0]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-25T21:03:39+05:30 1.3158517s 
+[GIN] 2022/04/25 - 21:03:39 | 202 |    1.3158517s |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/25 21:03:39 [✅ Default ShippingAddress Fetched  {3 three Keerthana  3/122 Velayuthamplayam Devarayapuram, Pollachi Coimbatore Tamil Nadu 7806960764 642110 Home true 50}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing/1 2022-04-25T21:03:39+05:30 1.3177913s 
+[GIN] 2022/04/25 - 21:03:39 | 202 |    1.3177913s |             ::1 | GET      "/checkout/api/existing/1"
+📛ERROR: 2022/04/25 21:05:24 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 21:05:24 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 21:05:25 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/25 21:05:25 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 21:05:26 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/25 21:05:26 [Created the table{
+
+}]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing/1 2022-04-25T21:05:31+05:30 9.7269ms 
+[GIN] 2022/04/25 - 21:05:31 | 500 |      9.7269ms |             ::1 | GET      "/checkout/api/existing/1"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing/1 2022-04-25T21:05:32+05:30 4.4298ms 
+[GIN] 2022/04/25 - 21:05:32 | 500 |      4.4298ms |             ::1 | GET      "/checkout/api/existing/1"

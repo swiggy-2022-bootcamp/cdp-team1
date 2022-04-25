@@ -196,7 +196,7 @@ func (ch CheckoutHandler) CheckoutPayStatusFlow() gin.HandlerFunc {
 // @Router       /checkout/api/existing  [get]
 func (ch CheckoutHandler) CheckoutShippingAddressFlow() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		userId := ctx.Param("userId")
+		userId := ctx.Param("id")
 		userIdAsInt, _ := strconv.Atoi(userId)
 		conn, err := grpc.Dial("localhost:9003", grpc.WithTransportCredentials(insecure.NewCredentials()))
 		if err != nil {

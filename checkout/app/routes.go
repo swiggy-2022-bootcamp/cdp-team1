@@ -39,5 +39,5 @@ func CheckoutRouter(router *gin.Engine) {
 	router.GET("/checkout/api/cartItems", checkoutHandler.CheckoutGetCartItemsFlow())
 	router.GET("/checkout/api/payments", checkoutHandler.CheckoutGetPaymentsFlow())
 	router.POST("/checkout/api/confirm", checkoutHandler.CheckoutPayStatusFlow())
-	router.GET("/checkout/api/existing/:id", checkoutHandler.CheckoutGetShippingAddressFlow())
+	router.GET("/checkout/api/existing/:id", checkoutHandler.CheckoutShippingAddressFlow())
 }
