@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-
+	"fmt"
 	"qwik.in/categories/log"
 	"qwik.in/categories/proto"
 	"qwik.in/categories/repository"
@@ -36,12 +36,19 @@ func (s *CategoryFetchService) Getcategorybyid(ctx context.Context, in *proto.Re
 			Id: in.GetId(),
 		}, nil
 	}
-	return &proto.Response{
-		Id:              in.GetId(),
-		Name:            string(category.Category_description[0].Name),
-		Description:     string(category.Category_description[0].Description),
-		MetaDescription: string(category.Category_description[0].Meta_description),
-		MetaKeyword:     string(category.Category_description[0].Meta_keyword),
-		MetaTitle:       string(category.Category_description[0].Meta_title),
-	}, nil
+	fmt.Println(category)
+	if category.Category_id == "" {
+		return &proto.Response{
+			Id: in.GetId(),
+		}, nil
+	} else {
+		return &proto.Response{
+			Id:              in.GetId(),
+			Name:            string(category.Category_description[0].Name),
+			Description:     string(category.Category_description[0].Description),
+			MetaDescription: string(category.Category_description[0].Meta_description),
+			MetaKeyword:     string(category.Category_description[0].Meta_keyword),
+			MetaTitle:       string(category.Category_description[0].Meta_title),
+		}, nil
+	}
 }
