@@ -27,6 +27,11 @@ main
 # Log files
 *.log
 
+# .Env files
+.env
+
+# .Idea files
+.idea
 
 # Properties file
 *.properties
@@ -34,10 +39,6 @@ main
 # Code coverage reports
 *.cov
 
-# Environment file
-*.env
-
 # Temp files
 *.tmp
-
 

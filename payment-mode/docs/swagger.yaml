@@ -1,0 +1,176 @@
+basePath: /api
+definitions:
+  handlers.HealthCheckResponse:
+    properties:
+      database:
+        type: string
+      server:
+        type: string
+    type: object
+  models.PaymentMode:
+    properties:
+      balance:
+        type: integer
+      cardNumber:
+        type: integer
+      mode:
+        type: string
+    required:
+    - mode
+    type: object
+  models.PaymentRequest:
+    properties:
+      order_amount:
+        type: integer
+      order_id:
+        type: string
+      payment_mode:
+        $ref: '#/definitions/models.PaymentMode'
+      user_id:
+        type: string
+    required:
+    - order_amount
+    - order_id
+    - payment_mode
+    - user_id
+    type: object
+  models.UserPaymentMode:
+    properties:
+      payment_modes:
+        items:
+          $ref: '#/definitions/models.PaymentMode'
+        type: array
+      user_id:
+        type: string
+    required:
+    - payment_modes
+    type: object
+info:
+  contact:
+    email: aadityakhetan123@gmail.com
+    name: Aaditya Khetan
+  description: This microservice is for payment_mode service.
+  license:
+    name: Apache 2.0
+  title: Swiggy Qwik - Payment_Mode module
+  version: "1.0"
+paths:
+  /pay:
+    post:
+      consumes:
+      - application/json
+      description: To complete payment for an order.
+      parameters:
+      - description: Payment request
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/models.PaymentRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "406":
+          description: Not Acceptable
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To complete payment for an order.
+      tags:
+      - PaymentRequest
+  /paymentmethods:
+    get:
+      consumes:
+      - application/json
+      description: To get available payment modes of a user.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserPaymentMode'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - Bearer Token: []
+      summary: To get available payment modes of a user.
+      tags:
+      - PaymentMode
+    post:
+      consumes:
+      - application/json
+      description: To add a new payment method for a user(COD,Debit card, Credit Card).
+      parameters:
+      - description: Payment mode details
+        in: body
+        name: req
+        required: true
+        schema:
+          $ref: '#/definitions/models.PaymentMode'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "409":
+          description: Conflict
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      security:
+      - Bearer Token: []
+      summary: To add a new payment method for a user.
+      tags:
+      - PaymentMode
+  /paymentmethods/health:
+    get:
+      consumes:
+      - application/json
+      description: This request will return 200 OK if server is up..
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+      summary: To check if the service is running or not.
+      tags:
+      - HealthCheckResponse
+securityDefinitions:
+  Bearer Token:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
