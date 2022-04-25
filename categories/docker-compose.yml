@@ -1,7 +1,9 @@
 version: "3"
 services:
-  backend:
-    image: mellomaniac/swiggy-qwik:categories
+  categories:
+    build: .
+    container_name: categories
+    restart: always
     ports:
       - "9122:9122"
       - "19081:19081"
