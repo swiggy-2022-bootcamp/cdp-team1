@@ -1,7 +1,9 @@
 version: "3"
 services:
-  backend:
-    image: mellomaniac/swiggy-qwik:rewards
+  rewards:
+    build: .
+    container_name: rewards
+    restart: always
     ports:
       - "9121:9121"
       - "19071:19071"
