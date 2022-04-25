@@ -37,17 +37,7 @@ func (o OrderProtoServer) GetAmountFromProduct(products []*protos.ProductPriceRe
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	r, err := c.GetTotalPriceForProducts(ctx, &protos.ProductsPriceRequests{
-		// Products: products,
-		Products: []*protos.ProductPriceRequest{
-			{
-				Id:       "90f97384-0117-4234-bbe2-5f306bbef0b3",
-				Quantity: "2",
-			},
-			{
-				Id:       "5d3f2abf-14dc-4857-8472-7932266d3b0f",
-				Quantity: "3",
-			},
-		},
+		Products: products,
 	})
 	if err != nil {
 		log.ErrorLogger.Fatalf("could not echo: %v", err)
