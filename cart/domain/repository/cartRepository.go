@@ -5,6 +5,7 @@ import (
 	"cartService/internal/error"
 	"cartService/log"
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -51,6 +52,8 @@ func (cdb CartRepository) Create(cart model.Cart) *error.AppError {
 	// check if quantity is greater than 0
 	products := cart.Products
 	checkQuantity := products[0].Quantity
+	fmt.Println(products)
+	fmt.Println(checkQuantity)
 	if checkQuantity <= 0 {
 		log.Error("Quantity should be greater than 0")
 		return error.NewBadRequestError("Quantity should be greater than 0")
@@ -82,7 +85,7 @@ func (cdb CartRepository) Read(customer_id string) (*model.Cart, *error.AppError
 
 	query := &dynamodb.GetItemInput{
 		Key: map[string]*dynamodb.AttributeValue{
-			"CustomerId": {
+			"customer_id": {
 				S: aws.String(customer_id),
 			},
 		},
@@ -98,7 +101,7 @@ func (cdb CartRepository) Read(customer_id string) (*model.Cart, *error.AppError
 
 	if result.Item == nil {
 		log.Error("Cart for user doesn't exist. - ")
-		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		notFoundError := error.NewNotFoundError("Cart for user doesn't exists")
 		return nil, notFoundError
 	}
 

@@ -32,10 +32,12 @@ func NewCartHandler(cartService service.CartService) CartHandler {
 // @Router /cart [POST]
 func (ch CartHandler) CreateCart(c *gin.Context) {
 
-	customer_id := c.Param("id")
+	customer_id := "2"
 
-	var product model.Product
-	if err := c.BindJSON(&product); err != nil {
+	// var product model.Product
+	var cart model.Cart
+	if err := c.BindJSON(&cart); err != nil {
+		// if err := c.BindJSON(&product); err != nil {
 		c.Error(err)
 		requestError := error.NewBadRequestError(err.Error())
 		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
@@ -43,11 +45,13 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 	}
 
 	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&product); validationErr != nil {
+	if validationErr := validate.Struct(&cart); validationErr != nil {
+		// if validationErr := validate.Struct(&product); validationErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
 		return
 	}
-	err := ch.cartService.AddToCart(&product, customer_id)
+	err := ch.cartService.AddToCart(&cart, customer_id)
+	// err := ch.cartService.AddToCart(&product, customer_id)
 	if err != nil {
 		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})

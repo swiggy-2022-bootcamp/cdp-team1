@@ -77,3 +77,427 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 [GIN-debug] Listening and serving HTTP on :5000
 INFO: 2022/04/24 23:16:06 [caught sig: %+v interrupt]
 INFO: 2022/04/24 23:16:06 [Wait for 2 second to finish processing]
+ERROR: 2022/04/24 23:54:47 [Connection to dynamoDB failed.]
+ERROR: 2022/04/24 23:54:48 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: 7QAUCTI9QH1KFGBSVFIC5DG5P7VV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/24 23:55:14 [{
+
+}]
+ERROR: 2022/04/24 23:55:14 [Failed to get item from database - UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: P1KL0MV6G6OGMQK30T2DQAEIBVVV4KQNSO5AEMVJF66Q9ASUAAJG]
+ERROR: 2022/04/24 23:56:56 [{
+
+}]
+ERROR: 2022/04/24 23:56:56 [Failed to get item from database - UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: 3V3VI33AIPHTPVTK8DTH9SLBIBVV4KQNSO5AEMVJF66Q9ASUAAJG]
+INFO: 2022/04/24 23:58:44 [caught sig: %+v interrupt]
+INFO: 2022/04/24 23:58:44 [Wait for 2 second to finish processing]
+ERROR: 2022/04/24 23:58:54 [Connection to dynamoDB failed.]
+ERROR: 2022/04/24 23:58:55 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: PCM3DU9BCCBE806HBGR5LBBFJ3VV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/24 23:59:07 [{
+
+}]
+ERROR: 2022/04/24 23:59:07 [Failed to get item from database - UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: VOEKE9JT1TL55TQB5KA56H0E6RVV4KQNSO5AEMVJF66Q9ASUAAJG]
+INFO: 2022/04/25 00:04:15 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:04:15 [Wait for 2 second to finish processing]
+INFO: 2022/04/25 00:04:26 [Created the table{
+  TableDescription: {
+    AttributeDefinitions: [{
+        AttributeName: "Id",
+        AttributeType: "S"
+      }],
+    CreationDateTime: 2022-04-24 18:34:26.982 +0000 UTC,
+    ItemCount: 0,
+    KeySchema: [{
+        AttributeName: "Id",
+        KeyType: "HASH"
+      }],
+    ProvisionedThroughput: {
+      NumberOfDecreasesToday: 0,
+      ReadCapacityUnits: 10,
+      WriteCapacityUnits: 10
+    },
+    TableArn: "arn:aws:dynamodb:us-west-2:299958893581:table/cartCollection",
+    TableId: "c5b38140-5f45-45c0-91e0-27a5ddadc2b7",
+    TableName: "cartCollection",
+    TableSizeBytes: 0,
+    TableStatus: "CREATING"
+  }
+}]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:04:51 [{
+
+}]
+ERROR: 2022/04/25 00:04:51 [Failed to get item from database - ValidationException: The provided key element does not match the schema
+	status code: 400, request id: M3Q92MDDC9AKUJDLAQKP54TN2FVV4KQNSO5AEMVJF66Q9ASUAAJG]
+INFO: 2022/04/25 00:05:47 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:05:47 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:09:04 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+POST - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart 2022-04-25T00:09:13+05:30 0s 
+ERROR: 2022/04/25 00:10:04 [{
+
+}]
+ERROR: 2022/04/25 00:10:04 [Failed to get item from database - ValidationException: The provided key element does not match the schema
+	status code: 400, request id: N32FTDVPTU9G1JQVQQEB9MT63VVV4KQNSO5AEMVJF66Q9ASUAAJG]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:10:04+05:30 267.5997ms 
+INFO: 2022/04/25 00:11:22 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:11:22 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:11:48 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:11:55 [{
+
+}]
+ERROR: 2022/04/25 00:11:55 [Failed to get item from database - ValidationException: The provided key element does not match the schema
+	status code: 400, request id: 9VGN0SC9SA0U41K39D3C0P01KJVV4KQNSO5AEMVJF66Q9ASUAAJG]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:11:55+05:30 263.3844ms 
+ERROR: 2022/04/25 00:12:41 [{
+
+}]
+ERROR: 2022/04/25 00:12:41 [Failed to get item from database - ValidationException: The provided key element does not match the schema
+	status code: 400, request id: 6E2J37SG5J8MPCTUQ1QHHMRISFVV4KQNSO5AEMVJF66Q9ASUAAJG]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:12:41+05:30 264.4903ms 
+ERROR: 2022/04/25 00:14:02 [{
+
+}]
+ERROR: 2022/04/25 00:14:02 [Failed to get item from database - ValidationException: The provided key element does not match the schema
+	status code: 400, request id: 3ODER88OPOJFDPGOHD04I1B24BVV4KQNSO5AEMVJF66Q9ASUAAJG]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:14:02+05:30 1.1073525s 
+INFO: 2022/04/25 00:16:03 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:16:03 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:16:11 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:16:18 [{
+
+}]
+ERROR: 2022/04/25 00:16:18 [Failed to get item from database - ValidationException: The provided key element does not match the schema
+	status code: 400, request id: 8I7BPK12R4S7B64P6H5O9277BFVV4KQNSO5AEMVJF66Q9ASUAAJG]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:16:18+05:30 297.8996ms 
+INFO: 2022/04/25 00:19:28 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:19:28 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:19:37 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+INFO: 2022/04/25 00:19:53 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:19:53 [Wait for 2 second to finish processing]
+INFO: 2022/04/25 00:24:36 [Created the table{
+  TableDescription: {
+    AttributeDefinitions: [{
+        AttributeName: "customer_id",
+        AttributeType: "S"
+      }],
+    CreationDateTime: 2022-04-24 18:54:36.455 +0000 UTC,
+    ItemCount: 0,
+    KeySchema: [{
+        AttributeName: "customer_id",
+        KeyType: "HASH"
+      }],
+    ProvisionedThroughput: {
+      NumberOfDecreasesToday: 0,
+      ReadCapacityUnits: 10,
+      WriteCapacityUnits: 10
+    },
+    TableArn: "arn:aws:dynamodb:us-west-2:299958893581:table/cartCollection",
+    TableId: "697ed5cc-a42c-4bbb-afe0-5a129270fc00",
+    TableName: "cartCollection",
+    TableSizeBytes: 0,
+    TableStatus: "CREATING"
+  }
+}]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:24:42 [Cart for user doesn't exist. - ]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:24:42+05:30 269.019ms 
+INFO: 2022/04/25 00:26:20 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:26:20 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:26:28 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:26:32 [Cart for user doesn't exist. - ]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:26:32+05:30 297.5767ms 
+INFO: 2022/04/25 00:39:55 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:39:55 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:40:20 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:40:33 [Cart for user doesn't exist. - ]
+POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:40:33+05:30 280.3899ms 
+ERROR: 2022/04/25 00:41:31 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:41:37 [Cart for user doesn't exist. - ]
+ERROR: 2022/04/25 00:41:37 [Quantity should be greater than 0]
+POST - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:41:37+05:30 270.573ms Error #01: Cart for user doesn't exists
+
+INFO: 2022/04/25 00:43:18 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:43:18 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:43:28 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:43:34 [Cart for user doesn't exist. - ]
+ERROR: 2022/04/25 00:43:34 [Quantity should be greater than 0]
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:43:34+05:30 257.7376ms Error #01: Quantity should be greater than 0
+
+INFO: 2022/04/25 00:43:59 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:43:59 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:44:18 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:44:25 [Cart for user doesn't exist. - ]
+ERROR: 2022/04/25 00:44:25 [Quantity should be greater than 0]
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:44:25+05:30 263.2263ms Error #01: Quantity should be greater than 0
+
+INFO: 2022/04/25 00:45:12 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:45:12 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:45:25 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:45:44 [Cart for user doesn't exist. - ]
+ERROR: 2022/04/25 00:45:44 [Quantity should be greater than 0]
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:45:44+05:30 270.6487ms Error #01: Quantity should be greater than 0
+
+ERROR: 2022/04/25 00:46:01 [Cart for user doesn't exist. - ]
+ERROR: 2022/04/25 00:46:01 [Quantity should be greater than 0]
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:46:01+05:30 325.71ms Error #01: Quantity should be greater than 0
+
+INFO: 2022/04/25 00:48:27 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:48:27 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:48:38 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:48:45 [Cart for user doesn't exist. - ]
+ERROR: 2022/04/25 00:48:45 [Quantity should be greater than 0]
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:48:45+05:30 300.9471ms Error #01: Quantity should be greater than 0
+
+INFO: 2022/04/25 00:49:14 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:49:14 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:49:22 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:49:27 [Cart for user doesn't exist. - ]
+ERROR: 2022/04/25 00:49:27 [Quantity should be greater than 0]
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:49:27+05:30 262.6196ms Error #01: Quantity should be greater than 0
+
+INFO: 2022/04/25 00:51:59 [caught sig: %+v interrupt]
+INFO: 2022/04/25 00:51:59 [Wait for 2 second to finish processing]
+ERROR: 2022/04/25 00:52:28 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetAllCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/25 00:52:33 [Cart for user doesn't exist. - ]
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-25T00:52:33+05:30 263.521ms 
+INFO: 2022/04/25 00:53:27 [caught sig: %+v terminated]
+INFO: 2022/04/25 00:53:27 [Wait for 2 second to finish processing]

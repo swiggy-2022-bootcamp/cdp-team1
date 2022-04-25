@@ -4,10 +4,11 @@ import (
 	"cartService/domain/model"
 	"cartService/domain/repository"
 	"cartService/internal/error"
+	"fmt"
 )
 
 type CartService interface {
-	AddToCart(*model.Product, string) *error.AppError
+	AddToCart(*model.Cart, string) *error.AppError
 	GetAllCart() (*[]model.Cart, *error.AppError)
 	UpdateCart(string, string, int) *error.AppError
 	DeleteCartByCustomerId(string) *error.AppError
@@ -24,16 +25,18 @@ func NewCartService(cartRepository repository.CartRepositoryDB) CartService {
 	}
 }
 
-func (csvc CartServiceImpl) AddToCart(product *model.Product, customer_id string) *error.AppError {
+func (csvc CartServiceImpl) AddToCart(cart *model.Cart, customer_id string) *error.AppError {
 
 	// Check if cart already exists
 	// If exists, update the quantity
 	// If not, create a new cart
 	curr_cart, err := csvc.cartRepository.Read(customer_id)
 
-	if err != nil {
+	fmt.Println(curr_cart, err)
 
-		curr_cart.Products = append(curr_cart.Products, *product)
+	if err == nil {
+
+		// curr_cart.Products = append(curr_cart.Products, *product)
 
 		updated_cart := model.Cart{
 			CustomerId: customer_id,
@@ -49,18 +52,23 @@ func (csvc CartServiceImpl) AddToCart(product *model.Product, customer_id string
 		return nil
 	}
 
-	new_cart := model.Cart{
-		CustomerId: customer_id,
-		Products:   []model.Product{*product},
-	}
+	fmt.Println("cart doesnt exist")
+	fmt.Println("Product: ", cart)
 
-	err3 := csvc.cartRepository.Create(new_cart)
+	// new_cart := model.Cart{
+	// 	CustomerId: customer_id,
+	// 	Products:   []model.C{*product},
+	// }
 
-	if err3 != nil {
-		return err
-	}
+	// fmt.Println("new cart", new_cart)
 
-	return err3
+	// err3 := csvc.cartRepository.Create(new_cart)
+
+	// if err3 != nil {
+	// return err3
+	// }
+
+	return nil
 }
 
 func (csvc CartServiceImpl) GetAllCart() (*[]model.Cart, *error.AppError) {
