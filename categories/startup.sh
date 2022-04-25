@@ -1,1 +1,1 @@
-docker-compose --env-file ./dev.env up --build -d
+docker-compose --env-file ./.env up --build -d
