@@ -778,3 +778,21 @@ POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-25
 ❕INFO: 2022/04/25 07:45:59 [Payment Successful ! true]
 POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-25T07:45:59+05:30 614.7454ms 
 [GIN] 2022/04/25 - 07:45:59 | 202 |    614.7454ms |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/25 18:40:49 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 18:40:49 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 18:40:49 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/25 18:40:49 [Created the table{
+
+}]
+📛ERROR: 2022/04/25 18:40:50 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/25 18:40:50 [Created the table{
+
+}]
+❕INFO: 2022/04/25 18:44:13 [ ✅ Default Address Fetched 0xc000148370]
+GET - [202] ::1 HTTP/1.1 Go-http-client/1.1 /shipping/api/existing 2022-04-25T18:44:13+05:30 6.5075242s 
+[GIN] 2022/04/25 - 18:44:13 | 202 |    6.5075801s |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/25 18:44:13 [✅ Default ShippingAddress Fetched  {1 one Ashwin  3/122 Velayuthamplayam  Coimbatore Tamil Nadu 8637498921 642110 Home true 50}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing 2022-04-25T18:44:13+05:30 6.5086208s 
+[GIN] 2022/04/25 - 18:44:13 | 202 |    6.5086208s |             ::1 | GET      "/checkout/api/existing"

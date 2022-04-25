@@ -4,14 +4,15 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"google.golang.org/grpc" //grpc
-	"google.golang.org/grpc/credentials/insecure"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
+
+	"google.golang.org/grpc" //grpc
+	"google.golang.org/grpc/credentials/insecure"
 	_ "qwik.in/checkout/docs" //GoSwagger
 	"qwik.in/checkout/protos"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"qwik.in/checkout/domain/services"
@@ -158,7 +159,7 @@ func (ch CheckoutHandler) CheckoutGetPaymentsFlow() gin.HandlerFunc {
 // @Tags         Payment Mode Service
 // @Produce      json
 // @Success      200  {object}  map[string]interface{}
-// @Failure      400  {number} 	http.StatusBadRequest
+// @Failure      500  {number} 	http.StatusInternalServerError
 // @Router       /checkout/api/pay  [get]
 func (ch CheckoutHandler) CheckoutPayStatusFlow() gin.HandlerFunc {
 
@@ -180,6 +181,48 @@ func (ch CheckoutHandler) CheckoutPayStatusFlow() gin.HandlerFunc {
 	}
 }
 
+// CheckoutShippingAddressFlow ..
+// @Summary      Gets Payment Mode
+// @Description  Returns Payment Mode using GET Request.
+// @Tags         Payment Mode Service
+// @Produce      json
+// @Success      200  {object}  map[string]interface{}
+// @Failure      500  {number} 	http.StatusInternalServerError
+// @Router       /checkout/api/existing  [get]
+func CheckoutShippingAddressFlow() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		readData, err := ioutil.ReadAll(ctx.Request.Body)
+		if err != nil {
+			logger.Error("Empty Request Body", err)
+		}
+		paymentModesDTOData := PaymentModesDTO{}
+		_ = json.Unmarshal(readData, &paymentModesDTOData)
+		conn, err := grpc.Dial("localhost:9003", grpc.WithTransportCredentials(insecure.NewCredentials()))
+		if err != nil {
+			log.Fatalf("Connection failed : %v", err)
+		}
+		defer func(conn *grpc.ClientConn) {
+			err := conn.Close()
+			if err != nil {
+				logger.Error("Error : ", err)
+			}
+		}(conn)
+		c := protos.NewShippingAddressProtoFuncClient(conn)
+		shippingRequest := &protos.ShippingAddressRequest{
+			DefaultAddress: true,
+		}
+		result, err := c.GetDefaultShippingAddress(ctx, shippingRequest)
+		if err != nil {
+			ctx.JSON(http.StatusInternalServerError, err)
+			log.Printf("Shipping failed : %v", err)
+		} else {
+			fmt.Println(result.ShippingAddress)
+			ctx.JSON(http.StatusAccepted, result.ShippingAddress)
+		}
+	}
+}
+
+//IsCheckoutPaymentSuccessful ..
 func IsCheckoutPaymentSuccessful(userPaymentData PaymentModesDTO) (bool, *protos.PaymentResponse, error) {
 	conn, err := grpc.Dial("localhost:9004", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -188,7 +231,7 @@ func IsCheckoutPaymentSuccessful(userPaymentData PaymentModesDTO) (bool, *protos
 	defer func(conn *grpc.ClientConn) {
 		err := conn.Close()
 		if err != nil {
-
+			logger.Error("Error : ", err)
 		}
 	}(conn)
 
@@ -212,10 +255,7 @@ func IsCheckoutPaymentSuccessful(userPaymentData PaymentModesDTO) (bool, *protos
 		logger.Error("Payment failed : %v", err)
 		return false, nil, err
 	} else {
-		//fmt.Println(result.IsPaymentSuccessful)
-		//ctx.JSON(http.StatusAccepted, result)
 		logger.Info("Payment Successful !", result.GetIsPaymentSuccessful())
 		return true, result, nil
-		//log.Printf("%s - Payment Successful", result.GetIsPaymentSuccessful())
 	}
 }
