@@ -9,11 +9,26 @@ import (
 	"qwik.in/customers-admin/internal/errors"
 )
 
-var customerService service.CustomerServiceInterface
+type CustomerControllerInterface interface {
+	CreateCustomer(c *gin.Context)
+	GetCustomerById(c *gin.Context)
+	GetCustomerByEmail(c *gin.Context)
+	UpdateCustomer(c *gin.Context)
+	DeleteCustomer(c *gin.Context)
+}
 
-//inject customerService with normal repo (non-mock repo)
-func init() {
-	customerService = service.InitCustomerService(&repository.CustomerRepository{})
+type CustomerController struct {
+	customerService service.CustomerServiceInterface
+}
+
+func InitCustomerController(customerServiceToBeInjected service.CustomerServiceInterface) CustomerControllerInterface {
+	customerController := new(CustomerController)
+	if customerServiceToBeInjected == nil {
+		customerController.customerService = service.InitCustomerService(&repository.CustomerRepository{})
+	} else {
+		customerController.customerService = customerServiceToBeInjected
+	}
+	return customerController
 }
 
 // CreateCustomer godoc
@@ -26,10 +41,10 @@ func init() {
 // @Param req body model.Customer true "New customer to add"
 // @Success	200  {object} model.Customer
 // @Router /customer [POST]
-func CreateCustomer(c *gin.Context) {
+func (customerController *CustomerController) CreateCustomer(c *gin.Context) {
 	newCustomer := model.Customer{}
 	json.NewDecoder(c.Request.Body).Decode(&newCustomer)
-	createdCustomer, err := customerService.CreateCustomer(newCustomer)
+	createdCustomer, err := customerController.customerService.CreateCustomer(newCustomer)
 
 	if err != nil {
 		userErr, _ := err.(*errors.CustomerError)
@@ -50,8 +65,8 @@ func CreateCustomer(c *gin.Context) {
 // @Param customerId path string true "customer id"
 // @Success	200  {object} model.Customer
 // @Router /customer/{customerId} [GET]
-func GetCustomerById(c *gin.Context) {
-	fetchedCustomer, err := customerService.GetCustomerById(c.Param("customerId"))
+func (customerController *CustomerController) GetCustomerById(c *gin.Context) {
+	fetchedCustomer, err := customerController.customerService.GetCustomerById(c.Param("customerId"))
 
 	if err != nil {
 		userErr, _ := err.(*errors.CustomerError)
@@ -72,8 +87,8 @@ func GetCustomerById(c *gin.Context) {
 // @Param customerEmail path string true "customer email"
 // @Success	200  {object} model.Customer
 // @Router /customer/email/{customerEmail} [GET]
-func GetCustomerByEmail(c *gin.Context) {
-	fetchedCustomer, err := customerService.GetCustomerByEmail(c.Param("customerEmail"))
+func (customerController *CustomerController) GetCustomerByEmail(c *gin.Context) {
+	fetchedCustomer, err := customerController.customerService.GetCustomerByEmail(c.Param("customerEmail"))
 
 	if err != nil {
 		userErr, _ := err.(*errors.CustomerError)
@@ -95,10 +110,10 @@ func GetCustomerByEmail(c *gin.Context) {
 // @Param req body model.Customer true "Updated customer"
 // @Success	200  {object} model.Customer
 // @Router /customer/{customerId} [PUT]
-func UpdateCustomer(c *gin.Context) {
+func (customerController *CustomerController) UpdateCustomer(c *gin.Context) {
 	customer := model.Customer{}
 	json.NewDecoder(c.Request.Body).Decode(&customer)
-	updatedCustomer, err := customerService.UpdateCustomer(c.Param("customerId"), customer)
+	updatedCustomer, err := customerController.customerService.UpdateCustomer(c.Param("customerId"), customer)
 
 	if err != nil {
 		userErr, _ := err.(*errors.CustomerError)
@@ -119,8 +134,8 @@ func UpdateCustomer(c *gin.Context) {
 // @Param customerId path string true "customer id"
 // @Success	200  {string} deletion successful
 // @Router /customer/{customerId} [DELETE]
-func DeleteCustomer(c *gin.Context) {
-	successMessage, err := customerService.DeleteCustomer(c.Param("customerId"))
+func (customerController *CustomerController) DeleteCustomer(c *gin.Context) {
+	successMessage, err := customerController.customerService.DeleteCustomer(c.Param("customerId"))
 
 	if err != nil {
 		userErr, _ := err.(*errors.CustomerError)

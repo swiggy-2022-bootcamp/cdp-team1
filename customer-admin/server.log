@@ -1453,3 +1453,33 @@ GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/doc.json 2022-04-19T19:49:16+05:30 471.2µs 
 GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/swagger/favicon-32x32.png 2022-04-19T19:49:16+05:30 955.9µs 
 GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /customer-admin/api/user 2022-04-19T19:49:35+05:30 242.7673ms 
+INFO: 2022/04/25 17:41:23 [Connected to dynamoDB]
+INFO: 2022/04/25 17:41:23 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:41:29+05:30 275.8827ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/email/ashwin@gmail.com 2022-04-25T17:41:33+05:30 272.6234ms 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/email/ashwin@gmail.comm 2022-04-25T17:41:38+05:30 270.1506ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/email/ashwin@gmail.com 2022-04-25T17:41:41+05:30 271.7198ms 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35cc 2022-04-25T17:41:44+05:30 309.8239ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:41:46+05:30 270.5888ms 
+PUT - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admini/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:41:49+05:30 0s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/user 2022-04-25T17:42:11+05:30 274.0289ms 
+PUT - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admini/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:42:29+05:30 0s 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:43:02+05:30 601.7703ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:43:10+05:30 597.7475ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:43:13+05:30 603.4794ms 
