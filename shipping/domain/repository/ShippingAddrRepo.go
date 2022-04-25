@@ -3,16 +3,18 @@ package repository
 import (
 	"context"
 	"fmt"
+
 	"qwik.in/shipping/domain/database"
 	"qwik.in/shipping/domain/models"
 	"qwik.in/shipping/domain/tools/errs"
 	"qwik.in/shipping/domain/tools/logger"
 
+	"time"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/aws/aws-sdk-go/service/dynamodb/expression"
-	"time"
 )
 
 //ShippingAddress ..
@@ -180,6 +182,7 @@ func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(userId int) (*
 		}
 
 	}
+	fmt.Println(&item)
 	return (*ShippingAddress)(&item), nil
 }
 

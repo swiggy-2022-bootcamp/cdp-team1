@@ -24,8 +24,8 @@ COPY --from=build /app/.env /.
 # This is for documentation purposes only.
 # To actually open the port, runtime parameters
 # must be supplied to the docker command.
-EXPOSE 9000
-EXPOSE 9003
+EXPOSE 9005
+EXPOSE 9006
 
 # Run
 ENTRYPOINT ["/shippingService"]

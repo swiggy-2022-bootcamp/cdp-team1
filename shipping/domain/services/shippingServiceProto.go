@@ -10,7 +10,7 @@ import (
 var shippingAddrRepo repository.ShippingAddrRepo
 
 type ShippingProtoServer struct {
-	protos.UnsafeShippingAddressProtoFuncServer
+	protos.UnimplementedShippingAddressProtoFuncServer
 }
 
 func NewShippingRepoService(pr repository.ShippingAddrRepo) ShippingProtoServer {
@@ -19,23 +19,18 @@ func NewShippingRepoService(pr repository.ShippingAddrRepo) ShippingProtoServer 
 }
 
 func (s ShippingProtoServer) GetDefaultShippingAddress(ctx context.Context, shippingAddressRequest *protos.ShippingAddressRequest) (*protos.ShippingAddressResponse, error) {
-	shippingAddress := make([]*protos.ShippingAddress, 0, 0)
-	response := &protos.ShippingAddressResponse{
-		ShippingAddress: shippingAddress[0],
-	}
-
+	response := &protos.ShippingAddressResponse{}
 	//Fetch Default Shipping Address
 	userShippingAddress, err := shippingAddrRepo.FindDefaultShippingAddressImpl(int(shippingAddressRequest.GetUserId()))
 	if err != nil {
 		logger.Error("Error in Proto GetDefaultShippingAddress", err)
 		return nil, err.Error()
 	}
-
 	//Convert DynamoDB Object into Proto Message Object
 	var shippingAddressProto *protos.ShippingAddress
 	userShippingAddress1 := userShippingAddress
 	shippingAddressProto = &protos.ShippingAddress{
-		UserId:            float64(userShippingAddress1.UserID),
+		UserId:            int32(int(userShippingAddress1.UserID)),
 		ShippingAddressId: userShippingAddress1.ShippingAddressID,
 		FirstName:         userShippingAddress1.FirstName,
 		LastName:          userShippingAddress1.LastName,
@@ -49,7 +44,6 @@ func (s ShippingProtoServer) GetDefaultShippingAddress(ctx context.Context, ship
 		DefaultAddress:    userShippingAddress1.DefaultAddress,
 		ShippingCost:      float64(userShippingAddress1.ShippingCost),
 	}
-	shippingAddress[0] = shippingAddressProto
-	response.ShippingAddress = shippingAddress[0]
+	response.ShippingAddress = shippingAddressProto
 	return response, nil
 }
