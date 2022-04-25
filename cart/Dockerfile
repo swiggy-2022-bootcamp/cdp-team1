@@ -18,6 +18,7 @@ RUN go build -o /cartService
 # To actually open the port, runtime parameters
 # must be supplied to the docker command.
 EXPOSE 5000
+EXPOSE 5004
 
 COPY .env .
 
