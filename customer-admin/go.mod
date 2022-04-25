@@ -6,6 +6,7 @@ require (
 	github.com/aws/aws-sdk-go v1.43.40
 	github.com/gin-gonic/gin v1.7.7
 	github.com/google/uuid v1.3.0
+	github.com/joho/godotenv v1.4.0
 	github.com/rs/cors/wrapper/gin v0.0.0-20220223021805-a4a5ce87d5a2
 	github.com/stretchr/testify v1.7.0
 	github.com/swaggo/gin-swagger v1.4.2

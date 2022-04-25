@@ -1483,3 +1483,23 @@ PUT - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admini/customer/c31
 PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:43:02+05:30 601.7703ms 
 PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:43:10+05:30 597.7475ms 
 PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-25T17:43:13+05:30 603.4794ms 
+INFO: 2022/04/26 00:51:13 [Connected to dynamoDB]
+INFO: 2022/04/26 00:51:13 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-26T00:51:27+05:30 281.4772ms 
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/email/ashwin@gmail.com 2022-04-26T00:51:30+05:30 271.2188ms 
