@@ -1,0 +1,41 @@
+{
+  "id": "90f97384-0117-4234-bbe2-5f306bbef0b3",
+  "model": "Daily Planet",
+  "quantity": "1",
+  "price": "20.00",
+  "manufacturer_id": "34",
+  "sku": "news sku",
+  "product_seo_url": [
+    {
+      "keyword": "newspaper",
+      "language_id": "1",
+      "store_id": "0"
+    }
+  ],
+  "points": 0,
+  "reward": 0,
+  "image": "",
+  "shipping": "1",
+  "weight": 40,
+  "length": 100,
+  "width": 50,
+  "height": 1,
+  "minimum": 1,
+  "product_related": [
+    "39"
+  ],
+  "product_description": [
+    {
+      "language_id": "1",
+      "name": "daily planet newspaper",
+      "description": "today's daily planet newspaper",
+      "meta_title": "daily planet newspaper",
+      "meta_description": "today's daily planet newspaper",
+      "meta_keyword": "daily planet, newspaper, metropolis",
+      "tag": "daily planet, newspaper, metropolis"
+    }
+  ],
+  "product_category": [
+    "45"
+  ]
+}
