@@ -4,7 +4,6 @@
 *.dll
 *.so
 *.dylib
-*.env
 
 # Test binary, built with `go test -c`
 *.test
@@ -14,30 +13,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+.idea
 
-
-# Executable main files
-main
-
-# Mac OS created file
+# Ignore Mac DS_Store files
 .DS_Store
+**/.DS_Store
 
-# GoLand created files
-*.idea
-
-# Log files
-*.log
-
-# Temp files
-*.tmp
-
-# Properties file
-*.properties
-
-# Coverage Files
-*.cov
-
-# .Env files
-.env
-
-.idea/
+*.env

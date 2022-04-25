@@ -1,0 +1,68 @@
+{"_comments":"order"}
+{
+    "$id": "id",
+    "title": "order",
+    "type": "array(order)",
+    "properties":{
+        "Customer_id":{
+            "type":"id",
+            "description":"The id of the customer the transction points need to be added"
+        },
+        "Status":{
+            "type":"string",
+            "description":"The status of the order"
+        },
+        "Datetime":{
+            "type":"string",
+            "description":"The date of the order"
+        },
+        "Orders":{
+            "type":"array(orders)",
+            "description":"The orders in the order"
+        }
+    }
+}
+
+"Example":
+[
+    {
+       "id":1,
+       "Customer_id":1,
+       "Status":"Declined",
+       "Datetime":"02/10/2021",
+       "Orders":[
+          {
+             "Product_id":1,
+             "Quantity":5
+          },
+          {
+             "Product_id":2,
+             "Quantity":7
+          },
+          {
+             "Product_id":3,
+             "Quantity":4
+          },
+          {
+             "Product_id":4,
+             "Quantity":2
+          }
+       ]
+    },
+    {
+       "id":2,
+       "Customer_id":2,
+       "Status":"Confirmed",
+       "Datetime":"09/02/2022",
+       "Orders":[
+          {
+             "Product_id":1,
+             "Quantity":4
+          },
+          {
+             "Product_id":2,
+             "Quantity":4
+          }
+       ]
+    }
+ ]
