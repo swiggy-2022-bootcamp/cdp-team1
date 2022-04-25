@@ -23,8 +23,6 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OrderClient interface {
 	CreateOrder(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error)
-	GetCart(ctx context.Context, in *GetCartRequest, opts ...grpc.CallOption) (*GetCartResponse, error)
-	GetTotalAmount(ctx context.Context, in *GetAmountRequest, opts ...grpc.CallOption) (*GetAmountResponse, error)
 }
 
 type orderClient struct {
@@ -44,31 +42,11 @@ func (c *orderClient) CreateOrder(ctx context.Context, in *CreateOrderRequest, o
 	return out, nil
 }
 
-func (c *orderClient) GetCart(ctx context.Context, in *GetCartRequest, opts ...grpc.CallOption) (*GetCartResponse, error) {
-	out := new(GetCartResponse)
-	err := c.cc.Invoke(ctx, "/protos.Order/GetCart", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *orderClient) GetTotalAmount(ctx context.Context, in *GetAmountRequest, opts ...grpc.CallOption) (*GetAmountResponse, error) {
-	out := new(GetAmountResponse)
-	err := c.cc.Invoke(ctx, "/protos.Order/GetTotalAmount", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // OrderServer is the server API for Order service.
 // All implementations must embed UnimplementedOrderServer
 // for forward compatibility
 type OrderServer interface {
 	CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error)
-	GetCart(context.Context, *GetCartRequest) (*GetCartResponse, error)
-	GetTotalAmount(context.Context, *GetAmountRequest) (*GetAmountResponse, error)
 	mustEmbedUnimplementedOrderServer()
 }
 
@@ -78,12 +56,6 @@ type UnimplementedOrderServer struct {
 
 func (UnimplementedOrderServer) CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOrder not implemented")
-}
-func (UnimplementedOrderServer) GetCart(context.Context, *GetCartRequest) (*GetCartResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetCart not implemented")
-}
-func (UnimplementedOrderServer) GetTotalAmount(context.Context, *GetAmountRequest) (*GetAmountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTotalAmount not implemented")
 }
 func (UnimplementedOrderServer) mustEmbedUnimplementedOrderServer() {}
 
@@ -116,42 +88,6 @@ func _Order_CreateOrder_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Order_GetCart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetCartRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OrderServer).GetCart(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/protos.Order/GetCart",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServer).GetCart(ctx, req.(*GetCartRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Order_GetTotalAmount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAmountRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(OrderServer).GetTotalAmount(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/protos.Order/GetTotalAmount",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServer).GetTotalAmount(ctx, req.(*GetAmountRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // Order_ServiceDesc is the grpc.ServiceDesc for Order service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -162,14 +98,6 @@ var Order_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateOrder",
 			Handler:    _Order_CreateOrder_Handler,
-		},
-		{
-			MethodName: "GetCart",
-			Handler:    _Order_GetCart_Handler,
-		},
-		{
-			MethodName: "GetTotalAmount",
-			Handler:    _Order_GetTotalAmount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

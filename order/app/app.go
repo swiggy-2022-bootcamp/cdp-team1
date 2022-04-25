@@ -9,6 +9,7 @@ import (
 	"orderService/domain/repository"
 	"orderService/domain/service"
 	"orderService/log"
+	"orderService/protos"
 	"os"
 
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -40,6 +41,9 @@ func Start() {
 	orderHandler = handlers.NewOrderHandler(orderService)
 	healthCheckHandler = handlers.NewHealthCheckHandler(orderRepository)
 	orderRoutes = routes.NewOrderRoutes(orderHandler, healthCheckHandler)
+
+	obj := service.NewOrderProtoService(orderRepository)
+	obj.CreateOrder(ctx, &protos.CreateOrderRequest{CustomerId: "1"})
 
 	file, err := os.OpenFile("server.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err == nil {

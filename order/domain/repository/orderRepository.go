@@ -80,7 +80,7 @@ func (odb OrderRepository) ReadStatus(status string) (*[]model.Order, *error.App
 		TableName:        aws.String(orderCollection),
 		FilterExpression: aws.String("status = :status"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-			":status": {
+			"status": {
 				S: aws.String(status),
 			},
 		},
@@ -115,7 +115,7 @@ func (odb OrderRepository) ReadOrderID(order_id string) (*model.Order, *error.Ap
 	query := &dynamodb.GetItemInput{
 		TableName: aws.String(orderCollection),
 		Key: map[string]*dynamodb.AttributeValue{
-			"OrderId": {
+			"order_id": {
 				S: aws.String(order_id),
 			},
 		},
@@ -151,7 +151,7 @@ func (odb OrderRepository) ReadCustomerID(customer_id string) (*[]model.Order, *
 		TableName:        aws.String(orderCollection),
 		FilterExpression: aws.String("customer_id = :customer_id"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-			":CustomerId": {
+			"customer_id": {
 				S: aws.String(customer_id),
 			},
 		},
@@ -218,7 +218,7 @@ func (odb OrderRepository) Update(order_id string, updated_status string) *error
 			},
 		},
 		Key: map[string]*dynamodb.AttributeValue{
-			"OrderId": {
+			"order_id": {
 				S: aws.String(order_id),
 			},
 		},
@@ -240,7 +240,7 @@ func (odb OrderRepository) Delete(order model.Order) *error.AppError {
 
 	input := &dynamodb.DeleteItemInput{
 		Key: map[string]*dynamodb.AttributeValue{
-			"id": {
+			"order_id": {
 				S: aws.String(order.OrderId),
 			},
 		},
@@ -268,7 +268,7 @@ func (odb OrderRepository) CreateOrderInvoice(order_id string) *error.AppError {
 			},
 		},
 		Key: map[string]*dynamodb.AttributeValue{
-			"OrderId": {
+			"order_id": {
 				S: aws.String(order_id),
 			},
 		},

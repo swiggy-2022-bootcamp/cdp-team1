@@ -6,7 +6,7 @@ type Product struct {
 }
 
 type Order struct {
-	OrderId    string    `json:"id,omitempty"`
+	OrderId    string    `json:"order_id,omitempty"`
 	CustomerId string    `json:"customer_id,omitempty"`
 	Status     string    `json:"status"`
 	Datetime   string    `json:"datetime"`
