@@ -22,13 +22,13 @@ func (c CartProtoServer) GetCart(ctx context.Context, req *protos.GetCartRequest
 
 	fmt.Println("GetCart checking")
 
+	customer_id := req.GetCustomerId()
+
 	products := make([]*protos.Product, 0)
 	response := &protos.GetCartResponse{
-		CustomerId: req.GetCustomerId(),
+		CustomerId: customer_id,
 		Products:   products,
 	}
-
-	customer_id := req.GetCustomerId()
 
 	cart, err := cartRepository.Read(customer_id)
 	if err != nil {
