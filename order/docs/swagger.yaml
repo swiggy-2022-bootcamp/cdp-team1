@@ -1,0 +1,261 @@
+basePath: /order/api
+definitions:
+  model.Order:
+    properties:
+      customer_id:
+        type: string
+      datetime:
+        type: string
+      id:
+        type: string
+      invoice:
+        type: string
+      orders:
+        items:
+          $ref: '#/definitions/model.Product'
+        type: array
+      status:
+        type: string
+    type: object
+  model.Product:
+    properties:
+      product_id:
+        type: string
+      quantity:
+        type: integer
+    type: object
+host: localhost:7000
+info:
+  contact:
+    email: aryann.dhir73@nmims.edu.in
+    name: Aryann Dhir
+  description: This microservice is for order services
+  license:
+    name: Apache 2.0
+  title: Swiggy Qwik - Order Service
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: This request will return 200 OK if server is up
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: To check if the service is running or not.
+      tags:
+      - ""
+  /order:
+    post:
+      description: To create orders
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To place an order for a user
+      tags:
+      - Order
+  /orders:
+    get:
+      description: Fetch all orders in the database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Order'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To get all orders.
+      tags:
+      - Order
+  /orders/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete the order by the order id
+      parameters:
+      - description: order id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To delete an order by order id.
+      tags:
+      - Order
+    get:
+      consumes:
+      - application/json
+      description: Fetch the order by the order id
+      parameters:
+      - description: order id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Order'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To get an order by order id.
+      tags:
+      - Order
+    put:
+      consumes:
+      - application/json
+      description: Fetch the order by the order id
+      parameters:
+      - description: order id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To get an order by order id.
+      tags:
+      - Order
+  /orders/invoice/{id}:
+    post:
+      description: To create an invoice for a given order id
+      parameters:
+      - description: order id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To create an invoice
+      tags:
+      - Order
+  /orders/status/{status}:
+    get:
+      consumes:
+      - application/json
+      description: Fetch all the orders with a specific status
+      parameters:
+      - description: status
+        in: path
+        name: status
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Order'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To get all order of a specific status.
+      tags:
+      - Order
+  /orders/user/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Fetch all the order by the customer id
+      parameters:
+      - description: order id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Order'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To get an order by customer id.
+      tags:
+      - Order
+swagger: "2.0"
