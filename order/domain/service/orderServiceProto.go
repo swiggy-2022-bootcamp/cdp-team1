@@ -93,7 +93,7 @@ func (o OrderProtoServer) GetCartFromCartService(customer_id string) (*protos.Ge
 
 func (o OrderProtoServer) CreateOrder(ctx context.Context, req *protos.CreateOrderRequest) (*protos.CreateOrderResponse, error) {
 
-	fmt.Println("testing")
+	fmt.Println("Create Order check")
 
 	// Get cart from gRPC server
 	customer_id := req.GetCustomerId()
