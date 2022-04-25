@@ -151,6 +151,7 @@ func (sar ShippingAddressRepoImpl) FindShippingAddressByIdImpl(shippingAddressId
 // FindDefaultShippingAddressImpl  ..
 func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(userId int) (*ShippingAddress, *errs.AppError) {
 	item := models.ShippingAddrModel{}
+	//fmt.Println(userId)
 	filt := expression.Name("user_id").Equal(expression.Value(userId))
 	filt2 := expression.Name("default_address").Equal(expression.Value(true))
 	expr, err := expression.NewBuilder().WithCondition(filt.And(filt2)).Build()
@@ -161,18 +162,19 @@ func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(userId int) (*
 	params := &dynamodb.ScanInput{
 		ExpressionAttributeNames:  expr.Names(),
 		ExpressionAttributeValues: expr.Values(),
-		FilterExpression:          expr.Filter(),
+		FilterExpression:          expr.Condition(),
 		TableName:                 aws.String("team-1-shipping"),
 	}
 	result, err := sar.Session.Scan(params)
 	if err != nil {
-		fmt.Println("Error in API Query")
+		fmt.Println(result)
+		fmt.Printf("Error in API Query %s", err)
 		logger.Error("Query API call failed - %s", err)
 	}
 	for _, i := range result.Items {
 		err = dynamodbattribute.UnmarshalMap(i, &item)
 		if err != nil {
-			fmt.Println(item)
+			//fmt.Println(item)
 			fmt.Println("Error in Unmarshalling the values")
 			logger.Error("Got error while unmarshalling - %s", err)
 		}

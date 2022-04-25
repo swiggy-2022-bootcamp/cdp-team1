@@ -105,8 +105,8 @@ func (sh ShippingHandler) GetShippingAddrHandlerFunc() gin.HandlerFunc {
 // @Router       /existing/   [get]
 func (sh ShippingHandler) GetDefaultShippingAddrHandlerFunc() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		userId := ctx.Param("userId")
-		fmt.Println(userId)
+		userId := ctx.Param("id")
+		//fmt.Println(userId)
 		userIdAsInt, _ := strconv.Atoi(userId)
 		res, err := sh.ShippingAddrService.GetDefaultShippingAddr(userIdAsInt)
 		if err != nil {

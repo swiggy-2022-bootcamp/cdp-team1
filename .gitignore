@@ -25,3 +25,4 @@ checkout/.aws/
 shipping/.aws/
 shipping/.env
 checkout/.env
+*.log
