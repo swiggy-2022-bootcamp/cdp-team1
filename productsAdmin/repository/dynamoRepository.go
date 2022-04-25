@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"errors"
 	"fmt"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -22,12 +23,38 @@ func NewDynamoRepository() ProductRepository {
 func (r dynamoRepository) Connect() error {
 	// create an aws session
 	sess := session.Must(session.NewSession(&aws.Config{
-		Region:   aws.String(config.DYNAMO_DB_REGION),
-		Endpoint: aws.String(config.DYNAMO_DB_URL),
+		Region: aws.String(config.DYNAMO_DB_REGION),
+		//Endpoint: aws.String(config.DYNAMO_DB_URL),
 	}))
 
 	// create a dynamodb instance
 	db = dynamodb.New(sess)
+
+	// create Products table
+	params := &dynamodb.CreateTableInput{
+		TableName: aws.String("Products"),
+		KeySchema: []*dynamodb.KeySchemaElement{
+			{AttributeName: aws.String("id"), KeyType: aws.String("HASH")},
+		},
+		AttributeDefinitions: []*dynamodb.AttributeDefinition{
+			{AttributeName: aws.String("id"), AttributeType: aws.String("S")},
+		},
+		ProvisionedThroughput: &dynamodb.ProvisionedThroughput{
+			ReadCapacityUnits:  aws.Int64(5),
+			WriteCapacityUnits: aws.Int64(5),
+		},
+	}
+
+	_, err := db.CreateTable(params)
+
+	target := &dynamodb.ResourceInUseException{}
+	if errors.As(err, &target) {
+		fmt.Println("Products table already present")
+	} else {
+		log.Error("Error while creating table Products", err.Error())
+		return err
+	}
+
 	return nil
 }
 
