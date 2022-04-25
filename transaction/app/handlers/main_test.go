@@ -17,7 +17,7 @@ func NewServer(transactionService *mocks.MockTransactionService) *gin.Engine {
 	transactionHandler := NewTransactionHandler(transactionService)
 
 	server := gin.Default()
-	router := server.Group("transaction/api")
+	router := server.Group("api")
 
 	router.POST("/transaction/:userId", transactionHandler.AddTransactionPoints)
 	router.GET("/transaction/:userId", transactionHandler.GetTransactionPointsByUserID)

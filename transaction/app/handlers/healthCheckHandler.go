@@ -28,7 +28,7 @@ type HealthCheckResponse struct {
 // @Produce json
 // @Success	200  {object} 	HealthCheckResponse
 // @Failure 500  {object}   HealthCheckResponse
-// @Router / [GET]
+// @Router /transaction/health [GET]
 func (hc HealthCheckHandler) HealthCheck(c *gin.Context) {
 
 	//Checking for database status.

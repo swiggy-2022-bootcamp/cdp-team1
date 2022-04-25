@@ -106,7 +106,7 @@ func TestTransactionHandler_AddTransactionPoints(t *testing.T) {
 
 			server := NewServer(transactionService)
 			recorder := httptest.NewRecorder()
-			url := fmt.Sprintf("/transaction/api/transaction/%s", transactionAmount.UserId)
+			url := fmt.Sprintf("/api/transaction/%s", transactionAmount.UserId)
 			var request *http.Request
 			if tc.name == "FailureWithMalformedBody" {
 				request = httptest.NewRequest(http.MethodPost, url, nil)
@@ -184,7 +184,7 @@ func TestTransactionHandler_GetTransactionPointsByUserID(t *testing.T) {
 
 			server := NewServer(transactionService)
 			recorder := httptest.NewRecorder()
-			url := fmt.Sprintf("/transaction/api/transaction/%s", userId)
+			url := fmt.Sprintf("/api/transaction/%s", userId)
 			var request *http.Request
 			request = httptest.NewRequest(http.MethodGet, url, nil)
 
@@ -301,7 +301,7 @@ func TestTransactionHandler_UseTransactionPoints(t *testing.T) {
 
 			server := NewServer(transactionService)
 			recorder := httptest.NewRecorder()
-			url := fmt.Sprintf("/transaction/api/transaction/use-transaction-points/%s", transactionAmount.UserId)
+			url := fmt.Sprintf("/api/transaction/use-transaction-points/%s", transactionAmount.UserId)
 			var request *http.Request
 			if tc.name == "FailureWithMalformedBody" {
 				request = httptest.NewRequest(http.MethodPost, url, nil)

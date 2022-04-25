@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/gin-gonic/gin"
+	prometheusUtility "github.com/swiggy-2022-bootcamp/cdp-team1/common-utilities/prometheus-utility"
 	"google.golang.org/grpc"
 	"io"
 	"net"
@@ -74,7 +75,8 @@ func StartRESTServer() {
 	defer wg.Done()
 	restServer = gin.New()
 	restServer.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
-	router := restServer.Group("transaction/api")
+	restServer.Use(prometheusUtility.PrometheusMiddleware())
+	router := restServer.Group("api")
 	transactionRoutes.InitRoutes(router)
 
 	//Starting restServer on port 9001

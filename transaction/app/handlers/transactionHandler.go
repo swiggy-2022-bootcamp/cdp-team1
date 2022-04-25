@@ -38,8 +38,8 @@ func (th TransactionHandler) AddTransactionPoints(c *gin.Context) {
 
 	if err := c.BindJSON(&transactionAmount); err != nil {
 		c.Error(err)
-		err_ := apperros.NewBadRequestError(err.Error())
-		c.JSON(err_.Code, gin.H{"message": err_.Message})
+		requestError := apperros.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
 		return
 	}
 
@@ -102,8 +102,8 @@ func (th TransactionHandler) UseTransactionPoints(c *gin.Context) {
 
 	if err := c.BindJSON(&transactionAmount); err != nil {
 		c.Error(err)
-		err_ := apperros.NewBadRequestError(err.Error())
-		c.JSON(err_.Code, gin.H{"message": err_.Message})
+		requestError := apperros.NewBadRequestError(err.Error())
+		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
 		return
 	}
 

@@ -21,6 +21,7 @@ func TestHealthCheckHandler_HealthCheck(t *testing.T) {
 		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
 	}{
 		{
+			//Database connection is up.
 			name: "Success",
 			buildStubs: func(transactionRepository *mocks.MockTransactionRepository) {
 				transactionRepository.EXPECT().
@@ -35,6 +36,7 @@ func TestHealthCheckHandler_HealthCheck(t *testing.T) {
 			},
 		},
 		{
+			// Database connection is down
 			name: "InternalServerError",
 			buildStubs: func(transactionRepository *mocks.MockTransactionRepository) {
 				transactionRepository.EXPECT().
@@ -57,6 +59,7 @@ func TestHealthCheckHandler_HealthCheck(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			defer ctrl.Finish()
 
+			// TransactionRepository mock object
 			transactionRepository := mocks.NewMockTransactionRepository(ctrl)
 			tc.buildStubs(transactionRepository)
 			healthCheckHandler := NewHealthCheckHandler(transactionRepository)

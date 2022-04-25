@@ -15,3 +15,30 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+# Executable main files
+main
+
+# Mac OS created file
+.DS_Store
+
+# GoLand created files
+*.idea
+
+# Log files
+*.log
+
+# .Env files
+.env
+
+# .Idea files
+.idea
+
+# Properties file
+*.properties
+
+# Code coverage reports
+*.cov
+
+# Temp files
+*.tmp
+
