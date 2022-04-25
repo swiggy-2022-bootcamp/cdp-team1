@@ -43,7 +43,7 @@ func Start() {
 	orderRoutes = routes.NewOrderRoutes(orderHandler, healthCheckHandler)
 
 	obj := service.NewOrderProtoService(orderRepository)
-	obj.CreateOrder(ctx, &protos.CreateOrderRequest{CustomerId: "1"})
+	obj.CreateOrder(ctx, &protos.CreateOrderRequest{CustomerId: "2"})
 
 	file, err := os.OpenFile("server.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err == nil {

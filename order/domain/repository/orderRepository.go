@@ -2,11 +2,13 @@ package repository
 
 import (
 	"context"
+	"fmt"
 	"math/rand"
 	"orderService/domain/model"
 	"orderService/internal/error"
 	"orderService/log"
 	"strconv"
+	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -52,6 +54,9 @@ func (or OrderRepository) DBHealthCheck() bool {
 
 func (odb OrderRepository) Create(order *model.Order) *error.AppError {
 
+	order.Datetime = time.Now().String()
+	order.OrderId = strconv.Itoa(rand.Intn(1000))
+
 	data, err := dynamodbattribute.MarshalMap(order)
 	if err != nil {
 		log.Error("Marshalling of order failed - " + err.Error())
@@ -74,16 +79,18 @@ func (odb OrderRepository) Create(order *model.Order) *error.AppError {
 
 func (odb OrderRepository) ReadStatus(status string) (*[]model.Order, *error.AppError) {
 
+	fmt.Println("repository status: ", status)
+
 	order := &[]model.Order{}
 
 	query := &dynamodb.ScanInput{
-		TableName:        aws.String(orderCollection),
-		FilterExpression: aws.String("status = :status"),
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-			"status": {
+			":order_status": {
 				S: aws.String(status),
 			},
 		},
+		FilterExpression: aws.String("order_status = :order_status"),
+		TableName:        aws.String(orderCollection),
 	}
 
 	result, err := odb.orderDB.Scan(query)
@@ -95,7 +102,7 @@ func (odb OrderRepository) ReadStatus(status string) (*[]model.Order, *error.App
 
 	if result.Items == nil {
 		log.Error("Order for user with that status doesn't exist - ")
-		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		notFoundError := error.NewNotFoundError("Order with that status for user doesn't exist")
 		return nil, notFoundError
 	}
 
@@ -195,8 +202,8 @@ func (odb OrderRepository) ReadAll() (*[]model.Order, *error.AppError) {
 	}
 
 	if result.Items == nil {
-		log.Error("Order for user doesn't exist. - ")
-		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		log.Error("Orders don't exist. - ")
+		notFoundError := error.NewNotFoundError("Order don't exists")
 		return nil, notFoundError
 	}
 
@@ -211,10 +218,13 @@ func (odb OrderRepository) ReadAll() (*[]model.Order, *error.AppError) {
 
 func (odb OrderRepository) Update(order_id string, updated_status string) *error.AppError {
 
+	fmt.Println("update repository orderid: ", order_id)
+	fmt.Println("update repository status: ", updated_status)
+
 	input := &dynamodb.UpdateItemInput{
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-			"status": {
-				N: aws.String(updated_status),
+			":order_status": {
+				S: aws.String(updated_status),
 			},
 		},
 		Key: map[string]*dynamodb.AttributeValue{
@@ -223,7 +233,7 @@ func (odb OrderRepository) Update(order_id string, updated_status string) *error
 			},
 		},
 		TableName:        aws.String(orderCollection),
-		UpdateExpression: aws.String("set status = :status"),
+		UpdateExpression: aws.String("set order_status = :order_status"),
 		ReturnValues:     aws.String("UPDATED_NEW"),
 	}
 
@@ -258,13 +268,13 @@ func (odb OrderRepository) Delete(order model.Order) *error.AppError {
 
 func (odb OrderRepository) CreateOrderInvoice(order_id string) *error.AppError {
 
-	invoice_number := rand.Intn(1000000)
+	invoice_number := rand.Intn(10000)
 	invoice_number_str := strconv.Itoa(invoice_number)
 
 	input := &dynamodb.UpdateItemInput{
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
-			"Invoice": {
-				N: aws.String(invoice_number_str),
+			":invoice": {
+				S: aws.String(invoice_number_str),
 			},
 		},
 		Key: map[string]*dynamodb.AttributeValue{
@@ -273,7 +283,7 @@ func (odb OrderRepository) CreateOrderInvoice(order_id string) *error.AppError {
 			},
 		},
 		TableName:        aws.String(orderCollection),
-		UpdateExpression: aws.String("set status = :status"),
+		UpdateExpression: aws.String("set invoice = :invoice"),
 		ReturnValues:     aws.String("UPDATED_NEW"),
 	}
 
@@ -300,7 +310,7 @@ func (odb OrderRepository) CreateOrderInvoice(order_id string) *error.AppError {
 
 // 	if result.Items == nil {
 // 		log.Error("Order for user doesn't exist. - ")
-// 		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+// 		notFoundError := error.NewNotFoundError("Order for user doesn't exists")
 // 		return notFoundError
 // 	}
 

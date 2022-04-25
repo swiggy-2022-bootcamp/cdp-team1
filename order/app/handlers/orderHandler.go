@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 	"orderService/domain/model"
 	"orderService/domain/service"
@@ -92,13 +93,8 @@ func (oh OrderHandler) GetAllOrder(c *gin.Context) {
 // @Router /orders/status/{status} [GET]
 func (oh OrderHandler) GetOrderByStatus(c *gin.Context) {
 
-	var status string
-	if err := c.BindJSON(&status); err != nil {
-		c.Error(err)
-		requestError := error.NewBadRequestError(err.Error())
-		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
-		return
-	}
+	status := c.Param("status")
+
 	result, err := oh.orderService.GetOrderByStatus(status)
 	if err != nil {
 		c.Error(err.Error())
@@ -123,19 +119,7 @@ func (oh OrderHandler) GetOrderByStatus(c *gin.Context) {
 // @Router /orders/{id} [GET]
 func (oh OrderHandler) GetOrderById(c *gin.Context) {
 
-	var order_id string
-	if err := c.BindJSON(&order_id); err != nil {
-		c.Error(err)
-		requestError := error.NewBadRequestError(err.Error())
-		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
-		return
-	}
-
-	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&order_id); validationErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
-		return
-	}
+	order_id := c.Param("id")
 
 	result, err := oh.orderService.GetOrderById(order_id)
 	if err != nil {
@@ -163,20 +147,26 @@ func (oh OrderHandler) UpdateOrder(c *gin.Context) {
 
 	order_id := c.Param("id")
 
-	// get order id from parameter and status from body
-	var status string
-	if err := c.BindJSON(&status); err != nil {
+	fmt.Println("order_id", order_id)
+
+	var order model.Order
+	// var status string
+	if err := c.BindJSON(&order); err != nil {
 		c.Error(err)
 		requestError := error.NewBadRequestError(err.Error())
 		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
 		return
 	}
 
-	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&status); validationErr != nil {
+	// use the validator library to validate required fields
+	if validationErr := validate.Struct(&order); validationErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
 		return
 	}
+
+	status := order.Status
+
+	fmt.Println("status", status)
 
 	err := oh.orderService.UpdateOrder(order_id, status)
 	if err != nil {
@@ -201,19 +191,7 @@ func (oh OrderHandler) UpdateOrder(c *gin.Context) {
 // @Router /orders/{id} [DELETE]
 func (oh OrderHandler) DeleteOrderById(c *gin.Context) {
 
-	var order_id string
-	if err := c.BindJSON(&order_id); err != nil {
-		c.Error(err)
-		requestError := error.NewBadRequestError(err.Error())
-		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
-		return
-	}
-
-	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&order_id); validationErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
-		return
-	}
+	order_id := c.Param("id")
 
 	err := oh.orderService.DeleteOrderById(order_id)
 	if err != nil {
@@ -239,19 +217,7 @@ func (oh OrderHandler) DeleteOrderById(c *gin.Context) {
 // @Router /orders/user/{id} [GET]
 func (oh OrderHandler) GetOrderByCustomerId(c *gin.Context) {
 
-	var customer_id string
-	if err := c.BindJSON(&customer_id); err != nil {
-		c.Error(err)
-		requestError := error.NewBadRequestError(err.Error())
-		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
-		return
-	}
-
-	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&customer_id); validationErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
-		return
-	}
+	customer_id := c.Param("id")
 
 	result, err := oh.orderService.GetOrderByCustomerId(customer_id)
 	if err != nil {
@@ -275,19 +241,7 @@ func (oh OrderHandler) GetOrderByCustomerId(c *gin.Context) {
 // @Router /orders/invoice/{id} [POST]
 func (oh OrderHandler) CreateInvoice(c *gin.Context) {
 
-	var order_id string
-	if err := c.BindJSON(&order_id); err != nil {
-		c.Error(err)
-		requestError := error.NewBadRequestError(err.Error())
-		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
-		return
-	}
-
-	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&order_id); validationErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
-		return
-	}
+	order_id := c.Param("id")
 
 	err := oh.orderService.CreateInvoice(order_id)
 	if err != nil {

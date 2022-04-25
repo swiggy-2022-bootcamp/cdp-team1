@@ -6,3 +6,5 @@ services:
       - "7000:7000"
     volumes:
       - .:/app
+    extra_hosts:
+      - "localhost:host-gateway"

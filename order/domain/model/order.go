@@ -8,9 +8,9 @@ type Product struct {
 type Order struct {
 	OrderId    string    `json:"order_id,omitempty"`
 	CustomerId string    `json:"customer_id,omitempty"`
-	Status     string    `json:"status"`
+	Status     string    `json:"order_status"`
 	Datetime   string    `json:"datetime"`
-	Products   []Product `json:"orders"`
+	Products   []Product `json:"products"`
 	Invoice    string    `json:"invoice"`
 	Amount     int       `json:"amount"`
 }

@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"orderService/domain/model"
 	"orderService/domain/repository"
 	"orderService/internal/error"
@@ -84,6 +85,8 @@ func (odb OrderServiceImpl) GetOrderByCustomerId(id string) (*[]model.Order, *er
 }
 
 func (odb OrderServiceImpl) UpdateOrder(order_id string, status string) *error.AppError {
+
+	fmt.Println("update service status: ", status)
 
 	err := odb.orderRepository.Update(order_id, status)
 

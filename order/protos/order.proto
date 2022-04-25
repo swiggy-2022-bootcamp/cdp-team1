@@ -11,7 +11,7 @@ service Order{
 }
 
 message Products {
-    string      product_id = 1;
+    string     product_id = 1;
     int32      quantity = 2;
 }
 
@@ -47,7 +47,7 @@ message CreateOrderResponse{
 
 // message GetCartResponse{
 //     string      customer_id = 1;
-//     repeated Product     Products = 4;
+//     repeated Products     Products = 4;
 // }   
 
 // message GetAmountRequest{
