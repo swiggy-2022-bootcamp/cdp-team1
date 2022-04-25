@@ -3,10 +3,11 @@ package repository
 import (
 	"context"
 	"fmt"
-	"github.com/ashwin2125/qwk/shipping/domain/database"
-	"github.com/ashwin2125/qwk/shipping/domain/models"
-	"github.com/ashwin2125/qwk/shipping/domain/tools/errs"
-	"github.com/ashwin2125/qwk/shipping/domain/tools/logger"
+	"qwik.in/shipping/domain/database"
+	"qwik.in/shipping/domain/models"
+	"qwik.in/shipping/domain/tools/errs"
+	"qwik.in/shipping/domain/tools/logger"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"

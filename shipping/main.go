@@ -1,6 +1,6 @@
 package main
 
-import "github.com/ashwin2125/qwk/shipping/app"
+import "qwik.in/shipping/app"
 
 // @title Gin Swagger Example API
 // @version 2.0

@@ -506,3 +506,16 @@ POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04
 ❕INFO: 2022/04/24 17:44:49 [Default Address Fetched ✅  0xc0000dcfd0]
 GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-24T17:44:49+05:30 343.7833ms 
 [GIN] 2022/04/24 - 17:44:49 | 202 |    343.7833ms |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/25 09:18:50 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 09:18:50 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-25T09:18:57+05:30 0s 
+[GIN] 2022/04/25 - 09:18:57 | 200 |            0s |             ::1 | GET      "/shipping/api/"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/swagger/index.html 2022-04-25T09:19:00+05:30 694µs 
+[GIN] 2022/04/25 - 09:19:00 | 200 |         694µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/getAddress/two 2022-04-25T09:19:04+05:30 298.0248ms 
+[GIN] 2022/04/25 - 09:19:04 | 202 |    298.0248ms |             ::1 | GET      "/shipping/api/getAddress/two"
+❕INFO: 2022/04/25 09:19:07 [Default Address Fetched ✅  0xc00062c000]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-25T09:19:07+05:30 297.265ms 
+[GIN] 2022/04/25 - 09:19:07 | 202 |     297.265ms |             ::1 | GET      "/shipping/api/existing"

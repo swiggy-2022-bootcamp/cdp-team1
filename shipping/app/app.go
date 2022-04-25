@@ -1,12 +1,12 @@
 package app
 
 import (
-	"github.com/ashwin2125/qwk/shipping/docs"
-	"github.com/ashwin2125/qwk/shipping/domain/repository"
-	"github.com/ashwin2125/qwk/shipping/domain/services"
-	"github.com/ashwin2125/qwk/shipping/domain/tools/logger"
 	"io"
 	"os"
+	"qwik.in/shipping/docs"
+	"qwik.in/shipping/domain/repository"
+	"qwik.in/shipping/domain/services"
+	"qwik.in/shipping/domain/tools/logger"
 
 	"github.com/gin-gonic/gin"
 )
@@ -39,7 +39,7 @@ func Start() {
 	}
 
 	//Custom Logger - Logs actions to 'shippingAddressService.logger' file
-	file, err := os.OpenFile("./logs/shippingAddressServiceLogs.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile("shippingServer.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err == nil {
 		gin.DefaultWriter = io.MultiWriter(file)
 	}

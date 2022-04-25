@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/ashwin2125/qwk/shipping/domain/repository"
-	"github.com/ashwin2125/qwk/shipping/domain/tools/errs"
+	"qwik.in/shipping/domain/repository"
+	"qwik.in/shipping/domain/tools/errs"
 )
 
 //ShippingAddrService ..

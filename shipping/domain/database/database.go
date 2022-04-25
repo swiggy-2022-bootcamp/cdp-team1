@@ -2,8 +2,9 @@ package database
 
 import (
 	"fmt"
-	"github.com/ashwin2125/qwk/shipping/domain/tools/env"
-	"github.com/ashwin2125/qwk/shipping/domain/tools/logger"
+	"qwik.in/shipping/domain/tools/env"
+	"qwik.in/shipping/domain/tools/logger"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"

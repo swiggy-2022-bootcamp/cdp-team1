@@ -2,8 +2,9 @@ package app
 
 import (
 	"fmt"
-	"github.com/ashwin2125/qwk/shipping/domain/services"
-	"github.com/ashwin2125/qwk/shipping/domain/tools/logger"
+	"qwik.in/shipping/domain/services"
+	"qwik.in/shipping/domain/tools/logger"
+
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

@@ -1,21 +1,18 @@
 FROM golang:1.18-alpine as build
 
-RUN apk update && apk add --no-cache git build-base
-
+# Set destination for COPY
 WORKDIR /app
 
+# Download Go modules
 COPY go.mod .
 COPY go.sum .
 RUN go mod download
 
-#Copy the source code.
-COPY . .
+# Copy the source code.
+COPY  . .
 
-# get all the dependencies
-RUN go get ./...
-
-# build
-RUN go build ./main.go -o shippingService
+# Build
+RUN go build -o /shippingService
 
 COPY .env .
 
@@ -24,6 +21,11 @@ FROM alpine
 COPY --from=build /shippingService /.
 COPY --from=build /app/.env /.
 
+# This is for documentation purposes only.
+# To actually open the port, runtime parameters
+# must be supplied to the docker command.
+EXPOSE 9000
 EXPOSE 9003
 
-ENTRYPOINT [ "./main" ]
+# Run
+ENTRYPOINT ["/shippingService"]
