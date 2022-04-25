@@ -19,3 +19,13 @@ func CheckoutServiceFunc(checkoutRepo repository.CheckoutRepo) CheckoutService {
 		checkoutRepo: checkoutRepo,
 	}
 }
+
+/*
+1.1 gRPC - Cart : checkout/confirm : Get the items from cart
+1.2 Random OrderID creation for Cart Details
+1.3 Return User - the orderID, cartDetails
+
+---
+2.1 get Shipping Address through gRPC call to ShippingAddress
+2.2
+*/

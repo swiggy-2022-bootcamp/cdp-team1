@@ -8,6 +8,7 @@ import (
 //CheckoutRepo ..
 type CheckoutRepo interface {
 	GetDefaultShippingAddressFlowImpl() (*ShippingAddress, *errs.AppError)
+	GetConfirmFlowImpl() (bool, *errs.AppError)
 }
 
 //CheckoutRepoImpl ..

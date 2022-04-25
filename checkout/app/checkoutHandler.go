@@ -1,12 +1,17 @@
 package app
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
+	"google.golang.org/grpc" //grpc
+	"google.golang.org/grpc/credentials/insecure"
 	"io/ioutil"
+	"log"
 	"net/http"
-
 	_ "qwik.in/checkout/docs" //GoSwagger
+	"qwik.in/checkout/protos"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"qwik.in/checkout/domain/services"
@@ -17,6 +22,12 @@ import (
 //CheckoutHandler ..
 type CheckoutHandler struct {
 	CheckoutService services.CheckoutService
+}
+
+//PaymentModesDTO ..
+type PaymentModesDTO struct {
+	Mode       string `json:"mode" dynamodbav:"mode"`
+	CardNumber int    `json:"cardNumber" dynamodbav:"card_number"`
 }
 
 // CheckoutGetShippingAddressFlow ..
@@ -138,5 +149,73 @@ func (ch CheckoutHandler) CheckoutGetPaymentsFlow() gin.HandlerFunc {
 		logger.Info("✅ Payment Mode Fetched", paymentModeResponseBody)
 		ctx.JSON(http.StatusAccepted, paymentModeResponseBody)
 
+	}
+}
+
+// CheckoutPayStatusFlow ..
+// @Summary      Gets Payment Mode
+// @Description  Returns Payment Mode using GET Request.
+// @Tags         Payment Mode Service
+// @Produce      json
+// @Success      200  {object}  map[string]interface{}
+// @Failure      400  {number} 	http.StatusBadRequest
+// @Router       /checkout/api/pay  [get]
+func (ch CheckoutHandler) CheckoutPayStatusFlow() gin.HandlerFunc {
+
+	return func(ctx *gin.Context) {
+
+		readData, err := ioutil.ReadAll(ctx.Request.Body)
+		if err != nil {
+			logger.Error("Empty Request Body", err)
+		}
+		paymentModesDTOData := PaymentModesDTO{}
+		_ = json.Unmarshal(readData, &paymentModesDTOData)
+		status, result, err := IsCheckoutPaymentSuccessful(paymentModesDTOData)
+
+		if status {
+			ctx.JSON(http.StatusAccepted, result)
+		} else {
+			ctx.JSON(http.StatusInternalServerError, err)
+		}
+	}
+}
+
+func IsCheckoutPaymentSuccessful(userPaymentData PaymentModesDTO) (bool, *protos.PaymentResponse, error) {
+	conn, err := grpc.Dial("localhost:9004", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatalf("Connection failed : %v", err)
+	}
+	defer func(conn *grpc.ClientConn) {
+		err := conn.Close()
+		if err != nil {
+
+		}
+	}(conn)
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	c := protos.NewPaymentClient(conn)
+	paymentRequest := &protos.PaymentRequest{
+		UserId:  "bb912edc-50d9-42d7-b7a1-9ce66d459abcd",
+		Amount:  1,
+		OrderId: "OA-123",
+		PaymentMode: &protos.PaymentMode{
+			Mode:       userPaymentData.Mode,
+			CardNumber: int64(userPaymentData.CardNumber),
+		},
+	}
+	//fmt.Println("hello")
+	result, err := c.CompletePayment(ctx, paymentRequest)
+	if err != nil {
+		//ctx.JSON(http.StatusInternalServerError, err)
+		logger.Error("Payment failed : %v", err)
+		return false, nil, err
+	} else {
+		//fmt.Println(result.IsPaymentSuccessful)
+		//ctx.JSON(http.StatusAccepted, result)
+		logger.Info("Payment Successful !", result.GetIsPaymentSuccessful())
+		return true, result, nil
+		//log.Printf("%s - Payment Successful", result.GetIsPaymentSuccessful())
 	}
 }

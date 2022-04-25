@@ -1,0 +1,10 @@
+version: "1"
+services:
+shipping-service:
+build: .
+container_name: checkout-service
+restart: always
+volumes:
+- /app
+ports:
+- "9002:9002"
