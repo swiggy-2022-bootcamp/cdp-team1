@@ -24,7 +24,6 @@ func (r dynamoRepository) Connect() error {
 	// create an aws session
 	sess := session.Must(session.NewSession(&aws.Config{
 		Region: aws.String(config.DYNAMO_DB_REGION),
-		//Endpoint: aws.String(config.DYNAMO_DB_URL),
 	}))
 
 	// create a dynamodb instance
@@ -47,12 +46,16 @@ func (r dynamoRepository) Connect() error {
 
 	_, err := db.CreateTable(params)
 
-	target := &dynamodb.ResourceInUseException{}
-	if errors.As(err, &target) {
-		fmt.Println("Products table already present")
+	if err != nil {
+		target := &dynamodb.ResourceInUseException{}
+		if errors.As(err, &target) {
+			fmt.Println("Products table already present")
+		} else {
+			log.Error("Error while creating table Products", err.Error())
+			return err
+		}
 	} else {
-		log.Error("Error while creating table Products", err.Error())
-		return err
+		log.Info("Table created Successfully")
 	}
 
 	return nil

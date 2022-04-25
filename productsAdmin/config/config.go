@@ -14,7 +14,7 @@ const (
 
 // AWS DynamoDB
 const (
-	DYNAMO_DB_REGION = "us-east-1"
+	DYNAMO_DB_REGION = "us-west-2"
 	DYNAMO_DB_URL    = "https://dynamodb.us-east-1.amazonaws.com"
 )
 
