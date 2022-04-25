@@ -1,9 +1,10 @@
-version: "1"
+version: "3"
 services:
-  reward-service:
-    build: .
-    container_name: reward-service
+  backend:
+    image: mellomaniac/swiggy-qwik:rewards
     ports:
-      - "9020:9020"
-    volumes:
-      - .:/app
+      - "9121:9121"
+      - "19071:19071"
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
