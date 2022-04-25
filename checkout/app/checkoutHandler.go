@@ -198,7 +198,7 @@ func (ch CheckoutHandler) CheckoutShippingAddressFlow() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		userId := ctx.Param("id")
 		userIdAsInt, _ := strconv.Atoi(userId)
-		conn, err := grpc.Dial("localhost:9003", grpc.WithTransportCredentials(insecure.NewCredentials()))
+		conn, err := grpc.Dial("localhost:9006", grpc.WithTransportCredentials(insecure.NewCredentials()))
 		if err != nil {
 			log.Fatalf("Connection failed : %v", err)
 		}
@@ -214,6 +214,7 @@ func (ch CheckoutHandler) CheckoutShippingAddressFlow() gin.HandlerFunc {
 		}
 		result, err := c.GetDefaultShippingAddress(ctx, shippingRequest)
 		if err != nil {
+			fmt.Println(result)
 			ctx.JSON(http.StatusInternalServerError, err)
 			log.Printf("Shipping failed : %v", err)
 		} else {
