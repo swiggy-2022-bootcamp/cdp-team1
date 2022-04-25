@@ -20,7 +20,7 @@ func NewCartProtoService(pr repository.CartRepositoryDB) CartProtoServer {
 
 func (c CartProtoServer) GetCart(ctx context.Context, req *protos.GetCartRequest) (*protos.GetCartResponse, error) {
 
-	fmt.Println("GetCart check")
+	fmt.Println("GetCart checking")
 
 	products := make([]*protos.Product, 0)
 	response := &protos.GetCartResponse{
