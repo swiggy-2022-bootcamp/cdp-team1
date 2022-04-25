@@ -19,7 +19,8 @@ type CartRepositoryDB interface {
 	// Update(string, string, int) *error.AppError
 	UpdateExisting(*model.Cart) *error.AppError
 	Delete(string) *error.AppError
-	DeleteAll() *error.AppError
+	// DeleteItem(string, string) *error.AppError
+	// DeleteAll() *error.AppError
 	DBHealthCheck() bool
 }
 
@@ -192,7 +193,7 @@ func (cdb CartRepository) Delete(customer_id string) *error.AppError {
 
 	input := &dynamodb.DeleteItemInput{
 		Key: map[string]*dynamodb.AttributeValue{
-			"CustomerId": {
+			"customer_id": {
 				S: aws.String(customer_id),
 			},
 		},
@@ -208,40 +209,66 @@ func (cdb CartRepository) Delete(customer_id string) *error.AppError {
 	return nil
 }
 
-func (cdb CartRepository) DeleteAll() *error.AppError {
+// func (cdb CartRepository) DeleteItem(customer_id string, product_id string) *error.AppError {
+// 	input := &dynamodb.UpdateItemInput{
+// 		Key: map[string]*dynamodb.AttributeValue{
+// 			"customer_id": {
+// 				S: aws.String(customer_id),
+// 			},
+// 		},
+// 		TableName:        aws.String(cartCollection),
+// 		UpdateExpression: aws.String("REMOVE products[product_id]"),
+// 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
+// 			"product_id": {
+// 				S: aws.String(product_id),
+// 			},
+// 		},
+// 		ReturnValues: aws.String("ALL_NEW"),
+// 	}
 
-	input := &dynamodb.ScanInput{
-		TableName: aws.String(cartCollection),
-	}
+// 	_, err := cdb.cartDB.UpdateItem(input)
+// 	if err != nil {
+// 		log.Error(err)
+// 		return error.NewUnexpectedError(err.Error())
+// 	}
 
-	result, err := cdb.cartDB.Scan(input)
-	if err != nil {
-		log.Error(err)
-		return error.NewUnexpectedError(err.Error())
-	}
+// 	return nil
+// }
 
-	if result.Items == nil {
-		log.Error("Cart for user doesn't exist. - ")
-		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
-		return notFoundError
-	}
+// func (cdb CartRepository) DeleteAll() *error.AppError {
 
-	for _, item := range result.Items {
-		input := &dynamodb.DeleteItemInput{
-			Key: map[string]*dynamodb.AttributeValue{
-				"CustomerId": {
-					S: aws.String(*item["customer_id"].S),
-				},
-			},
-			TableName: aws.String(cartCollection),
-		}
+// 	input := &dynamodb.ScanInput{
+// 		TableName: aws.String(cartCollection),
+// 	}
 
-		_, err := cdb.cartDB.DeleteItem(input)
-		if err != nil {
-			log.Error(err)
-			return error.NewUnexpectedError(err.Error())
-		}
-	}
+// 	result, err := cdb.cartDB.Scan(input)
+// 	if err != nil {
+// 		log.Error(err)
+// 		return error.NewUnexpectedError(err.Error())
+// 	}
 
-	return nil
-}
+// 	if result.Items == nil {
+// 		log.Error("Cart for user doesn't exist. - ")
+// 		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+// 		return notFoundError
+// 	}
+
+// 	for _, item := range result.Items {
+// 		input := &dynamodb.DeleteItemInput{
+// 			Key: map[string]*dynamodb.AttributeValue{
+// 				"CustomerId": {
+// 					S: aws.String(*item["customer_id"].S),
+// 				},
+// 			},
+// 			TableName: aws.String(cartCollection),
+// 		}
+
+// 		_, err := cdb.cartDB.DeleteItem(input)
+// 		if err != nil {
+// 			log.Error(err)
+// 			return error.NewUnexpectedError(err.Error())
+// 		}
+// 	}
+
+// 	return nil
+// }

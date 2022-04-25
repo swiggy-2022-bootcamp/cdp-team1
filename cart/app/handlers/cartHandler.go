@@ -4,6 +4,7 @@ import (
 	"cartService/domain/model"
 	"cartService/domain/service"
 	"cartService/internal/error"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -32,12 +33,10 @@ func NewCartHandler(cartService service.CartService) CartHandler {
 // @Router /cart [POST]
 func (ch CartHandler) CreateCart(c *gin.Context) {
 
-	customer_id := "2"
+	customer_id := "2" //should get from auth
 
-	// var product model.Product
 	var cart model.Cart
 	if err := c.BindJSON(&cart); err != nil {
-		// if err := c.BindJSON(&product); err != nil {
 		c.Error(err)
 		requestError := error.NewBadRequestError(err.Error())
 		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
@@ -46,12 +45,11 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 
 	//use the validator library to validate required fields
 	if validationErr := validate.Struct(&cart); validationErr != nil {
-		// if validationErr := validate.Struct(&product); validationErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
 		return
 	}
+
 	err := ch.cartService.AddToCart(&cart, customer_id)
-	// err := ch.cartService.AddToCart(&product, customer_id)
 	if err != nil {
 		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})
@@ -76,11 +74,11 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 // @Router /cart [PUT]
 func (ch CartHandler) UpdateCart(c *gin.Context) {
 
-	customer_id := c.Param("id")
+	customer_id := "2" //should get from auth
 
 	// get cart id from parameter and status from body
-	var product model.Product
-	if err := c.BindJSON(&product); err != nil {
+	var cart model.Cart
+	if err := c.BindJSON(&cart); err != nil {
 		c.Error(err)
 		requestError := error.NewBadRequestError(err.Error())
 		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
@@ -88,13 +86,17 @@ func (ch CartHandler) UpdateCart(c *gin.Context) {
 	}
 
 	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&product); validationErr != nil {
+	if validationErr := validate.Struct(&cart); validationErr != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
 		return
 	}
 
-	productId := product.ProductId
-	quantity := product.Quantity
+	productId := cart.Products[0].ProductId
+	quantity := cart.Products[0].Quantity
+
+	fmt.Println("product: ", cart)
+	fmt.Println("productId: ", productId)
+	fmt.Println("quantity: ", quantity)
 
 	err := ch.cartService.UpdateCart(customer_id, productId, quantity)
 	if err != nil {
@@ -107,8 +109,8 @@ func (ch CartHandler) UpdateCart(c *gin.Context) {
 }
 
 // GetAllCart godoc
-// @Summary To get all carts.
-// @Description Fetch all carts in the database
+// @Summary To get cart by customer id
+// @Description Fetch all the products in the cart of logged in user
 // @Tags Cart
 // @Schemes
 // @Produce json
@@ -116,9 +118,11 @@ func (ch CartHandler) UpdateCart(c *gin.Context) {
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found
 // @Router /cart [GET]
-func (ch CartHandler) GetAllCart(c *gin.Context) {
+func (ch CartHandler) GetCart(c *gin.Context) {
 
-	result, err := ch.cartService.GetAllCart()
+	customer_id := "2" //should get from auth
+
+	result, err := ch.cartService.GetCartByCustomerId(customer_id)
 	if err != nil {
 		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})
@@ -128,9 +132,9 @@ func (ch CartHandler) GetAllCart(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": result})
 }
 
-// DeleteCartById godoc
-// @Summary To delete a cart
-// @Description Delete the cart by the customer id
+// DeleteCartItem godoc
+// @Summary To delete a product from cart
+// @Description Delete the product by the product id
 // @Tags Cart
 // @Schemes
 // @Accept json
@@ -138,24 +142,31 @@ func (ch CartHandler) GetAllCart(c *gin.Context) {
 // @Success	200  string 	Cart deleted successfully
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found
-// @Router /cart/:id [DELETE]
-func (ch CartHandler) DeleteCart(c *gin.Context) {
+// @Router /cart/{id} [DELETE]
+func (ch CartHandler) DeleteCartItem(c *gin.Context) {
 
-	var customer_id string
-	if err := c.BindJSON(&customer_id); err != nil {
-		c.Error(err)
-		requestError := error.NewBadRequestError(err.Error())
-		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
-		return
-	}
+	customer_id := "2" //should get from auth
+
+	fmt.Println("customer_id: ", customer_id)
+
+	product_id := c.Param("id")
+
+	// if err := c.BindJSON(&product_id); err != nil {
+	// 	c.Error(err)
+	// 	requestError := error.NewBadRequestError(err.Error())
+	// 	c.JSON(requestError.Code, gin.H{"message": requestError.Message})
+	// 	return
+	// }
+
+	fmt.Println("product_id: ", product_id)
 
 	//use the validator library to validate required fields
-	if validationErr := validate.Struct(&customer_id); validationErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
-		return
-	}
+	// if validationErr := validate.Struct(&product_id); validationErr != nil {
+	// 	c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
+	// 	return
+	// }
 
-	err := ch.cartService.DeleteCartByCustomerId(customer_id)
+	err := ch.cartService.DeleteCartItem(customer_id, product_id)
 	if err != nil {
 		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})
@@ -166,19 +177,20 @@ func (ch CartHandler) DeleteCart(c *gin.Context) {
 }
 
 // DeleteCartAll godoc
-// @Summary To delete all the cart
-// @Description Delete all the cart by the customer id
+// @Summary To delete the cart
+// @Description Delete the cart of the logged in user
 // @Tags Cart
 // @Schemes
 // @Accept json
-// @Param id string true "id"
 // @Success	200  string 	Cart deleted successfully
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found
 // @Router /cart/empty [DELETE]
 func (ch CartHandler) DeleteCartAll(c *gin.Context) {
 
-	err := ch.cartService.DeleteAllCart()
+	customer_id := "2" //should get from auth
+
+	err := ch.cartService.DeleteCartByCustomerId(customer_id)
 	if err != nil {
 		c.Error(err.Error())
 		c.JSON(err.Code, gin.H{"message": err.Message})

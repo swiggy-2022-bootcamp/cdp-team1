@@ -9,10 +9,10 @@ import (
 
 type CartService interface {
 	AddToCart(*model.Cart, string) *error.AppError
-	GetAllCart() (*[]model.Cart, *error.AppError)
+	GetCartByCustomerId(string) (*model.Cart, *error.AppError)
 	UpdateCart(string, string, int) *error.AppError
 	DeleteCartByCustomerId(string) *error.AppError
-	DeleteAllCart() *error.AppError
+	DeleteCartItem(string, string) *error.AppError
 }
 
 type CartServiceImpl struct {
@@ -32,48 +32,73 @@ func (csvc CartServiceImpl) AddToCart(cart *model.Cart, customer_id string) *err
 	// If not, create a new cart
 	curr_cart, err := csvc.cartRepository.Read(customer_id)
 
-	fmt.Println(curr_cart, err)
+	fmt.Println("curr cart: ", curr_cart, err)
 
 	if err == nil {
 
 		// curr_cart.Products = append(curr_cart.Products, *product)
 
-		updated_cart := model.Cart{
-			CustomerId: customer_id,
-			Products:   curr_cart.Products,
-		}
+		curr_cart.Products = append(curr_cart.Products, cart.Products...)
 
-		err2 := csvc.cartRepository.UpdateExisting(&updated_cart)
+		// for _, p := range cart.Products {
+		// 	curr_cart.Products = append(curr_cart.Products, p)
+		// }
+
+		fmt.Println("curr cart updated: ", curr_cart)
+
+		err2 := csvc.cartRepository.UpdateExisting(curr_cart)
 
 		if err2 != nil {
 			return err2
 		}
 
 		return nil
+
+		// updated_cart := model.Cart{
+		// 	CustomerId: customer_id,
+		// 	Products:   curr_cart.Products,
+		// }
+
+		// err2 := csvc.cartRepository.UpdateExisting(&updated_cart)
+
+		// if err2 != nil {
+		// 	return err2
+		// }
+
+		// return nil
 	}
 
 	fmt.Println("cart doesnt exist")
-	fmt.Println("Product: ", cart)
+	fmt.Println("Cart: ", cart)
+	fmt.Println("Products: ", cart.Products)
+	fmt.Println("inside products: ", cart.Products[0].ProductId)
+	fmt.Println("inside quantity: ", cart.Products[0].Quantity)
 
-	// new_cart := model.Cart{
-	// 	CustomerId: customer_id,
-	// 	Products:   []model.C{*product},
-	// }
+	new_product := model.Product{
+		ProductId: cart.Products[0].ProductId,
+		Quantity:  cart.Products[0].Quantity,
+	}
 
-	// fmt.Println("new cart", new_cart)
+	fmt.Println("new product: ", new_product)
 
-	// err3 := csvc.cartRepository.Create(new_cart)
+	new_cart := model.Cart{
+		CustomerId: customer_id,
+		Products:   []model.Product{new_product},
+	}
 
-	// if err3 != nil {
-	// return err3
-	// }
+	fmt.Println("new cart: ", new_cart)
+
+	err3 := csvc.cartRepository.Create(new_cart)
+	if err3 != nil {
+		return err3
+	}
 
 	return nil
 }
 
-func (csvc CartServiceImpl) GetAllCart() (*[]model.Cart, *error.AppError) {
+func (csvc CartServiceImpl) GetCartByCustomerId(customer_id string) (*model.Cart, *error.AppError) {
 
-	u, err := csvc.cartRepository.ReadAll()
+	u, err := csvc.cartRepository.Read(customer_id)
 
 	if err != nil {
 		return nil, err
@@ -119,12 +144,27 @@ func (csvc CartServiceImpl) DeleteCartByCustomerId(customer_id string) *error.Ap
 	return err
 }
 
-func (csvc CartServiceImpl) DeleteAllCart() *error.AppError {
+func (csvc CartServiceImpl) DeleteCartItem(customer_id string, product_id string) *error.AppError {
 
-	err := csvc.cartRepository.DeleteAll()
+	// Get current cart object
+	curr_cart, err := csvc.cartRepository.Read(customer_id)
 
 	if err != nil {
 		return err
+	}
+
+	// Find the product in the cart
+	// Delete the product
+	for i, p := range curr_cart.Products {
+		if p.ProductId == product_id {
+			curr_cart.Products = append(curr_cart.Products[:i], curr_cart.Products[i+1:]...)
+		}
+	}
+
+	err2 := csvc.cartRepository.UpdateExisting(curr_cart)
+
+	if err2 != nil {
+		return err2
 	}
 
 	return nil

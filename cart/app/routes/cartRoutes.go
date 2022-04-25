@@ -25,8 +25,8 @@ func (cr CartRoutes) InitRoutes(newRouter *gin.RouterGroup) {
 
 	newRouter.POST("/cart", cr.cartHandler.CreateCart)
 	newRouter.PUT("/cart", cr.cartHandler.UpdateCart)
-	newRouter.GET("/cart", cr.cartHandler.GetAllCart)
-	newRouter.DELETE("/cart/:id", cr.cartHandler.DeleteCart)
+	newRouter.GET("/cart", cr.cartHandler.GetCart)
+	newRouter.DELETE("/cart/:id", cr.cartHandler.DeleteCartItem)
 	newRouter.DELETE("/cart/empty", cr.cartHandler.DeleteCartAll)
 
 }
