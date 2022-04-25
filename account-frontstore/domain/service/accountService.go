@@ -52,8 +52,14 @@ func (accountService *AccountService) GetAccountById(customerId string) (*model.
 	if err != nil {
 		return nil, err
 	}
-	fetchedAccount.RewardsTotal = accountService.grpcClientRepository.GetRewardPointsByCustomerId(customerId)
+	fetchedAccount.RewardsTotal = accountService.grpcClientRepository.GetTransactionRewardPointsByCustomerId(customerId)
 	fetchedAccount.UserBalance = accountService.grpcClientRepository.GetPaymentMethodsByCustomerId(customerId)
+
+	fetchedAccount.Cart, _ = accountService.grpcClientRepository.GetCartByCustomerId("2")
+
+	rewardsTotal, _ := accountService.grpcClientRepository.GetRewardPointsByCustomerId(customerId)
+	fetchedAccount.RewardsTotal = *rewardsTotal
+
 	return fetchedAccount, nil
 }
 

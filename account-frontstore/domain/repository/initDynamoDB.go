@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	config2 "qwik.in/account-frontstore/config"
+	"qwik.in/account-frontstore/env"
 	"qwik.in/account-frontstore/log"
 )
 
@@ -16,8 +16,9 @@ var svc *dynamodb.DynamoDB
 func GetDynamoDBInstance() *dynamodb.DynamoDB {
 	if !dbInitialized {
 		config := &aws.Config{
-			Region:      aws.String("us-west-2"),
-			Credentials: credentials.NewStaticCredentials(config2.AccessKeyID, config2.SecretAccessKey, ""),
+			//Region:      aws.String("us-west-2"),
+			Region:      aws.String(env.GetRegion()),
+			Credentials: credentials.NewStaticCredentials(env.GetAccessKey(), env.GetSecretKey(), ""),
 		}
 
 		sess := session.Must(session.NewSession(config))

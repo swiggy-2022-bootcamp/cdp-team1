@@ -6,16 +6,16 @@ import (
 )
 
 type Account struct {
-	CustomerId      string `json:"customer_id"`
-	Firstname       string `json:"first_name"`
-	Lastname        string `json:"last_name"`
-	Email           string `json:"email"`
-	Password        string `json:"password"`
-	Telephone       string `json:"telephone"`
-	CustomerGroupId int    `json:"customer_group_id"`
-	//Cart         Cart `json:"cart"`
-	RewardsTotal int32
-	UserBalance  []*protos.PaymentMode
-	Agree        int       `json:"agree"`
-	DateAdded    time.Time `json:"date_added"`
+	CustomerId      string                `json:"customer_id"`
+	Firstname       string                `json:"first_name"`
+	Lastname        string                `json:"last_name"`
+	Email           string                `json:"email"`
+	Password        string                `json:"password"`
+	Telephone       string                `json:"telephone"`
+	CustomerGroupId int                   `json:"customer_group_id"`
+	Cart            []*protos.Product     `json:"cart"`
+	RewardsTotal    int32                 `json:"rewards_total"`
+	UserBalance     []*protos.PaymentMode `json:"user_balance"`
+	Agree           int                   `json:"agree"`
+	DateAdded       time.Time             `json:"date_added"`
 }
