@@ -35,7 +35,7 @@ func NewProductPriceServiceClient(cc grpc.ClientConnInterface) ProductPriceServi
 
 func (c *productPriceServiceClient) GetTotalPriceForProducts(ctx context.Context, in *ProductsPriceRequests, opts ...grpc.CallOption) (*ResponsePrice, error) {
 	out := new(ResponsePrice)
-	err := c.cc.Invoke(ctx, "/protos.ProductPriceService/getTotalPriceForProducts", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/proto.ProductPriceService/getTotalPriceForProducts", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _ProductPriceService_GetTotalPriceForProducts_Handler(srv interface{}, ctx 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/protos.ProductPriceService/getTotalPriceForProducts",
+		FullMethod: "/proto.ProductPriceService/getTotalPriceForProducts",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProductPriceServiceServer).GetTotalPriceForProducts(ctx, req.(*ProductsPriceRequests))
@@ -92,7 +92,7 @@ func _ProductPriceService_GetTotalPriceForProducts_Handler(srv interface{}, ctx 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ProductPriceService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "protos.ProductPriceService",
+	ServiceName: "proto.ProductPriceService",
 	HandlerType: (*ProductPriceServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

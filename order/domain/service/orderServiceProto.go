@@ -16,7 +16,7 @@ import (
 var orderRepository repository.OrderRepositoryDB
 
 type OrderProtoServer struct {
-	protos.UnimplementedOrderServer
+	// protos.UnimplementedOrderServer
 }
 
 func NewOrderProtoService(pr repository.OrderRepositoryDB) OrderProtoServer {
@@ -26,7 +26,7 @@ func NewOrderProtoService(pr repository.OrderRepositoryDB) OrderProtoServer {
 
 func (o OrderProtoServer) GetAmountFromProduct(products []*protos.ProductPriceRequest) (*protos.ResponsePrice, error) {
 
-	serverAddress := ":19191"
+	serverAddress := "localhost:19191"
 	conn, err := grpc.Dial(serverAddress, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.ErrorLogger.Fatalf("did not connect: %v", err)
@@ -37,7 +37,16 @@ func (o OrderProtoServer) GetAmountFromProduct(products []*protos.ProductPriceRe
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	r, err := c.GetTotalPriceForProducts(ctx, &protos.ProductsPriceRequests{
-		Products: products,
+		Products: []*protos.ProductPriceRequest{
+			{
+				Id:       "90f97384-0117-4234-bbe2-5f306bbef0b3",
+				Quantity: "2",
+			},
+			{
+				Id:       "5d3f2abf-14dc-4857-8472-7932266d3b0f",
+				Quantity: "3",
+			},
+		},
 	})
 	if err != nil {
 		log.ErrorLogger.Fatalf("could not echo: %v", err)
@@ -88,6 +97,7 @@ func (o OrderProtoServer) CreateOrder(ctx context.Context, req *protos.CreateOrd
 	// Get cart from gRPC server
 	customer_id := req.GetCustomerId()
 
+	// Get cart from gRPC server
 	cart, err := o.GetCartFromCartService(customer_id)
 	if err != nil {
 		log.Error("could not get cart: ", err)
@@ -95,7 +105,6 @@ func (o OrderProtoServer) CreateOrder(ctx context.Context, req *protos.CreateOrd
 	}
 
 	fmt.Println("Cart: ", cart)
-	// return nil, nil
 
 	products := make([]model.Product, 0)
 
@@ -147,29 +156,27 @@ func (o OrderProtoServer) CreateOrder(ctx context.Context, req *protos.CreateOrd
 	fmt.Println("Order created")
 
 	// Create response
-	// new_products := make([]protos.Product, 0)
-	// response := &protos.CreateOrderResponse{
-	// 	OrderId:    order.OrderId,
-	// 	CustomerId: order.CustomerId,
-	// 	Status:     order.Status,
-	// 	Datetime:   order.Datetime,
-	// 	Amount:     int32(order.Amount),
-	// 	// Products:  	,
-	// }
+	new_products := make([]*protos.Products, 0)
+	response := &protos.CreateOrderResponse{
+		OrderId:    order.OrderId,
+		CustomerId: order.CustomerId,
+		Status:     order.Status,
+		Datetime:   order.Datetime,
+		Amount:     int32(order.Amount),
+		Products:   new_products,
+	}
 
-	return nil, nil
+	var productProto *protos.Products
 
-	// var productProto *protos.Product
+	for _, product := range cart.Products {
+		productProto = &protos.Products{
+			ProductId: product.ProductId,
+			Quantity:  int32(product.Quantity),
+		}
 
-	// for _, product := range cart.Products {
-	// 	productProto = &protos.Product{
-	// 		ProductId: product.ProductId,
-	// 		Quantity:  int32(product.Quantity),
-	// 	}
-	// }
+		new_products = append(new_products, productProto)
+	}
 
-	// products = append(products, productProto)
-
-	// response.Products = new_products
-	// return response, nil
+	response.Products = new_products
+	return response, nil
 }

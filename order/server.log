@@ -1035,3 +1035,132 @@ INFO: 2022/04/25 15:59:58 [Connecting with gRPC server]
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :7000
 GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /order/api/orders 2022-04-25T16:00:04+05:30 265.6306ms 
+ERROR: 2022/04/25 17:56:31 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: orderCollection]
+INFO: 2022/04/25 17:56:31 [Connecting with gRPC server]
+ERROR: 2022/04/25 17:56:33 [could not get response:  rpc error: code = DeadlineExceeded desc = context deadline exceeded]
+ERROR: 2022/04/25 17:56:33 [could not get cart:  rpc error: code = DeadlineExceeded desc = context deadline exceeded]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /order/api/order          --> orderService/app/handlers.OrderHandler.CreateOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders         --> orderService/app/handlers.OrderHandler.GetAllOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/status/:status --> orderService/app/handlers.OrderHandler.GetOrderByStatus-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.GetOrderById-fm (3 handlers)
+[GIN-debug] PUT    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.UpdateOrder-fm (3 handlers)
+[GIN-debug] DELETE /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.DeleteOrderById-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/user/:id --> orderService/app/handlers.OrderHandler.GetOrderByCustomerId-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders/invoice/:id --> orderService/app/handlers.OrderHandler.CreateInvoice-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7000
+ERROR: 2022/04/25 18:02:16 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: orderCollection]
+INFO: 2022/04/25 18:02:16 [Connecting with gRPC server]
+ERROR: 2022/04/25 18:02:17 could not echo: rpc error: code = Unimplemented desc = unknown service protos.ProductPriceService
+ERROR: 2022/04/25 18:18:05 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: orderCollection]
+INFO: 2022/04/25 18:18:05 [Connecting with gRPC server]
+ERROR: 2022/04/25 18:18:05 could not echo: rpc error: code = Unimplemented desc = unknown service protos.ProductPriceService
+ERROR: 2022/04/25 18:19:00 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: orderCollection]
+INFO: 2022/04/25 18:19:00 [Connecting with gRPC server]
+ERROR: 2022/04/25 18:19:00 could not echo: rpc error: code = Unimplemented desc = unknown service protos.ProductPriceService
+ERROR: 2022/04/25 18:21:38 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: orderCollection]
+INFO: 2022/04/25 18:21:38 [Connecting with gRPC server]
+ERROR: 2022/04/25 18:21:39 could not echo: rpc error: code = Unimplemented desc = unknown service protos.ProductPriceService
+ERROR: 2022/04/25 18:36:45 [Connection to dynamoDB failed.]
+ERROR: 2022/04/25 18:36:45 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: GARCEE07V368C435MFJ2SKT3B7VV4KQNSO5AEMVJF66Q9ASUAAJG]
+INFO: 2022/04/25 18:36:45 [Connecting with gRPC server]
+ERROR: 2022/04/25 18:36:46 [could not get response:  rpc error: code = Unknown desc = UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: U02K5J66RM8IRFMRAFP9IJRQMRVV4KQNSO5AEMVJF66Q9ASUAAJG]
+ERROR: 2022/04/25 18:36:46 [could not get cart:  rpc error: code = Unknown desc = UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: U02K5J66RM8IRFMRAFP9IJRQMRVV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /order/api/order          --> orderService/app/handlers.OrderHandler.CreateOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders         --> orderService/app/handlers.OrderHandler.GetAllOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/status/:status --> orderService/app/handlers.OrderHandler.GetOrderByStatus-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.GetOrderById-fm (3 handlers)
+[GIN-debug] PUT    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.UpdateOrder-fm (3 handlers)
+[GIN-debug] DELETE /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.DeleteOrderById-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/user/:id --> orderService/app/handlers.OrderHandler.GetOrderByCustomerId-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders/invoice/:id --> orderService/app/handlers.OrderHandler.CreateInvoice-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7000
+ERROR: 2022/04/25 18:41:18 [Connection to dynamoDB failed.]
+ERROR: 2022/04/25 18:41:19 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: BMMJT40JCVS5PMHMN7C4IB9HMBVV4KQNSO5AEMVJF66Q9ASUAAJG]
+ERROR: 2022/04/25 18:41:21 [Failed to insert item into database - UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: H4QL2C9GNOH0675CBOIPDSPBENVV4KQNSO5AEMVJF66Q9ASUAAJG]
+ERROR: 2022/04/25 18:41:21 [could not create order:  0xc000004b58]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /order/api/order          --> orderService/app/handlers.OrderHandler.CreateOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders         --> orderService/app/handlers.OrderHandler.GetAllOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/status/:status --> orderService/app/handlers.OrderHandler.GetOrderByStatus-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.GetOrderById-fm (3 handlers)
+[GIN-debug] PUT    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.UpdateOrder-fm (3 handlers)
+[GIN-debug] DELETE /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.DeleteOrderById-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/user/:id --> orderService/app/handlers.OrderHandler.GetOrderByCustomerId-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders/invoice/:id --> orderService/app/handlers.OrderHandler.CreateInvoice-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7000
+ERROR: 2022/04/25 18:47:28 [Connection to dynamoDB failed.]
+ERROR: 2022/04/25 18:47:28 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: OF0PEESGNPT1IKP5DVPK8656VRVV4KQNSO5AEMVJF66Q9ASUAAJG]
+ERROR: 2022/04/25 18:47:32 [Failed to insert item into database - UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: MJ521TDCDO5R7L4RHSBV0UKB0BVV4KQNSO5AEMVJF66Q9ASUAAJG]
+ERROR: 2022/04/25 18:47:32 [could not create order:  0xc000004840]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /order/api/order          --> orderService/app/handlers.OrderHandler.CreateOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders         --> orderService/app/handlers.OrderHandler.GetAllOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/status/:status --> orderService/app/handlers.OrderHandler.GetOrderByStatus-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.GetOrderById-fm (3 handlers)
+[GIN-debug] PUT    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.UpdateOrder-fm (3 handlers)
+[GIN-debug] DELETE /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.DeleteOrderById-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/user/:id --> orderService/app/handlers.OrderHandler.GetOrderByCustomerId-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders/invoice/:id --> orderService/app/handlers.OrderHandler.CreateInvoice-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7000
+ERROR: 2022/04/25 18:51:32 [Connection to dynamoDB failed.]
+ERROR: 2022/04/25 18:51:32 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: GS2TOUB1QJN4IQRMHLBQLELPV7VV4KQNSO5AEMVJF66Q9ASUAAJG]
+INFO: 2022/04/25 18:51:32 [Connecting with gRPC server]
+ERROR: 2022/04/25 18:51:32 [could not get response:  rpc error: code = Unknown desc = UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: NANGTD6QN4UNBKJ89KK0I4SLMBVV4KQNSO5AEMVJF66Q9ASUAAJG]
+ERROR: 2022/04/25 18:51:32 [could not get cart:  rpc error: code = Unknown desc = UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: NANGTD6QN4UNBKJ89KK0I4SLMBVV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /order/api/swagger/*any   --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /order/api/               --> orderService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /order/api/order          --> orderService/app/handlers.OrderHandler.CreateOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders         --> orderService/app/handlers.OrderHandler.GetAllOrder-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/status/:status --> orderService/app/handlers.OrderHandler.GetOrderByStatus-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.GetOrderById-fm (3 handlers)
+[GIN-debug] PUT    /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.UpdateOrder-fm (3 handlers)
+[GIN-debug] DELETE /order/api/orders/:id     --> orderService/app/handlers.OrderHandler.DeleteOrderById-fm (3 handlers)
+[GIN-debug] GET    /order/api/orders/user/:id --> orderService/app/handlers.OrderHandler.GetOrderByCustomerId-fm (3 handlers)
+[GIN-debug] POST   /order/api/orders/invoice/:id --> orderService/app/handlers.OrderHandler.CreateInvoice-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7000
