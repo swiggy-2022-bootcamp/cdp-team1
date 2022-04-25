@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"qwik.in/shipping/domain/services"
 	"qwik.in/shipping/domain/tools/logger"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -104,7 +105,10 @@ func (sh ShippingHandler) GetShippingAddrHandlerFunc() gin.HandlerFunc {
 // @Router       /existing/   [get]
 func (sh ShippingHandler) GetDefaultShippingAddrHandlerFunc() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		res, err := sh.ShippingAddrService.GetDefaultShippingAddr(true)
+		userId := ctx.Param("userId")
+		fmt.Println(userId)
+		userIdAsInt, _ := strconv.Atoi(userId)
+		res, err := sh.ShippingAddrService.GetDefaultShippingAddr(userIdAsInt)
 		if err != nil {
 			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Provided Shipping Address does not exist"})
 			return

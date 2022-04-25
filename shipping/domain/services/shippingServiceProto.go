@@ -25,7 +25,7 @@ func (s ShippingProtoServer) GetDefaultShippingAddress(ctx context.Context, ship
 	}
 
 	//Fetch Default Shipping Address
-	userShippingAddress, err := shippingAddrRepo.FindDefaultShippingAddressImpl(true)
+	userShippingAddress, err := shippingAddrRepo.FindDefaultShippingAddressImpl(int(shippingAddressRequest.GetUserId()))
 	if err != nil {
 		logger.Error("Error in Proto GetDefaultShippingAddress", err)
 		return nil, err.Error()

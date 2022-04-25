@@ -9,7 +9,7 @@ service ShippingAddressProtoFunc{
 }
 
 message ShippingAddressRequest{
-  bool defaultAddress = 1;
+  int32 userId = 1;
 }
 
 message ShippingAddress{

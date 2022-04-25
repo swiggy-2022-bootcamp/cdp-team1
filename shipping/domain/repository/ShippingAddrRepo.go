@@ -36,7 +36,7 @@ type ShippingAddress struct {
 type ShippingAddrRepo interface {
 	CreateNewShippingAddrImpl(ShippingAddress) (string, *errs.AppError)
 	FindShippingAddressByIdImpl(string) (*ShippingAddress, *errs.AppError)
-	FindDefaultShippingAddressImpl(bool) (*ShippingAddress, *errs.AppError)
+	FindDefaultShippingAddressImpl(int) (*ShippingAddress, *errs.AppError)
 }
 
 //ShippingAddressRepoImpl ..
@@ -149,10 +149,11 @@ func (sar ShippingAddressRepoImpl) FindShippingAddressByIdImpl(shippingAddressId
 }
 
 // FindDefaultShippingAddressImpl  ..
-func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(isDefaultAddress bool) (*ShippingAddress, *errs.AppError) {
+func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(userId int) (*ShippingAddress, *errs.AppError) {
 	item := models.ShippingAddrModel{}
-	filt := expression.Name("default_address").Equal(expression.Value(isDefaultAddress))
-	expr, err := expression.NewBuilder().WithFilter(filt).Build()
+	filt := expression.Name("user_id").Equal(expression.Value(userId))
+	filt2 := expression.Name("default_address").Equal(expression.Value(true))
+	expr, err := expression.NewBuilder().WithCondition(filt.And(filt2)).Build()
 	if err != nil {
 		fmt.Println("Error in Expression Builder")
 		logger.Error("Got Error building expression: %s", err)
@@ -175,6 +176,7 @@ func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(isDefaultAddre
 			fmt.Println("Error in Unmarshalling the values")
 			logger.Error("Got error while unmarshalling - %s", err)
 		}
+
 	}
 	return (*ShippingAddress)(&item), nil
 }

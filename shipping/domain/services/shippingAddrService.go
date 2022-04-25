@@ -9,7 +9,7 @@ import (
 type ShippingAddrService interface {
 	CreateNewShippingAddress(int, string, string, string, string, string, string, string, string, int, string, bool, int) (string, *errs.AppError)
 	GetShippingAddressById(string) (*repository.ShippingAddress, *errs.AppError)
-	GetDefaultShippingAddr(bool) (*repository.ShippingAddress, *errs.AppError)
+	GetDefaultShippingAddr(int) (*repository.ShippingAddress, *errs.AppError)
 }
 
 //ShippingAddrServiceImpl ..
@@ -44,8 +44,8 @@ func (s ShippingAddrServiceImpl) GetShippingAddressById(shippingAddressId string
 }
 
 //GetDefaultShippingAddr ..
-func (s ShippingAddrServiceImpl) GetDefaultShippingAddr(isDefaultAddress bool) (*repository.ShippingAddress, *errs.AppError) {
-	data, err := s.shippingAddrRepo.FindDefaultShippingAddressImpl(isDefaultAddress)
+func (s ShippingAddrServiceImpl) GetDefaultShippingAddr(userId int) (*repository.ShippingAddress, *errs.AppError) {
+	data, err := s.shippingAddrRepo.FindDefaultShippingAddressImpl(userId)
 	if err != nil {
 		return nil, err
 	}
