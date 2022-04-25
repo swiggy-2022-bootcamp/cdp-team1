@@ -17,28 +17,29 @@ func SwagHandler(router *gin.Engine) {
 	router.GET("/checkout/api/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 }
 
-//ShippingRouter ..
-func ShippingRouter(router *gin.Engine) {
-	//Actual Endpoints
-	router.GET("/shipping/api/existing", shippingHandler.GetDefaultShippingAddrHandlerFunc())
-}
-
-//CartRouter ..
-func CartRouter(router *gin.Engine) {
-	router.GET("/cart/api/cartItems", cartHandler.GetCartDetailsFunc())
-}
-
-//PaymentRouter ..
-func PaymentRouter(router *gin.Engine) {
-	router.GET("/payment/api/payments", paymentHandler.GetDefaultPaymentModeHandlerFunc())
-}
+////ShippingRouter ..
+//func ShippingRouter(router *gin.Engine) {
+//	//Actual Endpoints
+//	router.GET("/shipping/api/existing", shippingHandler.GetDefaultShippingAddrHandlerFunc())
+//}
+//
+////CartRouter ..
+//func CartRouter(router *gin.Engine) {
+//	router.GET("/cart/api/cartItems", cartHandler.GetCartDetailsFunc())
+//}
+//
+////PaymentRouter ..
+//func PaymentRouter(router *gin.Engine) {
+//	router.GET("/payment/api/payments", paymentHandler.GetDefaultPaymentModeHandlerFunc())
+//}
 
 //CheckoutRouter ..
 func CheckoutRouter(router *gin.Engine) {
-	router.GET("/checkout/api/shippingAddress", checkoutHandler.CheckoutGetShippingAddressFlow())
-	router.GET("/checkout/api/cartItems", checkoutHandler.CheckoutGetCartItemsFlow())
-	router.GET("/checkout/api/payments", checkoutHandler.CheckoutGetPaymentsFlow())
-	router.POST("/checkout/api/confirm", checkoutHandler.CheckoutPayStatusFlow())
-	router.GET("/checkout/api/existing/:id", checkoutHandler.CheckoutShippingAddressFlow())
+	//router.GET("/checkout/api/shippingAddress", checkoutHandler.CheckoutGetShippingAddressFlow())
+	//router.GET("/checkout/api/cartItems", checkoutHandler.CheckoutGetCartItemsFlow())
+	//router.GET("/checkout/api/payments", checkoutHandler.CheckoutGetPaymentsFlow())
 	router.GET("/checkout/api/confirm/:id", checkoutHandler.CheckoutGetOrderOverview())
+	router.GET("/checkout/api/existing/:id", checkoutHandler.CheckoutShippingAddressFlow())
+	router.POST("/checkout/api/confirm", checkoutHandler.CheckoutPayStatusFlow())
+	//router.PUT("/checkout/api/confirm/:id", checkoutHandler.CHECKOUT())
 }

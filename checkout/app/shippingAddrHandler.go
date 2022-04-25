@@ -1,12 +1,8 @@
 package app
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
 	_ "qwik.in/checkout/docs" //GoSwagger
 	"qwik.in/checkout/domain/services"
-	"qwik.in/checkout/domain/tools/logger"
 )
 
 //ShippingHandler ..
@@ -31,22 +27,22 @@ type ShippingAddrDTO struct {
 	ShippingCost      int    `json:"shipping_cost" dynamodbav:"shipping_cost"`
 }
 
-// GetDefaultShippingAddrHandlerFunc ..
-// @Summary      Gets Default Shipping Address
-// @Description  Returns default Shipping Address
-// @Tags         ShippingAddress Service
-// @Produce      json
-// @Success      200  {object}  map[string]interface{}
-// @Failure      400  {number} 	http.StatusBadRequest
-// @Router       /shipping/api/existing   [get]
-func (sh ShippingHandler) GetDefaultShippingAddrHandlerFunc() gin.HandlerFunc {
-	return func(ctx *gin.Context) {
-		res, err := sh.ShippingService.GetDefaultShippingAddr(true)
-		if err != nil {
-			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Provided Shipping Address does not exist"})
-			return
-		}
-		logger.Info(" ✅ Default Address Fetched", res)
-		ctx.JSON(http.StatusAccepted, res)
-	}
-}
+//// GetDefaultShippingAddrHandlerFunc ..
+//// @Summary      Gets Default Shipping Address
+//// @Description  Returns default Shipping Address
+//// @Tags         ShippingAddress Service
+//// @Produce      json
+//// @Success      200  {object}  map[string]interface{}
+//// @Failure      400  {number} 	http.StatusBadRequest
+//// @Router       /shipping/api/existing   [get]
+//func (sh ShippingHandler) GetDefaultShippingAddrHandlerFunc() gin.HandlerFunc {
+//	return func(ctx *gin.Context) {
+//		res, err := sh.ShippingService.GetDefaultShippingAddr(true)
+//		if err != nil {
+//			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Provided Shipping Address does not exist"})
+//			return
+//		}
+//		logger.Info(" ✅ Default Address Fetched", res)
+//		ctx.JSON(http.StatusAccepted, res)
+//	}
+//}

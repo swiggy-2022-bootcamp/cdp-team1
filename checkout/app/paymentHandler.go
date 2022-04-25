@@ -1,11 +1,7 @@
 package app
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
 	"qwik.in/checkout/domain/services"
-	"qwik.in/checkout/domain/tools/logger"
 )
 
 //PaymentHandler ..
@@ -31,14 +27,14 @@ type PaymentModeDTO struct {
 // @Success      200  {object}  map[string]interface{}
 // @Failure      400  {number} 	http.StatusBadRequest
 // @Router       /payment/api/payments   [get]
-func (p PaymentHandler) GetDefaultPaymentModeHandlerFunc() gin.HandlerFunc {
-	return func(ctx *gin.Context) {
-		res, err := p.PaymentService.GetDefaultPaymentMode()
-		if err != nil {
-			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Payment Mode does not exist"})
-			return
-		}
-		logger.Info(" ✅ Payment Mode Fetched", res)
-		ctx.JSON(http.StatusAccepted, res)
-	}
-}
+//func (p PaymentHandler) GetDefaultPaymentModeHandlerFunc() gin.HandlerFunc {
+//	return func(ctx *gin.Context) {
+//		res, err := p.PaymentService.GetDefaultPaymentMode()
+//		if err != nil {
+//			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Payment Mode does not exist"})
+//			return
+//		}
+//		logger.Info(" ✅ Payment Mode Fetched", res)
+//		ctx.JSON(http.StatusAccepted, res)
+//	}
+//}

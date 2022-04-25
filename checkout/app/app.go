@@ -27,10 +27,10 @@ func setupRouter() *gin.Engine {
 	router.Use(logger.UseLogger(logger.DefaultLoggerFormatter), gin.Recovery())
 	// health check route
 	HealthCheckRouter(router)
-	ShippingRouter(router)
+	//ShippingRouter(router)
 	CheckoutRouter(router)
-	CartRouter(router)
-	PaymentRouter(router)
+	//CartRouter(router)
+	//PaymentRouter(router)
 	return router
 }
 
@@ -62,11 +62,11 @@ func Start() {
 
 	//Configure - ShippingAddress Server and Router
 
-	PORT := os.Getenv("CHECKOUT_SERVICE_PORT")
+	//PORT := os.Getenv("CHECKOUT_SERVICE_PORT")
 	router := setupRouter()
 
 	configureSwaggerDoc()
-	err = router.Run(":" + PORT)
+	err = router.Run(":" + "9002")
 	if err != nil {
 		return
 	}
