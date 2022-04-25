@@ -18,6 +18,7 @@ RUN go build -o /orderService
 # To actually open the port, runtime parameters
 # must be supplied to the docker command.
 EXPOSE 7000
+EXPOSE 5001
 
 COPY .env .
 

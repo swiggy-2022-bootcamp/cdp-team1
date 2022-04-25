@@ -16,7 +16,7 @@ import (
 var orderRepository repository.OrderRepositoryDB
 
 type OrderProtoServer struct {
-	// protos.UnimplementedOrderServer
+	protos.UnimplementedOrderServer
 }
 
 func NewOrderProtoService(pr repository.OrderRepositoryDB) OrderProtoServer {
@@ -37,6 +37,7 @@ func (o OrderProtoServer) GetAmountFromProduct(products []*protos.ProductPriceRe
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	r, err := c.GetTotalPriceForProducts(ctx, &protos.ProductsPriceRequests{
+		// Products: products,
 		Products: []*protos.ProductPriceRequest{
 			{
 				Id:       "90f97384-0117-4234-bbe2-5f306bbef0b3",
