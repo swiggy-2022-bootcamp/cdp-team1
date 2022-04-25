@@ -20,7 +20,7 @@ func setupRouter(handler RewardHandler) *gin.Engine {
 	r := gin.New()
 	gin.SetMode(gin.ReleaseMode)
 
-	newRouter := r.Group("Rewards/api")
+	newRouter := r.Group("rewards/api")
 
 	newRouter.GET("/search/:id", handler.Searchreward)
 	newRouter.GET("/", handler.Getall)

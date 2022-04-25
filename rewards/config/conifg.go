@@ -18,3 +18,9 @@ const (
 	DYNAMO_DB_REGION     = "us-east-1"
 	DYNAMO_DB_URL        = "https://dynamodb.us-east-1.amazonaws.com"
 )
+
+// gRPC Server config for reward points
+const (
+	GRPC_SERVER_IP   = "localhost" //"Trabnsaction" //
+	GRPC_SERVER_PORT = "19071"
+)

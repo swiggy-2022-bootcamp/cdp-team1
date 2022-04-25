@@ -36,7 +36,7 @@ func (r dynamoRepository) FindOne(rewardId string) (entity.Reward, error) {
 	params := &dynamodb.GetItemInput{
 		TableName: aws.String("Rewards"),
 		Key: map[string]*dynamodb.AttributeValue{
-			"ID": {
+			"id": {
 				S: aws.String(rewardId),
 			},
 		},
@@ -111,8 +111,15 @@ func (r dynamoRepository) DeleteReward(rewardId string) error {
 	}
 }
 func (r dynamoRepository) SaveReward(Reward entity.Reward) error {
+	log.Info("Saving reward", Reward)
+	var r1 entity.Reward
+	r1.ID = Reward.ID
+	r1.Name = Reward.Name
+	r1.Description = Reward.Description
+	r1.Points = Reward.Points
 
-	RewardAVMap, err := dynamodbattribute.MarshalMap(Reward)
+	RewardAVMap, err := dynamodbattribute.MarshalMap(r1)
+	log.Info("Marshalled Reward", RewardAVMap)
 	if err != nil {
 		return err
 	}
@@ -121,7 +128,7 @@ func (r dynamoRepository) SaveReward(Reward entity.Reward) error {
 		TableName: aws.String("Rewards"),
 		Item:      RewardAVMap,
 	}
-
+	log.Info("Saving params in Dynamo DB", params)
 	resp, err := db.PutItem(params)
 	if err != nil {
 		log.Error(err.Error())
