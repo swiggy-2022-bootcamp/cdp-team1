@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 	"time"
 
 	"google.golang.org/grpc" //grpc
@@ -29,6 +30,10 @@ type CheckoutHandler struct {
 type PaymentModesDTO struct {
 	Mode       string `json:"mode" dynamodbav:"mode"`
 	CardNumber int    `json:"cardNumber" dynamodbav:"card_number"`
+}
+
+type ShippingAddressDTO1 struct {
+	UserId int `json:"user_id" dynamodbav:"user_id"`
 }
 
 // CheckoutGetShippingAddressFlow ..
@@ -189,14 +194,10 @@ func (ch CheckoutHandler) CheckoutPayStatusFlow() gin.HandlerFunc {
 // @Success      200  {object}  map[string]interface{}
 // @Failure      500  {number} 	http.StatusInternalServerError
 // @Router       /checkout/api/existing  [get]
-func CheckoutShippingAddressFlow() gin.HandlerFunc {
+func (ch CheckoutHandler) CheckoutShippingAddressFlow() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		readData, err := ioutil.ReadAll(ctx.Request.Body)
-		if err != nil {
-			logger.Error("Empty Request Body", err)
-		}
-		paymentModesDTOData := PaymentModesDTO{}
-		_ = json.Unmarshal(readData, &paymentModesDTOData)
+		userId := ctx.Param("userId")
+		userIdAsInt, _ := strconv.Atoi(userId)
 		conn, err := grpc.Dial("localhost:9003", grpc.WithTransportCredentials(insecure.NewCredentials()))
 		if err != nil {
 			log.Fatalf("Connection failed : %v", err)
@@ -209,7 +210,7 @@ func CheckoutShippingAddressFlow() gin.HandlerFunc {
 		}(conn)
 		c := protos.NewShippingAddressProtoFuncClient(conn)
 		shippingRequest := &protos.ShippingAddressRequest{
-			DefaultAddress: true,
+			UserId: int32(userIdAsInt),
 		}
 		result, err := c.GetDefaultShippingAddress(ctx, shippingRequest)
 		if err != nil {
