@@ -12,8 +12,8 @@ import (
 )
 
 const (
-	adminTableName string = "team-1-admin-users"
-	adminTableGSI  string = "username-index"
+	adminTableName string = "team-1-admins"
+	adminTableGSI  string = "user_name-index"
 )
 
 type adminRepositoryDB struct {
@@ -73,7 +73,7 @@ func (adb adminRepositoryDB) FetchByUsername(username string) (*domain.User, *er
 		TableName: aws.String(adminTableName),
 		IndexName: aws.String(adminTableGSI),
 		ExpressionAttributeNames: map[string]*string{
-			"#username": aws.String("username"),
+			"#username": aws.String("user_name"),
 		},
 		ExpressionAttributeValues: map[string]*dynamodb.AttributeValue{
 			":username": {S: aws.String(username)},
