@@ -1,0 +1,105 @@
+GET https://my.api.mockaroo.com/user?key=baeb8380
+Accept: application/json
+
+###
+
+POST https://my.api.mockaroo.com/customers?key=baeb8380
+Accept: application/json
+
+{
+                "firstname": "Ravi Kumar",
+                "lastname": "Shantharaju",
+                "email": "ravi@gmail.com",
+                "password": "password",
+                "telephone": "1-541-754-3010",
+                "customer_group_id": "1",
+              	"address":[{
+                  	"houseNumber": "13/2",
+                	"street": "downing street",
+                  	"area": "central park",
+                  	"city": "london",
+                  	"country": "Britain",
+                  	"pincode": "560091",
+                  	"default": "1"
+
+                },
+                {
+                  	"houseNumber": "11/22",
+                	"street": "north street",
+                  	"area": "east park",
+                  	"city": "london",
+                  	"country": "Britain",
+                  	"pincode": "560071",
+                  	"default": "0"
+
+                }],
+              	"agree": "1"
+ }
+
+###
+
+DELETE https://my.api.mockaroo.com/customers/123?key=baeb8380
+Accept: application/json
+
+###
+
+PUT https://my.api.mockaroo.com/customers/123?key=baeb8380
+Accept: application/json
+
+{
+                "firstname": "Ravi Kumar",
+                "lastname": "Shantharaju",
+                "email": "ravi@gmail.com",
+                "password": "password",
+                "telephone": "1-541-754-3010",
+                "customer_group_id": "1",
+              	"address":[{
+                  	"houseNumber": "13/2",
+                	"street": "downing street",
+                  	"area": "central park",
+                  	"city": "london",
+                  	"country": "Britain",
+                  	"pincode": "560091",
+                  	"default": "1"
+
+                },
+                {
+                  	"houseNumber": "11/22",
+                	"street": "north street",
+                  	"area": "east park",
+                  	"city": "london",
+                  	"country": "Britain",
+                  	"pincode": "560071",
+                  	"default": "0"
+
+                }],
+              	"affiliate": {
+                  	"company": "Eureka Corp",
+    				"website": "http://eurekacorp.com",
+    				"tracking": "9878ttr4567",
+    				"commission": "330",
+    				"tax": "99998888",
+    				"bankName": "Canara Bank",
+    				"bankBranchNumber": "VFG5654",
+    				"bankSwiftCode": "SWIFTCFGT54",
+    				"bankAccountName": "Eureka Corp",
+    				"bankAccountNumber": "CNBR45467",
+    				"status": "1"
+                },
+              	"agree": "1",
+                "dateAdded": "08-04-2022",
+              	"approved": "1",
+              	"safe": "1",
+              	"newsletter": "1",
+              	"status": "1"
+}
+
+###
+
+GET https://my.api.mockaroo.com/customers/123?key=baeb8380
+Accept: application/json
+
+###
+
+GET https://my.api.mockaroo.com/customers/email/raviAtgmailDotcom?key=baeb8380
+Accept: application/json
