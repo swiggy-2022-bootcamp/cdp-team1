@@ -1,0 +1,521 @@
+📛ERROR: 2022/04/17 16:06:37 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 16:06:37 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T16:06:43+05:30 331.4787ms 
+[GIN] 2022/04/17 - 16:06:43 | 202 |    331.4787ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T16:30:03+05:30 1.4700423s 
+[GIN] 2022/04/17 - 16:30:03 | 202 |    1.4700423s |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T16:30:09+05:30 352.8885ms 
+[GIN] 2022/04/17 - 16:30:09 | 202 |    352.8885ms |             ::1 | POST     "/shipping/api/newAddress"
+📛ERROR: 2022/04/17 18:17:49 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 18:17:49 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T18:18:17+05:30 320.7798ms 
+[GIN] 2022/04/17 - 18:18:17 | 202 |    320.7798ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T18:18:19+05:30 302.7863ms 
+[GIN] 2022/04/17 - 18:18:19 | 202 |    302.7863ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T18:18:20+05:30 337.1705ms 
+[GIN] 2022/04/17 - 18:18:20 | 202 |    337.1705ms |             ::1 | POST     "/shipping/api/newAddress"
+❕INFO: 2022/04/17 21:22:43 [Created the table{
+  TableDescription: {
+    AttributeDefinitions: [{
+        AttributeName: "shipping_address_id",
+        AttributeType: "S"
+      }],
+    CreationDateTime: 2022-04-17 15:52:38.529 +0000 UTC,
+    ItemCount: 0,
+    KeySchema: [{
+        AttributeName: "shipping_address_id",
+        KeyType: "HASH"
+      }],
+    ProvisionedThroughput: {
+      NumberOfDecreasesToday: 0,
+      ReadCapacityUnits: 5,
+      WriteCapacityUnits: 5
+    },
+    TableArn: "arn:aws:dynamodb:us-west-2:800300569671:table/team-1-shipping",
+    TableId: "ca26e731-c27a-42da-a4f4-894325843235",
+    TableName: "team-1-shipping",
+    TableSizeBytes: 0,
+    TableStatus: "CREATING"
+  }
+}]
+📛ERROR: 2022/04/17 21:27:31 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:27:31 [Created the table{
+
+}]
+📛ERROR: 2022/04/17 21:28:22 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:28:22 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:28:54+05:30 301.2508ms 
+[GIN] 2022/04/17 - 21:28:54 | 202 |    301.2508ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing/one 2022-04-17T21:29:51+05:30 0s 
+[GIN] 2022/04/17 - 21:29:51 | 404 |            0s |             ::1 | GET      "/shipping/api/existing/one"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existingone 2022-04-17T21:30:06+05:30 1.3944933s 
+[GIN] 2022/04/17 - 21:30:06 | 400 |    1.3944933s |             ::1 | GET      "/shipping/api/existingone"
+📛ERROR: 2022/04/17 21:31:56 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:31:56 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:32:03+05:30 343.1687ms 
+[GIN] 2022/04/17 - 21:32:03 | 400 |    343.1687ms |             ::1 | GET      "/shipping/api/one"
+❕INFO: 2022/04/17 21:34:01 [Created the table{
+  TableDescription: {
+    AttributeDefinitions: [{
+        AttributeName: "shipping_address_id",
+        AttributeType: "S"
+      }],
+    CreationDateTime: 2022-04-17 16:03:56.788 +0000 UTC,
+    ItemCount: 0,
+    KeySchema: [{
+        AttributeName: "shipping_address_id",
+        KeyType: "HASH"
+      }],
+    ProvisionedThroughput: {
+      NumberOfDecreasesToday: 0,
+      ReadCapacityUnits: 5,
+      WriteCapacityUnits: 5
+    },
+    TableArn: "arn:aws:dynamodb:us-west-2:800300569671:table/team-1-shipping",
+    TableId: "823dfe36-d43e-4511-9f9d-5cd90e496e1a",
+    TableName: "team-1-shipping",
+    TableSizeBytes: 0,
+    TableStatus: "CREATING"
+  }
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:34:08+05:30 333.0237ms 
+[GIN] 2022/04/17 - 21:34:08 | 400 |    333.0237ms |             ::1 | GET      "/shipping/api/one"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:34:12+05:30 369.3931ms 
+[GIN] 2022/04/17 - 21:34:12 | 202 |    369.3931ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:34:15+05:30 313.0771ms 
+[GIN] 2022/04/17 - 21:34:15 | 400 |    313.0771ms |             ::1 | GET      "/shipping/api/one"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/1 2022-04-17T21:34:26+05:30 307.305ms 
+[GIN] 2022/04/17 - 21:34:26 | 400 |     307.305ms |             ::1 | GET      "/shipping/api/1"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:34:29+05:30 326.7797ms 
+[GIN] 2022/04/17 - 21:34:29 | 400 |    326.7797ms |             ::1 | GET      "/shipping/api/one"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-17T21:34:41+05:30 0s 
+[GIN] 2022/04/17 - 21:34:41 | 200 |            0s |             ::1 | GET      "/shipping/api/"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-17T21:34:42+05:30 0s 
+[GIN] 2022/04/17 - 21:34:42 | 200 |       329.5µs |             ::1 | GET      "/shipping/api/"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ome 2022-04-17T21:34:51+05:30 323.7796ms 
+[GIN] 2022/04/17 - 21:34:51 | 400 |    323.7796ms |             ::1 | GET      "/shipping/api/ome"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ome 2022-04-17T21:34:54+05:30 336.6569ms 
+[GIN] 2022/04/17 - 21:34:54 | 400 |    336.6569ms |             ::1 | GET      "/shipping/api/ome"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:34:55+05:30 338.8123ms 
+[GIN] 2022/04/17 - 21:34:55 | 400 |    338.8123ms |             ::1 | GET      "/shipping/api/one"
+📛ERROR: 2022/04/17 21:36:33 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:36:33 [Created the table{
+
+}]
+📛ERROR: 2022/04/17 21:36:48 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:36:48 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:36:49+05:30 323.9756ms 
+[GIN] 2022/04/17 - 21:36:49 | 202 |    323.9756ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:36:59+05:30 335.7525ms 
+[GIN] 2022/04/17 - 21:36:59 | 202 |    335.7525ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:37:08+05:30 361.7332ms 
+[GIN] 2022/04/17 - 21:37:08 | 400 |    361.7332ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:38:51 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:38:51 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:38:57+05:30 320.3142ms 
+[GIN] 2022/04/17 - 21:38:57 | 400 |    320.3142ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:40:01 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:40:01 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:40:06+05:30 323.4863ms 
+[GIN] 2022/04/17 - 21:40:06 | 400 |    323.4863ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:45:41 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:45:41 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-17T21:45:50+05:30 330.4569ms 
+[GIN] 2022/04/17 - 21:45:50 | 202 |    330.4569ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:45:54+05:30 335.5539ms 
+[GIN] 2022/04/17 - 21:45:54 | 400 |    335.5539ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:47:57 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:47:57 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:48:01+05:30 336.9569ms 
+[GIN] 2022/04/17 - 21:48:01 | 400 |    337.0338ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:48:38 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:48:38 [Created the table{
+
+}]
+GET - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:48:50+05:30 337.758ms 
+[GIN] 2022/04/17 - 21:48:50 | 400 |     337.758ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:49:29 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:49:29 [Created the table{
+
+}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:49:30+05:30 368.226ms 
+[GIN] 2022/04/17 - 21:49:30 | 202 |     368.226ms |             ::1 | GET      "/shipping/api/two"
+📛ERROR: 2022/04/17 21:49:43 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:49:43 [Created the table{
+
+}]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/three 2022-04-17T21:49:49+05:30 329.6205ms 
+[GIN] 2022/04/17 - 21:49:49 | 500 |    329.6205ms |             ::1 | GET      "/shipping/api/three"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/two 2022-04-17T21:49:56+05:30 358.8477ms 
+[GIN] 2022/04/17 - 21:49:56 | 202 |    358.8477ms |             ::1 | GET      "/shipping/api/two"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:50:00+05:30 345.753ms 
+[GIN] 2022/04/17 - 21:50:00 | 202 |     345.753ms |             ::1 | GET      "/shipping/api/one"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/thre 2022-04-17T21:50:04+05:30 324.3002ms 
+[GIN] 2022/04/17 - 21:50:04 | 500 |    324.3002ms |             ::1 | GET      "/shipping/api/thre"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/thre 2022-04-17T21:50:06+05:30 370.6734ms 
+[GIN] 2022/04/17 - 21:50:06 | 500 |    370.6734ms |             ::1 | GET      "/shipping/api/thre"
+📛ERROR: 2022/04/17 21:54:34 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/17 21:54:34 [Created the table{
+
+}]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/three 2022-04-17T21:54:41+05:30 347.0337ms 
+[GIN] 2022/04/17 - 21:54:41 | 500 |    347.0337ms |             ::1 | GET      "/shipping/api/three"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-17T21:54:46+05:30 320.9436ms 
+[GIN] 2022/04/17 - 21:54:46 | 202 |    320.9436ms |             ::1 | GET      "/shipping/api/one"
+📛ERROR: 2022/04/18 07:25:55 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 07:25:55 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-18T07:26:21+05:30 0s 
+[GIN] 2022/04/18 - 07:26:21 | 200 |       506.3µs |             ::1 | GET      "/shipping/api/"
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/:one 2022-04-18T07:26:36+05:30 357.852ms 
+[GIN] 2022/04/18 - 07:26:36 | 500 |     357.852ms |             ::1 | GET      "/shipping/api/:one"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-18T07:26:40+05:30 314.1562ms 
+[GIN] 2022/04/18 - 07:26:40 | 202 |    314.1562ms |             ::1 | GET      "/shipping/api/one"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-18T07:27:04+05:30 311.5032ms 
+[GIN] 2022/04/18 - 07:27:04 | 202 |    311.5032ms |             ::1 | GET      "/shipping/api/one"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-18T07:27:07+05:30 0s 
+[GIN] 2022/04/18 - 07:27:07 | 200 |      1.0011ms |             ::1 | GET      "/shipping/api/"
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-18T07:28:35+05:30 361.9µs 
+[GIN] 2022/04/18 - 07:28:35 | 400 |       361.9µs |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-18T07:28:43+05:30 1.4339712s 
+[GIN] 2022/04/18 - 07:28:43 | 202 |    1.4339712s |             ::1 | POST     "/shipping/api/newAddress"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/one 2022-04-18T07:28:55+05:30 342.1887ms 
+[GIN] 2022/04/18 - 07:28:55 | 202 |    342.1887ms |             ::1 | GET      "/shipping/api/one"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-18T07:29:30+05:30 353.0032ms 
+[GIN] 2022/04/18 - 07:29:30 | 202 |    353.0032ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-18T07:29:36+05:30 322.0474ms 
+[GIN] 2022/04/18 - 07:29:36 | 202 |    322.0474ms |             ::1 | POST     "/shipping/api/newAddress"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-18T07:29:45+05:30 336.8235ms 
+[GIN] 2022/04/18 - 07:29:45 | 202 |    336.8235ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:30:48+05:30 335.1709ms 
+[GIN] 2022/04/18 - 07:30:48 | 202 |    336.1694ms |             ::1 | GET      "/shipping/api/existing"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-18T07:31:39+05:30 370.2343ms 
+[GIN] 2022/04/18 - 07:31:39 | 202 |    370.2343ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:31:42+05:30 311.4196ms 
+[GIN] 2022/04/18 - 07:31:42 | 202 |    311.4196ms |             ::1 | GET      "/shipping/api/existing"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:31:45+05:30 350.1445ms 
+[GIN] 2022/04/18 - 07:31:45 | 202 |    350.1445ms |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/18 07:33:02 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 07:33:02 [Created the table{
+
+}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:33:11+05:30 312.311ms 
+[GIN] 2022/04/18 - 07:33:11 | 202 |     312.311ms |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/18 07:33:57 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 07:33:57 [Created the table{
+
+}]
+❕INFO: 2022/04/18 07:34:09 [Default Address Fetched ✅  0xc000418b00]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:34:09+05:30 338.3582ms 
+[GIN] 2022/04/18 - 07:34:09 | 202 |    338.3582ms |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/18 07:37:57 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 07:37:57 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T07:38:35+05:30 1.0107ms 
+[GIN] 2022/04/18 - 07:38:35 | 200 |      1.0107ms |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T07:38:35+05:30 0s 
+[GIN] 2022/04/18 - 07:38:35 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T07:38:35+05:30 509.5µs 
+[GIN] 2022/04/18 - 07:38:35 | 200 |       509.5µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T07:38:35+05:30 9.5686ms 
+[GIN] 2022/04/18 - 07:38:35 | 200 |      9.5686ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T07:38:36+05:30 347µs 
+[GIN] 2022/04/18 - 07:38:36 | 200 |         347µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+📛ERROR: 2022/04/18 07:40:54 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 07:40:54 [Created the table{
+
+}]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/getAddress/one 2022-04-18T07:41:04+05:30 341.9034ms 
+[GIN] 2022/04/18 - 07:41:04 | 202 |    341.9034ms |             ::1 | GET      "/shipping/api/getAddress/one"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/getAddress/three 2022-04-18T07:41:14+05:30 315.7272ms 
+[GIN] 2022/04/18 - 07:41:14 | 202 |    315.7272ms |             ::1 | GET      "/shipping/api/getAddress/three"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/getAddress/two 2022-04-18T07:41:18+05:30 324.0829ms 
+[GIN] 2022/04/18 - 07:41:18 | 202 |    324.0829ms |             ::1 | GET      "/shipping/api/getAddress/two"
+❕INFO: 2022/04/18 07:41:25 [Default Address Fetched ✅  0xc0001fe210]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:41:25+05:30 317.2799ms 
+[GIN] 2022/04/18 - 07:41:25 | 202 |    317.2799ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/18 07:41:26 [Default Address Fetched ✅  0xc0003ea160]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:41:26+05:30 345.976ms 
+[GIN] 2022/04/18 - 07:41:26 | 202 |     345.976ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/18 07:41:26 [Default Address Fetched ✅  0xc0003ea370]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:41:26+05:30 351.577ms 
+[GIN] 2022/04/18 - 07:41:26 | 202 |     351.577ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/18 07:41:27 [Default Address Fetched ✅  0xc0003ea580]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:41:27+05:30 302.3603ms 
+[GIN] 2022/04/18 - 07:41:27 | 202 |    302.3603ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/18 07:41:27 [Default Address Fetched ✅  0xc00012c580]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:41:27+05:30 337.1928ms 
+[GIN] 2022/04/18 - 07:41:27 | 202 |    337.1928ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/18 07:41:28 [Default Address Fetched ✅  0xc0001fe420]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:41:28+05:30 331.6567ms 
+[GIN] 2022/04/18 - 07:41:28 | 202 |    331.6567ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/18 07:41:29 [Default Address Fetched ✅  0xc00012c840]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:41:29+05:30 323.2933ms 
+[GIN] 2022/04/18 - 07:41:29 | 202 |    323.2933ms |             ::1 | GET      "/shipping/api/existing"
+❕INFO: 2022/04/18 07:41:29 [Default Address Fetched ✅  0xc0003ea790]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-18T07:41:29+05:30 352.616ms 
+[GIN] 2022/04/18 - 07:41:29 | 202 |     352.616ms |             ::1 | GET      "/shipping/api/existing"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/swagger/index.html 2022-04-18T07:41:52+05:30 598.1µs 
+[GIN] 2022/04/18 - 07:41:52 | 200 |       598.1µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T07:41:57+05:30 514.3µs 
+[GIN] 2022/04/18 - 07:41:57 | 200 |       514.3µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T07:41:57+05:30 291.4µs 
+[GIN] 2022/04/18 - 07:41:57 | 200 |       291.4µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T07:41:57+05:30 516.8µs 
+[GIN] 2022/04/18 - 07:41:57 | 200 |       516.8µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T07:41:57+05:30 5.0909ms 
+[GIN] 2022/04/18 - 07:41:57 | 200 |      5.0909ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T07:41:58+05:30 282.5µs 
+[GIN] 2022/04/18 - 07:41:58 | 200 |       282.5µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T07:41:58+05:30 0s 
+[GIN] 2022/04/18 - 07:41:58 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T07:42:04+05:30 188.7µs 
+[GIN] 2022/04/18 - 07:42:04 | 200 |       188.7µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T07:42:04+05:30 0s 
+[GIN] 2022/04/18 - 07:42:04 | 304 |       808.1µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T07:42:04+05:30 0s 
+[GIN] 2022/04/18 - 07:42:04 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T07:42:04+05:30 0s 
+[GIN] 2022/04/18 - 07:42:04 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T07:42:05+05:30 0s 
+[GIN] 2022/04/18 - 07:42:05 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T07:42:05+05:30 0s 
+[GIN] 2022/04/18 - 07:42:05 | 304 |       330.5µs |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+📛ERROR: 2022/04/18 07:42:22 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 07:42:22 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T07:42:47+05:30 508.2µs 
+[GIN] 2022/04/18 - 07:42:47 | 200 |       508.2µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T07:42:47+05:30 0s 
+[GIN] 2022/04/18 - 07:42:47 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T07:42:47+05:30 1.0424ms 
+[GIN] 2022/04/18 - 07:42:47 | 200 |      1.0424ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T07:42:47+05:30 6.4317ms 
+[GIN] 2022/04/18 - 07:42:47 | 200 |      7.2066ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T07:42:47+05:30 270.2µs 
+[GIN] 2022/04/18 - 07:42:47 | 200 |       270.2µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T07:42:47+05:30 0s 
+[GIN] 2022/04/18 - 07:42:47 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+📛ERROR: 2022/04/18 20:01:32 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 20:01:32 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/swagger/index.html 2022-04-18T20:01:54+05:30 568.4µs 
+[GIN] 2022/04/18 - 20:01:54 | 200 |       568.4µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:02:00+05:30 0s 
+[GIN] 2022/04/18 - 20:02:00 | 200 |       999.7µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:02:00+05:30 2.9968ms 
+[GIN] 2022/04/18 - 20:02:00 | 200 |      3.9969ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:02:00+05:30 997.6µs 
+[GIN] 2022/04/18 - 20:02:00 | 200 |      1.9968ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:02:00+05:30 999.2µs 
+[GIN] 2022/04/18 - 20:02:00 | 200 |       999.2µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:02:00+05:30 774.9µs 
+[GIN] 2022/04/18 - 20:02:00 | 200 |       774.9µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+📛ERROR: 2022/04/18 20:26:33 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/18 20:26:33 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:37+05:30 0s 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       519.5µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:37+05:30 0s 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       508.2µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:37+05:30 581.8µs 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       581.8µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:37+05:30 6.3223ms 
+[GIN] 2022/04/18 - 20:26:37 | 200 |      6.3223ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:37+05:30 1.003ms 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       1.003ms |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:37+05:30 0s 
+[GIN] 2022/04/18 - 20:26:37 | 200 |       653.5µs |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 304 |       823.1µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:38+05:30 0s 
+[GIN] 2022/04/18 - 20:26:38 | 304 |       947.4µs |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 903.8µs 
+[GIN] 2022/04/18 - 20:26:39 | 200 |       903.8µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:39+05:30 1.0017ms 
+[GIN] 2022/04/18 - 20:26:39 | 304 |      1.0017ms |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:39+05:30 0s 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 461.8µs 
+[GIN] 2022/04/18 - 20:26:39 | 200 |       461.8µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 896.7µs 
+[GIN] 2022/04/18 - 20:26:39 | 200 |       896.7µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 693.5µs 
+[GIN] 2022/04/18 - 20:26:39 | 200 |       693.5µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:39+05:30 1.5753ms 
+[GIN] 2022/04/18 - 20:26:39 | 200 |      1.5753ms |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |       506.3µs |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:39+05:30 221.2µs 
+[GIN] 2022/04/18 - 20:26:39 | 304 |       221.2µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:39+05:30 0s 
+[GIN] 2022/04/18 - 20:26:39 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 757.7µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       757.7µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:40+05:30 1.0023ms 
+[GIN] 2022/04/18 - 20:26:40 | 304 |      1.0023ms |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 304 |         641µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:40+05:30 641µs 
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:40+05:30 641µs 
+[GIN] 2022/04/18 - 20:26:40 | 304 |         641µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+[GIN] 2022/04/18 - 20:26:40 | 304 |         641µs |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 501.3µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       501.3µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 664.2µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       664.2µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 463.9µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       463.9µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 497.8µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       497.8µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 843.8µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       843.8µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 671.2µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       671.2µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:40+05:30 999µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |         999µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:40+05:30 552.8µs 
+[GIN] 2022/04/18 - 20:26:40 | 200 |       552.8µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui.css 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui.css"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-bundle.js 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-bundle.js"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger-ui-standalone-preset.js 2022-04-18T20:26:40+05:30 0s 
+[GIN] 2022/04/18 - 20:26:40 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger-ui-standalone-preset.js"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:41+05:30 0s 
+[GIN] 2022/04/18 - 20:26:41 | 200 |            0s |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [304] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/favicon-32x32.png 2022-04-18T20:26:41+05:30 0s 
+[GIN] 2022/04/18 - 20:26:41 | 304 |            0s |             ::1 | GET      "/shipping/api/swagger/favicon-32x32.png"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/index.html 2022-04-18T20:26:48+05:30 0s 
+[GIN] 2022/04/18 - 20:26:48 | 200 |      1.0032ms |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:26:57+05:30 733.1µs 
+[GIN] 2022/04/18 - 20:26:57 | 200 |       733.1µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/swagger.json 2022-04-18T20:27:03+05:30 0s 
+[GIN] 2022/04/18 - 20:27:03 | 404 |            0s |             ::1 | GET      "/shipping/api/swagger/swagger.json"
+GET - [404] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/do.json 2022-04-18T20:27:06+05:30 1.0048ms 
+[GIN] 2022/04/18 - 20:27:06 | 404 |      1.0651ms |             ::1 | GET      "/shipping/api/swagger/do.json"
+GET - [200] ::1 HTTP/1.1 Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36 /shipping/api/swagger/doc.json 2022-04-18T20:27:08+05:30 993.5µs 
+[GIN] 2022/04/18 - 20:27:08 | 200 |       993.5µs |             ::1 | GET      "/shipping/api/swagger/doc.json"
+📛ERROR: 2022/04/24 13:01:01 [Got err calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: 04JID7ROPFM6GKVPQ5KO6Q8UIVVV4KQNSO5AEMVJF66Q9ASUAAJG]
+❕INFO: 2022/04/24 13:01:01 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 13:01:02 [Connection to DynamoDB failed. 🛌💤💤]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-24T13:01:15+05:30 0s 
+[GIN] 2022/04/24 - 13:01:15 | 200 |            0s |             ::1 | GET      "/shipping/api/"
+📛ERROR: 2022/04/24 13:01:21 [Query API call failed - %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: UH036LGCHNCF0UR2SOUTSVPTCBVV4KQNSO5AEMVJF66Q9ASUAAJG]
+❕INFO: 2022/04/24 13:01:21 [Default Address Fetched ✅  0xc00012d130]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-24T13:01:21+05:30 369.3718ms 
+[GIN] 2022/04/24 - 13:01:21 | 202 |    369.3718ms |             ::1 | GET      "/shipping/api/existing"
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-24T13:02:46+05:30 1.4027982s 
+[GIN] 2022/04/24 - 13:02:46 | 400 |    1.4029408s |             ::1 | POST     "/shipping/api/newAddress"
+📛ERROR: 2022/04/24 13:03:37 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 13:03:37 [Created the table{
+
+}]
+❕INFO: 2022/04/24 13:03:43 [Default Address Fetched ✅  0xc00039a2c0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-24T13:03:43+05:30 356.9774ms 
+[GIN] 2022/04/24 - 13:03:43 | 202 |    356.9774ms |             ::1 | GET      "/shipping/api/existing"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/getAddress/two 2022-04-24T13:03:48+05:30 334.8537ms 
+[GIN] 2022/04/24 - 13:03:48 | 202 |    334.8537ms |             ::1 | GET      "/shipping/api/getAddress/two"
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-24T13:03:55+05:30 326.8292ms 
+[GIN] 2022/04/24 - 13:03:55 | 202 |    326.8292ms |             ::1 | POST     "/shipping/api/newAddress"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-24T13:04:11+05:30 0s 
+[GIN] 2022/04/24 - 13:04:11 | 200 |       213.8µs |             ::1 | GET      "/shipping/api/"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-24T13:04:18+05:30 0s 
+[GIN] 2022/04/24 - 13:04:18 | 200 |            0s |             ::1 | GET      "/shipping/api/"
+📛ERROR: 2022/04/24 13:09:38 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 13:09:38 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-24T13:09:50+05:30 333.6178ms 
+[GIN] 2022/04/24 - 13:09:50 | 202 |    333.6178ms |             ::1 | POST     "/shipping/api/newAddress"
+📛ERROR: 2022/04/24 13:14:05 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 13:14:05 [Created the table{
+
+}]
+POST - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/newAddress 2022-04-24T13:14:12+05:30 346.4655ms 
+[GIN] 2022/04/24 - 13:14:12 | 202 |    346.4655ms |             ::1 | POST     "/shipping/api/newAddress"
+📛ERROR: 2022/04/24 17:04:41 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 17:04:41 [Created the table{
+
+}]
+📛ERROR: 2022/04/24 17:44:39 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/24 17:44:39 [Created the table{
+
+}]
+❕INFO: 2022/04/24 17:44:49 [Default Address Fetched ✅  0xc0000dcfd0]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-24T17:44:49+05:30 343.7833ms 
+[GIN] 2022/04/24 - 17:44:49 | 202 |    343.7833ms |             ::1 | GET      "/shipping/api/existing"
+📛ERROR: 2022/04/25 09:18:50 [Got err calling CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/25 09:18:50 [Created the table{
+
+}]
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/ 2022-04-25T09:18:57+05:30 0s 
+[GIN] 2022/04/25 - 09:18:57 | 200 |            0s |             ::1 | GET      "/shipping/api/"
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/swagger/index.html 2022-04-25T09:19:00+05:30 694µs 
+[GIN] 2022/04/25 - 09:19:00 | 200 |         694µs |             ::1 | GET      "/shipping/api/swagger/index.html"
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/getAddress/two 2022-04-25T09:19:04+05:30 298.0248ms 
+[GIN] 2022/04/25 - 09:19:04 | 202 |    298.0248ms |             ::1 | GET      "/shipping/api/getAddress/two"
+❕INFO: 2022/04/25 09:19:07 [Default Address Fetched ✅  0xc00062c000]
+GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /shipping/api/existing 2022-04-25T09:19:07+05:30 297.265ms 
+[GIN] 2022/04/25 - 09:19:07 | 202 |     297.265ms |             ::1 | GET      "/shipping/api/existing"

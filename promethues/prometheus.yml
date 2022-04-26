@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s
+  scrape_timeout: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: transaction-service
+    metrics_path: /api/transaction/metrics
+    static_configs:
+      - targets:
+          - localhost:9001
+  - job_name: payment-service
+    metrics_path: api/paymentmethods/metrics
+    static_configs:
+      - targets:
+          - localhost:9000
