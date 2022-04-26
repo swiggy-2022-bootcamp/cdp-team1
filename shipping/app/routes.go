@@ -18,4 +18,5 @@ func ShippingRouter(router *gin.Engine) {
 	router.POST("/shipping/api/newAddress", shippingHandler.CreateShippingAddrHandlerFunc())
 	router.GET("/shipping/api/getAddress/:id", shippingHandler.GetShippingAddrHandlerFunc())
 	router.GET("/shipping/api/existing/:id", shippingHandler.GetDefaultShippingAddrHandlerFunc())
+	router.GET("/shipping/api/all/:id", shippingHandler.GetAllShippingAddrOfUserHandlerFunc())
 }

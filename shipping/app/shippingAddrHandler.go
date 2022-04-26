@@ -117,3 +117,18 @@ func (sh ShippingHandler) GetDefaultShippingAddrHandlerFunc() gin.HandlerFunc {
 		ctx.JSON(http.StatusAccepted, res)
 	}
 }
+
+func (sh ShippingHandler) GetAllShippingAddrOfUserHandlerFunc() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		userId := ctx.Param("id")
+		//fmt.Println(userId)
+		userIdAsInt, _ := strconv.Atoi(userId)
+		res, err := sh.ShippingAddrService.GetAllShippingAddressOfUser(userIdAsInt)
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Provided Shipping Address does not exist"})
+			return
+		}
+		logger.Info("Default Address Fetched ✅ ", res)
+		ctx.JSON(http.StatusAccepted, res)
+	}
+}

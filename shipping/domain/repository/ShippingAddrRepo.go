@@ -39,6 +39,7 @@ type ShippingAddrRepo interface {
 	CreateNewShippingAddrImpl(ShippingAddress) (string, *errs.AppError)
 	FindShippingAddressByIdImpl(string) (*ShippingAddress, *errs.AppError)
 	FindDefaultShippingAddressImpl(int) (*ShippingAddress, *errs.AppError)
+	FindAllShippingAddressOfUser(int) (*models.AllShippingAddress, *errs.AppError)
 }
 
 //ShippingAddressRepoImpl ..
@@ -184,6 +185,31 @@ func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(userId int) (*
 	}
 	fmt.Println(&item)
 	return (*ShippingAddress)(&item), nil
+}
+
+func (sar ShippingAddressRepoImpl) FindAllShippingAddressOfUser(userId int) (*models.AllShippingAddress, *errs.AppError) {
+	var item *models.AllShippingAddress
+	//fmt.Println(userId)
+	filt := expression.Name("user_id").Equal(expression.Value(userId))
+	expr, err := expression.NewBuilder().WithCondition(filt).Build()
+	if err != nil {
+		fmt.Println("Error in Expression Builder")
+		logger.Error("Got Error building expression: %s", err)
+	}
+	params := &dynamodb.ScanInput{
+		ExpressionAttributeNames:  expr.Names(),
+		ExpressionAttributeValues: expr.Values(),
+		FilterExpression:          expr.Condition(),
+		TableName:                 aws.String("team-1-shipping"),
+	}
+	result, err := sar.Session.Scan(params)
+	if err != nil {
+		fmt.Println(result)
+		fmt.Printf("Error in API Query %s", err)
+		logger.Error("Query API call failed - %s", err)
+	}
+	err = dynamodbattribute.UnmarshalListOfMaps(result.Items, &item)
+	return item, nil
 }
 
 //GetShippingCost ..

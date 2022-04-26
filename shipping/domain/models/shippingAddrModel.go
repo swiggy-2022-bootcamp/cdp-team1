@@ -16,3 +16,6 @@ type ShippingAddrModel struct {
 	DefaultAddress    bool   `json:"default_address" dynamodbav:"default_address"`
 	ShippingCost      int    `json:"shipping_cost" dynamodb:"shipping_cost"`
 }
+
+//ShippingAddress ..
+type AllShippingAddress []ShippingAddrModel

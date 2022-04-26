@@ -6,6 +6,7 @@ option go_package = "/protos";
 
 service ShippingAddressProtoFunc{
   rpc GetDefaultShippingAddress (ShippingAddressRequest) returns (ShippingAddressResponse);
+  rpc GetAllShippingAddress(ShippingAddressRequest) returns (ShippingAddressResponse);
 }
 
 message ShippingAddressRequest{
@@ -32,3 +33,6 @@ message ShippingAddressResponse{
    ShippingAddress shippingAddress = 1;
 }
 
+message AllShippingAddressResponse{
+   repeated ShippingAddress shippingAddress = 1;
+}
