@@ -252,24 +252,3 @@ func (oh OrderHandler) CreateInvoice(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Invoice created successfully"})
 }
-
-// set SECRET=sUpErCaLiFrAgIlIsTiCeXpIaLiDoCiOuS in .env file
-// const secret string = os.Getenv("SECRET")
-
-// func UserIDFromAuthToken(authToken string) (string, *errs.AppError) {
-// 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-// 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-// 			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
-// 		}
-
-// 		return []byte(secret), nil
-// 	})
-// 	if err != nil {
-// 		return "", errs.NewAuthenticationError("unexpected signing method")
-// 	}
-// 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-
-// 		return claims["user_id"].(string), nil
-// 	}
-// 	return "", errs.NewAuthenticationError("invalid token")
-// }

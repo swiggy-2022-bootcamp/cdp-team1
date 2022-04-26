@@ -129,7 +129,7 @@ func (cdb CartRepository) ReadAll() (*[]model.Cart, *error.AppError) {
 
 	if result.Items == nil {
 		log.Error("Cart for user doesn't exist. - ")
-		notFoundError := error.NewNotFoundError("Payment mode for user doesn't exists")
+		notFoundError := error.NewNotFoundError("Cart for user doesn't exists")
 		return nil, notFoundError
 	}
 

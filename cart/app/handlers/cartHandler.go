@@ -71,7 +71,6 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 // @Schemes
 // @Accept json
 // @Produce json
-// @Param id string true "id"
 // @Param req body string true "Updated quantity"
 // @Success	200  string 	Cart updated successfully
 // @Failure 500  string 	Internal server error
@@ -124,7 +123,7 @@ func (ch CartHandler) UpdateCart(c *gin.Context) {
 // @Tags Cart
 // @Schemes
 // @Produce json
-// @Success	200  {object} 	[]model.Order
+// @Success	200  {object} 	model.Cart
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found
 // @Router /cart [GET]
@@ -136,8 +135,6 @@ func (ch CartHandler) GetCart(c *gin.Context) {
 		c.JSON(err2.Code, gin.H{"message": err2.Message})
 		return
 	}
-
-	fmt.Println("customer_id: ", customer_id)
 
 	result, err := ch.cartService.GetCartByCustomerId(customer_id)
 	if err != nil {
@@ -155,7 +152,7 @@ func (ch CartHandler) GetCart(c *gin.Context) {
 // @Tags Cart
 // @Schemes
 // @Accept json
-// @Param id string true "id"
+// @Param id path string true "id"
 // @Success	200  string 	Cart deleted successfully
 // @Failure 500  string 	Internal server error
 // @Failure 404  string 	Order not found

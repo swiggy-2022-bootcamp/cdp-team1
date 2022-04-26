@@ -1,4 +1,28 @@
 basePath: /cart/api
+definitions:
+  handlers.HealthCheckResponse:
+    properties:
+      database:
+        type: string
+      server:
+        type: string
+    type: object
+  model.Cart:
+    properties:
+      customer_id:
+        type: string
+      products:
+        items:
+          $ref: '#/definitions/model.Product'
+        type: array
+    type: object
+  model.Product:
+    properties:
+      product_id:
+        type: string
+      quantity:
+        type: integer
+    type: object
 host: localhost:5000
 info:
   contact:
@@ -21,8 +45,130 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.HealthCheckResponse'
       summary: To check if the service is running or not.
       tags:
       - ""
+  /cart:
+    get:
+      description: Fetch all the products in the cart of logged in user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Cart'
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To get cart by customer id
+      tags:
+      - Cart
+    post:
+      description: To create a new cart for the logged in user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To create a new cart
+      tags:
+      - Cart
+    put:
+      consumes:
+      - application/json
+      description: Update cart's quantity
+      parameters:
+      - description: Updated quantity
+        in: body
+        name: req
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To update cart
+      tags:
+      - Cart
+  /cart/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete the product by the product id
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To delete a product from cart
+      tags:
+      - Cart
+  /cart/empty:
+    delete:
+      consumes:
+      - application/json
+      description: Delete the cart of the logged in user
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: To delete the cart
+      tags:
+      - Cart
 swagger: "2.0"

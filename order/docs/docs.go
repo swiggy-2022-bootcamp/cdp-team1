@@ -39,7 +39,13 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.HealthCheckResponse"
                         }
                     }
                 }
@@ -362,29 +368,43 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "handlers.HealthCheckResponse": {
+            "type": "object",
+            "properties": {
+                "database": {
+                    "type": "string"
+                },
+                "server": {
+                    "type": "string"
+                }
+            }
+        },
         "model.Order": {
             "type": "object",
             "properties": {
+                "amount": {
+                    "type": "integer"
+                },
                 "customer_id": {
                     "type": "string"
                 },
                 "datetime": {
                     "type": "string"
                 },
-                "id": {
-                    "type": "string"
-                },
                 "invoice": {
                     "type": "string"
                 },
-                "orders": {
+                "order_id": {
+                    "type": "string"
+                },
+                "order_status": {
+                    "type": "string"
+                },
+                "products": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/model.Product"
                     }
-                },
-                "status": {
-                    "type": "string"
                 }
             }
         },
