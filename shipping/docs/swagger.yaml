@@ -1,0 +1,90 @@
+basePath: /
+info:
+  contact:
+    email: ashwinyaal@gmail.com
+    name: Ashwin Gopalsamy
+  description: ShippingAddress Service
+  termsOfService: https://swagger.io/terms/
+  title: Gin Swagger Example API
+  version: "2.0"
+paths:
+  /:
+    get:
+      description: used to check whether shipping service is up and running or not
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Health of shipping service
+      tags:
+      - Health
+  /existing/:
+    get:
+      description: Returns default Shipping Address
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Gets Default Shipping Address
+      tags:
+      - ShippingAddress Service
+  /getAddress/:id:
+    get:
+      description: Returns shippingAddress from ShippingAddressId
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Get Shipping Address By ShippingAddressId
+      tags:
+      - ShippingAddress Service
+  /newAddress:
+    post:
+      description: Creates a new shipping address for the user.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: number
+      summary: Creates New Shipping Address
+      tags:
+      - ShippingAddress Service
+schemes:
+- http
+securityDefinitions:
+  Bearer Token:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
