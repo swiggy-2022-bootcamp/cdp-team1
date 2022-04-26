@@ -38,8 +38,8 @@ func CheckoutRouter(router *gin.Engine) {
 	//router.GET("/checkout/api/shippingAddress", checkoutHandler.CheckoutGetShippingAddressFlow())
 	//router.GET("/checkout/api/cartItems", checkoutHandler.CheckoutGetCartItemsFlow())
 	//router.GET("/checkout/api/payments", checkoutHandler.CheckoutGetPaymentsFlow())
-	router.GET("/checkout/api/confirm/:id", checkoutHandler.CheckoutGetOrderOverview())
-	router.GET("/checkout/api/existing/:id", checkoutHandler.CheckoutShippingAddressFlow())
-	router.POST("/checkout/api/confirm", checkoutHandler.CheckoutPayStatusFlow())
+	router.GET("api/checkout/confirm/:id", checkoutHandler.CheckoutGetOrderOverview())
+	router.GET("api/checkout/existing/:id", checkoutHandler.CheckoutShippingAddressFlow())
+	router.POST("api/checkout/confirm", checkoutHandler.CheckoutPayStatusFlow())
 	//router.PUT("/checkout/api/confirm/:id", checkoutHandler.CHECKOUT())
 }
