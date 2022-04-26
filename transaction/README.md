@@ -45,3 +45,15 @@
 ![Code Coverage](./images/TransactionServiceCodeCoverage.jpg)
 
 ![Code Coverage Graph](./images/TransactionServiceCodeCoverageGraph.jpg)
+
+# Application Monitoring using Prometheus and Grafana
+- Prometheus Dashboard
+  ![Prometheus Dashboard](./images/PrometheusDashboard.jpg)
+
+
+- Grafana dashboard for total no. of requests metrics
+  ![Grafana Dashboard](./images/TransactionServices_TotalRequest_Grafana_Graph.jpg)
+
+
+- Grafana dashboard for response_status metrics
+  ![Grafana Dashboard](./images/TransactionService_ResponseStatus_Grafana_Graph.jpg)

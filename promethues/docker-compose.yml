@@ -1,0 +1,22 @@
+version: "3"
+services:
+  prometheus:
+    build: .
+    container_name: prometheus-server
+    ports:
+      - "9090:9090"
+    volumes:
+      - .:/prometheus-storage
+    restart: always
+    extra_hosts:
+      - "localhost:host-gateway"
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/grafana-storage
+    restart: always
+    extra_hosts:
+      - "localhost:host-gateway"

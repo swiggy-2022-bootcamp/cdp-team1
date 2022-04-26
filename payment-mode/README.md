@@ -43,3 +43,15 @@
 ![Code Coverage](./images/PaymentServiceCodeCoverage.jpg)
 
 ![Code Coverage Graph](./images/PaymentServiceCodeCoverageGraph.png)
+
+# Application Monitoring using Prometheus and Grafana
+- Prometheus Dashboard
+![Prometheus Dashboard](./images/PrometheusDashboard.jpg)
+
+
+- Grafana dashboard for total no. of requests metrics
+![Grafana Dashboard](./images/Grafana_PaymentService_TotalRequest_Graph.jpg)
+
+
+- Grafana dashboard for response_status metrics
+![Grafana Dashboard](./images/Grafana_PaymentService_ResponseStatus_Graph.jpg)
