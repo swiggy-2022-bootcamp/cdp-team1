@@ -2,7 +2,7 @@
 ## Build
 ##
 
-FROM golang:1.16-alpine
+FROM golang:1.16-alpine as build
 
 RUN mkdir /app
 
@@ -15,5 +15,11 @@ COPY go.sum .
 RUN go mod download
 
 RUN go build -o main .
+COPY .env .
 
-CMD ["/app/main"]
+FROM alpine
+
+COPY --from=build /app/main /.
+COPY --from=build /app/.env /.
+
+CMD ["/main"]

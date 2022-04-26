@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM golang:alpine as build
 
 RUN apk update && apk add git
 
@@ -10,7 +10,10 @@ RUN cd /app && git clone -b categories https://github.com/swiggy-2022-bootcamp/c
 WORKDIR /app/cdp-team1/categories
 RUN go build -o main .
 
+FROM alpine
+COPY --from=build /app/cdp-team1/categories/main /.
+
 EXPOSE 9122
 EXPOSE 19081
 
-CMD [ "/app/cdp-team1/categories/main" ]
+CMD [ "/main" ]
