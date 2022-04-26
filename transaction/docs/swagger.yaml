@@ -1,4 +1,4 @@
-basePath: /transaction/api
+basePath: /api
 definitions:
   handlers.HealthCheckResponse:
     properties:
@@ -29,25 +29,6 @@ info:
   title: Swiggy Qwik - Transaction module
   version: "1.0"
 paths:
-  /:
-    get:
-      consumes:
-      - application/json
-      description: This request will return 200 OK if server is up..
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/handlers.HealthCheckResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/handlers.HealthCheckResponse'
-      summary: To check if the service is running or not.
-      tags:
-      - HealthCheckResponse
   /transaction/{userId}:
     get:
       consumes:
@@ -111,6 +92,25 @@ paths:
       summary: To add transaction points for a user.
       tags:
       - Transaction
+  /transaction/health:
+    get:
+      consumes:
+      - application/json
+      description: This request will return 200 OK if server is up..
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.HealthCheckResponse'
+      summary: To check if the service is running or not.
+      tags:
+      - HealthCheckResponse
   /transaction/use-transaction-points/{userId}:
     post:
       consumes:

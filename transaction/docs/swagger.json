@@ -12,9 +12,9 @@
         },
         "version": "1.0"
     },
-    "basePath": "/transaction/api",
+    "basePath": "/api",
     "paths": {
-        "/": {
+        "/transaction/health": {
             "get": {
                 "description": "This request will return 200 OK if server is up..",
                 "consumes": [

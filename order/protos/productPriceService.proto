@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "/protos";
+
+message ProductPriceRequest {
+  string id = 1;
+  string quantity = 2;
+}
+
+message ProductsPriceRequests {
+  repeated ProductPriceRequest products = 1;
+}
+
+message ResponsePrice {
+  double price = 1;
+}
+
+service ProductPriceService {
+  rpc getTotalPriceForProducts(ProductsPriceRequests) returns (ResponsePrice);
+}

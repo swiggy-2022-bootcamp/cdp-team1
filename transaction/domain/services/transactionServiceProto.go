@@ -36,9 +36,9 @@ func (s TransactionProtoServer) AddTransactionPoints(ctx context.Context, transa
 	//If there is no record for the given userId, create a new record
 	if err != nil {
 		if err.Code == http.StatusNotFound {
-			err_ := transactionRepository.AddTransactionPointsFromDB(transaction)
-			if err_ != nil {
-				return addPointsResponse, err_.Error()
+			dbErr := transactionRepository.AddTransactionPointsFromDB(transaction)
+			if dbErr != nil {
+				return addPointsResponse, dbErr.Error()
 			} else {
 				return addPointsResponse, nil
 			}

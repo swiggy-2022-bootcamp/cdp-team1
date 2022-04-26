@@ -1,0 +1,134 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "ShippingAddress Service",
+        "title": "Gin Swagger Example API",
+        "termsOfService": "https://swagger.io/terms/",
+        "contact": {
+            "name": "Ashwin Gopalsamy",
+            "email": "ashwinyaal@gmail.com"
+        },
+        "version": "2.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/": {
+            "get": {
+                "description": "used to check whether shipping service is up and running or not",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Health"
+                ],
+                "summary": "Health of shipping service",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/existing/": {
+            "get": {
+                "description": "Returns default Shipping Address",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ShippingAddress Service"
+                ],
+                "summary": "Gets Default Shipping Address",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/getAddress/:id": {
+            "get": {
+                "description": "Returns shippingAddress from ShippingAddressId",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ShippingAddress Service"
+                ],
+                "summary": "Get Shipping Address By ShippingAddressId",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "/newAddress": {
+            "post": {
+                "description": "Creates a new shipping address for the user.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ShippingAddress Service"
+                ],
+                "summary": "Creates New Shipping Address",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer Token": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

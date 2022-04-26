@@ -22,7 +22,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/": {
+        "/transaction/health": {
             "get": {
                 "description": "This request will return 200 OK if server is up..",
                 "consumes": [
@@ -243,7 +243,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "",
-	BasePath:         "/transaction/api",
+	BasePath:         "/api",
 	Schemes:          []string{},
 	Title:            "Swiggy Qwik - Transaction module",
 	Description:      "This microservice is for transaction service.",
