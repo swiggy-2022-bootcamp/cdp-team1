@@ -1,0 +1,17 @@
+GET https://my.api.mockaroo.com/cart.json?key=6e217e20
+Accept: application/json
+
+###
+POST https://my.api.mockaroo.com/cart.json?key=6e217e20&__method=POST
+Accept: application/json
+
+{
+  "id": 1,
+  "Customer ID": 14,
+  "Products": [
+    {
+      "Name": "Tin",
+      "Quantity": 8
+    }
+  ]
+}

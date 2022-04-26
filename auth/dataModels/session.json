@@ -1,0 +1,55 @@
+{"_comments" : "session"}
+{
+    "title" : "Session",
+    "type" : "object",
+    "properties" : {
+        "tokenSignature" : {
+            "type" : "string",
+            "description" : "Signature of issued JWT auth token"
+        },
+        "isActive" : {
+            "type" : "boolean",
+            "description" : "Validity status of the issued JWT token"
+        },
+        "userId" : {
+            "type" : "string",
+            "description" : "The unique Id of the user requesting a login"
+        },
+        "createdAt" : {
+            "type" : "time",
+            "description" : "The timestamp when the JWT token was issued"
+        },
+        "updatedAt" : {
+            "type" : "time",
+            "description" : "The timestamp when the JWT token was rendered inactive/invalid"
+        }
+    }
+}
+
+// Example
+session : {
+    {
+        "tokenSignature" : "SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+        "isActive" : "true",
+        "userId" : "12354",
+        "createdAt" : "08-03-2022 20:58",
+        "updatedAt" : "08-03-2022 20:58"
+    },
+    {
+        "tokenSignature" : "SflKxwRJSMeKKF2Qghjj65pMeJf36POk6yJV_adQssw5c",
+        "isActive" : "false",
+        "userId" : "12354",
+        "createdAt" : "08-03-2022 10:58",
+        "updatedAt" : "08-03-2022 12:18"
+    },
+    {
+        "tokenSignature" : "SflKxwRJSMeKKF2Qghjj65pMeJsdfgdgfJV_adQssw5c",
+        "isActive" : "true",
+        "userId" : "12354",
+        "createdAt" : "08-03-2022 11:58",
+        "updatedAt" : "08-03-2022 11:58"
+    },
+    .
+    .
+    .
+}

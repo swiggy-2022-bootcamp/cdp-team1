@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  backend:
+    build: .
+    ports:
+      - "8081:8081"
+      - "8082:8082"
+    volumes:
+      - .:/auth
+    extra_hosts:
+      - "localhost:host-gateway"
