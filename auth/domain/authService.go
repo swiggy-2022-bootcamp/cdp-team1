@@ -168,7 +168,7 @@ func (d DefaultAuthService) VerifyAuthToken(token string, userID string, role st
 	if err != nil {
 		return false, err
 	}
-	if !session.IsActive {
+	if session == nil || !session.IsActive {
 		return false, errs.NewAuthenticationError("inactive session")
 	}
 

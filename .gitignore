@@ -33,6 +33,10 @@ main
 # .Idea files
 .idea
 
+
+# .Env files
+# .env
+
 # Properties file
 *.properties
 
@@ -41,3 +45,4 @@ main
 
 # Temp files
 *.tmp
+

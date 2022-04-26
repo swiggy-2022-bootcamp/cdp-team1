@@ -3,11 +3,11 @@ package db
 import (
 	"authService/config"
 	"authService/errs"
+	"authService/log"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"log"
 )
 
 func NewDynamoDBClient() *dynamodb.DynamoDB {
@@ -18,7 +18,7 @@ func NewDynamoDBClient() *dynamodb.DynamoDB {
 		Credentials: credentials.NewStaticCredentials(config.EnvVars.AWSAccessKeyID, config.EnvVars.AWSSecretAccessKey, ""),
 	})
 	if err != nil {
-		log.Fatal("Session creation in dynamoDB failed : " + err.Error())
+		log.Error("Session creation in dynamoDB failed : " + err.Error())
 		return nil
 	}
 
@@ -28,12 +28,10 @@ func NewDynamoDBClient() *dynamodb.DynamoDB {
 	//ping the database
 	_, err = client.ListTables(&dynamodb.ListTablesInput{})
 	if err != nil {
-		log.Fatal("Connection to dynamoDB failed : " + err.Error())
+		log.Error("Connection to dynamoDB failed : " + err.Error())
 		return nil
 	}
-	log.Println("Connected to DynamoDB")
-	log.Println(client)
-
+	log.Info("Connected to DynamoDB")
 	return client
 }
 
@@ -41,7 +39,7 @@ func PingDatabase(client *dynamodb.DynamoDB) *errs.AppError {
 
 	_, err := client.ListTables(&dynamodb.ListTablesInput{})
 	if err != nil {
-		log.Println(err)
+		log.Error("error while pinging database: ", err)
 		return errs.NewUnexpectedError(err.Error())
 	}
 	return nil

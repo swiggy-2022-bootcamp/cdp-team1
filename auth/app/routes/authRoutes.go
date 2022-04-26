@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"authService/db"
 	"authService/domain"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
@@ -11,15 +10,7 @@ import (
 	"authService/docs"
 )
 
-func RegisterAuthRoutes(authRouter *gin.Engine) {
-
-	dbClient := db.NewDynamoDBClient()
-
-	authRepo := db.NewAuthRepositoryDB(dbClient, 100)
-	adminRepo := db.NewAdminRepositoryDB(dbClient, 100)
-	custRepo := db.NewCustomerRepositoryDB(dbClient, 100)
-
-	authSvc := domain.NewAuthService(authRepo, adminRepo, custRepo)
+func RegisterAuthRoutes(authRouter *gin.Engine, authSvc domain.AuthService) {
 
 	authHandlers := handlers.AuthHandlers{AuthSvc: authSvc}
 
