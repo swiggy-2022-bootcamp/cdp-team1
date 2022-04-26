@@ -2,12 +2,10 @@ package app
 
 import (
 	"fmt"
-	"qwik.in/shipping/domain/services"
-	"qwik.in/shipping/domain/tools/logger"
-	"strconv"
-
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"qwik.in/shipping/domain/services"
+	"qwik.in/shipping/domain/tools/logger"
 )
 
 //ShippingHandler ..
@@ -17,7 +15,7 @@ type ShippingHandler struct {
 
 //ShippingAddrDTO ..
 type ShippingAddrDTO struct {
-	UserID            int    `json:"user_id" dynamodb:"user_id"`
+	UserID            string `json:"user_id" dynamodb:"user_id"`
 	ShippingAddressId string `json:"shipping_address_id" dynamodb:"shipping_address_id"`
 	FirstName         string `json:"first_name" dynamodbav:"first_name"`
 	LastName          string `json:"last_name" dynamodbav:"last_name"`
@@ -106,9 +104,7 @@ func (sh ShippingHandler) GetShippingAddrHandlerFunc() gin.HandlerFunc {
 func (sh ShippingHandler) GetDefaultShippingAddrHandlerFunc() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		userId := ctx.Param("id")
-		//fmt.Println(userId)
-		userIdAsInt, _ := strconv.Atoi(userId)
-		res, err := sh.ShippingAddrService.GetDefaultShippingAddr(userIdAsInt)
+		res, err := sh.ShippingAddrService.GetDefaultShippingAddr(userId)
 		if err != nil {
 			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Provided Shipping Address does not exist"})
 			return
@@ -118,12 +114,11 @@ func (sh ShippingHandler) GetDefaultShippingAddrHandlerFunc() gin.HandlerFunc {
 	}
 }
 
+//GetAllShippingAddrOfUserHandlerFunc ..
 func (sh ShippingHandler) GetAllShippingAddrOfUserHandlerFunc() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		userId := ctx.Param("id")
-		//fmt.Println(userId)
-		userIdAsInt, _ := strconv.Atoi(userId)
-		res, err := sh.ShippingAddrService.GetAllShippingAddressOfUser(userIdAsInt)
+		res, err := sh.ShippingAddrService.GetAllShippingAddressOfUser(userId)
 		if err != nil {
 			ctx.JSON(http.StatusBadRequest, gin.H{"message": "Provided Shipping Address does not exist"})
 			return
@@ -132,18 +127,3 @@ func (sh ShippingHandler) GetAllShippingAddrOfUserHandlerFunc() gin.HandlerFunc 
 		ctx.JSON(http.StatusAccepted, res)
 	}
 }
-
-//
-////GetAllShippingAddrOfUserHandlerFunc ..
-//func (sh ShippingHandler) GetAllShippingAddrOfUserHandlerFunc() gin.HandlerFunc {
-//	return func(ctx *gin.Context) {
-//		userId := ctx.Param("id")
-//		//fmt.Println(userId)
-//		userIdAsInt, _ := strconv.Atoi(userId)
-//		userShippingAddress, _ := sh.ShippingAddrService.GetAllShippingAddressOfUser(userIdAsInt)
-//		data, err := json.Marshal(userShippingAddress)
-//		fmt.Println(string(data))
-//		logger.Error(err)
-//		ctx.JSON(http.StatusOK, userShippingAddress)
-//	}
-//}
