@@ -85,8 +85,11 @@ func TestShouldGetAccountById(t *testing.T) {
 	account.UserBalance = dummyPaymentMethods
 	account.RewardsTotal = 36
 
-	grpcRepo.On("GetRewardPointsByCustomerId", account.CustomerId).Return(int32(36))
+	grpcRepo.On("GetTransactionRewardPointsByCustomerId", account.CustomerId).Return(int32(36))
 	grpcRepo.On("GetPaymentMethodsByCustomerId", account.CustomerId).Return(dummyPaymentMethods)
+	grpcRepo.On("GetCartByCustomerId", account.CustomerId).Return(nil, nil)
+	dummyInt := int32(23)
+	grpcRepo.On("GetRewardPointsByCustomerId", account.CustomerId).Return(&dummyInt, nil)
 
 	fetchedAccount, err := accountService.GetAccountById(account.CustomerId)
 	assert.Nil(t, err)
