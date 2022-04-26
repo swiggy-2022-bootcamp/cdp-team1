@@ -11,7 +11,7 @@ type ShippingAddrService interface {
 	CreateNewShippingAddress(int, string, string, string, string, string, string, string, string, int, string, bool, int) (string, *errs.AppError)
 	GetShippingAddressById(string) (*repository.ShippingAddress, *errs.AppError)
 	GetDefaultShippingAddr(int) (*repository.ShippingAddress, *errs.AppError)
-	GetAllShippingAddressOfUser(int) (*models.AllShippingAddress, *errs.AppError)
+	GetAllShippingAddressOfUser(int) (*[]models.ShippingAddrModel, *errs.AppError)
 }
 
 //ShippingAddrServiceImpl ..
@@ -54,7 +54,7 @@ func (s ShippingAddrServiceImpl) GetDefaultShippingAddr(userId int) (*repository
 	return data, nil
 }
 
-func (s ShippingAddrServiceImpl) GetAllShippingAddressOfUser(userId int) (*models.AllShippingAddress, *errs.AppError) {
+func (s ShippingAddrServiceImpl) GetAllShippingAddressOfUser(userId int) (*[]models.ShippingAddrModel, *errs.AppError) {
 	data, err := s.shippingAddrRepo.FindAllShippingAddressOfUser(userId)
 	if err != nil {
 		return nil, err

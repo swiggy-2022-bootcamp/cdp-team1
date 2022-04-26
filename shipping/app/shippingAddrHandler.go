@@ -132,3 +132,18 @@ func (sh ShippingHandler) GetAllShippingAddrOfUserHandlerFunc() gin.HandlerFunc 
 		ctx.JSON(http.StatusAccepted, res)
 	}
 }
+
+//
+////GetAllShippingAddrOfUserHandlerFunc ..
+//func (sh ShippingHandler) GetAllShippingAddrOfUserHandlerFunc() gin.HandlerFunc {
+//	return func(ctx *gin.Context) {
+//		userId := ctx.Param("id")
+//		//fmt.Println(userId)
+//		userIdAsInt, _ := strconv.Atoi(userId)
+//		userShippingAddress, _ := sh.ShippingAddrService.GetAllShippingAddressOfUser(userIdAsInt)
+//		data, err := json.Marshal(userShippingAddress)
+//		fmt.Println(string(data))
+//		logger.Error(err)
+//		ctx.JSON(http.StatusOK, userShippingAddress)
+//	}
+//}

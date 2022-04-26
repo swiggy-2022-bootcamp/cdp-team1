@@ -39,7 +39,7 @@ type ShippingAddrRepo interface {
 	CreateNewShippingAddrImpl(ShippingAddress) (string, *errs.AppError)
 	FindShippingAddressByIdImpl(string) (*ShippingAddress, *errs.AppError)
 	FindDefaultShippingAddressImpl(int) (*ShippingAddress, *errs.AppError)
-	FindAllShippingAddressOfUser(int) (*models.AllShippingAddress, *errs.AppError)
+	FindAllShippingAddressOfUser(int) (*[]models.ShippingAddrModel, *errs.AppError)
 }
 
 //ShippingAddressRepoImpl ..
@@ -187,9 +187,8 @@ func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(userId int) (*
 	return (*ShippingAddress)(&item), nil
 }
 
-func (sar ShippingAddressRepoImpl) FindAllShippingAddressOfUser(userId int) (*models.AllShippingAddress, *errs.AppError) {
-	var item *models.AllShippingAddress
-	//fmt.Println(userId)
+func (sar ShippingAddressRepoImpl) FindAllShippingAddressOfUser(userId int) (*[]models.ShippingAddrModel, *errs.AppError) {
+	var item *[]models.ShippingAddrModel
 	filt := expression.Name("user_id").Equal(expression.Value(userId))
 	expr, err := expression.NewBuilder().WithCondition(filt).Build()
 	if err != nil {
@@ -208,7 +207,10 @@ func (sar ShippingAddressRepoImpl) FindAllShippingAddressOfUser(userId int) (*mo
 		fmt.Printf("Error in API Query %s", err)
 		logger.Error("Query API call failed - %s", err)
 	}
+
 	err = dynamodbattribute.UnmarshalListOfMaps(result.Items, &item)
+	//fmt.Println(item)
+	//return (*ShippingAddress)(&item), nil
 	return item, nil
 }
 
