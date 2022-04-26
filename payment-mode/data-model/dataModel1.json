@@ -1,0 +1,91 @@
+{"_comments" : "user_payment_mode"}
+{
+    "$id": "id",
+    "title": "payment_mode",
+    "type": "array(user_payment_mode)",
+    "properties":{
+        "userId":{
+            "type":"id",
+            "description":"customer/user ID."
+        },
+        "payment_mode":{
+            "type":"array(PAYMENT_MODE)",
+            "description":"The payment_modes added by the customer."
+        },
+    }
+}
+
+{"_comments":"payment_mode"}
+{
+    "title":"payment_mode",
+    "type":"array(payment_mode)",
+    "properties":{
+        "mode":{
+            "type":"string",
+            "description":"This can be debit, credit or COD."
+        },
+        "card_number":{
+            "type":"integer",
+            "description":"To save card details of user."
+        },
+        "balance":{
+            "type":"double",
+            "description":"Current balance of user."
+        }
+    }
+}
+"Example":
+[
+    {
+        "id":"PayMode_01",
+        "userId":"Cust_01",
+        "payment_mode":[
+            {
+                "mode":"COD",
+                "card_number":"",
+                "balance":""
+            },
+            {
+                "mode":"Debit Card",
+                "card_number":"4242424242424242",
+                "balance":"50000"
+            },
+            {
+                "mode":"Credit Card",
+                "card_number":"4242424242424242",
+                "balance":"50000"
+            },
+            {
+                "mode":"Credit Card",
+                "card_number":"5252525252525252",
+                "balance":"250000"
+            },
+        ]
+    },
+    {
+        "id":"PayMode_02",
+        "id":"Cust_02",
+        "payment_mode":[
+            {
+                "mode":"COD",
+                "card_number":"",
+                "balance":""
+            },
+            {
+                "mode":"Debit Card",
+                "card_number":"6262626262626262",
+                "balance":"50000"
+            },
+            {
+                "mode":"Credit Card",
+                "card_number":"4141414141414141",
+                "balance":"50000"
+            },
+            {
+                "mode":"Credit Card",
+                "card_number":"511515151515151",
+                "balance":"250000"
+            },
+        ]
+    },
+]

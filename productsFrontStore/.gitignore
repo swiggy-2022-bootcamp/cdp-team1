@@ -4,7 +4,6 @@
 *.dll
 *.so
 *.dylib
-*.env
 
 # Test binary, built with `go test -c`
 *.test
@@ -27,18 +26,14 @@ main
 # Log files
 *.log
 
-# .Env files
-.env
-
-# .Idea files
-.idea
+# Temp files
+*.tmp
 
 # Properties file
 *.properties
 
-# Code coverage reports
+# Coverage Files
 *.cov
 
-# Temp files
-*.tmp
-
+# .Env files
+*.env
