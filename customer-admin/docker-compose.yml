@@ -1,0 +1,12 @@
+version: '3'
+services:
+  customer-admin:
+    build: .
+    container_name: customer-admin
+    restart: always
+    ports:
+      - "7002:7002"
+    extra_hosts:
+      - "localhost:host-gateway"
+    #volumes:
+    #  - ./app

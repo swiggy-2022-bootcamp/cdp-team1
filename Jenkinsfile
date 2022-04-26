@@ -244,6 +244,19 @@ pipeline {
         stage('Test #7') {
             steps {
                 withEnv(["PATH+GO=${GOPATH}/bin"]){
+                    sh 'cd account-frontstore/app/handlers && touch .env'
+                    sh 'cd account-frontstore/app/handlers && echo "REGION=${REGION}" >> .env'
+                    sh 'cd account-frontstore/app/handlers && echo "AWS_ACCESS_KEY_ID=${KEY_ID}" >> .env'
+                    sh 'cd account-frontstore/app/handlers && echo "AWS_SECRET_ACCESS_KEY=${ACCESS_KEY}" >> .env'
+                    sh 'cd account-frontstore/app/handlers && echo "SECRET=${JWT_SECRET_KEY}" >> .env'
+
+                    sh 'cd account-frontstore/domain/service && touch .env'
+                    sh 'cd account-frontstore/domain/service && echo "REGION=${REGION}" >> .env'
+                    sh 'cd account-frontstore/domain/service && echo "AWS_ACCESS_KEY_ID=${KEY_ID}" >> .env'
+                    sh 'cd account-frontstore/domain/service && echo "AWS_SECRET_ACCESS_KEY=${ACCESS_KEY}" >> .env'
+                    sh 'cd account-frontstore/domain/service && echo "SECRET=${JWT_SECRET_KEY}" >> .env'
+
+
                     echo 'Running vetting'
                     sh 'cd account-frontstore && go vet .'
                     echo 'Running test'
@@ -349,6 +362,18 @@ pipeline {
         stage('Test #10') {
             steps {
                 withEnv(["PATH+GO=${GOPATH}/bin"]){
+                    sh 'cd customer-admin/app/handlers && touch .env'
+                    sh 'cd customer-admin/app/handlers && echo "REGION=${REGION}" >> .env'
+                    sh 'cd customer-admin/app/handlers && echo "AWS_ACCESS_KEY_ID=${KEY_ID}" >> .env'
+                    sh 'cd customer-admin/app/handlers && echo "AWS_SECRET_ACCESS_KEY=${ACCESS_KEY}" >> .env'
+                    sh 'cd customer-admin/app/handlers && echo "SECRET=${JWT_SECRET_KEY}" >> .env'
+
+                    sh 'cd customer-admin/domain/service && touch .env'
+                    sh 'cd customer-admin/domain/service && echo "REGION=${REGION}" >> .env'
+                    sh 'cd customer-admin/domain/service && echo "AWS_ACCESS_KEY_ID=${KEY_ID}" >> .env'
+                    sh 'cd customer-admin/domain/service && echo "AWS_SECRET_ACCESS_KEY=${ACCESS_KEY}" >> .env'
+                    sh 'cd customer-admin/domain/service && echo "SECRET=${JWT_SECRET_KEY}" >> .env'
+
                     echo 'Running vetting'
                     sh 'cd customer-admin && go vet .'
                     echo 'Running test'
