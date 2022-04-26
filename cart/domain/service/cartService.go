@@ -1,18 +1,22 @@
 package service
 
 import (
+	"cartService/db"
 	"cartService/domain/model"
 	"cartService/domain/repository"
-	"cartService/internal/error"
+	app_error "cartService/internal/error"
 	"fmt"
+
+	"github.com/golang-jwt/jwt"
 )
 
 type CartService interface {
-	AddToCart(*model.Cart, string) *error.AppError
-	GetCartByCustomerId(string) (*model.Cart, *error.AppError)
-	UpdateCart(string, string, int) *error.AppError
-	DeleteCartByCustomerId(string) *error.AppError
-	DeleteCartItem(string, string) *error.AppError
+	AddToCart(*model.Cart, string) *app_error.AppError
+	GetCartByCustomerId(string) (*model.Cart, *app_error.AppError)
+	UpdateCart(string, string, int) *app_error.AppError
+	DeleteCartByCustomerId(string) *app_error.AppError
+	DeleteCartItem(string, string) *app_error.AppError
+	UserIDFromAuthToken(string) (string, *app_error.AppError)
 }
 
 type CartServiceImpl struct {
@@ -25,7 +29,7 @@ func NewCartService(cartRepository repository.CartRepositoryDB) CartService {
 	}
 }
 
-func (csvc CartServiceImpl) AddToCart(cart *model.Cart, customer_id string) *error.AppError {
+func (csvc CartServiceImpl) AddToCart(cart *model.Cart, customer_id string) *app_error.AppError {
 
 	// Check if cart already exists
 	// If exists, update the quantity
@@ -36,13 +40,7 @@ func (csvc CartServiceImpl) AddToCart(cart *model.Cart, customer_id string) *err
 
 	if err == nil {
 
-		// curr_cart.Products = append(curr_cart.Products, *product)
-
 		curr_cart.Products = append(curr_cart.Products, cart.Products...)
-
-		// for _, p := range cart.Products {
-		// 	curr_cart.Products = append(curr_cart.Products, p)
-		// }
 
 		fmt.Println("curr cart updated: ", curr_cart)
 
@@ -53,19 +51,6 @@ func (csvc CartServiceImpl) AddToCart(cart *model.Cart, customer_id string) *err
 		}
 
 		return nil
-
-		// updated_cart := model.Cart{
-		// 	CustomerId: customer_id,
-		// 	Products:   curr_cart.Products,
-		// }
-
-		// err2 := csvc.cartRepository.UpdateExisting(&updated_cart)
-
-		// if err2 != nil {
-		// 	return err2
-		// }
-
-		// return nil
 	}
 
 	fmt.Println("cart doesnt exist")
@@ -96,7 +81,7 @@ func (csvc CartServiceImpl) AddToCart(cart *model.Cart, customer_id string) *err
 	return nil
 }
 
-func (csvc CartServiceImpl) GetCartByCustomerId(customer_id string) (*model.Cart, *error.AppError) {
+func (csvc CartServiceImpl) GetCartByCustomerId(customer_id string) (*model.Cart, *app_error.AppError) {
 
 	u, err := csvc.cartRepository.Read(customer_id)
 
@@ -107,7 +92,7 @@ func (csvc CartServiceImpl) GetCartByCustomerId(customer_id string) (*model.Cart
 	return u, err
 }
 
-func (csvc CartServiceImpl) UpdateCart(customer_id string, product_id string, quantity int) *error.AppError {
+func (csvc CartServiceImpl) UpdateCart(customer_id string, product_id string, quantity int) *app_error.AppError {
 
 	// Get current cart object
 	curr_cart, err := csvc.cartRepository.Read(customer_id)
@@ -133,7 +118,7 @@ func (csvc CartServiceImpl) UpdateCart(customer_id string, product_id string, qu
 	return err2
 }
 
-func (csvc CartServiceImpl) DeleteCartByCustomerId(customer_id string) *error.AppError {
+func (csvc CartServiceImpl) DeleteCartByCustomerId(customer_id string) *app_error.AppError {
 
 	err := csvc.cartRepository.Delete(customer_id)
 
@@ -144,7 +129,7 @@ func (csvc CartServiceImpl) DeleteCartByCustomerId(customer_id string) *error.Ap
 	return err
 }
 
-func (csvc CartServiceImpl) DeleteCartItem(customer_id string, product_id string) *error.AppError {
+func (csvc CartServiceImpl) DeleteCartItem(customer_id string, product_id string) *app_error.AppError {
 
 	// Get current cart object
 	curr_cart, err := csvc.cartRepository.Read(customer_id)
@@ -168,4 +153,23 @@ func (csvc CartServiceImpl) DeleteCartItem(customer_id string, product_id string
 	}
 
 	return nil
+}
+
+func (csvc CartServiceImpl) UserIDFromAuthToken(authToken string) (string, *app_error.AppError) {
+
+	token, err := jwt.Parse(authToken, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+		}
+
+		return []byte(db.EnvJWTSecretKey()), nil
+	})
+	if err != nil {
+		return "", app_error.NewAuthenticationError("unexpected signing method")
+	}
+	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+
+		return claims["user_id"].(string), nil
+	}
+	return "", app_error.NewAuthenticationError("invalid token")
 }

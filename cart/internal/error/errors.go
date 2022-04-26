@@ -54,3 +54,10 @@ func NewRequestNotAcceptedError(message string) *AppError {
 		Code:    http.StatusNotAcceptable,
 	}
 }
+
+func NewAuthenticationError(message string) *AppError {
+	return &AppError{
+		Message: message,
+		Code:    http.StatusUnauthorized,
+	}
+}

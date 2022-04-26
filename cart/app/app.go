@@ -76,10 +76,11 @@ func Start() {
 }
 
 func StartRestServer() {
+
 	//Configuring gin server and router
 	server = gin.New()
 	server.Use(log.UseLogger(log.DefaultLoggerFormatter), gin.Recovery())
-	router := server.Group("cart/api")
+	router := server.Group("api/")
 	cartRoutes.InitRoutes(router)
 
 	//Starting server on port 5000
@@ -92,8 +93,9 @@ func StartRestServer() {
 }
 
 func StartGRPCServer() {
+
 	defer wg.Done()
-	//Opening PORT 9004 for GRPC server
+	//Opening PORT 5004 for GRPC server
 	lis, err := net.Listen("tcp", ":5004")
 	if err != nil {
 		log.Error("Failed to listen on port %s with error %v", "9004", err)

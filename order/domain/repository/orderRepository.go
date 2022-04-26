@@ -25,7 +25,6 @@ type OrderRepositoryDB interface {
 	Delete(model.Order) *error.AppError
 	CreateOrderInvoice(string) *error.AppError
 	DBHealthCheck() bool
-	// DeleteAll() *error.AppError
 }
 
 const orderCollection = "orderCollection"
@@ -295,41 +294,3 @@ func (odb OrderRepository) CreateOrderInvoice(order_id string) *error.AppError {
 
 	return nil
 }
-
-// func (odb OrderRepository) DeleteAll() *error.AppError {
-
-// 	input := &dynamodb.ScanInput{
-// 		TableName: aws.String(orderCollection),
-// 	}
-
-// 	result, err := odb.orderDB.Scan(input)
-// 	if err != nil {
-// 		log.Error(err)
-// 		return error.NewUnexpectedError(err.Error())
-// 	}
-
-// 	if result.Items == nil {
-// 		log.Error("Order for user doesn't exist. - ")
-// 		notFoundError := error.NewNotFoundError("Order for user doesn't exists")
-// 		return notFoundError
-// 	}
-
-// 	for _, item := range result.Items {
-// 		input := &dynamodb.DeleteItemInput{
-// 			Key: map[string]*dynamodb.AttributeValue{
-// 				"id": {
-// 					S: aws.String(*item["id"].S),
-// 				},
-// 			},
-// 			TableName: aws.String(orderCollection),
-// 		}
-
-// 		_, err := odb.orderDB.DeleteItem(input)
-// 		if err != nil {
-// 			log.Error(err)
-// 			return error.NewUnexpectedError(err.Error())
-// 		}
-// 	}
-
-// 	return nil
-// }

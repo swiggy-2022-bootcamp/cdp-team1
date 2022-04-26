@@ -33,12 +33,17 @@ func NewCartHandler(cartService service.CartService) CartHandler {
 // @Router /cart [POST]
 func (ch CartHandler) CreateCart(c *gin.Context) {
 
-	customer_id := "2" //should get from auth
+	customer_id, err := ch.cartService.UserIDFromAuthToken(c.GetHeader("Authorization"))
+	if err != nil {
+		c.Error(err.Error())
+		c.JSON(err.Code, gin.H{"message": err.Message})
+		return
+	}
 
 	var cart model.Cart
-	if err := c.BindJSON(&cart); err != nil {
-		c.Error(err)
-		requestError := error.NewBadRequestError(err.Error())
+	if err2 := c.BindJSON(&cart); err2 != nil {
+		c.Error(err2)
+		requestError := error.NewBadRequestError(err2.Error())
 		c.JSON(requestError.Code, gin.H{"message": requestError.Message})
 		return
 	}
@@ -49,10 +54,10 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 		return
 	}
 
-	err := ch.cartService.AddToCart(&cart, customer_id)
+	err3 := ch.cartService.AddToCart(&cart, customer_id)
 	if err != nil {
-		c.Error(err.Error())
-		c.JSON(err.Code, gin.H{"message": err.Message})
+		c.Error(err3.Error())
+		c.JSON(err3.Code, gin.H{"message": err.Message})
 		return
 	}
 
@@ -74,7 +79,12 @@ func (ch CartHandler) CreateCart(c *gin.Context) {
 // @Router /cart [PUT]
 func (ch CartHandler) UpdateCart(c *gin.Context) {
 
-	customer_id := "2" //should get from auth
+	customer_id, err2 := ch.cartService.UserIDFromAuthToken(c.GetHeader("Authorization"))
+	if err2 != nil {
+		c.Error(err2.Error())
+		c.JSON(err2.Code, gin.H{"message": err2.Message})
+		return
+	}
 
 	// get cart id from parameter and status from body
 	var cart model.Cart
@@ -120,7 +130,14 @@ func (ch CartHandler) UpdateCart(c *gin.Context) {
 // @Router /cart [GET]
 func (ch CartHandler) GetCart(c *gin.Context) {
 
-	customer_id := "2" //should get from auth
+	customer_id, err2 := ch.cartService.UserIDFromAuthToken(c.GetHeader("Authorization"))
+	if err2 != nil {
+		c.Error(err2.Error())
+		c.JSON(err2.Code, gin.H{"message": err2.Message})
+		return
+	}
+
+	fmt.Println("customer_id: ", customer_id)
 
 	result, err := ch.cartService.GetCartByCustomerId(customer_id)
 	if err != nil {
@@ -145,26 +162,16 @@ func (ch CartHandler) GetCart(c *gin.Context) {
 // @Router /cart/{id} [DELETE]
 func (ch CartHandler) DeleteCartItem(c *gin.Context) {
 
-	customer_id := "2" //should get from auth
-
-	fmt.Println("customer_id: ", customer_id)
+	customer_id, err2 := ch.cartService.UserIDFromAuthToken(c.GetHeader("Authorization"))
+	if err2 != nil {
+		c.Error(err2.Error())
+		c.JSON(err2.Code, gin.H{"message": err2.Message})
+		return
+	}
 
 	product_id := c.Param("id")
 
-	// if err := c.BindJSON(&product_id); err != nil {
-	// 	c.Error(err)
-	// 	requestError := error.NewBadRequestError(err.Error())
-	// 	c.JSON(requestError.Code, gin.H{"message": requestError.Message})
-	// 	return
-	// }
-
 	fmt.Println("product_id: ", product_id)
-
-	//use the validator library to validate required fields
-	// if validationErr := validate.Struct(&product_id); validationErr != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"message": validationErr.Error()})
-	// 	return
-	// }
 
 	err := ch.cartService.DeleteCartItem(customer_id, product_id)
 	if err != nil {
@@ -188,7 +195,12 @@ func (ch CartHandler) DeleteCartItem(c *gin.Context) {
 // @Router /cart/empty [DELETE]
 func (ch CartHandler) DeleteCartAll(c *gin.Context) {
 
-	customer_id := "2" //should get from auth
+	customer_id, err2 := ch.cartService.UserIDFromAuthToken(c.GetHeader("Authorization"))
+	if err2 != nil {
+		c.Error(err2.Error())
+		c.JSON(err2.Code, gin.H{"message": err2.Message})
+		return
+	}
 
 	err := ch.cartService.DeleteCartByCustomerId(customer_id)
 	if err != nil {
@@ -199,24 +211,3 @@ func (ch CartHandler) DeleteCartAll(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Cart deleted successfully"})
 }
-
-// set SECRET=sUpErCaLiFrAgIlIsTiCeXpIaLiDoCiOuS in .env file
-// const secret string = os.Getenv("SECRET")
-
-// func UserIDFromAuthToken(authToken string) (string, *errs.AppError) {
-// 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-// 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-// 			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
-// 		}
-
-// 		return []byte(secret), nil
-// 	})
-// 	if err != nil {
-// 		return "", errs.NewAuthenticationError("unexpected signing method")
-// 	}
-// 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-
-// 		return claims["user_id"].(string), nil
-// 	}
-// 	return "", errs.NewAuthenticationError("invalid token")
-// }

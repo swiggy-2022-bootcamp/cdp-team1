@@ -16,7 +16,6 @@ type OrderService interface {
 	UpdateOrder(string, string) *error.AppError
 	DeleteOrderById(string) *error.AppError
 	CreateInvoice(string) *error.AppError
-	// DeleteAllOrders() *error.AppError
 }
 
 type OrderServiceImpl struct {
@@ -118,14 +117,3 @@ func (odb OrderServiceImpl) CreateInvoice(order_id string) *error.AppError {
 
 	return nil
 }
-
-// func (odb OrderServiceImpl) DeleteAllOrder() *error.AppError {
-
-// 	err := odb.orderRepository.DeleteAll()
-
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	return nil
-// }

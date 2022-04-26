@@ -913,3 +913,128 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 [GIN-debug] Listening and serving HTTP on :5000
 INFO: 2022/04/26 00:58:01 [caught sig: %+v interrupt]
 INFO: 2022/04/26 00:58:01 [Wait for 2 second to finish processing]
+ERROR: 2022/04/26 13:57:40 [Connection to dynamoDB failed.]
+ERROR: 2022/04/26 13:57:41 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: 59NS59SIPKTMRTI9V21CDLV5QBVV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCartItem-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/26 13:58:18 [{
+
+}]
+ERROR: 2022/04/26 13:58:18 [Failed to get item from database - UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: CF8B97KBUNDJA86LSAVRQVCSSNVV4KQNSO5AEMVJF66Q9ASUAAJG]
+ERROR: 2022/04/26 13:58:19 [Failed to insert item into database - UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: LR6C7B002G97LV41DCOJFPLU23VV4KQNSO5AEMVJF66Q9ASUAAJG]
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T13:58:19+05:30 537.427ms 
+GET - [401] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T13:58:26+05:30 0s Error #01: unexpected signing method
+
+ERROR: 2022/04/26 13:58:36 [{
+
+}]
+ERROR: 2022/04/26 13:58:36 [Failed to get item from database - UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: 2GN41SMR0K4B8SI81EKJFR58SBVV4KQNSO5AEMVJF66Q9ASUAAJG]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T13:58:36+05:30 268.6772ms Error #01: UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: 2GN41SMR0K4B8SI81EKJFR58SBVV4KQNSO5AEMVJF66Q9ASUAAJG
+
+GET - [401] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:00:27+05:30 0s Error #01: unexpected signing method
+
+INFO: 2022/04/26 14:01:07 [caught sig: %+v interrupt]
+INFO: 2022/04/26 14:01:07 [Wait for 2 second to finish processing]
+ERROR: 2022/04/26 14:01:19 [Connection to dynamoDB failed.]
+ERROR: 2022/04/26 14:01:20 [Got error calling CreateTable: %s UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: MAM36PPOE7VOPIMI62S4J96N8FVV4KQNSO5AEMVJF66Q9ASUAAJG]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCartItem-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+GET - [401] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:01:26+05:30 997.9µs Error #01: unexpected signing method
+
+ERROR: 2022/04/26 14:01:36 [{
+
+}]
+ERROR: 2022/04/26 14:01:36 [Failed to get item from database - UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: VCAVFCKNTFVME0PRRTQ7V78NPNVV4KQNSO5AEMVJF66Q9ASUAAJG]
+GET - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:01:36+05:30 254.1774ms Error #01: UnrecognizedClientException: The security token included in the request is invalid.
+	status code: 400, request id: VCAVFCKNTFVME0PRRTQ7V78NPNVV4KQNSO5AEMVJF66Q9ASUAAJG
+
+INFO: 2022/04/26 14:02:53 [caught sig: %+v interrupt]
+INFO: 2022/04/26 14:02:53 [Wait for 2 second to finish processing]
+ERROR: 2022/04/26 14:03:30 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCartItem-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+ERROR: 2022/04/26 14:03:36 [Cart for user doesn't exist. - ]
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:03:36+05:30 258.8162ms Error #01: Cart for user doesn't exists
+
+ERROR: 2022/04/26 14:03:44 [Cart for user doesn't exist. - ]
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:03:44+05:30 521.047ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:03:46+05:30 258.8303ms 
+INFO: 2022/04/26 14:04:49 [caught sig: %+v interrupt]
+INFO: 2022/04/26 14:04:49 [Wait for 2 second to finish processing]
+ERROR: 2022/04/26 14:05:30 [Got error calling CreateTable: %s ResourceInUseException: Table already exists: cartCollection]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /cart/api/swagger/*any    --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /cart/api/                --> cartService/app/handlers.HealthCheckHandler.HealthCheck-fm (3 handlers)
+[GIN-debug] POST   /cart/api/cart            --> cartService/app/handlers.CartHandler.CreateCart-fm (3 handlers)
+[GIN-debug] PUT    /cart/api/cart            --> cartService/app/handlers.CartHandler.UpdateCart-fm (3 handlers)
+[GIN-debug] GET    /cart/api/cart            --> cartService/app/handlers.CartHandler.GetCart-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/:id        --> cartService/app/handlers.CartHandler.DeleteCartItem-fm (3 handlers)
+[GIN-debug] DELETE /cart/api/cart/empty      --> cartService/app/handlers.CartHandler.DeleteCartAll-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:06:37+05:30 1.3449236s 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:06:47+05:30 519.1902ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:06:51+05:30 261.5636ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:06:56+05:30 260.7979ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:07:01+05:30 522.5578ms 
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:07:10+05:30 517.5384ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:07:12+05:30 519.8356ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:07:14+05:30 262.2126ms 
+DELETE - [401] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart/empty 2022-04-26T14:07:22+05:30 0s Error #01: unexpected signing method
+
+DELETE - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart/empty 2022-04-26T14:07:30+05:30 259.7109ms 
+ERROR: 2022/04/26 14:07:33 [Cart for user doesn't exist. - ]
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:07:33+05:30 258.1684ms Error #01: Cart for user doesn't exists
+
+ERROR: 2022/04/26 14:07:41 [Cart for user doesn't exist. - ]
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:07:41+05:30 514.4443ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /cart/api/cart 2022-04-26T14:07:49+05:30 258.891ms 
+INFO: 2022/04/26 14:08:03 [caught sig: %+v interrupt]
+INFO: 2022/04/26 14:08:03 [Wait for 2 second to finish processing]
