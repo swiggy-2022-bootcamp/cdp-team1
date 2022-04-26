@@ -672,3 +672,44 @@ INFO: 2022/04/26 00:47:55 [Connected to dynamoDB]
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on :7001
 GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/account-frontstore/account/19f56849-2464-4a82-b44b-8827a5566dcc 2022-04-26T00:51:23+05:30 2.2746713s 
+ERROR: 2022/04/26 14:33:45 [Connection to dynamoDB failed.]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/account-frontstore/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /api/account-frontstore/  --> qwik.in/account-frontstore/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /api/account-frontstore/register --> qwik.in/account-frontstore/app/handlers.AccountControllerInterface.RegisterAccount-fm (3 handlers)
+[GIN-debug] GET    /api/account-frontstore/account/:accessorId --> qwik.in/account-frontstore/app/handlers.AccountControllerInterface.GetAccountById-fm (3 handlers)
+[GIN-debug] PUT    /api/account-frontstore/account/:accessorId --> qwik.in/account-frontstore/app/handlers.AccountControllerInterface.UpdateAccount-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7001
+INFO: 2022/04/26 14:34:38 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/account-frontstore/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /api/account-frontstore/  --> qwik.in/account-frontstore/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /api/account-frontstore/register --> qwik.in/account-frontstore/app/handlers.AccountControllerInterface.RegisterAccount-fm (3 handlers)
+[GIN-debug] GET    /api/account-frontstore/account/:accessorId --> qwik.in/account-frontstore/app/handlers.AccountControllerInterface.GetAccountById-fm (3 handlers)
+[GIN-debug] PUT    /api/account-frontstore/account/:accessorId --> qwik.in/account-frontstore/app/handlers.AccountControllerInterface.UpdateAccount-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7001
+GET - [401] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/account-frontstore/account/19f56849-2464-4a82-b44b-8827a5566dcc 2022-04-26T14:35:45+05:30 408.1µs 
+INFO: 2022/04/26 14:39:02 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/account-frontstore/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (3 handlers)
+[GIN-debug] GET    /api/account-frontstore/  --> qwik.in/account-frontstore/app/handlers.HealthCheck (3 handlers)
+[GIN-debug] POST   /api/account-frontstore/register --> qwik.in/account-frontstore/app/handlers.AccountControllerInterface.RegisterAccount-fm (3 handlers)
+[GIN-debug] GET    /api/account-frontstore/account/:accessorId --> qwik.in/account-frontstore/app/handlers.AccountControllerInterface.GetAccountById-fm (3 handlers)
+[GIN-debug] PUT    /api/account-frontstore/account/:accessorId --> qwik.in/account-frontstore/app/handlers.AccountControllerInterface.UpdateAccount-fm (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7001
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/account-frontstore/account/19f56849-2464-4a82-b44b-8827a5566dcc 2022-04-26T14:39:05+05:30 288.5451ms 

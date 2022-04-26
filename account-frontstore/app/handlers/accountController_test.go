@@ -19,8 +19,8 @@ func setupRouter(accountController AccountControllerInterface) *gin.Engine {
 
 	newRouter := r.Group("api/account-frontstore")
 	newRouter.POST("/register", accountController.RegisterAccount)
-	newRouter.GET("/account/:accessorId", accountController.GetAccountById)
-	newRouter.PUT("/account/:accessorId", accountController.UpdateAccount)
+	newRouter.GET("/account/", accountController.GetAccountById)
+	newRouter.PUT("/account/", accountController.UpdateAccount)
 
 	newRouter.GET("/", HealthCheck)
 	return r
@@ -45,6 +45,7 @@ func TestRegisterAccountForSuccess(t *testing.T) {
 	router := setupRouter(accountController)
 
 	req, _ := http.NewRequest(http.MethodPost, "/api/account-frontstore/register", bytes.NewBuffer(marshalledSampleAccountBody))
+	req.Header.Add("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTIzNDUiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2NTIxNTU2Njd9.nT0WTSMOxfFIGLC5ABkJ8Nk-n2CuoZN-cW0FSK5W1CU")
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
@@ -70,6 +71,7 @@ func TestRegisterAccountForFailure(t *testing.T) {
 	router := setupRouter(accountController)
 
 	req, _ := http.NewRequest(http.MethodPost, "/api/account-frontstore/register", bytes.NewBuffer(marshalledSampleAccountBody))
+	req.Header.Add("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTIzNDUiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2NTIxNTU2Njd9.nT0WTSMOxfFIGLC5ABkJ8Nk-n2CuoZN-cW0FSK5W1CU")
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
@@ -79,7 +81,7 @@ func TestRegisterAccountForFailure(t *testing.T) {
 
 func TestGetAccountByIdForSuccess(t *testing.T) {
 	sampleAccountBody := model.Account{
-		CustomerId:      "abcdefg",
+		CustomerId:      "12345",
 		Firstname:       "Ravikumar",
 		Lastname:        "S",
 		Email:           "ravi@gmail.com",
@@ -96,7 +98,8 @@ func TestGetAccountByIdForSuccess(t *testing.T) {
 	accountController := InitAccountController(mockAccountService)
 	router := setupRouter(accountController)
 
-	req, _ := http.NewRequest(http.MethodGet, "/api/account-frontstore/account/abcdefg", nil)
+	req, _ := http.NewRequest(http.MethodGet, "/api/account-frontstore/account/", nil)
+	req.Header.Add("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTIzNDUiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2NTIxNTU2Njd9.nT0WTSMOxfFIGLC5ABkJ8Nk-n2CuoZN-cW0FSK5W1CU")
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
@@ -105,7 +108,7 @@ func TestGetAccountByIdForSuccess(t *testing.T) {
 
 func TestGetAccountByIdForFailure(t *testing.T) {
 	sampleAccountBody := model.Account{
-		CustomerId:      "abcdefg",
+		CustomerId:      "12345",
 		Firstname:       "Ravikumar",
 		Lastname:        "S",
 		Email:           "ravi@gmail.com",
@@ -122,7 +125,8 @@ func TestGetAccountByIdForFailure(t *testing.T) {
 	accountController := InitAccountController(mockAccountService)
 	router := setupRouter(accountController)
 
-	req, _ := http.NewRequest(http.MethodGet, "/api/account-frontstore/account/abcdefg", nil)
+	req, _ := http.NewRequest(http.MethodGet, "/api/account-frontstore/account/", nil)
+	req.Header.Add("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTIzNDUiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2NTIxNTU2Njd9.nT0WTSMOxfFIGLC5ABkJ8Nk-n2CuoZN-cW0FSK5W1CU")
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
@@ -132,7 +136,7 @@ func TestGetAccountByIdForFailure(t *testing.T) {
 
 func TestUpdateAccountForSuccess(t *testing.T) {
 	sampleAccountBody := model.Account{
-		CustomerId:      "abcdefg",
+		CustomerId:      "12345",
 		Firstname:       "Ravikumar",
 		Lastname:        "S",
 		Email:           "ravi@gmail.com",
@@ -149,7 +153,8 @@ func TestUpdateAccountForSuccess(t *testing.T) {
 	accountController := InitAccountController(mockAccountService)
 	router := setupRouter(accountController)
 
-	req, _ := http.NewRequest(http.MethodPut, "/api/account-frontstore/account/abcdefg", bytes.NewBuffer(marshalledSampleAccountBody))
+	req, _ := http.NewRequest(http.MethodPut, "/api/account-frontstore/account/", bytes.NewBuffer(marshalledSampleAccountBody))
+	req.Header.Add("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTIzNDUiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2NTIxNTU2Njd9.nT0WTSMOxfFIGLC5ABkJ8Nk-n2CuoZN-cW0FSK5W1CU")
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
@@ -158,7 +163,7 @@ func TestUpdateAccountForSuccess(t *testing.T) {
 
 func TestUpdateAccountForFailure(t *testing.T) {
 	sampleAccountBody := model.Account{
-		CustomerId:      "abcdefg",
+		CustomerId:      "12345",
 		Firstname:       "Ravikumar",
 		Lastname:        "S",
 		Email:           "ravi@gmail.com",
@@ -175,7 +180,8 @@ func TestUpdateAccountForFailure(t *testing.T) {
 	accountController := InitAccountController(mockAccountService)
 	router := setupRouter(accountController)
 
-	req, _ := http.NewRequest(http.MethodPut, "/api/account-frontstore/account/abcdefg", bytes.NewBuffer(marshalledSampleAccountBody))
+	req, _ := http.NewRequest(http.MethodPut, "/api/account-frontstore/account/", bytes.NewBuffer(marshalledSampleAccountBody))
+	req.Header.Add("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTIzNDUiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2NTIxNTU2Njd9.nT0WTSMOxfFIGLC5ABkJ8Nk-n2CuoZN-cW0FSK5W1CU")
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 
@@ -185,7 +191,7 @@ func TestUpdateAccountForFailure(t *testing.T) {
 
 func TestUpdateAccountForEmailFailure(t *testing.T) {
 	sampleAccountBody := model.Account{
-		CustomerId:      "abcdefg",
+		CustomerId:      "12345",
 		Firstname:       "Ravikumar",
 		Lastname:        "S",
 		Email:           "ravi@gmail.com",
@@ -202,7 +208,8 @@ func TestUpdateAccountForEmailFailure(t *testing.T) {
 	accountController := InitAccountController(mockAccountService)
 	router := setupRouter(accountController)
 
-	req, _ := http.NewRequest(http.MethodPut, "/api/account-frontstore/account/abcdefg", bytes.NewBuffer(marshalledSampleAccountBody))
+	req, _ := http.NewRequest(http.MethodPut, "/api/account-frontstore/account/", bytes.NewBuffer(marshalledSampleAccountBody))
+	req.Header.Add("Authorization", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTIzNDUiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2NTIxNTU2Njd9.nT0WTSMOxfFIGLC5ABkJ8Nk-n2CuoZN-cW0FSK5W1CU")
 	w := httptest.NewRecorder()
 	router.ServeHTTP(w, req)
 

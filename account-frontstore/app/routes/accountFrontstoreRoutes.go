@@ -15,6 +15,6 @@ func Router(router *gin.Engine) {
 
 	accountController := handlers.InitAccountController(nil)
 	newRouter.POST("/register", accountController.RegisterAccount)
-	newRouter.GET("/account/:accessorId", accountController.GetAccountById)
-	newRouter.PUT("/account/:accessorId", accountController.UpdateAccount)
+	newRouter.GET("/account/", accountController.GetAccountById)
+	newRouter.PUT("/account/", accountController.UpdateAccount)
 }

@@ -2,7 +2,9 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt"
 	"qwik.in/account-frontstore/domain/model"
 	"qwik.in/account-frontstore/domain/repository"
 	"qwik.in/account-frontstore/domain/service"
@@ -64,8 +66,14 @@ func (accountController *AccountController) RegisterAccount(c *gin.Context) {
 // @Success	200  {object} model.Account
 // @Router /account/{accessorId} [GET]
 func (accountController *AccountController) GetAccountById(c *gin.Context) {
-	fetchedAccount, err := accountController.accountService.GetAccountById(c.Param("accessorId"))
+	userId, _, err := extractUser(c.GetHeader("Authorization"))
+	if err != nil {
+		accountErr, _ := err.(*errors.AccountError)
+		c.JSON(accountErr.Status, accountErr.ErrorMessage)
+		return
+	}
 
+	fetchedAccount, err := accountController.accountService.GetAccountById(userId)
 	if err != nil {
 		accountErr, _ := err.(*errors.AccountError)
 		c.JSON(accountErr.Status, accountErr.ErrorMessage)
@@ -87,9 +95,16 @@ func (accountController *AccountController) GetAccountById(c *gin.Context) {
 // @Success	200  {object} model.Account
 // @Router /account/{accessorId} [PUT]
 func (accountController *AccountController) UpdateAccount(c *gin.Context) {
+	userId, _, err := extractUser(c.GetHeader("Authorization"))
+	if err != nil {
+		accountErr, _ := err.(*errors.AccountError)
+		c.JSON(accountErr.Status, accountErr.ErrorMessage)
+		return
+	}
+
 	account := model.Account{}
 	json.NewDecoder(c.Request.Body).Decode(&account)
-	updatedAccount, err := accountController.accountService.UpdateAccount(c.Param("accessorId"), account)
+	updatedAccount, err := accountController.accountService.UpdateAccount(userId, account)
 
 	if err != nil {
 		accountErr, _ := err.(*errors.AccountError)
@@ -98,4 +113,29 @@ func (accountController *AccountController) UpdateAccount(c *gin.Context) {
 	}
 
 	c.JSON(200, *updatedAccount)
+}
+
+func extractUser(token string) (string, string, error) {
+	tokenBytes, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
+
+		// validate the alg is what is expected
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+		}
+		return []byte("sUpErCaLiFrAgIlIsTiCeXpIaLiDoCiOuS"), nil
+	})
+	if err != nil {
+		if ve, ok := err.(*jwt.ValidationError); ok {
+			if ve.Errors&(jwt.ValidationErrorExpired|jwt.ValidationErrorNotValidYet) != 0 {
+				// Token is either expired or not active yet
+				return "", "", errors.NewAuthenticationError("expired token")
+			}
+			return "", "", errors.NewAuthenticationError("invalid token")
+		}
+		return "", "", errors.NewAuthenticationError(err.Error())
+	}
+	if claims, ok := tokenBytes.Claims.(jwt.MapClaims); ok && tokenBytes.Valid {
+		return claims["user_id"].(string), claims["role"].(string), nil
+	}
+	return "", "", errors.NewAuthenticationError("cannot process token")
 }

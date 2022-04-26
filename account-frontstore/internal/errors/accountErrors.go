@@ -26,3 +26,38 @@ func NewMarshallError() *AccountError {
 func NewEmailAlreadyRegisteredError() *AccountError {
 	return &AccountError{http.StatusBadRequest, "User with given email already exists"}
 }
+
+func NewNotFoundError(ErrorMessage string) *AccountError {
+	return &AccountError{
+		ErrorMessage: ErrorMessage,
+		Status:       http.StatusNotFound,
+	}
+}
+
+func NewUnexpectedError(ErrorMessage string) *AccountError {
+	return &AccountError{
+		ErrorMessage: ErrorMessage,
+		Status:       http.StatusInternalServerError,
+	}
+}
+
+func NewValidationError(ErrorMessage string) *AccountError {
+	return &AccountError{
+		ErrorMessage: ErrorMessage,
+		Status:       http.StatusBadRequest,
+	}
+}
+
+func NewAuthenticationError(ErrorMessage string) *AccountError {
+	return &AccountError{
+		ErrorMessage: ErrorMessage,
+		Status:       http.StatusUnauthorized,
+	}
+}
+
+func NewAuthorizationError(ErrorMessage string) *AccountError {
+	return &AccountError{
+		ErrorMessage: ErrorMessage,
+		Status:       http.StatusForbidden,
+	}
+}
