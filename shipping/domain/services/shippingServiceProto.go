@@ -21,7 +21,7 @@ func NewShippingRepoService(pr repository.ShippingAddrRepo) ShippingProtoServer 
 func (s ShippingProtoServer) GetDefaultShippingAddress(ctx context.Context, shippingAddressRequest *protos.ShippingAddressRequest) (*protos.ShippingAddressResponse, error) {
 	response := &protos.ShippingAddressResponse{}
 	//Fetch Default Shipping Address
-	userShippingAddress, err := shippingAddrRepo.FindDefaultShippingAddressImpl(int(shippingAddressRequest.GetUserId()))
+	userShippingAddress, err := shippingAddrRepo.FindDefaultShippingAddressImpl(shippingAddressRequest.GetUserId())
 	if err != nil {
 		logger.Error("Error in Proto GetDefaultShippingAddress", err)
 		return nil, err.Error()
@@ -30,7 +30,7 @@ func (s ShippingProtoServer) GetDefaultShippingAddress(ctx context.Context, ship
 	var shippingAddressProto *protos.ShippingAddress
 	userShippingAddress1 := userShippingAddress
 	shippingAddressProto = &protos.ShippingAddress{
-		UserId:            float64(int32(int(userShippingAddress1.UserID))),
+		UserId:            userShippingAddress1.UserID,
 		ShippingAddressId: userShippingAddress1.ShippingAddressID,
 		FirstName:         userShippingAddress1.FirstName,
 		LastName:          userShippingAddress1.LastName,

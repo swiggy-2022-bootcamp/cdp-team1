@@ -8,10 +8,10 @@ import (
 
 //ShippingAddrService ..
 type ShippingAddrService interface {
-	CreateNewShippingAddress(int, string, string, string, string, string, string, string, string, int, string, bool, int) (string, *errs.AppError)
+	CreateNewShippingAddress(string, string, string, string, string, string, string, string, string, int, string, bool, int) (string, *errs.AppError)
 	GetShippingAddressById(string) (*repository.ShippingAddress, *errs.AppError)
-	GetDefaultShippingAddr(int) (*repository.ShippingAddress, *errs.AppError)
-	GetAllShippingAddressOfUser(int) (*[]models.ShippingAddrModel, *errs.AppError)
+	GetDefaultShippingAddr(string) (*repository.ShippingAddress, *errs.AppError)
+	GetAllShippingAddressOfUser(string) (*[]models.ShippingAddrModel, *errs.AppError)
 }
 
 //ShippingAddrServiceImpl ..
@@ -27,7 +27,7 @@ func ShippingAddressServiceFunc(shippingAddressRepository repository.ShippingAdd
 }
 
 //CreateNewShippingAddress ..
-func (s ShippingAddrServiceImpl) CreateNewShippingAddress(userID int, shippingAddressId, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool, shippingCost int) (string, *errs.AppError) {
+func (s ShippingAddrServiceImpl) CreateNewShippingAddress(userID string, shippingAddressId, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool, shippingCost int) (string, *errs.AppError) {
 	shippingAddress := repository.ShippingAddrFunc(userID, shippingAddressId, firstName, lastName, addressLine1, addressLine2, city, state, phone, pincode, addressType, defaultAddress, shippingCost)
 	data, err := s.shippingAddrRepo.CreateNewShippingAddrImpl(*shippingAddress)
 	if err != nil {
@@ -46,7 +46,7 @@ func (s ShippingAddrServiceImpl) GetShippingAddressById(shippingAddressId string
 }
 
 //GetDefaultShippingAddr ..
-func (s ShippingAddrServiceImpl) GetDefaultShippingAddr(userId int) (*repository.ShippingAddress, *errs.AppError) {
+func (s ShippingAddrServiceImpl) GetDefaultShippingAddr(userId string) (*repository.ShippingAddress, *errs.AppError) {
 	data, err := s.shippingAddrRepo.FindDefaultShippingAddressImpl(userId)
 	if err != nil {
 		return nil, err
@@ -54,7 +54,7 @@ func (s ShippingAddrServiceImpl) GetDefaultShippingAddr(userId int) (*repository
 	return data, nil
 }
 
-func (s ShippingAddrServiceImpl) GetAllShippingAddressOfUser(userId int) (*[]models.ShippingAddrModel, *errs.AppError) {
+func (s ShippingAddrServiceImpl) GetAllShippingAddressOfUser(userId string) (*[]models.ShippingAddrModel, *errs.AppError) {
 	data, err := s.shippingAddrRepo.FindAllShippingAddressOfUser(userId)
 	if err != nil {
 		return nil, err

@@ -19,7 +19,7 @@ import (
 
 //ShippingAddress ..
 type ShippingAddress struct {
-	UserID            int    `json:"user_id" dynamodb:"user_id"`
+	UserID            string `json:"user_id" dynamodb:"user_id"`
 	ShippingAddressID string `json:"shipping_address_id" dynamodbav:"shipping_address_id"`
 	FirstName         string `json:"first_name" dynamodbav:"first_name"`
 	LastName          string `json:"last_name" dynamodbav:"lastName"`
@@ -38,8 +38,8 @@ type ShippingAddress struct {
 type ShippingAddrRepo interface {
 	CreateNewShippingAddrImpl(ShippingAddress) (string, *errs.AppError)
 	FindShippingAddressByIdImpl(string) (*ShippingAddress, *errs.AppError)
-	FindDefaultShippingAddressImpl(int) (*ShippingAddress, *errs.AppError)
-	FindAllShippingAddressOfUser(int) (*[]models.ShippingAddrModel, *errs.AppError)
+	FindDefaultShippingAddressImpl(string) (*ShippingAddress, *errs.AppError)
+	FindAllShippingAddressOfUser(string) (*[]models.ShippingAddrModel, *errs.AppError)
 }
 
 //ShippingAddressRepoImpl ..
@@ -49,7 +49,7 @@ type ShippingAddressRepoImpl struct {
 }
 
 //ShippingAddrFunc ..
-func ShippingAddrFunc(userID int, shippingAddressId, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool, shippingCost int) *ShippingAddress {
+func ShippingAddrFunc(userID string, shippingAddressId, firstName, lastName, addressLine1, addressLine2, city, state, phone string, pincode int, addressType string, defaultAddress bool, shippingCost int) *ShippingAddress {
 	shippingCost = GetShippingCost(pincode)
 	return &ShippingAddress{
 		UserID:            userID,
@@ -152,7 +152,7 @@ func (sar ShippingAddressRepoImpl) FindShippingAddressByIdImpl(shippingAddressId
 }
 
 // FindDefaultShippingAddressImpl  ..
-func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(userId int) (*ShippingAddress, *errs.AppError) {
+func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(userId string) (*ShippingAddress, *errs.AppError) {
 	item := models.ShippingAddrModel{}
 	//fmt.Println(userId)
 	filt := expression.Name("user_id").Equal(expression.Value(userId))
@@ -187,7 +187,7 @@ func (sar ShippingAddressRepoImpl) FindDefaultShippingAddressImpl(userId int) (*
 	return (*ShippingAddress)(&item), nil
 }
 
-func (sar ShippingAddressRepoImpl) FindAllShippingAddressOfUser(userId int) (*[]models.ShippingAddrModel, *errs.AppError) {
+func (sar ShippingAddressRepoImpl) FindAllShippingAddressOfUser(userId string) (*[]models.ShippingAddrModel, *errs.AppError) {
 	var item *[]models.ShippingAddrModel
 	filt := expression.Name("user_id").Equal(expression.Value(userId))
 	expr, err := expression.NewBuilder().WithCondition(filt).Build()
