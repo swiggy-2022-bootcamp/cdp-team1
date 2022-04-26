@@ -13,15 +13,7 @@ type Customer struct {
 	Telephone       string `json:"telephone"`
 	CustomerGroupId int    `json:"customer_group_id"`
 	//TBC
-	Address []struct {
-		HouseNumber string `json:"house_number"`
-		Street      string `json:"street"`
-		Area        string `json:"area"`
-		City        string `json:"city"`
-		Country     string `json:"country"`
-		Pincode     string `json:"pincode"`
-		Default     int    `json:"default"`
-	} `json:"address"`
+	Address   []Address `json:"address"`
 	Affiliate struct {
 		Company           string `json:"company"`
 		Website           string `json:"website"`

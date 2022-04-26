@@ -1503,3 +1503,368 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 [GIN-debug] Listening and serving HTTP on :7002
 GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-26T00:51:27+05:30 281.4772ms 
 GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/email/ashwin@gmail.com 2022-04-26T00:51:30+05:30 271.2188ms 
+INFO: 2022/04/26 11:52:22 [Connected to dynamoDB]
+INFO: 2022/04/26 11:52:23 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+INFO: 2022/04/26 11:53:24 [Connected to dynamoDB]
+INFO: 2022/04/26 11:53:24 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-26T11:53:34+05:30 282.453ms 
+INFO: 2022/04/26 11:56:10 [Connected to dynamoDB]
+INFO: 2022/04/26 11:56:10 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+INFO: 2022/04/26 12:01:52 [Connected to dynamoDB]
+INFO: 2022/04/26 12:01:53 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+INFO: 2022/04/26 12:03:26 [Connected to dynamoDB]
+INFO: 2022/04/26 12:03:26 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+GET - [404] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/c3142ff1-e11c-4246-8ab8-c5753a5fe35c 2022-04-26T12:03:31+05:30 568.4233ms 
+INFO: 2022/04/26 12:28:30 [Connected to dynamoDB]
+INFO: 2022/04/26 12:28:30 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+INFO: 2022/04/26 12:38:03 [Connected to dynamoDB]
+INFO: 2022/04/26 12:38:03 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T12:38:16+05:30 886.9176ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/df2ea136-91f8-4db9-83bd-ce7d9d4d8508 2022-04-26T12:39:17+05:30 1.5342148s 
+INFO: 2022/04/26 12:40:27 [Connected to dynamoDB]
+INFO: 2022/04/26 12:40:27 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T12:40:38+05:30 1.5185389s 
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T12:40:52+05:30 910.3497ms 
+INFO: 2022/04/26 12:45:31 [Connected to dynamoDB]
+INFO: 2022/04/26 12:45:31 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T12:45:38+05:30 884.8793ms 
+INFO: 2022/04/26 12:50:44 [Connected to dynamoDB]
+INFO: 2022/04/26 12:50:45 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T12:50:48+05:30 919.9887ms 
+INFO: 2022/04/26 12:53:29 [Connected to dynamoDB]
+INFO: 2022/04/26 12:53:29 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T12:53:34+05:30 910.8432ms 
+INFO: 2022/04/26 12:55:27 [Connected to dynamoDB]
+INFO: 2022/04/26 12:55:27 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T12:55:34+05:30 931.7949ms 
+INFO: 2022/04/26 12:58:00 [Connected to dynamoDB]
+INFO: 2022/04/26 12:58:01 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T12:58:28+05:30 887.4741ms 
+ERROR: 2022/04/26 13:04:35 [Connection to dynamoDB failed.]
+ERROR: 2022/04/26 13:04:35 [Connection to dynamoDB failed.]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+ERROR: 2022/04/26 13:05:02 [Connection to dynamoDB failed.]
+ERROR: 2022/04/26 13:05:02 [Connection to dynamoDB failed.]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+ERROR: 2022/04/26 13:05:56 [Connection to dynamoDB failed.]
+ERROR: 2022/04/26 13:05:57 [Connection to dynamoDB failed.]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+INFO: 2022/04/26 13:09:36 [Connected to dynamoDB]
+INFO: 2022/04/26 13:09:37 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T13:09:42+05:30 877.1881ms 
+INFO: 2022/04/26 13:16:34 [Connected to dynamoDB]
+INFO: 2022/04/26 13:16:34 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T13:16:42+05:30 2.1139363s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/16b02dd1-a39f-4f29-a9b5-a51f5833a819 2022-04-26T13:16:59+05:30 558.4434ms 
+POST - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer 2022-04-26T13:19:43+05:30 3.0429544s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/83a7111f-100b-4c37-8acf-ab38aa57680a 2022-04-26T13:20:11+05:30 561.0874ms 
+PUT - [400] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/83a7111f-100b-4c37-8acf-ab38aa57680a 2022-04-26T13:20:51+05:30 623.8605ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/83a7111f-100b-4c37-8acf-ab38aa57680a 2022-04-26T13:21:07+05:30 897.4245ms 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/83a7111f-100b-4c37-8acf-ab38aa57680a 2022-04-26T13:21:27+05:30 561.4566ms 
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/83a7111f-100b-4c37-8acf-ab38aa57680a 2022-04-26T13:22:11+05:30 905.3124ms 
+INFO: 2022/04/26 13:23:21 [Connected to dynamoDB]
+INFO: 2022/04/26 13:23:21 [Connected to dynamoDB]
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /api/customer-admin/swagger/*any --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] GET    /api/customer-admin/      --> qwik.in/customers-admin/app/handlers.HealthCheck (4 handlers)
+[GIN-debug] POST   /api/customer-admin/customer --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.CreateCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerById-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/customer/email/:customerEmail --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.GetCustomerByEmail-fm (4 handlers)
+[GIN-debug] PUT    /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.UpdateCustomer-fm (4 handlers)
+[GIN-debug] DELETE /api/customer-admin/customer/:customerId --> qwik.in/customers-admin/app/handlers.CustomerControllerInterface.DeleteCustomer-fm (4 handlers)
+[GIN-debug] GET    /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.GetAdminUsers (4 handlers)
+[GIN-debug] POST   /api/customer-admin/user  --> qwik.in/customers-admin/app/handlers.AddAdminUser (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :7002
+PUT - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/83a7111f-100b-4c37-8acf-ab38aa57680a 2022-04-26T13:23:27+05:30 2.149189s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/83a7111f-100b-4c37-8acf-ab38aa57680a 2022-04-26T13:25:37+05:30 2.3641368s 
+GET - [200] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /api/customer-admin/customer/email/ravyaa@gmail.com 2022-04-26T13:25:46+05:30 559.7185ms 

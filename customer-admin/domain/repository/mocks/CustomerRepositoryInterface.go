@@ -12,6 +12,27 @@ type CustomerRepositoryInterface struct {
 	mock.Mock
 }
 
+// AddCustomerAddress provides a mock function with given fields: address
+func (_m *CustomerRepositoryInterface) AddCustomerAddress(address model.Address) (bool, error) {
+	ret := _m.Called(address)
+
+	var r0 bool
+	if rf, ok := ret.Get(0).(func(model.Address) bool); ok {
+		r0 = rf(address)
+	} else {
+		r0 = ret.Get(0).(bool)
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(model.Address) error); ok {
+		r1 = rf(address)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // Create provides a mock function with given fields: customer
 func (_m *CustomerRepositoryInterface) Create(customer model.Customer) (*model.Customer, error) {
 	ret := _m.Called(customer)
@@ -91,6 +112,29 @@ func (_m *CustomerRepositoryInterface) GetById(customerId string) (*model.Custom
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*model.Customer)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(string) error); ok {
+		r1 = rf(customerId)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// GetCustomerAddress provides a mock function with given fields: customerId
+func (_m *CustomerRepositoryInterface) GetCustomerAddress(customerId string) ([]model.Address, error) {
+	ret := _m.Called(customerId)
+
+	var r0 []model.Address
+	if rf, ok := ret.Get(0).(func(string) []model.Address); ok {
+		r0 = rf(customerId)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]model.Address)
 		}
 	}
 

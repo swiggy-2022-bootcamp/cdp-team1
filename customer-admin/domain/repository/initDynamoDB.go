@@ -31,6 +31,7 @@ func GetDynamoDBInstance() *dynamodb.DynamoDB {
 	//ping the database
 	_, err := svc.ListTables(&dynamodb.ListTablesInput{})
 	if err != nil {
+		fmt.Println(err)
 		log.Error("Connection to dynamoDB failed.")
 		fmt.Println("Connection to dynamoDB failed.")
 		return nil

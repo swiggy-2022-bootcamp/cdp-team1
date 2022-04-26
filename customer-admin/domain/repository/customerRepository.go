@@ -1,10 +1,16 @@
 package repository
 
 import (
+	"bytes"
+	"encoding/json"
+	"fmt"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 	"github.com/google/uuid"
+	"io"
+	"log"
+	"net/http"
 	"qwik.in/customers-admin/domain/model"
 	"qwik.in/customers-admin/internal/errors"
 )
@@ -15,6 +21,8 @@ type CustomerRepositoryInterface interface {
 	GetByEmail(customerEmail string) (*model.Customer, error)
 	Update(customer model.Customer) (*model.Customer, error)
 	Delete(customerId string) (*string, error)
+	GetCustomerAddress(customerId string) ([]model.Address, error)
+	AddCustomerAddress(address model.Address) (bool, error)
 }
 
 type CustomerRepository struct {
@@ -161,4 +169,60 @@ func (customerRepository *CustomerRepository) Delete(customerId string) (*string
 
 	str := "deletion successful"
 	return &str, nil
+}
+
+func (customerRepository *CustomerRepository) GetCustomerAddress(customerId string) ([]model.Address, error) {
+	url := "http://localhost:9005/api/shipping/allAddressOfCustomer/" + customerId
+
+	// Create a new request using http
+	req, _ := http.NewRequest("GET", url, nil)
+
+	// Send req using http Client
+	client := &http.Client{}
+	resp, err := client.Do(req)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	if resp.StatusCode != http.StatusAccepted {
+		bodyBytes, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatal(err)
+		}
+		bodyString := string(bodyBytes)
+		return nil, &errors.CustomerError{Status: resp.StatusCode, ErrorMessage: bodyString}
+	}
+	var fetchedCustomerAddresses []model.Address
+	json.NewDecoder(resp.Body).Decode(&fetchedCustomerAddresses)
+	return fetchedCustomerAddresses, nil
+}
+
+func (customerRepository *CustomerRepository) AddCustomerAddress(address model.Address) (bool, error) {
+	url := "http://localhost:9005/api/shipping/newAddress"
+
+	// Marshal it into JSON prior to requesting
+	addressJSON, err := json.Marshal(address)
+
+	// Create a new request using http
+	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(addressJSON))
+
+	// Send req using http Client
+	client := &http.Client{}
+	resp, err := client.Do(req)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Println(resp)
+	if resp.StatusCode != http.StatusAccepted {
+		bodyBytes, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatal(err)
+		}
+		bodyString := string(bodyBytes)
+		return false, &errors.CustomerError{Status: resp.StatusCode, ErrorMessage: bodyString}
+	}
+
+	return true, nil
 }
