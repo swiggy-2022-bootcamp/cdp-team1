@@ -1,0 +1,60 @@
+{
+  "_comments": "shippingAddress"
+}
+[
+  {
+    "$id": "id",
+    "title": "shippingAddress",
+    "type": "array(shippingAddress)",
+    "properties": {
+      "userId": {
+        "type": "id",
+        "description": "shippingAddress/shippingAddressID"
+      },
+      "payment_mode": {
+        "type": "array(shippingAddress)",
+        "description": "The shippingAddress added by the customer."
+      }
+    }
+  }
+]
+
+{
+  "_comments": "shippingAddress"
+}
+{
+  "title": "shippingAddress",
+  "type": "array(shippingAddress)",
+  "properties": {
+    "mode": {
+      "type": "string",
+      "description": "This can be debit, credit or COD."
+    },
+    "card_number": {
+      "type": "integer",
+      "description": "To save card details of user."
+    },
+    "balance": {
+      "type": "double",
+      "description": "Current balance of user."
+    }
+  }
+}
+
+"Example:"
+[
+{
+"user_id": 3,
+"shipping_address_id": "three",
+"first_name": "Keerthana",
+"last_name": "Yalini",
+"address_line_1": "3/122 Velayuthamplayam",
+"address_line_2": "Devarayapuram, Pollachi",
+"city": "Coimbatore",
+"state": "Tamil Nadu",
+"phone": "7715850643",
+"pincode": 642110,
+"address_type": "Home",
+"default_address": true
+}
+]

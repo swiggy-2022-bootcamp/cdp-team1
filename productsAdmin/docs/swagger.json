@@ -1,0 +1,350 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This microservice is for product_admin service.",
+        "title": "Swiggy Qwik - Product_Admin module",
+        "contact": {
+            "name": "Akash Yadav",
+            "email": "akash283y@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:9009",
+    "basePath": "/api/admin/products/",
+    "paths": {
+        "/": {
+            "get": {
+                "description": "This request will return 200 OK if server is up..",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    ""
+                ],
+                "summary": "To check if the service is running or not.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/admin/products": {
+            "get": {
+                "description": "Get a list of all products",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProductAdmin"
+                ],
+                "summary": "Get Products",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/entity.Product"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new product object, generate id and save in DB",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProductAdmin"
+                ],
+                "summary": "AddProduct",
+                "parameters": [
+                    {
+                        "description": "Product details",
+                        "name": "req",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product Created"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    }
+                }
+            }
+        },
+        "/api/admin/products/quantity/{id}": {
+            "get": {
+                "description": "Get Quantity of Product with given id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProductAdmin"
+                ],
+                "summary": "Quantity of Products",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Product id",
+                        "name": "productId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/proto.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    }
+                }
+            }
+        },
+        "/api/admin/products/search": {
+            "get": {
+                "description": "Search Product with given query",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProductAdmin"
+                ],
+                "summary": "Search Products",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    }
+                }
+            }
+        },
+        "/api/admin/products/{id}": {
+            "put": {
+                "description": "Update Product with given id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProductAdmin"
+                ],
+                "summary": "Update Products",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Product id",
+                        "name": "productId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product Updated Successfully"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete Product with given id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProductAdmin"
+                ],
+                "summary": "Delete Products",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Product id",
+                        "name": "productId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product Deleted Successfully"
+                    },
+                    "400": {
+                        "description": "Something went wrong"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "entity.Product": {
+            "type": "object",
+            "properties": {
+                "height": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "length": {
+                    "type": "integer"
+                },
+                "manufacturer_id": {
+                    "type": "string"
+                },
+                "minimum": {
+                    "type": "integer"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "points": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "product_category": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "product_description": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/entity.ProductDescription"
+                    }
+                },
+                "product_related": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "product_seo_url": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/entity.ProductSeoUrl"
+                    }
+                },
+                "quantity": {
+                    "type": "string"
+                },
+                "reward": {
+                    "type": "integer"
+                },
+                "shipping": {
+                    "type": "string"
+                },
+                "sku": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "integer"
+                },
+                "width": {
+                    "type": "integer"
+                }
+            }
+        },
+        "entity.ProductDescription": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "language_id": {
+                    "type": "string"
+                },
+                "meta_description": {
+                    "type": "string"
+                },
+                "meta_keyword": {
+                    "type": "string"
+                },
+                "meta_title": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "entity.ProductSeoUrl": {
+            "type": "object",
+            "properties": {
+                "keyword": {
+                    "type": "string"
+                },
+                "language_id": {
+                    "type": "string"
+                },
+                "store_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "proto.Response": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

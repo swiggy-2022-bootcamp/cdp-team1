@@ -1,0 +1,31 @@
+GET https://my.api.mockaroo.com/paymentmethods/123?key=f3a1f5b0
+Accept: application/json
+
+###
+POST https://my.api.mockaroo.com/paymentmethods/123?key=f3a1f5b0
+Accept: application/json
+
+{
+    "payment_modes": [
+    {
+      "mode": "Credit card",
+      "card": "3534290438792919",
+      "balance": 970545
+    },
+    {
+      "mode": "Credit card",
+      "card": "5481350864919259",
+      "balance": 629906
+    },
+    {
+      "mode": "COD",
+      "card": "",
+      "balance": ""
+    },
+    {
+      "mode": "Debit card",
+      "card": "374622770086444",
+      "balance": 559003
+    }
+  ]
+}

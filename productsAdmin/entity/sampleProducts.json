@@ -1,0 +1,125 @@
+[
+  {
+    "id": "90f97384-0117-4234-bbe2-5f306bbef0b3",
+    "model": "Daily Planet",
+    "quantity": "1",
+    "price": "20.00",
+    "manufacturer_id": "34",
+    "sku": "news sku",
+    "product_seo_url": [
+      {
+        "keyword": "newspaper",
+        "language_id": "1",
+        "store_id": "0"
+      }
+    ],
+    "points": 0,
+    "reward": 0,
+    "image": "",
+    "shipping": "1",
+    "weight": 40,
+    "length": 100,
+    "width": 50,
+    "height": 1,
+    "minimum": 1,
+    "product_related": [
+      "39"
+    ],
+    "product_description": [
+      {
+        "language_id": "1",
+        "name": "daily planet newspaper",
+        "description": "today's daily planet newspaper",
+        "meta_title": "daily planet newspaper",
+        "meta_description": "today's daily planet newspaper",
+        "meta_keyword": "daily planet, newspaper, metropolis",
+        "tag": "daily planet, newspaper, metropolis"
+      }
+    ],
+    "product_category": [
+      "45"
+    ]
+  },
+  {
+    "id": "5d3f2abf-14dc-4857-8472-7932266d3b0f",
+    "model": "lex corp",
+    "quantity": "300",
+    "price": "44.00",
+    "manufacturer_id": "20",
+    "sku": "demo sku",
+    "product_seo_url": [
+      {
+        "keyword": "demo-keyword",
+        "language_id": "1",
+        "store_id": "0"
+      }
+    ],
+    "points": 0,
+    "reward": 0,
+    "image": "",
+    "shipping": "1",
+    "weight": 0,
+    "length": 0,
+    "width": 0,
+    "height": 0,
+    "minimum": 0,
+    "product_related": [
+      "34"
+    ],
+    "product_description": [
+      {
+        "language_id": "1",
+        "name": "demo name",
+        "description": "Description of the product",
+        "meta_title": "Meta title of the product",
+        "meta_description": "Meta description of the product",
+        "meta_keyword": "demo, keyword, demo2",
+        "tag": "Product's tag, comma separated"
+      }
+    ],
+    "product_category": [
+      "25"
+    ]
+  },
+  {
+    "id": "1806cc20-e53d-4e08-880b-a55f21de029a",
+    "model": "lex corp",
+    "quantity": "3",
+    "price": "999999999.00",
+    "manufacturer_id": "55",
+    "sku": "top secret sku",
+    "product_seo_url": [
+      {
+        "keyword": "kryptonite-bullet",
+        "language_id": "1",
+        "store_id": "0"
+      }
+    ],
+    "points": 0,
+    "reward": 0,
+    "image": "",
+    "shipping": "1",
+    "weight": 300,
+    "length": 3,
+    "width": 3,
+    "height": 8,
+    "minimum": 3,
+    "product_related": [
+      "10"
+    ],
+    "product_description": [
+      {
+        "language_id": "1",
+        "name": "kryptonite bullet pack of 3",
+        "description": "Bullets made of kryptonite",
+        "meta_title": "kryptonite bullets",
+        "meta_description": "Bullets made of kryptonite",
+        "meta_keyword": "kryptonite, bullet, superman, batman",
+        "tag": "kryptonite, bullet, superman, batman"
+      }
+    ],
+    "product_category": [
+      "99"
+    ]
+  }
+]
