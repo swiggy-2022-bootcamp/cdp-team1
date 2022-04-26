@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package protos;
+
+option go_package = "/protos";
+
+service Auth {
+    rpc VerifyToken(TokenVerificationRequest) returns (TokenVerificationResponse);
+}
+
+message TokenVerificationRequest {
+    string token = 1;
+    string role = 2;
+}
+
+message TokenVerificationResponse {
+    bool is_verified = 1;
+    int32 status_code = 2;
+    string status_message = 3;
+}
