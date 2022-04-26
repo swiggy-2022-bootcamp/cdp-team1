@@ -1489,3 +1489,15 @@ GET - [202] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/existing/1 2022-04-
 ❕INFO: 2022/04/26 03:48:46 [✅ Order Status Updated !]
 POST - [500] ::1 HTTP/1.1 PostmanRuntime/7.29.0 /checkout/api/confirm 2022-04-26T03:48:46+05:30 285.2169ms 
 [GIN] 2022/04/26 - 03:48:46 | 500 |    285.2169ms |             ::1 | POST     "/checkout/api/confirm"
+📛ERROR: 2022/04/26 08:06:52 [Got err calling Shipping CreateTable: %s ResourceInUseException: Table already exists: team-1-shipping]
+❕INFO: 2022/04/26 08:06:52 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 08:06:52 [Got err calling Cart - CreateTable: %s ResourceInUseException: Table already exists: team-1-cartCollection]
+❕INFO: 2022/04/26 08:06:52 [Created the table{
+
+}]
+📛ERROR: 2022/04/26 08:06:53 [Got err calling Payment - CreateTable: %s ResourceInUseException: Table already exists: team-1-paymentCollection]
+❕INFO: 2022/04/26 08:06:53 [Created the table{
+
+}]
