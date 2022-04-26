@@ -1,0 +1,31 @@
+GET https://my.api.mockaroo.com/orders.json?key=undefined
+Accept "application/json"
+
+###
+POST https://my.api.mockaroo.com/orders.json?key=6e217e20&__method=POST
+Accept: application/json
+
+{
+  "id": 1,
+  "Customer_id": 1,
+  "Status": "Declined",
+  "Datetime": "24/11/2021",
+  "Orders": [
+    {
+      "Product_id": 1,
+      "Quantity": 4
+    },
+    {
+      "Product_id": 2,
+      "Quantity": 6
+    },
+    {
+      "Product_id": 3,
+      "Quantity": 8
+    },
+    {
+      "Product_id": 4,
+      "Quantity": 6
+    }
+  ]
+}
