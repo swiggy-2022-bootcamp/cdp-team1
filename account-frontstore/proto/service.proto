@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "qwik.in/rewards/proto";
+
+message Request {
+	string id = 1;
+	int32 transaction_amount=2;
+    
+}
+
+message Response {
+	string id = 1;
+	int32 reward_points=2;
+}
+
+service RewardPointService {
+	rpc getRewardPoints(Request) returns (Response);
+}

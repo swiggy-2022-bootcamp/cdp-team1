@@ -1,0 +1,13 @@
+version: '3'
+services:
+  account-frontstore:
+    build: .
+    container_name: account-frontstore
+    restart: always
+    ports:
+      - "7001:7001"
+    extra_hosts:
+      - "localhost:host-gateway"
+    #volumes:
+    #  - ./app
+

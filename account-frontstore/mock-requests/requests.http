@@ -1,0 +1,52 @@
+POST https://my.api.mockaroo.com/register/?key=baeb8380
+Accept: application/json
+
+{
+                "firstname": "Ravi Kumar",
+                "lastname": "Shantharaju",
+                "email": "ravi@gmail.com",
+                "password": "password",
+                "telephone": "1-541-754-3010",
+                "customer_group_id": "1",
+                "agree": "1"
+}
+
+###
+
+GET https://my.api.mockaroo.com/account/123?key=baeb8380
+Accept: application/json
+
+###
+
+PUT https://my.api.mockaroo.com/account/123?key=baeb8380&__method=PUT
+
+{
+        "firstname": "Ravi Kumar S",
+        "lastname": "Shantharaju",
+        "email": "ravi@gmail.com",
+        "password": "password",
+        "telephone": "1-541-754-3010",
+        "customer_group_id": "1",
+        "agree": "1",
+        "dateAdded": "08-04-2022",
+        "cart": [
+            "4aabcdef678adeff",
+            "4bcdef678adefda"
+        ],
+        "totalRewardPoints": "320",
+        "modesOfPayment": [{
+        	"type": "credit card",
+          	"number": "7688 9833 0011",
+          	"balance": "40200"
+        },
+        {
+        	"type": "debit card",
+          	"number": "4533 8798 2313",
+          	"balance": "98200"
+        },
+        {
+        	"type": "COD",
+          	"number": "null",
+          	"balance": "null"
+        }]
+}
