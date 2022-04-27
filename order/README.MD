@@ -38,6 +38,10 @@
 8) [DELETE] - DeleteOrderById- http://localhost:7000/api/orders/:id
 9) [GET] - HealthCheck - http://localhost:7000/api/
 
+# Architecture
+![OrderArchitecture](./images/OrderArchitecture.jpg)
+
+
 # Steps to run application
 1) Using docker
    1) 
