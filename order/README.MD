@@ -5,16 +5,7 @@
 2) Allows user to query orders from CustomerId, OrderId and Status
 3) Allows user to update order status and create order invoice
 
-## Technologies Used
-- Golang
-- Gin Gonic
-- gRPC
-- DynamoDB
-- Docker & Docker Compose
-- Jenkins
-- Swagger UI
-
-## Features implemented
+# Features implemented
 - [x] Dockerized the service
 - [x] Swagger Documentation
 - [x] Effective Use of GRPC for inter-service communication.
@@ -26,6 +17,15 @@
 - [x] Mock Testing using mockgen and testify
 - [x] Logging in a separate file
 - [x] HealthCheck API
+
+# Technologies Used
+- Golang
+- Gin Gonic
+- gRPC
+- DynamoDB
+- Docker & Docker Compose
+- Jenkins
+- Swagger UI
 
 # REST endpoints exposed
 1) [POST] - CreateOrder - http://localhost:7000/api/order
