@@ -41,6 +41,24 @@ We've learned to seek engaging in-hand comfy experiences from every service prov
 
 </td></tr> </table>
 
+## Non-Functional Requirements
+1. Behavior-driven development Development
+2. Domain-driven design
+3. Source Code Management
+5. Containerization with Docker
+6. Continuous Integration/ Continuous Development with Jenkins,Docker,AWS.
+7. Documentation with Swagger
+8. Monitoring with Prometheus
+9. Testing with Code Coverage > 80%
+
+---
+## CI-CD Pipeline
+
+![Team1-CICD drawio](https://user-images.githubusercontent.com/47941624/166130096-b08676c0-8a05-4cf7-8e8e-d165bfe18782.png)
+
+
+---
+
 
 ## Auth Admin & Frontstore - Architecture
 ![Auth.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1651289390748/JM6LkFEhd.png)
